@@ -19,9 +19,9 @@ class Content(models.Model):
     body = MDTextField()
     dated_at = models.DateTimeField(auto_now_add = True)
     tag = models.ManyToManyField(Tag,related_name='hashtag')
-    like = models.ManyToManyField(User,related_name='likers')
+    like = models.ManyToManyField(User,related_name='likers',blank=True)
     summary = models.CharField(max_length = 50)
-    Difficulty = models.IntegerField(null=True,default=0)
+    difficulty = models.IntegerField(null=True,default=0)
     image = models.ImageField(upload_to="content/", blank=True, null=True)
     # intro = models.AutoField()
 

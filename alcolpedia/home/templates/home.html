@@ -1,4 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-    
+    <h1>Home</h1>
+    <hr>
+    {% for content in contents %}
+        <h3>{{content.title}}</h3>
+        {% if content.image %}
+            <img src="{{content.image.url}}">
+        {% endif %}                
+        <div>작성자 : {{content.publisher}} </div>
+        <div>난이도 :  {{content.difficulty}}</div>
+        <div>짧게 설명 : {{content.summary}}</div>
+        <div></div>
+        <hr>
+    {% endfor %}
 {% endblock %}
