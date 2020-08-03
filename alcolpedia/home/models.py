@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from mdeditor.fields import MDTextField
 from django.utils import timezone
-from member.models import Member
+# from member.models import Profile
 
 # Create your models here.
 
@@ -31,7 +31,7 @@ class Content(models.Model):
 
 class Bookmark(models.Model):
     content = models.ForeignKey(Content, on_delete=models.CASCADE)
-    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    # member = models.ForeignKey(Profile, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     
