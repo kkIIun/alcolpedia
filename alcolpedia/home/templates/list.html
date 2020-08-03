@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 style="text-align: center;">list</h1>
+    <hr>
+    {% for content in contents%}
+        <img src="{{content.image.url}}">
+        <h3>{{content.title}}</h3>
+        <div>간단 소개:{{content.summary}}</div>
+        <div>난이도:{{content.difficulty}}</div>
+        <hr>
+    {% endfor %}
+{% endblock %}

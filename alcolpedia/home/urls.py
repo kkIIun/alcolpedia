@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    path('List', views.List, name="List"),
 ]

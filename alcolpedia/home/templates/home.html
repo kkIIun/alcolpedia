@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+<a href="{%url 'sign_up'%}">Sign_up</a>
+<a href="{%url 'sign_in'%}">Sign_in</a>
+<a href="{%url 'sign_out'%}">Sign_out</a>
+<div>{{user.username}}</div>
+<hr>
 <div style="margin-top: 5.7%;">
     <div id="div1" style="margin-bottom: 10px;">요즘 뜨는 술게임</div>
     <div class="container">
