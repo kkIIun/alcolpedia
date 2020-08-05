@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    
     <style>
         body {
             width: 1364px;
             height: 753px;
             background-color: #fbfbfb;
+            
         }
     
         #div1 {
@@ -79,6 +82,10 @@
         #pattern {
             background: repeating-linear-gradient(45deg, rgba(68, 68, 68, 0.082), rgba(68, 68, 68, 0.103) 10px, rgba(136, 136, 136, 0.103) 0, rgba(136, 136, 136, 0.096) 20px);
         }
+        #div4{
+            background-image: url("{% static 스트라이프.png%}");
+        }
+
     </style>
 
 </head>

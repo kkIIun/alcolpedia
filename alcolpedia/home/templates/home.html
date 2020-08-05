@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
 <a href="{%url 'sign_up'%}">Sign_up</a>
 <a href="{%url 'sign_in'%}">Sign_in</a>
 <a href="{%url 'sign_out'%}">Sign_out</a>
@@ -14,7 +15,7 @@
                 <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Read More</a>
+                <a href="#" class="btn btn-primary" style="background-color: #3c3c3c;">Read More</a>
                 </div>
             </div>
             <div class="col-md-4" style="width: 18rem;">
@@ -22,7 +23,7 @@
                 <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Read More</a>
+                <a href="#" class="btn btn-primary" style="background-color: #3c3c3c;">Read More</a>
             </div>
         </div>
         <div class="col-md-4" style="width: 18rem;">
@@ -30,18 +31,53 @@
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary" >Read More</a>
+                <a href="#" class="btn btn-primary" style="background-color: #3c3c3c;">Read More</a>
             </div>
         </div>
         </div>
     </div>
 </div>
-<div style="background-color: aliceblue;">
+
+<div id="div4">
     <div style="height: 100px;"></div>
     <div id="div2" >두부 게임은 뭐에요?</div>
     <div id="div3">두부 게임은 어려운 게임이 아니에요!<br>
         정신만 똑바로 차리면 잘 할 수 있답니다</div>
         <button id="button" type="button" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</button>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="div1" style="margin-bottom: 10px;">친구가 마실때, 흥을 돋아주자!</div>
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <div class="col-md-4" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">Solution</h5>
+                <p class="card-text">Some quick example text to build on the Solution and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary" style="background-color: #3c3c3c;">Read More</a>
+                </div>
+            </div>
+            <div class="col-md-4" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">Solution</h5>
+                <p class="card-text">Some quick example text to build on the Solution and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary" style="background-color: #3c3c3c;">Read More</a>
+            </div>
+        </div>
+        <div class="col-md-4" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Solution</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary"  style="background-color: #3c3c3c;">Read More</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
