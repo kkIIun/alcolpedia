@@ -30,13 +30,12 @@
     
     <div class="first">
     </div>
-    
-    <form class="formclass">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    </form>
+    <form action="{%url 'search'%}" class="formclass">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
     <div class="buttonclass">
         <button class="button" type="submit">검색하기</button>
     </div>
+    </form>
     <div class="hell">
     
         <button class="button2" type="submit">#박자</button>

@@ -3,7 +3,7 @@
 {% load static %}
     <h1 style="text-align: center;">list</h1>
     <hr>
-    {% for content in contents%}
+    {% for content in contents %}
         <img src="{{content.image.url}}">
         <h3>{{content.title}}</h3>
         <div>간단 소개:{{content.summary}}</div>
@@ -14,6 +14,11 @@
         {% else %}
             <a href="{%url 'like' content.id%} ">좋아요</a>
         {% endif%}
+        <div>
+        {% for tag in content.tag.all %}
+            <a class="btn btn-secondary btn-sm" href="{% url 'tag' tag.id %}">#{{tag}}</a>
+        {% endfor %}
+        </div>
         <hr>
     {% endfor %}
     <div>
@@ -77,9 +82,6 @@
       <div class="card2"></div>
       <div class="card2"></div>
     </div>
-    
-
-
   </div>
   <div class="card">
     <img src="{% static 'sullicon.png' %}">
