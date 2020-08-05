@@ -6,9 +6,11 @@
         <a class="navbar-brand" href="#">ALCOLPEDIA</a>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <a class="what" href="{%url 'home' %}">HOME</a>
-        <a class="what" href="#" onclick="navClicked()">술게임</a>
-        <a class="what" href="#">폭탄주</a>
-        <a class="what" href="#">게시판</a>
+        <a class="what" href="{%url 'game' %}">술게임</a>
+        <a class="what" href="{%url 'alcohol' %}">폭탄주</a>
+        <a class="what" href="{%url 'setting' %}">옵션</a>
+        <a class="what" href="{%url 'cheers' %}">건배사</a>
+        <a class="what" href="{%url 'bgm' %}">브금</a>
         <a class="what" href="#">건의하기</a>
         {% if user.is_authenticated %}
             <a class="btn btn-secondary btn-sm" href="{%url 'sign_out'%}">Sign out</a>
