@@ -1,0 +1,74 @@
+
+        body {
+            width: 1364px;
+            height: 753px;
+            background-color: #fbfbfb;
+        }
+    
+        #div1 {
+
+            font-family: NotoSans;
+            font-size: 32px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.31;
+            letter-spacing: normal;
+            text-align: center;
+            color: #3d3d3d;
+        }
+    
+        .col-md-4 {
+            margin-top: 10%;
+            border-radius: 10px;
+    
+        }
+    
+        .container {
+            padding-left: 10%;
+            padding-right: 10%;
+            text-align: center;
+        }
+    
+        .btn-primary:active:hover {
+            background-color: #3d3d3d;
+        }
+    
+        #div2 {
+            font-family: NotoSans;
+            font-size: 32px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.31;
+            letter-spacing: normal;
+            text-align: center;
+            color: #3d3d3d;
+        }
+    
+        #div3 {
+            padding-top: 3%;
+            margin-left: 28%;
+            width: 582px;
+            height: 44px;
+            font-family: NotoSans;
+            font-size: 16px;
+            font-weight: 600;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.38;
+            letter-spacing: normal;
+            text-align: center;
+            color: #3d3d3d;
+        }
+    
+        #button {
+    
+            margin-left: 46%;
+            margin-top: 8%;
+            margin-bottom: 10%;
+        }
+    
+        #pattern {
+            background: repeating-linear-gradient(45deg, rgba(68, 68, 68, 0.082), rgba(68, 68, 68, 0.103) 10px, rgba(136, 136, 136, 0.103) 0, rgba(136, 136, 136, 0.096) 20px);
+        }

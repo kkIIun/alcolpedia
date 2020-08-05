@@ -25,3 +25,8 @@ def cancel(request, content_id):
     content.like.remove(request.user)
     content.save()    
     return redirect('List')
+
+# def detail(request, content_id):
+
+# def search(request):
+#     q = request.GET.get('q')
