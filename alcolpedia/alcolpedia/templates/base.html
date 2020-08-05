@@ -5,85 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <style>
-        body {
-            width: 1364px;
-            height: 753px;
-            background-color: #fbfbfb;
-        }
-    
-        #div1 {
-
-            font-family: NotoSans;
-            font-size: 32px;
-            font-weight: bold;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.31;
-            letter-spacing: normal;
-            text-align: center;
-            color: #3d3d3d;
-        }
-    
-        .col-md-4 {
-            margin-top: 10%;
-            border-radius: 10px;
-    
-        }
-    
-        .container {
-            padding-left: 10%;
-            padding-right: 10%;
-            text-align: center;
-        }
-    
-        .btn-primary:active:hover {
-            background-color: #3d3d3d;
-        }
-    
-        #div2 {
-            font-family: NotoSans;
-            font-size: 32px;
-            font-weight: bold;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.31;
-            letter-spacing: normal;
-            text-align: center;
-            color: #3d3d3d;
-        }
-    
-        #div3 {
-            padding-top: 3%;
-            margin-left: 28%;
-            width: 582px;
-            height: 44px;
-            font-family: NotoSans;
-            font-size: 16px;
-            font-weight: 600;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.38;
-            letter-spacing: normal;
-            text-align: center;
-            color: #3d3d3d;
-        }
-    
-        #button {
-    
-            margin-left: 46%;
-            margin-top: 8%;
-            margin-bottom: 10%;
-        }
-    
-        #pattern {
-            background: repeating-linear-gradient(45deg, rgba(68, 68, 68, 0.082), rgba(68, 68, 68, 0.103) 10px, rgba(136, 136, 136, 0.103) 0, rgba(136, 136, 136, 0.096) 20px);
-        }
-    </style>
-
 </head>
 <body>
     {% block content %}
     {% endblock %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script>
+        var box1 = document.getElementById("box1");
+        var k = 0;
+        var size = 0;
+        var i, j;
+        function navClicked() {
+            if (k == 0) {
+                box1.style.height = size + "px";
+                box1.style.visibility = "visible";
+                i = setInterval(expand, 5);
+            }
+            else {
+                clearInterval(i);
+                ight = size + "px";
+                j = setInterval(contract, 5);
+            }
+            k = 1 - k;
+        }
+
+        function expand() {
+            if (size == 200) {
+                clearInterval(i);
+            }
+            else {
+                size += 10;
+                box1.style.height = size + "px";
+            }
+        }
+
+        function contract() {
+            if (size <= 0) {
+                clearInterval(j);
+                box1.style.visibility = "hidden";
+            }
+            else {
+                size -= 10;
+                box1.style.height = size + "px";
+            }
+        }
+    </script>
 </body>
 </html>
