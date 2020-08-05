@@ -1,10 +1,61 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="{%url 'sign_up'%}">Sign_up</a>
-<a href="{%url 'sign_in'%}">Sign_in</a>
-<a href="{%url 'sign_out'%}">Sign_out</a>
-<div>{{user.username}}</div>
-<hr>
+{% load static %}
+<div style="background-color: aliceblue;">
+    <nav class="navbar navbar-dark" style="background-color: #404040;">
+        <a class="navbar-brand" href="#">ALCOLPEDIA</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="what" href="{%url 'home' %}">HOME</a>
+        <a class="what" href="#" onclick="navClicked()">술게임</a>
+        <a class="what" href="#">폭탄주</a>
+        <a class="what" href="#">게시판</a>
+        <a class="what" href="#">건의하기</a>
+        {% if user.is_authenticated %}
+            <a class="btn btn-secondary btn-sm" href="{%url 'sign_out'%}">Sign out</a>
+            <div>{{user.username}}</div>
+        {% else %}
+            <a class="btn btn-secondary btn-sm" href="{%url 'sign_up'%}">Sign up</a>
+            <a class="btn btn-secondary btn-sm" href="{%url 'sign_in'%}">Sign in</a>
+        {% endif %}
+    </nav>
+    <div id="box1" class="box">
+        <div class="row">
+            <div class="col-sm"> 종류별
+                <hr style="border:inset 1px white;">무적<br> 저격</div>
+            <div class="col-sm"> 난이도별
+                <hr style="border:inset 1px white;">★<br> ★★<br> ★★★<br></div>
+        </div>
+    </div>
+    
+    
+    <div class="first">
+    </div>
+    
+    <form class="formclass">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    </form>
+    <div class="buttonclass">
+        <button class="button" type="submit">검색하기</button>
+    </div>
+    <div class="hell">
+    
+        <button class="button2" type="submit">#박자</button>
+        <button class="button2" type="submit">#파트너</button>
+        <button class="button2" type="submit">#무적</button>
+        <button class="button2" type="submit">#국민대</button>
+    
+    </div>
+    <div class=hell3></div>
+    <div class="hell2">
+    
+        <button class="button3" type="submit">#어려움</button>
+        <button class="button3" type="submit">#달달한</button>
+        <button class="button3" type="submit">#신나는</button>
+        <button class="button3" type="submit">#두뇌</button>
+        <button class="button3" type="submit">#순발력</button>
+    </div>
+</div>
+
 <div style="margin-top: 5.7%;">
     <div id="div1" style="margin-bottom: 10px;">요즘 뜨는 술게임</div>
     <div class="container">
@@ -43,9 +94,6 @@
         정신만 똑바로 차리면 잘 할 수 있답니다</div>
         <button id="button" type="button" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</button>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="{% static 'home_jiyoon.css' %}">
+<link rel="stylesheet" href="{% static 'home_dain.css' %}">
 {% endblock %}
