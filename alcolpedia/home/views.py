@@ -26,7 +26,13 @@ def cancel(request, content_id):
     content.save()    
     return redirect('List')
 
-# def detail(request, content_id):
+def search(request) :
+    q = request.GET.get('q')
+    contents = Content.objects.filter(title__icontains=q)
+    return render(request,'search.html',{'contents':contents})
 
-# def search(request):
-#     q = request.GET.get('q')
+def tag(request,tag_id) : 
+    tag = get_object_or_404(Tag,pk=tag_id)
+    contents = Content.objects.filter(tag__id = tag.id)
+    return render(request,'search.html',{'contents':contents})
+# def detail(request, content_id):
