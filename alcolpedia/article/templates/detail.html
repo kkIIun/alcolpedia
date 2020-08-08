@@ -20,13 +20,13 @@
 
 <body>
     {% include 'nav.html' %}
-
+    {% for content in contents %}
     <div class="first">
-        {{title}}
+        {{content.title}}
         <hr style="width:30%; border:inset 1px white;">
     </div>
     <p style="text-align: center;">
-        {{number}} 별넣을거임
+        {{content.difficulty}}
     </p>
     <div class="second">
         <div class="second_baby">낼름</div>
@@ -51,7 +51,9 @@
     </div>
 
     <div class="forth">
-        <div class="forth_baby" style="text-align: right;">{{image}} 이미지</div>
+        <div class="forth_baby" style="text-align: right;"><img src="{{content.image.url}}"> 이미지</div>
         <div class="forth_baby" style="text-align: left;">{{play}}게임방법</div>
     </div>
 </div>
+{% endfor %}
+
