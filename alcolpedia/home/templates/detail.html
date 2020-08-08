@@ -1,3 +1,61 @@
-{% extends "base.html" %}
-{% block content %}
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'style_detail.css' %}">
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-dark" style="background-color: #404040;">
+          <a class="navbar-brand" href="#" >ALCOLPEDIA</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="what" href="{%url 'main' %}">HOME</a>
+          <a class="what" href="{%url 'game' %}" onclick="navClicked()">술게임</a>
+          <a class="what" href="#">폭탄주</a>
+          <a class="what" href="#">게시판</a>
+          <a class="what" href="#">건의하기</a>
+          <button type="button" class="btn btn-secondary btn-sm" href="#">sign in</button>
+          <button type="button" class="btn btn-secondary btn-sm"href="#">sign up</button>
+        </nav>
+    </div>
+    
+    <div class="first">
+        {{title}}
+        <hr style="width:30%; border:inset 1px white;">
+    </div>
+    <p style="text-align: center;">
+        {{number}} 별넣을거임
+    </p>
+    <div class="second">
+        <div class="second_baby">낼름</div>
+        <div class="second_baby">낼름</div>    
+        <div class="second_baby">낼름</div>
+
+    </div>
+    <p style="text-align: center;">
+        {{music}} 플레이
+        <br>
+        {{lyrics}} 가사
+    
+    </p>
+
+</body>
+<div class="body2">
+    <br><br><br>
+    <div class="third">
+        게임방법
+        <hr style="width:20%; border:inset 1px white;">
+        {{people_number}}
+    </div>
+
+    <div class="forth">
+        <div class="forth_baby" style="text-align: right;">{{image}} 이미지</div>
+        <div class="forth_baby" style="text-align: left;">{{play}}게임방법</div>
+    </div>
+</div>
