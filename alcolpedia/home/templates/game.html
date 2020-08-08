@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-    <h1 style="text-align: center;">list</h1>
+    <h1 style="text-align: center;">game</h1>
     <hr>
-    {% for content in contents%}
+    {% for content in contents %}
         <img src="{{content.image.url}}">
         <h3>{{content.title}}</h3>
         <div>간단 소개:{{content.summary}}</div>
@@ -14,6 +14,11 @@
         {% else %}
             <a href="{%url 'like' content.id%} ">좋아요</a>
         {% endif%}
+        <div>
+        {% for tag in content.tag.all %}
+            <a class="btn btn-secondary btn-sm" href="{% url 'tag' tag.id %}">#{{tag}}</a>
+        {% endfor %}
+        </div>
         <hr>
     {% endfor %}
     <div>
@@ -21,8 +26,8 @@
       <a class="navbar-brand" href="#">ALCOLPEDIA</a>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <a class="what" href="{%url 'home' %}">HOME</a>
-      <a class="what" href="{%url 'List' %}" onclick="navClicked()">술게임</a>
-      <a class="what" href="#">폭탄주</a>
+      <a class="what" href="{%url 'game' %}" >술게임</a>
+      <a class="what" href="{%url 'alcohol' %}">폭탄주</a>
       <a class="what" href="#">게시판</a>
       <a class="what" href="#">건의하기</a>
       <button type="button" class="btn btn-secondary btn-sm" href="#">sign in</button>
@@ -77,9 +82,6 @@
       <div class="card2"></div>
       <div class="card2"></div>
     </div>
-    
-
-
   </div>
   <div class="card">
     <img src="{% static 'sullicon.png' %}">

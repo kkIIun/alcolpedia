@@ -8,9 +8,26 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request, 'home.html')
 
-def List(request):
-    contents = Content.objects.all()
-    return render(request,'list.html',{'contents':contents})
+def list_game(request):
+    contents = Content.objects.filter(sort = 'game')
+    print(contents)
+    return render(request,'game.html',{'contents':contents})
+
+def list_alcohol(request):
+    contents = Content.objects.filter(sort = 'alcohol')
+    return render(request,'alcohol.html',{'contents':contents})
+
+def list_setting(request):
+    contents = Content.objects.filter(sort = 'setting')
+    return render(request,'setting.html',{'contents':contents})
+
+def list_cheers(request):
+    contents = Content.objects.filter(sort = 'cheers')
+    return render(request,'cheers.html',{'contents':contents})
+
+def list_bgm(request):
+    contents = Content.objects.filter(sort = 'bgm')
+    return render(request,'bgm.html',{'contents':contents})
 
 @login_required
 def like(request, content_id):
@@ -26,7 +43,13 @@ def cancel(request, content_id):
     content.save()    
     return redirect('List')
 
-# def detail(request, content_id):
+def search(request) :
+    q = request.GET.get('q')
+    contents = Content.objects.filter(title__icontains=q)
+    return render(request,'search.html',{'contents':contents})
 
-# def search(request):
-#     q = request.GET.get('q')
+def tag(request,tag_id) : 
+    tag = get_object_or_404(Tag,pk=tag_id)
+    contents = Content.objects.filter(tag__id = tag.id)
+    return render(request,'search.html',{'contents':contents})
+# def detail(request, content_id):
