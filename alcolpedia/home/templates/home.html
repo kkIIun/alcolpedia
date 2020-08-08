@@ -7,37 +7,10 @@
 {% block content %}
 
 <div>
-    <nav class="navbar navbar-dark" style="background-color: #404040;">
-        <a class="navbar-brand" href="#">ALCOLPEDIA</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="what" href="{%url 'home' %}">HOME</a>
-        <a class="what" href="#" onclick="navClicked()">술게임</a>
-        <a class="what" href="#">폭탄주</a>
-        <a class="what" href="#">게시판</a>
-        <a class="what" href="#">건의하기</a>
-        {% if user.is_authenticated %}
-            <a class="btn btn-secondary btn-sm" href="{%url 'sign_out'%}">Sign out</a>
-            <div>{{user.username}}</div>
-        {% else %}
-            <a class="btn btn-secondary btn-sm" href="{%url 'sign_up'%}">Sign up</a>
-            <a class="btn btn-secondary btn-sm" href="{%url 'sign_in'%}">Sign in</a>
-        {% endif %}
-    </nav>
-
+    {% include 'nav.html'%}
     <div class="first">
         <p class="font"><img src="{% static 'sullicon.png' %}">알콜피디아</p>
     </div>
-
-    <div id="box1" class="box">
-        <div class="row">
-            <div class="col-sm"> 종류별
-                <hr style="border:inset 1px white;">무적<br> 저격</div>
-            <div class="col-sm"> 난이도별
-                <hr style="border:inset 1px white;">★<br> ★★<br> ★★★<br></div>
-        </div>
-    </div>
-    
-    
     <div class="first">
     </div>
     <form action="{%url 'search'%}" class="formclass">
@@ -151,8 +124,7 @@
     </div>
     <svg id="button" type="button" width="8em" height="8em" viewBox="0 0 16 16" class="bi bi-play-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-      </svg>
-        <!-- <button id="button" type="button" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</button> -->
+    </svg>
     </div>
     </div>
 </div>

@@ -1,0 +1,17 @@
+<nav class="navbar navbar-dark" style="background-color: #404040;">
+    <a class="navbar-brand" href="#">ALCOLPEDIA</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="what" href="{%url 'home' %}">HOME</a>
+    <a class="what" href="{%url 'game' %}">술게임</a>
+    <a class="what" href="{%url 'setting' %}">옵션</a>
+    <a class="what" href="{%url 'bgm' %}">브금</a>
+    <a class="what" href="{%url 'alcohol' %}">폭탄주</a>
+    <a class="what" href="{%url 'cheers' %}">건배사</a>
+    {% if user.is_authenticated %}
+    <a class="btn btn-secondary btn-sm" href="{%url 'sign_out'%}">Sign out</a>
+    <div>{{user.username}}</div>
+    {% else %}
+    <a class="btn btn-secondary btn-sm" href="{%url 'sign_up'%}">Sign up</a>
+    <a class="btn btn-secondary btn-sm" href="{%url 'sign_in'%}">Sign in</a>
+    {% endif %}
+</nav>

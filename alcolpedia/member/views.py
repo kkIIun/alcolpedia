@@ -55,7 +55,7 @@ def sign_out(request):
     auth.logout(request)
     return redirect('/')
 
-
+# def profile(request):
 # def update_profile(request, user_id):
 #     user = User.objects.get(pk = user_id)
 # Create your views here.

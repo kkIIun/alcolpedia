@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'alcolpedia',
     'member',
     'mdeditor',
+    'article',
 ]
 
 MIDDLEWARE = [
