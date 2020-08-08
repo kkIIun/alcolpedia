@@ -1,76 +1,10 @@
-
 body {
-    background-color: #fbfbfb;
-}
+        height: 753px;
+        background-color: #fbfbfb;
+    }
+    
+        #div1 {
 
-<<<<<<< HEAD
-#div1 {
-    font-family: NotoSans;
-    font-size: 32px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.31;
-    letter-spacing: normal;
-    text-align: center;
-    color: #3d3d3d;
-}
-
-.col-md-4 {
-    margin-top: 10%;
-    border-radius: 10px;
-
-}
-
-.container {
-    padding-left: 10%;
-    padding-right: 10%;
-    text-align: center;
-}
-
-.btn-primary:active:hover {
-    background-color: #3d3d3d;
-}
-
-#div2 {
-    font-family: NotoSans;
-    font-size: 32px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.31;
-    letter-spacing: normal;
-    text-align: center;
-    color: #3d3d3d;
-}
-
-#div3 {
-    padding-top: 3%;
-    margin-left: 28%;
-    width: 582px;
-    height: 44px;
-    font-family: NotoSans;
-    font-size: 16px;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
-    text-align: center;
-    color: #3d3d3d;
-}
-
-#button {
-
-    margin-left: 46%;
-    margin-top: 8%;
-    margin-bottom: 10%;
-}
-
-#pattern {
-    background: repeating-linear-gradient(45deg, rgba(68, 68, 68, 0.082), rgba(68, 68, 68, 0.103) 10px, rgba(136, 136, 136, 0.103) 0, rgba(136, 136, 136, 0.096) 20px);
-}
-=======
             font-family: NotoSans;
             font-size: 32px;
             font-weight: bold;
@@ -141,19 +75,35 @@ body {
             margin-top: 10%;
             background-image: url('스트라이프.png');
         }
-
-        #div5{
-            background-color: #3d3d3d;
-        }
-        #div6{
-            background-color: #fbfbfb;
-            margin-left: 10%;
-            margin-right: 10%;
-            display: flex;
-            margin-top: 5%;
-    
+        #div4{
             
         }
+
+#body2{
+     margin-top: 10%;
+     background-image: url('스트라이프.png');
+ }       
+ #body3{
+     padding-left:20%;
+     width: 1366px;
+     height: 425px;
+     background-color: #fbfbfb;
+ }
+ #div4{
+     padding-left: 37.3%;
+     margin-top: 32.7%;
+     width: 346px;
+     height: 43px;
+     font-family: NotoSans;
+     font-size: 32px;
+     font-weight: bold;
+     font-stretch: normal;
+     font-style: normal;
+     line-height: 1.31;
+     letter-spacing: normal;
+     text-align: center;
+     color: #3d3d3d;
+ }
       
         .text-left{
             background-color: #fbfbfb;
@@ -162,4 +112,23 @@ body {
            
             padding-left: 5%;
         }
->>>>>>> c309c980c4f477587110153be7c928a367f29fff
+        #body3{
+            text-align: center;
+        }
+        #div7{
+            margin-top: 10%;
+            padding-left: 10%;
+ 
+            font-family: NotoSans;
+            font-size: 16px;
+            font-weight: 600;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.31;
+            letter-spacing: normal;
+            text-align: center;
+            color: #3d3d3d;
+        }
+        #div8{
+            padding-left: 30%;
+        }

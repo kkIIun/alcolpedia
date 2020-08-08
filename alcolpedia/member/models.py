@@ -18,3 +18,7 @@ from django.dispatch import receiver
 # def save_user_profilepost_save(sender, instance, **kwargs):
 #     instance.profile.save()
 
+# class Bookmark(models.Model):
+#     content = models.ForeignKey(Content, on_delete=models.CASCADE)
+#     # member = models.ForeignKey(Profile, on_delete=models.CASCADE)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
