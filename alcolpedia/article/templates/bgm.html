@@ -1,5 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'bgm.css' %}">
+{% endblock %}
     {% include 'nav.html' %}
+    <div id="div5" style="padding-bottom: 100%;">
+        <img src="{% static 'BGM최종.png' %}" style="width: 100%;">
+        <div class="container-md">
+            <div class="text">1. OO이가~ 좋아하는~ 참이슬 </div>
+        </div>
+        <div class="container-md" style="margin-top: 2%;">
+            <div class="text">2. 나이스바디~</div>
+        </div>
+        <div class="container-md" style="margin-top: 2%;">
+            <div class="text">3. 동구밖~과수원샷!</div>
+        </div>
+        <div class="container-md" style="margin-top: 2%;">
+            <div class="text">4. OO이가 술을마셔 O!O!O! 원~샷!</div>
+        </div>
+        <div class="container-md" style="margin-top: 2%;">
+            <div class="text">5. 싶었어~싶었어~ 마시고싶었어~</div>
+        </div>
+    </div>
 {% endblock %}
