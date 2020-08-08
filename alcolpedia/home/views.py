@@ -53,3 +53,4 @@ def tag(request,tag_id) :
     contents = Content.objects.filter(tag__id = tag.id)
     return render(request,'search.html',{'contents':contents})
 # def detail(request, content_id):
+
