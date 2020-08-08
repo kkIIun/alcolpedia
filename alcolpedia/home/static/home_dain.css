@@ -1,7 +1,5 @@
 
         body {
-            width: 1364px;
-            height: 753px;
             background-color: #fbfbfb;
         }
     
@@ -74,8 +72,21 @@
         }
 
         #body2{
+            width: 100%;
+            background-repeat: no-repeat;
             margin-top: 10%;
             background-image: url('스트라이프.png');
+        }
+        #div4{
+            font-family: NotoSans;
+            font-size: 32px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.31;
+            letter-spacing: normal;
+            text-align: center;
+            color: #3d3d3d;
         }
 
         #div5{
@@ -97,4 +108,33 @@
             padding-bottom: 5%;
            
             padding-left: 5%;
+        }
+        #body3{
+            text-align: center;
+        }
+        #div7{
+            margin-top: 3%;
+            font-family: NotoSans;
+            font-size: 16px;
+            font-weight: 600;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.31;
+            letter-spacing: normal;
+            text-align: center;
+            color: #3d3d3d;
+        }
+        #div8{
+            margin-left: 33%;
+            margin-top: 3.9%;
+            margin-right: 1%;
+            width: 368px;
+            height: 48px;
+            border: solid 2px #3e3e3e;
+            background-color: #ffffff;
+        }
+        #button2{
+            margin-top: 4.2%;
+            margin-bottom: 15%;
+            background-color: #3c3c3c;
         }
