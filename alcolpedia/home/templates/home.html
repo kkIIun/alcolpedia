@@ -1,7 +1,16 @@
 {% extends "base.html" %}
+{% load static %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'home_jiyoon.css' %}">
+<link rel="stylesheet" href="{% static 'home_dain.css' %}">
+{% endblock %}
 {% block content %}
-{% load static %} 
 
+<div>
+    {% include 'nav.html'%}
+    <div class="first">
+        <p class="font"><img src="{% static 'sullicon.png' %}">알콜피디아</p>
+    </div>
     <div class="first">
     </div>
     <form action="{%url 'search'%}" class="formclass">
@@ -120,7 +129,7 @@
 </div>
 </div>
 
-<div id="body3" style="text-align: center;"> 
+<div id="body3"> 
     <div id="div4" style="padding-top: 10%;">어떤 게 궁금하신가요?</div>
     <div id="div7">술게임 미리 공부해볼까요?</div>
     <div class="row">
@@ -128,6 +137,4 @@
         <button id="button2" type="button" class="btn btn-dark" style="background-color: #3c3c3c;">검색하기</button>
     </div>
 </div>
-<link rel="stylesheet" href="{% static 'home_jiyoon.css' %}">
-<link rel="stylesheet" href="{% static 'home_dain.css' %}">
 {% endblock %}
