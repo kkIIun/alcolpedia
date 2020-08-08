@@ -1,7 +1,12 @@
 {% extends "base.html" %}
-{% block content %}
 {% load static %}
-<div style="background-color: aliceblue;">
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'home_jiyoon.css' %}">
+<link rel="stylesheet" href="{% static 'home_dain.css' %}">
+{% endblock %}
+{% block content %}
+
+<div>
     <nav class="navbar navbar-dark" style="background-color: #404040;">
         <a class="navbar-brand" href="#">ALCOLPEDIA</a>
         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -18,6 +23,11 @@
             <a class="btn btn-secondary btn-sm" href="{%url 'sign_in'%}">Sign in</a>
         {% endif %}
     </nav>
+
+    <div class="first">
+        <p class="font"><img src="{% static 'sullicon.png' %}">알콜피디아</p>
+    </div>
+
     <div id="box1" class="box">
         <div class="row">
             <div class="col-sm"> 종류별
@@ -87,13 +97,11 @@
         </div>
     </div>
 </div>
-<div style="background-color: aliceblue;">
+<div>
     <div style="height: 100px;"></div>
     <div id="div2" >두부 게임은 뭐에요?</div>
     <div id="div3">두부 게임은 어려운 게임이 아니에요!<br>
         정신만 똑바로 차리면 잘 할 수 있답니다</div>
         <button id="button" type="button" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</button>
 </div>
-<link rel="stylesheet" href="{% static 'home_jiyoon.css' %}">
-<link rel="stylesheet" href="{% static 'home_dain.css' %}">
 {% endblock %}
