@@ -5,9 +5,10 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(blank = True, null = True)
-    location = models.CharField(blank = True, null = True, max_length = 40)
-
+    avatar = models.ImageField(upload_to="profile/",default= '사용자.png')
+    
+    def __str__(self):
+        return self.user.username
 
 @receiver(post_save, sender = User)
 def create_user_profile(sender, instance, created, **kwargs):
