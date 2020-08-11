@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from article.models import *
+from member.models import Profile
 from django.utils import timezone
 from django.utils.timezone import localdate
 from django.core.paginator import Paginator
@@ -7,8 +8,10 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 
 
+
 #술게임페이지
 def table_contents(request):
+    profile = get_object_or_404(Profile,pk = request.user.id)
     name= request.GET.get('name')
     try:
         contents_list = Content.objects.filter(sort = name)
@@ -22,7 +25,7 @@ def table_contents(request):
             page = 1
         start = max(int(page)-5, 1)
         end = min(int(page)+5, paginator.num_pages)
-        return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)]})
+        return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile})
     except:
         return redirect('/')
 #좋아요

@@ -1,7 +1,9 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib import messages
+from .models import *
+
 
 # 회원가입 기능
 # POST 메서드로 `username`, `password`, `confirm_password`를 넘겨받아야 한다.
@@ -21,6 +23,7 @@ def sign_up(request):
                         password = request.POST["password"],
                     )
                     user.create_user_profile()
+                    auth.login(request,user)
                 except:
                     messages.error(request, "다른 사용자가 사용 중인 username입니다.")
         else:
@@ -55,7 +58,22 @@ def sign_out(request):
     auth.logout(request)
     return redirect('/')
 
-# def profile(request):
-# def update_profile(request, user_id):
-#     user = User.objects.get(pk = user_id)
-# Create your views here.
+def profile(request):
+    profile = get_object_or_404(Profile,user__username = request.user.username)
+    user = get_object_or_404(User, pk = request.user.id)
+    if request.method == 'POST' :
+        name = request.POST.get('name')
+        image = request.FILES.get('image')
+        print(image)
+        if name:
+            user.username = name
+        if image:
+            profile.avatar = image
+        user.save()
+        profile.save()
+        return redirect('home')
+    else:
+
+        return render(request,'profile.html',{'profile':profile})
+
+
