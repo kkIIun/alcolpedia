@@ -1,7 +1,9 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_list_or_404,get_object_or_404,  redirect, render
 from django.contrib.auth.models import User
+from .models import Profile
 from django.contrib import auth
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # 회원가입 기능
 # POST 메서드로 `username`, `password`, `confirm_password`를 넘겨받아야 한다.
@@ -55,7 +57,17 @@ def sign_out(request):
     auth.logout(request)
     return redirect('/')
 
-# def profile(request):
-# def update_profile(request, user_id):
-#     user = User.objects.get(pk = user_id)
-# Create your views here.
+
+@login_required
+def profile(request):
+
+    profile = get_object_or_404(Profile, pk = request.user.id)
+    user = get_object_or_404(User, pk = request.user.id)
+    if request.method == 'POST' :
+        name = request.POST.get('name')
+        user.username = name
+        user.save()
+        profile.save()
+        return redirect('home')
+    else:
+        return render(request,'profile.html',{'profile':profile})
