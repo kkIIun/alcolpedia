@@ -1,0 +1,142 @@
+
+.navbar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 12.6%;
+    width: 100%;
+    margin: 0;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-size: 1.8em;
+    background-color: #404040;
+}
+.first{
+    margin-top: 10%;
+}
+
+.font{
+    font-family: NotoSans;
+    font-size: 56px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.18;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    
+}
+img{
+    height: 13%;
+    width: 8%;
+}
+.formclass{
+    width:54.8%;
+    height:7.6%;
+    margin-left: 22.6%;
+    margin-top: 3%;
+}
+.buttonclass{
+    margin-top: 1.5%;
+    margin-left: 42.6%;
+    font-family: NotoSans;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.button{
+    width:25%;
+    height:50%;
+    border-radius: 10px;
+    outline: 0;
+    border: 0;
+    background-color: #333333;
+    color: white;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.hell{
+    margin-top: 1%;
+    margin-left: 28%;
+    margin-right: 22%;
+    padding:0;
+    font-family: NotoSans;
+}
+.button2{
+    height: 100%;
+    width: 15%;
+    border: solid 1px #707070;
+    background-color: #707070;
+    border-radius: 10px;
+    margin-right: 8%;
+    padding: 1%;
+}
+
+.button3{
+    height: 100%;
+    width: 12%;
+    border: solid 1px #707070;
+    background-color: #707070;
+    border-radius: 10px;
+    margin-right: 6.5%;
+    padding: 0.85%;
+}
+
+
+.hell3{
+    margin-top: 1%;
+}
+
+.hell2{
+    height: 5.5%;
+    margin-left: 21%;
+    margin-right: 14%;
+    padding:0;
+}
+
+.what{
+    font-size: 0.5em;
+    color:white;
+}
+
+
+.what:hover {
+    color:grey;
+}
+
+.box {
+    height: 37.8%;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    color: white;
+    border-right:1px;
+    border-right-color: white;
+}
+
+#box1 { 
+    visibility: hidden;
+    position: fixed;
+    top: 12.6%;
+    background-color: #404040;
+    opacity: 90%;
+}
+
+.col-sm{
+    padding:0;
+    text-align:center;
+    color: white;
+    border-right: white;
+}
+
+body{
+    background-color: #404040;
+    margin: 0;
+    padding: 0;
+    
+}

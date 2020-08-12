@@ -12,7 +12,9 @@
     background-color: #404040;
 }
 .first{
-    margin-top: 10%;
+    margin-top: 5.8%;
+    margin-bottom: 8%;
+    padding-top: 5%;
 }
 
 .font{
@@ -63,7 +65,7 @@ img{
     margin-top: 1%;
     margin-left: 28%;
     margin-right: 22%;
-    padding:0;
+    padding-top: 3%;
     font-family: NotoSans;
 }
 .button2{
@@ -89,15 +91,16 @@ img{
 }
 
 
-.hell3{
-    margin-top: 1%;
-}
 
 .hell2{
     height: 5.5%;
+    margin-top: 1%;
     margin-left: 21%;
     margin-right: 14%;
-    padding:0;
+    padding-top:0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 5%;
 }
 
 .what{

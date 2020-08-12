@@ -1,60 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
+<link rel="stylesheet" href="{% static 'list.css' %}">
 <hr>
-{% for content in posts %}
-    <img src="{{content.image.url}}">
-    <a href="{% url 'detail' content.id %}"><h3>{{content.title}}</h3></a>
-    <div>간단 소개:{{content.summary}}</div>
-    <div>난이도:{{content.difficulty}}</div>
-    <div>좋아요 수 : {{content.like.all|length}}</div>
-    {% if user in content.like.all %}
-    <a href="{%url 'cancel' content.id%} ">좋아요 취소</a>
-    {% else %}
-    <a href="{%url 'like' content.id%} ">좋아요</a>
-    {% endif%}
-<div>
-    {% for tag in content.tag.all %}
-    <a class="btn btn-secondary btn-sm" href="{% url 'tag' tag.id %}">#{{tag}}</a>
-    {% endfor %}
-</div>
-{% endfor %}
-
-<nav aria-label="...">
-    <div class="pagination_wrapper" style="text-align: center;">
-        <ul class="pagination">
-            {% if posts.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{posts.previous_page_number}}&page_cnt=10" tabindex="-1"
-                    aria-disabled="false">Previous</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            {% endif %}
-            {% for i in range %}
-            {% if i == posts.number  %}
-            <li class="page-item active" aria-current="page">
-                <a class="page-link" href="?page={{i}}&page_cnt=10"> {{i}} <span class="sr-only">(current)</span></a>
-            </li>
-            {% else %}
-            <li class="page-item"><a class="page-link" href="?page={{i}}&page_cnt=10">{{i}}</a></li>
-            {% endif %}
-            {% endfor %}
-            {% if posts.has_next %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{posts.next_page_number}}&page_cnt=10">Next</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" href="#">Next</a>
-            </li>
-            {% endif %}
-
-        </ul>
-    </div>
-</nav>
 
 <hr>
 
@@ -102,11 +50,11 @@
 
 <div class="container">
     <div class="row justify-content-between">
-    {% for content in contents %}
+    {% for content in posts %}
         <div class="card col-3">
             <img src="{{content.image.url}}" style="width: 100%;">
             <hr>
-            {{content.title}}<br>
+            <a href="{% url 'detail' content.id %}">{{content.title}}</a><br>
             난이도:{{content.difficulty}}
             <div class="container2">
                 {% for tag in content.tag.all %}
@@ -118,9 +66,44 @@
                 {% endfor %}
             </div>
         </div>
-        {% endfor %}
+    {% endfor %}
     </div>
 </div>
-<link rel="stylesheet" href="{% static 'list.css' %}">
+<nav aria-label="..." class="nav_style">
+    <div class="pagination_wrapper" style="text-align: center;">
+        <ul class="pagination">
+            {% if posts.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{posts.previous_page_number}}&page_cnt=10" tabindex="-1"
+                    aria-disabled="false">Previous</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            {% endif %}
+            {% for i in range %}
+            {% if i == posts.number  %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="?page={{i}}&page_cnt=10"> {{i}} <span class="sr-only">(current)</span></a>
+            </li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{i}}&page_cnt=10">{{i}}</a></li>
+            {% endif %}
+            {% endfor %}
+            {% if posts.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{posts.next_page_number}}&page_cnt=10">Next</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Next</a>
+            </li>
+            {% endif %}
+
+        </ul>
+    </div>
+</nav>
+
 {% endblock %}
 
