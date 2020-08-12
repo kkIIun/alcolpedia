@@ -16,33 +16,37 @@
 <div class="top2">
     <button class="starbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
-        <p style="color: #8b8b8b; font-family:NotoSans;">난이도 ▼
+        <p style="color: #8b8b8b; font-family:NotoSans;">난이도 ▼</p>
     </button>
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">★</a>
-        <a class="dropdown-item" href="#">★★</a>
-        <a class="dropdown-item" href="#">★★★</a>
+        <a class="dropdown-item" href="{% url 'filter'%}?var=1">★</a>
+        <a class="dropdown-item" href="{% url 'filter'%}?var=2">★★</a>
+        <a class="dropdown-item" href="{% url 'filter'%}?var=3">★★★</a>
     </div>
+</div>
+<div class="top2">
     <button class="starbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
-        <p style="color: #8b8b8b; font-family:NotoSans;">태그 ▼
+        <p style="color: #8b8b8b; font-family:NotoSans;">태그 ▼</p>
     </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">#저격</a>
-        <a class="dropdown-item" href="#">#무적</a>
-        <a class="dropdown-item" href="#">#눈치</a>
-    </div>
 
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{% url 'filter'%}?var=저격">#저격</a>
+        <a class="dropdown-item" href="{% url 'filter'%}?var=신나는">#신나는</a>
+        <a class="dropdown-item" href="{% url 'filter'%}?var=박자">#박자</a>
+    </div>
+</div>
+<div class="top2">
     <button class="starbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
-        <p style="color: #8b8b8b; font-family:NotoSans;">최신순 ▼
+        <p style="color: #8b8b8b; font-family:NotoSans;">날짜순 ▼</p>
     </button>
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">일주일</a>
-        <a class="dropdown-item" href="#">1개월</a>
-        <a class="dropdown-item" href="#">3개월</a>
+        <a class="dropdown-item" href="{% url 'filter'%}?var=7">일주일</a>
+        <a class="dropdown-item" href="{% url 'filter'%}?var=30">1개월</a>
+        <a class="dropdown-item" href="{% url 'filter'%}?var=90">3개월</a>
     </div>
 </div>
 <hr style="border:inset 1px white;">

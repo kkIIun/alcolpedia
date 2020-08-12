@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block stylesheet %}
+{% endblock %}
+{% block content %}
+{% include 'nav.html' %}
+<h1 style="text-align: center;">내 정보</h1>
+<form action="{%url 'profile' %}" method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+    <h3>프로필 사진</h3>
+    <img src="{{profile.avatar.url}}" style="height: 100px;width: 100px;">
+    <br>
+    <input type="file" class="" name="image">
+    <h3>사용자 이름</h3>
+    <input class="form-control mr-sm-2" type="search" placeholder="{{profile.user.username}}" name="name">
+    <input class="btn btn-dark" type="submit" value="수정하기" style="margin-top:1rem">
+</form>
+{% endblock %}
