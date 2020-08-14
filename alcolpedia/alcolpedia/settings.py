@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'member',
     'mdeditor',
     'article',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
