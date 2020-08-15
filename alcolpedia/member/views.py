@@ -67,7 +67,6 @@ def profile(request):
     if request.method == 'POST' :
         name = request.POST.get('name')
         image = request.FILES.get('image')
-        print(image)
         if name:
             user.username = name
         if image:
