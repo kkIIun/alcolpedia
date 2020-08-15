@@ -11,7 +11,6 @@ from datetime import datetime, timedelta
 
 #술게임페이지
 def table_contents(request):
-    profile = get_object_or_404(Profile,pk = request.user.id)
     name= request.GET.get('name')
     try:
         contents_list = Content.objects.filter(sort = name)
@@ -25,7 +24,11 @@ def table_contents(request):
             page = 1
         start = max(int(page)-5, 1)
         end = min(int(page)+5, paginator.num_pages)
-        return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile})
+        if request.user.is_authenticated :
+            profile = get_object_or_404(Profile,user__username = request.user.username)
+            return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile})
+        else :
+            return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)]})
     except:
         return redirect('/')
 #좋아요
@@ -55,7 +58,11 @@ def tag(request,tag_id) :
 #게시물 보기
 def detail(request,content_id) :
     content = get_object_or_404(Content,pk = content_id)
-    return render(request,'detail.html',{'content':content})
+    if request.user.is_authenticated :
+        profile = get_object_or_404(Profile,user__username = request.user.username)
+        return render(request,'detail.html',{'content':content,'profile':profile})
+    else :
+        return render(request,'detail.html',{'content':content})
 
 def filter(request) : 
     #변수받기
@@ -71,4 +78,8 @@ def filter(request) :
     #변수=태그
     else : 
         list_contents = Content.objects.filter(tag__title = var)
-    return render(request,'game.html',{'posts' : list_contents})
+    if request.user.is_authenticated :
+        profile = get_object_or_404(Profile,user__username = request.user.username)
+        return render(request,'game.html',{'posts' : list_contents,'profile':profile})
+    else :
+        return render(request,'game.html',{'posts' : list_contents})
