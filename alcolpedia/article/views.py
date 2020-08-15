@@ -11,9 +11,9 @@ from datetime import datetime, timedelta
 
 #술게임페이지
 def table_contents(request):
-    profile = get_object_or_404(Profile,pk = request.user.id)
     name= request.GET.get('name')
     try:
+        profile = get_object_or_404(Profile,user__username = request.user.username)
         contents_list = Content.objects.filter(sort = name)
         page_cnt = request.GET.get('page_cnt')
         if not page_cnt:
