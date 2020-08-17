@@ -75,7 +75,7 @@ def filter(request) :
     elif var in ('7','30','90')  :
         time_threshold = datetime.now() - timedelta(days=int(var))
         print(time_threshold,datetime.now())
-        list_contents = Content.objects.filter( dated_at__gt=time_threshold)
+        list_contents = Content.objects.filter( updated_at__gt=time_threshold)
     #변수=태그
     else : 
         list_contents = Content.objects.filter(tag__title = var)

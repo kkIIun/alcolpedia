@@ -15,7 +15,7 @@ class ProfileSerializer(serializers.HyperlinkedModelSerializer):
         model = Profile
         fields = ('user', 'avatar', 'location')
 
-class ContentSerializer(serializers.HyperlinkedModelSerializer):
+class ContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Content
         fields = ('title', 'body')
