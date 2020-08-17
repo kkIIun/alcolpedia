@@ -22,6 +22,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+REST_USE_JWT = True
+ACCOUNT_EMAIL_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Application definition
 
@@ -37,8 +40,14 @@ INSTALLED_APPS = [
     'member',
     'mdeditor',
     'article',
-    'rest_framework',
     'crispy_forms',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
 ]
 
 MIDDLEWARE = [
