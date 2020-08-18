@@ -12,6 +12,7 @@ from datetime import datetime, timedelta
 #술게임페이지
 def table_contents(request):
     name= request.GET.get('name')
+<<<<<<< HEAD
     contents_list = Content.objects.filter(sort = name)
     page_cnt = request.GET.get('page_cnt')
     if not page_cnt:
@@ -29,6 +30,28 @@ def table_contents(request):
     else :
         return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)]})
         
+=======
+    try:
+        profile = get_object_or_404(Profile,user__username = request.user.username)
+        contents_list = Content.objects.filter(sort = name)
+        page_cnt = request.GET.get('page_cnt')
+        if not page_cnt:
+            page_cnt = 10
+        paginator = Paginator(contents_list,page_cnt)
+        page = request.GET.get('page')
+        posts = paginator.get_page(page)
+        if page == "" or page == None: 
+            page = 1
+        start = max(int(page)-5, 1)
+        end = min(int(page)+5, paginator.num_pages)
+        if request.user.is_authenticated :
+            profile = get_object_or_404(Profile,user__username = request.user.username)
+            return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile})
+        else :
+            return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)]})
+    except:
+        return redirect('/')
+>>>>>>> master
 #좋아요
 @login_required
 def like(request, content_id):
@@ -72,7 +95,7 @@ def filter(request) :
     elif var in ('7','30','90')  :
         time_threshold = datetime.now() - timedelta(days=int(var))
         print(time_threshold,datetime.now())
-        list_contents = Content.objects.filter( dated_at__gt=time_threshold)
+        list_contents = Content.objects.filter( updated_at__gt=time_threshold)
     #변수=태그
     else : 
         list_contents = Content.objects.filter(tag__title = var)
