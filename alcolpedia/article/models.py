@@ -27,9 +27,3 @@ class Content(models.Model):
 
     def __str__(self):
         return self.title
-
-    def getImageURL(self):
-        try:
-            return self.image.url
-        except:
-            return ""
