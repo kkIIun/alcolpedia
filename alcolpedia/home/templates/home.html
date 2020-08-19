@@ -12,44 +12,49 @@
         <img src="{% static 'neon.jpg' %}" style="height:100%; width: 100%; z-index: 0;">
     </div>
     <div class="first">
-        <p class="font" style="color: #ffffff;">알콜피디아</p>
+        <p class="font" style="color: #ffffff;">Alcolpedia</p>
     </div>
     <form action="{%url 'search'%}" class="formclass">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
 
     </form>
-    {% for tag in tags %}
-        <a class="btn btn-secondary btn-sm" href="{% url 'tag' tag.id %}">#{{tag}}</a>
-    {% endfor %}
+    
+    <div class="tag_box">
+        {% for tag in tags %}
+        <a href="{% url 'tag' tag.id %}" style="padding:2%; color:white;">#{{tag}}</a>
+        {% endfor %}
+    </div>
+    
     <div style="height: 50px;">
     </div>
 </div>
+<div class="geradient">
 
-<div style="margin-top: 5.7%;">
+<div style="background-color: #707077;">
     <div id="div1">요즘 뜨는 술게임</div>
     <div class="container">
         <div class="d-flex justify-content-between">
             <div class="col-md-4" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title" style="color:#ffffff;">Card title</h5>
+                <p class="card-text" style="color:#ffffff;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</a>
                 </div>
             </div>
             <div class="col-md-4" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title" style="color:#ffffff;">Card title</h5>
+                <p class="card-text" style="color:#ffffff;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</a>
             </div>
         </div>
         <div class="col-md-4" style="width: 18rem;">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title" style="color:#ffffff;">Card title</h5>
+                <p class="card-text" style="color:#ffffff;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</a>
             </div>
         </div>
@@ -74,8 +79,8 @@
                 <circle cx="8" cy="8" r="8"/>
                 </svg>
                 <div class="card-body">
-                <h5 class="card-title">Solution</h5>
-                <p class="card-text">Some quick example text to build on the Solution and make up the bulk of the card's content.</p>
+                <h5 class="card-title" style="color:#ffffff;">Solution</h5>
+                <p class="card-text" style="color:#ffffff;">Some quick example text to build on the Solution and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</a>
                 </div>
             </div>
@@ -84,8 +89,8 @@
                 <circle cx="8" cy="8" r="8"/>
                 </svg>
                 <div class="card-body">
-                <h5 class="card-title">Solution</h5>
-                <p class="card-text">Some quick example text to build on the Solution and make up the bulk of the card's content.</p>
+                <h5 class="card-title" style="color:#ffffff;">Solution</h5>
+                <p class="card-text" style="color:#ffffff;">Some quick example text to build on the Solution and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</a>
             </div>
         </div>
@@ -94,8 +99,8 @@
                 <circle cx="8" cy="8" r="8"/>
               </svg>
             <div class="card-body">
-                <h5 class="card-title">Solution</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title" style="color:#ffffff;">Solution</h5>
+                <p class="card-text" style="color:#ffffff;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-dark"  style="background-color: #3c3c3c;">Read More</a>
             </div>
         </div>
@@ -116,11 +121,11 @@
 </div>
 
 <div id="body3"> 
-    <div id="div4" style="padding-top: 10%;">어떤 게 궁금하신가요?</div>
-    <div id="div7">술게임 미리 공부해볼까요?</div>
+    <div id="div4" style="padding-top: 10%; color:#ffffff;">어떤 게 궁금하신가요?</div>
+    <div id="div7" style="color:#ffffff;">술게임 미리 공부해볼까요?</div>
     <div class="row">
         <input id="div8" class="form-control" type="text" placeholder="Ex) 딸기게임" >
-        <button id="button2" type="button" class="btn btn-dark" style="background-color: #3c3c3c;">검색하기</button>
+        <button id="button2" type="button" class="btn btn-dark" style="background-color: #000000; border:1px solid #ffffff">검색하기</button>
     </div>
 </div>
 {%include 'footer.html'%}
