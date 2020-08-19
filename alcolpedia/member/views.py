@@ -4,6 +4,7 @@ from .models import Profile
 from django.contrib import auth
 from django.contrib import messages
 from .models import *
+from .forms import *
 from django.contrib.auth.decorators import login_required
 
 # 회원가입 기능
