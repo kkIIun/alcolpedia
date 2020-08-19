@@ -11,9 +11,15 @@
     font-size: 1.8em;
     background-color: #404040;
 }
+.image_box{
+    height: 500px;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+}
+
 .first{
-    margin-top: 5.8%;
-    margin-bottom: 8%;
+    margin-bottom: 3%;
     padding-top: 5%;
 }
 
@@ -38,16 +44,8 @@ img{
     width:54.8%;
     height:7.6%;
     margin-left: 22.6%;
-    margin-top: 3%;
 }
-.buttonclass{
-    margin-top: 1.5%;
-    margin-left: 42.6%;
-    font-family: NotoSans;
-    font-weight: bold;
-    font-size: 18px;
 
-}
 
 .button{
     width:25%;
