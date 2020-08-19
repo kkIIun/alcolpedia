@@ -7,11 +7,12 @@ from django.core.paginator import Paginator
 
 #메인화면
 def home(request):
+    tag = Tag.objects.all()
     try:
         profile = get_object_or_404(Profile, user__username = request.user.username)
-        return render(request, 'home.html',{'profile':profile})
+        return render(request, 'home.html',{'profile':profile,'tags':tag})
     except :
-        return render(request,'home.html')
+        return render(request,'home.html',{'tags':tag})
 
 #검색기능
 def search(request) :

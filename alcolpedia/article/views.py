@@ -13,7 +13,6 @@ from django.db.models import Q
 #술게임페이지
 def table_contents(request):
     name= request.GET.get('name')
-    
     contents_list = Content.objects.filter(sort = name)
     page_cnt = request.GET.get('page_cnt')
     if not page_cnt:
@@ -30,7 +29,6 @@ def table_contents(request):
         return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile})
     else :
         return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)]})
-        
 #좋아요
 @login_required
 def like(request, content_id):

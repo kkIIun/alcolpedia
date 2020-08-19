@@ -18,23 +18,9 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
 
     </form>
-    <div class="hell">
-    
-        <button class="button2" type="submit">#박자</button>
-        <button class="button2" type="submit">#파트너</button>
-        <button class="button2" type="submit">#무적</button>
-        <button class="button2" type="submit">#국민대</button>
-    
-    </div>
-    <div class="hell2">
-    
-        <button class="button3" type="submit">#어려움</button>
-        <button class="button3" type="submit">#달달한</button>
-        <button class="button3" type="submit">#신나는</button>
-        <button class="button3" type="submit">#두뇌</button>
-        <button class="button3" type="submit">#순발력</button>
-        
-    </div>
+    {% for tag in tags %}
+        <a class="btn btn-secondary btn-sm" href="{% url 'tag' tag.id %}">#{{tag}}</a>
+    {% endfor %}
     <div style="height: 50px;">
     </div>
 </div>
