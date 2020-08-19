@@ -6,16 +6,17 @@
 {% endblock %}
 {% block content %}
 
-<div style="background-color: #707070;">
+<div style="background-color: #000000;">
     {% include 'nav.html'%}
+    <div class="image_box">
+        <img src="{% static 'neon.jpg' %}" style="height:100%; width: 100%; z-index: 0;">
+    </div>
     <div class="first">
-        <p class="font"><img src="{% static 'sullicon.png' %}">알콜피디아</p>
+        <p class="font" style="color: #ffffff;">알콜피디아</p>
     </div>
     <form action="{%url 'search'%}" class="formclass">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
-    <div class="buttonclass">
-        <button class="button" type="submit">검색하기</button>
-    </div>
+
     </form>
     <div class="hell">
     
