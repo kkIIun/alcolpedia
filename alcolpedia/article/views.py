@@ -13,6 +13,8 @@ from django.db.models import Q
 #술게임페이지
 def table_contents(request):
     name= request.GET.get('name')
+    tag = Tag.objects.all()[:4]
+    print(tag)
     try:
         contents_list = Content.objects.filter(sort = name)
         page_cnt = request.GET.get('page_cnt')
@@ -27,9 +29,9 @@ def table_contents(request):
         end = min(int(page)+5, paginator.num_pages)
         if request.user.is_authenticated :
             profile = get_object_or_404(Profile,user__username = request.user.username)
-            return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile})
+            return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile,'tags':tag})
         else :
-            return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)]})
+            return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'tags':tag})
     except:
         return redirect('/')
 #좋아요
