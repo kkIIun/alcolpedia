@@ -31,7 +31,6 @@ def table_contents(request):
         else :
             return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)]})
     except:
-        print(1)
         return redirect('/')
 #좋아요
 @login_required
