@@ -16,7 +16,7 @@
 <div class="top2">
     <button class="starbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
-        {% if difficulty and difficulty != 0 %}
+        {% if difficulty and difficulty != '0' %}
             <p style="color: #8b8b8b; font-family:NotoSans;">{{difficulty}}</p>
         {% else %}
             <p style="color: #8b8b8b; font-family:NotoSans;">난이도 ▼</p>
@@ -32,7 +32,7 @@
 <div class="top2">
     <button class="starbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
-        {% if tag != 0 and tag %}
+        {% if tag != '0' and tag %}
             <p style="color: #8b8b8b; font-family:NotoSans;">#{{tag}}</p>
         {% else %}
             <p style="color: #8b8b8b; font-family:NotoSans;">태그 ▼</p>
@@ -48,7 +48,7 @@
 <div class="top2">
     <button class="starbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
-        {% if date != 0 and date %}
+        {% if date != '0' and date %}
             <p style="color: #8b8b8b; font-family:NotoSans;">{{date}}일</p>
         {% else %}
             <p style="color: #8b8b8b; font-family:NotoSans;">날짜순 ▼</p>
