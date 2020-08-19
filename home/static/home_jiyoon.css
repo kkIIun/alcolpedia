@@ -11,14 +11,20 @@
     font-size: 1.8em;
     background-color: #404040;
 }
+.image_box{
+    height: 500px;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+}
+
 .first{
-    margin-top: 5.8%;
-    margin-bottom: 8%;
+    margin-bottom: 3%;
     padding-top: 5%;
 }
 
 .font{
-    font-family: NotoSans;
+    font-family: 'DancingScript-VariableFont_wght';
     font-size: 56px;
     font-weight: bold;
     font-stretch: normal;
@@ -38,16 +44,8 @@ img{
     width:54.8%;
     height:7.6%;
     margin-left: 22.6%;
-    margin-top: 3%;
 }
-.buttonclass{
-    margin-top: 1.5%;
-    margin-left: 42.6%;
-    font-family: NotoSans;
-    font-weight: bold;
-    font-size: 18px;
 
-}
 
 .button{
     width:25%;
@@ -138,8 +136,30 @@ img{
     border-right: white;
 }
 
+
+@font-face {
+    font-family: 'DancingScript-VariableFont_wght';
+    src: local('DancingScript-VariableFont_wght'),
+        url('./DancingScript-VariableFont_wght.ttf') format("truetype");
+}
+
+.tag_box{
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 10%;
+    
+}
+
 body{
     margin: 0;
     padding: 0;
-    
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    background-color: #707077;
+}
+
+.geradient{
+    height: 300px;
+    margin-top: 300px;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(112,112,119,1) 100%);
 }

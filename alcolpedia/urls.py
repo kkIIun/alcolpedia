@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls import  url
 import home.urls
 import member.urls
 import article.urls
@@ -18,4 +19,6 @@ urlpatterns = [
     path('api/token/', obtain_jwt_token),
     path('api/token/verify/', verify_jwt_token),
     path('api/token/refresh/', refresh_jwt_token),
+    url(r'^rest-auth/', include('rest_auth.urls')),
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,24 +1,42 @@
 <style>
     .navbar{
         z-index: 10;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        height: 12.6%;
+        width: 100%;
+        margin: 0;
+        padding-left: 1%;
+        padding-right: 1%;
+        font-size: 1.8em;
+        background-color: #404040;
+    }
+
+    .what{
+        font-size: 0.5em;
+        color:white;
     }
     
+    
+    .what:hover {
+        color:grey;
+    }
 </style>
 
-<nav class="navbar navbar-dark" style="background-color: #404040;">
+<nav class="navbar navbar-dark" style="background-color: #000000;">
     <a class="navbar-brand" href="{%url 'home'%}">ALCOLPEDIA</a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a class="what" href="{%url 'home'%}">HOME</a>
     <a class="what" href="{%url 'article'%}?name=game">술게임</a>
     <a class="what" href="{%url 'article'%}?name=bgm">브금</a>
     <a class="what" href="{%url 'article'%}?name=alcohol">폭탄주</a>
     <a class="what" href="{%url 'article'%}?name=cheers">건배사</a>
     <a class="what" href="{%url 'article'%}?name=setting">옵션</a>
     {% if user.is_authenticated %}
-    <a class="btn btn-secondary btn-sm" href="{%url 'sign_out'%}">Sign out</a>
-    <a href="{% url 'profile'%}"><img src="{{profile.avatar.url}}" style="height: 50px;width: 50px;"></a>
+    <a class="btn btn-secondary btn-sm" href="{%url 'sign_out'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign out</a>
+    <a href="{% url 'profile'%}"><img src="{{profile.getImageURL}}" style="height: 50px;width: 50px;"></a>
     {% else %}
-    <a class="btn btn-secondary btn-sm" href="{%url 'sign_up'%}">Sign up</a>
-    <a class="btn btn-secondary btn-sm" href="{%url 'sign_in'%}">Sign in</a>
+    <a class="btn btn-secondary btn-sm" href="{%url 'sign_up'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign up</a>
+    <a class="btn btn-secondary btn-sm" href="{%url 'sign_in'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign in</a>
     {% endif %}
 </nav>
