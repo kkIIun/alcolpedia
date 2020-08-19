@@ -42,6 +42,7 @@ body{
     display: flex;
     height: 5%;
     width: 25%;
+    
 }
 
 .starbutton{
@@ -54,6 +55,7 @@ body{
     margin-top: 0;
     flex:1;
     padding-top: 1%;
+   
 }
 
 .star{
@@ -63,6 +65,7 @@ body{
     border: solid 1px #707070;
     background-color: #ffffff;
     margin-right: 0;
+    
 }
 
 .container{
