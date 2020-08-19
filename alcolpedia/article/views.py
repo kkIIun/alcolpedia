@@ -13,25 +13,23 @@ from django.db.models import Q
 #술게임페이지
 def table_contents(request):
     name= request.GET.get('name')
-    try:
-        contents_list = Content.objects.filter(sort = name)
-        page_cnt = request.GET.get('page_cnt')
-        if not page_cnt:
-            page_cnt = 10
-        paginator = Paginator(contents_list,page_cnt)
-        page = request.GET.get('page')
-        posts = paginator.get_page(page)
-        if page == "" or page == None: 
-            page = 1
-        start = max(int(page)-5, 1)
-        end = min(int(page)+5, paginator.num_pages)
-        if request.user.is_authenticated :
-            profile = get_object_or_404(Profile,user__username = request.user.username)
-            return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile})
-        else :
-            return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)]})
-    except:
-        return redirect('/')
+    contents_list = Content.objects.filter(sort = name)
+    page_cnt = request.GET.get('page_cnt')
+    if not page_cnt:
+        page_cnt = 10
+    paginator = Paginator(contents_list,page_cnt)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    if page == "" or page == None: 
+        page = 1
+    start = max(int(page)-5, 1)
+    end = min(int(page)+5, paginator.num_pages)
+    if request.user.is_authenticated :
+        profile = get_object_or_404(Profile,user__username = request.user.username)
+        return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile})
+    else :
+        return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)]})
+
 #좋아요
 @login_required
 def like(request, content_id):
