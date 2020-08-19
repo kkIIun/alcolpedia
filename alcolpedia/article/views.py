@@ -6,6 +6,7 @@ from django.utils.timezone import localdate
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
+from django.db.models import Q
 
 
 
@@ -64,20 +65,27 @@ def detail(request,content_id) :
 
 def filter(request) : 
     #변수받기
-    var = request.GET.get('var')
-    #변수=난이도
-    if var in ('1','2','3') :
-        list_contents = Content.objects.filter(difficulty = var)
-    #변수=날짜
-    elif var in ('7','30','90')  :
-        time_threshold = datetime.now() - timedelta(days=int(var))
-        print(time_threshold,datetime.now())
-        list_contents = Content.objects.filter( dated_at__gt=time_threshold)
-    #변수=태그
-    else : 
-        list_contents = Content.objects.filter(tag__title = var)
+    difficulty = request.GET.get('difficulty')
+    tag = request.GET.get('tag')
+    date = request.GET.get('date')
+    q = Q()
+    if not difficulty or difficulty == '0' :
+        difficulty = 0
+    else :
+        q.add(Q(difficulty = difficulty), q.AND)
+    if not tag or tag == '0' :
+        tag = 0
+    else :
+        q.add(Q(tag__title = tag), q.AND)
+    if not date or date == '0' :
+        date = 0
+    else :
+        time_threshold = datetime.now() - timedelta(days=int(date))
+        q.add(Q(updated_at__gt = time_threshold), q.AND)
+    list_contents = Content.objects.filter(q)
+    print(difficulty,tag,date,type(difficulty),type(tag),type(date))
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)
-        return render(request,'game.html',{'posts' : list_contents,'profile':profile})
+        return render(request,'game.html',{'posts' : list_contents,'profile':profile,'tag':tag,'date':date,'difficulty':difficulty})
     else :
-        return render(request,'game.html',{'posts' : list_contents})
+        return render(request,'game.html',{'posts' : list_contents,'tag':tag,'date':date,'difficulty':difficulty})

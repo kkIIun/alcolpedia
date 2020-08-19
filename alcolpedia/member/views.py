@@ -6,6 +6,7 @@ from django.contrib import messages
 from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
+from .forms import SignInForm, SignUpForm
 
 # 회원가입 기능
 # POST 메서드로 `username`, `password`, `confirm_password`를 넘겨받아야 한다.
@@ -31,8 +32,7 @@ def sign_up(request):
         else:
             messages.error(request, "비밀번호를 입력해주세요.")
         return redirect('home')
-    else : 
-        return render(request, 'sign_up.html')
+    return render(request, 'sign_up.html', {"form": SignUpForm()})
 
 # 로그인 기능
 # POST 메서드로 'username', 'password'를 넘겨받아야 한다.
@@ -53,7 +53,7 @@ def sign_in(request):
             except:
                 pass
 
-    return render(request, 'sign_in.html')
+    return render(request, 'sign_in.html',  {"form": SignInForm()})
 
 # 로그아웃 기능
 def sign_out(request):
