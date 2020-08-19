@@ -36,26 +36,21 @@ body{
 }
 
 .top2{
-    margin-top: 2.9%;
-    margin-right: 70%;
     margin-left: 5%;
-    display: flex;
+    display: inline;
     height: 5%;
     width: 25%;
     
 }
 
 .starbutton{
-    height:100%;
-    width: 1%;
     border-radius: 25px;
     border: solid 1px #707070;
     background-color: #ffffff;
-    margin-right: 5%;
-    margin-top: 0;
     flex:1;
-    padding-top: 1%;
-   
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 10px;
 }
 
 .star{
