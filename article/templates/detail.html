@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% include 'nav.html' %}
+<link rel="stylesheet" href="{% static 'style_detail.css' %}">
+<div class="first">
+    {{title}}
+    <hr style="width:30%; border:inset 1px white;">
+</div>
+<p style="text-align: center;">
+    {{number}} 별넣을거임
+</p>
+<div class="second">
+    <div class="second_baby">낼름</div>
+    <div class="second_baby">낼름</div>    
+    <div class="second_baby">낼름</div>
+
+</div>
+<p style="text-align: center;">
+    {{music}} 플레이
+    <br>
+    {{lyrics}} 가사
+
+</p>
+
+</body>
+<div class="body2">
+<br><br><br>
+<div class="third">
+    게임방법
+    <hr style="width:20%; border:inset 1px white;">
+    {{people_number}}
+</div>
+
+<div class="forth">
+    <div class="forth_baby" style="text-align: right;">{{image}} 이미지</div>
+    <div class="forth_baby" style="text-align: left;">{{play}}게임방법</div>
+</div>
+</div>
+
+{% endblock %}
