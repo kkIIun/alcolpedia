@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<!-- {% load crispy_forms_tags %} -->
+{% load crispy_forms_tags %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +9,9 @@
 </head>
 
 <body>
-    <!-- {{ form|crispy }} -->
     <form method="post">
         {% csrf_token %}
-        username: <input type="text" name="username" id="username">
-        password: <input type="password" name="password" id="password">
+        {{ form|crispy }}
         <input type="submit" value="Sign In">
     </form>
     
