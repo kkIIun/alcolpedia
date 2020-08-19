@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets, pagination
-from .serializers import ProfileSerializer, UserSerializer, ContentSerializer
+from .serializers import ProfileSerializer, UserSerializer
 from member.models import Profile
 from article.models import Content
 from django.contrib.auth.models import User
