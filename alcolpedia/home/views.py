@@ -17,7 +17,10 @@ def home(request):
 #검색기능
 def search(request) :
     q = request.GET.get('q')
-    contents = Content.objects.filter(title__icontains=q)
-    return render(request,'search.html',{'contents':contents})
+    if q :
+        contents = Content.objects.filter(title__icontains=q)
+        return render(request,'search.html',{'contents':contents})
+    else : 
+        return render(request,'search.html')
 # def detail(request, content_id):
 

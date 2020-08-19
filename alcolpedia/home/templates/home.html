@@ -16,7 +16,7 @@
     </div>
     <form action="{%url 'search'%}" class="formclass">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
-
+        <input type="submit" value="?">
     </form>
     {% for tag in tags %}
         <a class="btn btn-secondary btn-sm" href="{% url 'tag' tag.id %}">#{{tag}}</a>

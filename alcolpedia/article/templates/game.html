@@ -13,13 +13,13 @@
 </div>
 
 
-<div class="top2">
+<div style="display: inline; margin-left: 130px;">
     <button class="starbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
         {% if difficulty and difficulty != '0' %}
-            <p style="color: #646262; font-family:NotoSans;">{{difficulty}}</p>
+            <div class="filter" style="color: #646262; font-family:NotoSans;">{{difficulty}}</div>
         {% else %}
-            <p style="color: #8b8b8b; font-family:NotoSans;">난이도 ▼</p>
+            <div class="filter" style="color: #8b8b8b; font-family:NotoSans;">난이도 ▼</div>
         {% endif %}
     </button>
 
@@ -30,30 +30,13 @@
     </div>
 </div>
 
-<!-- <div class="top2">
-    <button class="starbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        {% if tag != '0' and tag %}
-            <p style="color: #8b8b8b; font-family:NotoSans;">#{{tag}}</p>
-        {% else %}
-            <p style="color: #8b8b8b; font-family:NotoSans;">태그 ▼</p>
-        {% endif %}
-    </button>
-
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'filter'%}?tag=저격&date={{date}}&difficulty={{difficulty}}">#저격</a>
-        <a class="dropdown-item" href="{% url 'filter'%}?tag=신나는&date={{date}}&difficulty={{difficulty}}">#신나는</a>
-        <a class="dropdown-item" href="{% url 'filter'%}?tag=박자&date={{date}}&difficulty={{difficulty}}">#박자</a>
-    </div>
-</div> -->
-
-<div class="top2">
+<div style="display:inline;margin-right: 200px;margin-left: 20px;">
     <button class="starbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
         {% if date != '0' and date %}
-            <p style="color: #8b8b8b; font-family:NotoSans;">{{date}}일</p>
+            <div class="filter" style="color: #8b8b8b; font-family:NotoSans;">{{date}}일</div>
         {% else %}
-            <p style="color: #8b8b8b; font-family:NotoSans;">날짜순 ▼</p>
+            <div class="filter" style="color: #8b8b8b; font-family:NotoSans;">날짜순 ▼</div>
         {% endif %}
     </button>
 
@@ -63,11 +46,25 @@
         <a class="dropdown-item" href="{% url 'filter'%}?date=90&tag={{tag}}&difficulty={{difficulty}}">3개월</a>
     </div>
 </div>
-<div class="top2">
-    {% for tag in tags%}
-        {{tag}}
-    {% endfor %}
+{% for tag in tags %}
+    <div style="display: inline;margin-left: 15px;">
+        <a class="starbutton" style="padding: 15px 15px;color: #707077;"href="{% url 'filter' %}?tag={{tag}}&date={{date}}&difficulty={{difficulty}}" >#{{tag}}</a>
+    </div>
+{% endfor %}
+
+<div style="display: inline;margin-left: 20px;">
+    <button class="starbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        <div class="filter" style="color: #8b8b8b; font-family:NotoSans;">▼</div>
+    </button>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% for tag in all_tags%}
+            <a class="dropdown-item" href="{% url 'filter'%}?date=7&tag={{tag}}&difficulty={{difficulty}}">#{{tag}}</a>
+        {% endfor %}
+    </div>
 </div>
+
 
 <hr style="border:inset 1px white;">
 
@@ -75,7 +72,7 @@
 <div class="container">
     <div class="row justify-content-between">
     {% for content in posts %}
-        <div class="card col-3">
+        <div class="card p-3 my-3">
             <img src="{{content.image.url}}" style="width: 100%;">
             <hr>
             <a href="{% url 'detail' content.id %}">{{content.title}}</a><br>
@@ -83,9 +80,7 @@
             <div class="container2">
                 {% for tag in content.tag.all %}
                 <div class="card2">
-                    
                     <a class="btn btn-secondary btn-sm" href="{% url 'tag' tag.id %}">#{{tag}}</a>
-                    
                 </div>
                 {% endfor %}
             </div>
