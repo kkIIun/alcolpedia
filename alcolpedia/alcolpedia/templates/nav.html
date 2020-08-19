@@ -20,6 +20,7 @@
     
     
     .what:hover {
+        text-decoration-line: none;
         color:grey;
     }
 </style>
@@ -33,10 +34,11 @@
     <a class="what" href="{%url 'article'%}?name=cheers">건배사</a>
     <a class="what" href="{%url 'article'%}?name=setting">옵션</a>
     {% if user.is_authenticated %}
+
     <div class="dropdown">
         <button class="btn btn- dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <img src="{{profile.getImageURL}}" style="height: 50px;width: 50px;">
+            <img src="{{profile.getImageURL}}" style="height: 50px; width: 50px; border-radius:25px">
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <a href="{% url 'profile'%}"><button class="dropdown-item" type="button">프로필</button></a>
