@@ -1,5 +1,6 @@
 import os, json
 import datetime
+import re
 
 SITE_ID = 1
 
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
+    'markdown_deux'
 ]
 
 MIDDLEWARE = [
@@ -186,5 +188,45 @@ MDEDITOR_CONFIGS = {
         'lineWrapping': False,  # lineWrapping
         'lineNumbers': False,  # lineNumbers
         'languaje': 'en'  # zh / en / es 
+    }
+}
+
+from markdown_deux.conf.settings import MARKDOWN_DEUX_DEFAULT_STYLE
+
+MARKDOWN_DEUX_STYLES = {
+    "default": MARKDOWN_DEUX_DEFAULT_STYLE,
+    "trusted": {
+        "extras": {
+            "code-friendly": None,
+        },
+        # Allow raw HTML (WARNING: don't use this for user-generated
+        # Markdown for your site!).
+        "safe_mode": False,
+    },
+    # Here is what http://code.activestate.com/recipes/ currently uses.
+    "recipe": {
+        "extras": {
+            "code-friendly": None,
+        },
+        "safe_mode": "escape",
+        "link_patterns": [
+            # Transform "Recipe 123" in a link.
+            (re.compile(r"recipe\s+#?(\d+)\b", re.I),
+             r"http://code.activestate.com/recipes/\1/"),
+        ],
+        "extras": {
+            "code-friendly": None,
+            "pyshell": None,
+            "demote-headers": 3,
+            "link-patterns": None,
+            # `class` attribute put on `pre` tags to enable using
+            # <http://code.google.com/p/google-code-prettify/> for syntax
+            # highlighting.
+            "html-classes": {"pre": "prettyprint"},
+            "cuddled-lists": None,
+            "footnotes": None,
+            "header-ids": None,
+        },
+        "safe_mode": "escape",
     }
 }
