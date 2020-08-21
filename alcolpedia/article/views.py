@@ -12,6 +12,7 @@ from django.db.models import Q
 
 #술게임페이지
 def table_contents(request):
+    board_name = {'game': '술게임', 'bgm':'브금', 'alcohol': '폭탄주', 'cheers':'건배사', 'setting': '옵션'}
     name= request.GET.get('name')
     tag = Tag.objects.all()[:6]
     all_tags = Tag.objects.all()[6:]
@@ -28,9 +29,9 @@ def table_contents(request):
     end = min(int(page)+5, paginator.num_pages)
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)
-        return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile,'tags':tag,'all_tags':all_tags})
+        return render(request,name+'.html',{'title': board_name[name],'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile,'tags':tag,'all_tags':all_tags})
     else :
-        return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'tags':tag,'all_tags':all_tags})
+        return render(request,name+'.html',{'title': board_name[name], 'posts' : posts,'range' : [i for i in range(start, end+1)],'tags':tag,'all_tags':all_tags})
 #좋아요
 @login_required
 def like(request, content_id):
@@ -60,9 +61,9 @@ def detail(request,content_id) :
     content = get_object_or_404(Content,pk = content_id)
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)
-        return render(request,'detail.html',{'content':content,'profile':profile})
+        return render(request,'detail.html',{'title': content.title ,'content':content,'profile':profile})
     else :
-        return render(request,'detail.html',{'content':content})
+        return render(request,'detail.html',{'title': content.title ,'content':content})
 
 def filter(request) : 
     tags = Tag.objects.all()[:4]

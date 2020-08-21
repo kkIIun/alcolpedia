@@ -13,9 +13,9 @@ def home(request):
 
     try:
         profile = get_object_or_404(Profile, user__username = request.user.username)
-        return render(request, 'home.html',{'profile':profile,'tags':tag, 'contents': contents_list})
+        return render(request, 'home.html',{'title': 'Alcolpedia','profile':profile,'tags':tag, 'contents': contents_list})
     except :
-        return render(request,'home.html',{'tags':tag, 'contents': contents_list})
+        return render(request,'home.html',{'title': 'Alcolpedia','tags':tag, 'contents': contents_list})
 
 #검색기능
 def search(request) :
