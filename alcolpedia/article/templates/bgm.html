@@ -1,70 +1,79 @@
 {% extends "base.html" %}
-{% block content %}
+
 {% load static %}
 {% block stylesheet %}
     <link rel="stylesheet" href="{% static 'bgm.css' %}">
 {% endblock %}
-{% include 'nav.html' %}
-<div id="div5" style="padding-bottom: 50%;  margin-top: 2.5%">
-    <img src="{% static 'BGM최종.png' %}" style="width: 100%;">
+{% block content %}
+    {% include 'nav.html' %}
 
-    <div class="container">
-        <div class="list-group justify-content-between align-self-center">
-        {% for content in posts %}
-        <div class="row align-middle" style="margin-top: 2%">
-                <div class = "col-2">
-                </div>
-                <div class = "list-group-item col-8">
-                    <audio controls = "controls" id = "audio-{{content.title}}" class = "align-middle col-5 audio-style">
-                        <source src = "{{content.audio.url}}"/>
-                    </audio>
-                    <span class="align-middle col-7">
-                        {{content.title}}
-                    </span>
-                </div>
-                <div class = "col-2">
-                </div>
-            </div>
-        {% endfor %}
-        </div>
+    <div class="background-crop">
+        <img src="{% static 'dj.jpg' %}" >
+        <!-- <h3 class = "top-bar-title">
+            BGM
+        </h3>
+        <h4 class = "top-bar-sub-title">
+            BGM..없으면 흥이 안나..<br>우리 같이 불러볼래?
+        </h4> -->
     </div>
+    <div id="div5" style="padding-bottom: 50%;">
 
-
-    <nav aria-label="..." class="nav_style">
-        <div class="pagination_wrapper" style="text-align: center;">
-            <ul class="pagination justify-content-center" style="margin-top: 10%;">
-                {% if posts.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{posts.previous_page_number}}&page_cnt=10" tabindex="-1"
-                        aria-disabled="false">Previous</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                {% endif %}
-                {% for i in range %}
-                {% if i == posts.number  %}
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="?page={{i}}&page_cnt=10"> {{i}} <span class="sr-only">(current)</span></a>
-                </li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="?page={{i}}&page_cnt=10">{{i}}</a></li>
-                {% endif %}
-                {% endfor %}
-                {% if posts.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{posts.next_page_number}}&page_cnt=10">Next</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-                {% endif %}
-    
-            </ul>
+        <div class="container">
+            <div class="list-group justify-content-between align-self-center">
+            {% for content in posts %}
+            <div class="row align-middle" style="margin-top: 2%">
+                    <div class = "col-2">
+                    </div>
+                    <div class = "list-group-item col-8">
+                        <audio controls = "controls" id = "audio-{{content.title}}" class = "align-middle col-5 audio-style">
+                            <source src = "{{content.audio.url}}"/>
+                        </audio>
+                        <span class="align-middle col-7">
+                            {{content.title}}
+                        </span>
+                    </div>
+                    <div class = "col-2">
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
         </div>
-    </nav>
-</div>
 
+
+        <nav aria-label="..." class="nav_style">
+            <div class="pagination_wrapper" style="text-align: center;">
+                <ul class="pagination justify-content-center" style="margin-top: 10%;">
+                    {% if posts.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{posts.previous_page_number}}&page_cnt=10" tabindex="-1"
+                            aria-disabled="false">Previous</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    {% endif %}
+                    {% for i in range %}
+                    {% if i == posts.number  %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="?page={{i}}&page_cnt=10"> {{i}} <span class="sr-only">(current)</span></a>
+                    </li>
+                    {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{i}}&page_cnt=10">{{i}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if posts.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{posts.next_page_number}}&page_cnt=10">Next</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                    {% endif %}
+        
+                </ul>
+            </div>
+        </nav>
+    </div>
 {% endblock %}
