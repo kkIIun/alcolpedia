@@ -9,14 +9,18 @@
     <div class="two">
         <form method="post">
             <div id="one" class="border border-light">
-            {% csrf_token %}
-            username <br>{{ form.username }}<br>
-            <br>
-            password <br><input type="password" name = "password">
-            <br><br><br>
-            <input type="submit" value="Sign In" class="btn btn-outline-light" style="margin-left: 50%;">
+                {% csrf_token %}
+                <p>
+                    username
+                </p>{{ form.username }}<br>
+                <br>
+                <p>
+                    password
+                </p>
+                <input type="password" name = "password">
+                <br><br><br>
+                <input type="submit" value="Sign In" class="btn btn-outline-light" style="margin-left: 50%;">
             </div>
-            
         </form>
     </div>
 {% endblock %}
