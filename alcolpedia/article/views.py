@@ -66,8 +66,8 @@ def detail(request,content_id) :
         return render(request,'detail.html',{'title': content.title ,'content':content})
 
 def filter(request) : 
-    tags = Tag.objects.all()[:4]
-    all_tags = Tag.objects.all()[4:]
+    tags = Tag.objects.all()[:6]
+    all_tags = Tag.objects.all()[6:]
     #변수받기
     difficulty = request.GET.get('difficulty')
     tag = request.GET.get('tag')
