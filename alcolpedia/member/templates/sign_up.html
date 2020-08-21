@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-    {% load crispy_forms_tags %}
-    
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% extends "base.html" %}
+{% load static %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'sign_up.css' %}">
+{% endblock %}
+{% block content %}
+    {% include 'nav.html' %}
 
-<body>
-    
-    <form method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" value="Sign up">
-    </form>
-    
-</body>
-
-</html>
+    <div class="two">
+        
+        <form method="post">
+            <div id="one" class="border border-light">
+            {% csrf_token %}
+            username <br> {{ form.username }}<br><br>
+            password <br> {{ form.password }}<br><br>
+            confirm password <br> {{ form.password }}<br><br>
+            <input type="submit" value="Sign up" class="btn btn-outline-light" style="margin-left: 48%;, padding-top: 3%;">
+            </div>
+  
+        </form>
+    </div>   
+{% endblock %}

@@ -8,15 +8,13 @@
     {% include 'nav.html' %}
     <div class="two">
         <form method="post">
-            <div class="one" >
+            <div id="one" class="border border-light">
             {% csrf_token %}
-            <img src="https://images.unsplash.com/photo-1494962227006-107baac595eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60">
-            <br>
             username <br>{{ form.username }}<br>
             <br>
-            password <br>{{ form.password }}
+            password <br><input type="password">
             <br><br><br>
-            <input type="submit" value="Sign In">
+            <input type="submit" value="Sign In" class="btn btn-outline-light" style="margin-left: 50%;">
             </div>
             
         </form>
