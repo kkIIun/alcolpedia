@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'member',
     'mdeditor',
     'article',
+    'suggestion',
     'crispy_forms',
     'rest_framework',
     'rest_framework.authtoken',
