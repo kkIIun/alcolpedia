@@ -157,9 +157,22 @@ body{
     background-color: #707077;
 }
 
-.geradient{
+.gredient{
     height: 300px;
-    margin-top: 300px;
-    background: rgb(0,0,0);
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(112,112,119,1) 100%);
+    background: linear-gradient( to bottom, #000000, #707077 );
+}
+
+.section-title{
+    color: white;
+    font-family: NotoSans;
+    font-size: 32px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.31;
+    letter-spacing: normal;
+    text-align: center;
+
+    margin-bottom: 5%;
+    margin-top: 5%;
 }

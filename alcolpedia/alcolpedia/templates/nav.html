@@ -18,7 +18,8 @@
         color:white;
     }
     
-    
+    .modal-backdrop { z-index: 0; }
+
     .what:hover {
         text-decoration-line: none;
         color:grey;
@@ -55,22 +56,38 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <a href="{% url 'profile'%}"><button class="dropdown-item" type="button">프로필</button></a>
             <button class="dropdown-item" type="button">찜 목록</button>
-            <a href="#pop1"><button class="dropdown-item" type="button">건의하기</button></a>
+            <button class="dropdown-item" type="button"data-toggle="modal" data-target="#modal">
+                건의하기
+            </button>
             <div class="dropdown-divider"></div>
             <a href="{%url 'sign_out'%}"><button class="dropdown-item" type="button">Sign out</button></a>
         </div>
     </div>
-    <div class="popup" id="pop1">
-        <a href="#a">닫기</a>
-        <form method="POST" action="{% url 'create' %}">
-            {% csrf_token %}
-            <br>
-            <h3>제목:<input type="text" name="title"></h3>
-            <p><textarea name="body" placeholder="건의내용을 입력해주세요"></textarea></p>
-            <input type="submit" value="건의하기">
-        </form>
+
+    <div class="modal" id = "modal" data-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">건의하기</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form method="POST" action="{% url 'create' %}">
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <br>
+                    <h3>제목:<input type="text" name="title"></h3>
+                    <p><textarea name="body" placeholder="건의내용을 입력해주세요"></textarea></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    <button type="submit" class="btn btn-primary">확인</button>
+                </div>
+            </form>
+          </div>
+        </div>
     </div>
-    <div class="dim"></div>
 
     {% else %}
     <a class="btn btn-secondary btn-sm" href="{%url 'sign_up'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign up</a>

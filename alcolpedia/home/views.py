@@ -7,11 +7,15 @@ from django.core.paginator import Paginator
 #메인화면
 def home(request):
     tag = Tag.objects.all()
+    contents_list = Content.objects.filter(sort = "game").order_by('updated_at')
+    contents_list_len = len(contents_list)
+    contents_list = contents_list[:min(3,contents_list_len)]
+
     try:
         profile = get_object_or_404(Profile, user__username = request.user.username)
-        return render(request, 'home.html',{'profile':profile,'tags':tag})
+        return render(request, 'home.html',{'profile':profile,'tags':tag, 'contents': contents_list})
     except :
-        return render(request,'home.html',{'tags':tag})
+        return render(request,'home.html',{'tags':tag, 'contents': contents_list})
 
 #검색기능
 def search(request) :

@@ -1,8 +1,27 @@
 {% extends "base.html" %}
 {% load static %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'bgm.css' %}">
+    <link rel="stylesheet" href="{% static 'list.css' %}">
 {% endblock %}
 {% block content %}
     {% include 'nav.html' %}
+    <div class="background-crop">
+        <img src="{% static 'glasses.jpg' %}" >
+        <h3 class = "top-bar-title">
+            여기에 적당한 텍스트를 넣고 싶다.
+        </h3>
+    </div>
+    
+    <div class="container">
+        <div class="row justify-content-between">
+        {% for content in posts %}
+            <div class="card p-3 my-3 col-4">
+                <img src="{{content.image.url}}" style="width: 100%;">
+                <hr>
+                {{content.title}}<br>
+                {{content.summary}}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
 {% endblock %}
