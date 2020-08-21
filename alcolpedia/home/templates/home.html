@@ -40,7 +40,7 @@
                     <div class="card-body">
                     <h5 class="card-title" style="color:#ffffff;">{{content.title}}</h5>
                     <p class="card-text" style="color:#ffffff;">{{content.summary}}</p>
-                    <a href="#" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</a>
+                    <a href="{% url 'detail' content.id %}" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</a>
                     </div>
                 </div>
             {% endfor %}
