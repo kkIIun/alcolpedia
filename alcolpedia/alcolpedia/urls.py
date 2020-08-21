@@ -4,6 +4,7 @@ from django.conf.urls import  url
 import home.urls
 import member.urls
 import article.urls
+import suggestion.urls
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token, refresh_jwt_token
@@ -15,6 +16,7 @@ urlpatterns = [
     path('home/',include(home.urls)),
     path('member/',include(member.urls)),
     path('article/',include(article.urls)),
+    path('suggestion/',include(suggestion.urls)),
     path('api/', include('api.urls')),
     path('api/token/', obtain_jwt_token),
     path('api/token/verify/', verify_jwt_token),
