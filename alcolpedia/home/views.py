@@ -1,7 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from article.models import *
 from member.models import Profile
-from django.utils import timezone
 from django.utils.timezone import localdate
 from django.core.paginator import Paginator
 
@@ -17,7 +16,10 @@ def home(request):
 #검색기능
 def search(request) :
     q = request.GET.get('q')
-    contents = Content.objects.filter(title__icontains=q)
-    return render(request,'search.html',{'contents':contents})
+    if q :
+        contents = Content.objects.filter(title__icontains=q)
+        return render(request,'search.html',{'contents':contents})
+    else : 
+        return render(request,'search.html')
 # def detail(request, content_id):
 

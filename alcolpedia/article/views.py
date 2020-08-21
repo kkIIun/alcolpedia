@@ -13,6 +13,8 @@ from django.db.models import Q
 #술게임페이지
 def table_contents(request):
     name= request.GET.get('name')
+    tag = Tag.objects.all()[:6]
+    all_tags = Tag.objects.all()[6:]
     contents_list = Content.objects.filter(sort = name)
     page_cnt = request.GET.get('page_cnt')
     if not page_cnt:
@@ -26,9 +28,9 @@ def table_contents(request):
     end = min(int(page)+5, paginator.num_pages)
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)
-        return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile})
+        return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile,'tags':tag,'all_tags':all_tags})
     else :
-        return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)]})
+        return render(request,name+'.html',{'posts' : posts,'range' : [i for i in range(start, end+1)],'tags':tag,'all_tags':all_tags})
 #좋아요
 @login_required
 def like(request, content_id):
@@ -63,6 +65,8 @@ def detail(request,content_id) :
         return render(request,'detail.html',{'content':content})
 
 def filter(request) : 
+    tags = Tag.objects.all()[:4]
+    all_tags = Tag.objects.all()[4:]
     #변수받기
     difficulty = request.GET.get('difficulty')
     tag = request.GET.get('tag')
@@ -85,6 +89,6 @@ def filter(request) :
     print(difficulty,tag,date,type(difficulty),type(tag),type(date))
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)
-        return render(request,'game.html',{'posts' : list_contents,'profile':profile,'tag':tag,'date':date,'difficulty':difficulty})
+        return render(request,'game.html',{'posts' : list_contents,'profile':profile,'tag':tag,'date':date,'difficulty':difficulty,'tags':tags,'all_tags':all_tags})
     else :
-        return render(request,'game.html',{'posts' : list_contents,'tag':tag,'date':date,'difficulty':difficulty})
+        return render(request,'game.html',{'posts' : list_contents,'tag':tag,'date':date,'difficulty':difficulty,'tags':tags,'all_tags':all_tags})
