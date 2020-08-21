@@ -1,7 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from article.models import *
 from member.models import Profile
-from django.utils import timezone
 from django.utils.timezone import localdate
 from django.core.paginator import Paginator
 
