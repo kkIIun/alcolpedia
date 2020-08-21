@@ -11,10 +11,6 @@
 
 }
 
-.col-md-4 {
-    margin-top: 10%;
-    border-radius: 10px;
-}
 .container {
     padding-left: 10%;
     padding-right: 10%;
@@ -65,18 +61,6 @@
     margin-top: 10%;
     background-image: url('스트라이프.png');
 }
-        
-#div4{
-    font-family: NotoSans;
-    font-size: 32px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.31;
-    letter-spacing: normal;
-    text-align: center;
-    color: #3d3d3d;
-}
        
        
 #div7{
@@ -100,6 +84,7 @@
     border: solid 2px #3e3e3e;
     background-color: #ffffff;
 }
+
 #button2{
     margin-top: 4.2%;
     margin-bottom: 15%;
