@@ -103,3 +103,8 @@ body{
 .nav_style{
     margin-left: 45%;
 }
+
+.filter{
+    padding-top:10px;
+    padding-bottom:10px;
+}

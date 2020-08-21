@@ -157,9 +157,7 @@ body{
     background-color: #707077;
 }
 
-.geradient{
+.gredient{
     height: 300px;
-    margin-top: 300px;
-    background: rgb(0,0,0);
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(112,112,119,1) 100%);
+    background: linear-gradient( to bottom, #000000, #707077 );
 }

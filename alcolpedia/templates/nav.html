@@ -33,8 +33,19 @@
     <a class="what" href="{%url 'article'%}?name=cheers">건배사</a>
     <a class="what" href="{%url 'article'%}?name=setting">옵션</a>
     {% if user.is_authenticated %}
-    <a class="btn btn-secondary btn-sm" href="{%url 'sign_out'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign out</a>
-    <a href="{% url 'profile'%}"><img src="{{profile.getImageURL}}" style="height: 50px;width: 50px;"></a>
+    <div class="dropdown">
+        <button class="btn btn- dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <img src="{{profile.getImageURL}}" style="height: 50px;width: 50px;">
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <a href="{% url 'profile'%}"><button class="dropdown-item" type="button">프로필</button></a>
+            <button class="dropdown-item" type="button">찜 목록</button>
+            <div class="dropdown-divider"></div>
+            <a href="{%url 'sign_out'%}"><button class="dropdown-item" type="button">Sign out</button></a>
+        </div>
+    </div>
+
     {% else %}
     <a class="btn btn-secondary btn-sm" href="{%url 'sign_up'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign up</a>
     <a class="btn btn-secondary btn-sm" href="{%url 'sign_in'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign in</a>
