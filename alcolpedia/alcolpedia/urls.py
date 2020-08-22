@@ -1,12 +1,14 @@
 from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls import  url
+from django.conf.urls.static import static
+from django.views.static import serve
+from django.urls import re_path
 import home.urls
 import member.urls
 import article.urls
 import suggestion.urls
 from django.conf import settings
-from django.conf.urls.static import static
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token, refresh_jwt_token
 
 
@@ -23,4 +25,11 @@ urlpatterns = [
     path('api/token/refresh/', refresh_jwt_token),
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+   
+    path('mdeditor/', include('mdeditor.urls')),
+        
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root':settings.MEDIA_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve, {'document_root':settings.STATIC_ROOT}),
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

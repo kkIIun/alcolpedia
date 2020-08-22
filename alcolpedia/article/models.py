@@ -17,7 +17,7 @@ class Content(models.Model):
     publisher = models.ForeignKey(User, on_delete=models.CASCADE)
     body = MDTextField(blank=True, null=True)
     updated_at = models.DateTimeField(auto_now_add = True)
-    tag = models.ManyToManyField(Tag,related_name='hashtag', blank=True, null=True)
+    tag = models.ManyToManyField(Tag,related_name='hashtag', blank=True)
     like = models.ManyToManyField(User,related_name='likers',blank=True)
     summary = models.CharField(max_length = 50, blank=True, null=True)
     difficulty = models.IntegerField(null=True,default=0, blank=True)
