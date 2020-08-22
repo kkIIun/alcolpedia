@@ -10,9 +10,9 @@
 {% block content %}
     {% include 'nav.html' %}
     <div class="background-crop">
-        <img src="{% static 'glasses.jpg' %}" >
+        <img src="{% static 'drink2.jpg' %}" >
         <h3 class = "top-bar-title">
-            여기에 적당한 텍스트를 넣고 싶다.
+            술은 섞을수록 더 단 법
         </h3>
     </div>
     
@@ -22,13 +22,17 @@
             <div class="card" >
                 <img src="{{content.image.url}}" style="width: 100%;">
                 <hr>
-                <h4>
+                <h4 style="font-family: 'NEXON Lv2 Gothic Bold';">
                     {{content.title}}
                 </h4>
-                <p>
+                <hr style="border:1px solid white">
+                <p style="font-family: 'NEXON Lv1 Gothic OTF';">
                     {{content.summary}}
                 </p>
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal-{{content.id}}">
+                <svg width="2em" height="1.5em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                </svg> : {{content.like.all|length}}<br>
+                <button type="button" style="margin-top:0.5rem; background-color: black; border:1px solid white;" class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
                     자세히 보기
                 </button>
             </div>
