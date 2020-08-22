@@ -23,6 +23,7 @@ class Content(models.Model):
     difficulty = models.IntegerField(null=True,default=0)
     image = models.ImageField(upload_to="content/", blank=True, null=True)
     sort = models.CharField(max_length=10,choices=SORT,default='술게임')
+    audio = models.FileField(upload_to="audio/", blank = True, null = True)
     # intro = models.AutoField()
 
     def __str__(self):

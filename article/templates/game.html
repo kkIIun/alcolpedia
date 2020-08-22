@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'list.css' %}">
+{% block title%} 
+    {{title}}
+{% endblock %} 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'list.css' %}">
+{% endblock %}
 <hr>
 
 <hr>
@@ -72,10 +77,10 @@
 <div class="container">
     <div class="row justify-content-between">
     {% for content in posts %}
-        <div class="card p-3 my-3">
+        <div class="card p-3 my-3 col-3" onclick="moveDetail('{% url 'detail' content.id %}')">
             <img src="{{content.image.url}}" style="width: 100%;">
             <hr>
-            <a href="{% url 'detail' content.id %}">{{content.title}}</a><br>
+            {{content.title}}<br>
             난이도:{{content.difficulty}}
             <div class="container2">
                 {% for tag in content.tag.all %}
@@ -123,6 +128,16 @@
         </ul>
     </div>
 </nav>
+
+
+
+<script>
+    function moveDetail(url) {
+        window.move
+        window.location.href = url;
+    }
+
+</script>
 
 {% endblock %}
 

@@ -12,7 +12,7 @@ class SignInForm(forms.ModelForm):
 class SignUpForm(forms.Form):
     username = forms.CharField(label='username', max_length=100)
     password = forms.CharField(widget=forms.PasswordInput)
-    confirm_password = forms.CharField(widget=forms.PasswordInput)
+    confirm_password = forms.CharField(widget=forms.PasswordInput, label = 'confirm_password')
     
     class Meta:
         model = User
