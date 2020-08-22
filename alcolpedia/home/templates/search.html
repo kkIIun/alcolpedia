@@ -1,14 +1,24 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title%} 
     {{title}}
 {% endblock %} 
+{% block stylesheet %}  
+    <link rel="stylesheet" href="{% static 'search.css' %}">
+{% endblock %}
 {% block content %}
-<h1 style="text-align: center;">Search</h1>
+    {% include 'nav.html' %}
+<h2 style="text-align: center; margin-top: 7%;" class="border border-light">Search</h2>
 <hr>
+    <form action="{%url 'search'%}" class="formclass">
+        <input class="form-control mr-sm-2" type="search" placeholder="{{title}}" aria-label="Search" name="q">
+    </form>
+    <div class="border border-light2">
     {% for content in contents %}
+        
         <img src="{{content.image.url}}">
-        <h3>{{content.title}}</h3>
+        
+        <!-- <h3>{{content.title}}</h3> -->
         <div>간단 소개:{{content.summary}}</div>
         <div>난이도:{{content.difficulty}}</div>
         <div>좋아요 수 : {{content.like.all|length}}</div>
@@ -19,4 +29,5 @@
     {% endif%}
     <hr>
     {% endfor %}
+</div>
 {% endblock %}

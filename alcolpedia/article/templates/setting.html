@@ -4,8 +4,11 @@
     {{title}}
 {% endblock %} 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'bgm.css' %}">
+    <link rel="stylesheet" href="{% static 'setting.css' %}">
 {% endblock %}
 {% block content %}
     {% include 'nav.html' %}
+    <div class="background-crop">
+    <img src="{% static 'setting3.jpg'%}">
+    </div>
 {% endblock %}
