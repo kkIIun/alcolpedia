@@ -9,32 +9,34 @@
 {% block content %}
 {% include 'nav.html' %}
 <div class="background-crop">
-    <img src="{% static 'cheers.jpg' %}" >
+    <img src="{% static 'field_cheers.jpg' %}" >
 </div>
-<form action="{%url 'profile' %}" method="POST" enctype="multipart/form-data"> 
-    {%csrf_token%}
-    <input type="file" id = "file" class="" name="image" style="display: none;">
-    <div class = "profile-image-box">
-        <img src="{{profile.avatar.url}}" class = "profile-image" id = "profile-image">
-        <div class = "profile-image-edit" id = "profile-image-edit" onclick="fileUpload()">
-            <i class="far fa-edit"></i>
+<section class = "profile-content">
+    <form action="{%url 'profile' %}" method="POST" enctype="multipart/form-data"> 
+        {%csrf_token%}
+        <input type="file" id = "file" class="" name="image" style="display: none;">
+        <div class = "profile-image-box">
+            <img src="{{profile.avatar.url}}" class = "profile-image" id = "profile-image">
+            <div class = "profile-image-edit" id = "profile-image-edit" onclick="fileUpload()">
+                <i class="far fa-edit"></i>
+            </div>
         </div>
-    </div>
-
-    <div class = "profile-box">
-        <button type="button" class = "btn btn-dark profile-modify-button" id = "modify-button">
-            프로필 수정하기
-        </button>
-        <button type="submit" class = "btn btn-dark profile-modify-button" id = "complete-button" style="visibility: hidden;">
-            완료
-        </button>
-        <div class = "profile-name-box" id = "profile-name-box">
-            <h3>
-                {{profile.user.username}}
-            </h3>
+    
+        <div class = "profile-box">
+            <button type="button" class = "btn btn-dark profile-modify-button" id = "modify-button">
+                프로필 수정하기
+            </button>
+            <button type="submit" class = "btn btn-dark profile-modify-button" id = "complete-button" style="visibility: hidden;">
+                완료
+            </button>
+            <div class = "profile-name-box" id = "profile-name-box">
+                <h3>
+                    {{profile.user.username}}
+                </h3>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+</section>
 <!-- 찜한 목록 들어가야함. -->
 
 {% endblock %}
@@ -67,7 +69,7 @@
             document.getElementById("modify-button").style.visibility = "hidden";
             document.getElementById("complete-button").style.visibility = "visible";
             document.getElementById("profile-image-edit").style.visibility = "visible";
-            document.getElementById("profile-name-box").innerHTML = '<input class="form-control mr-sm-2" type="search" value="{{profile.user.username}}" name="name">';
+            document.getElementById("profile-name-box").innerHTML = '<input class="form-control input-name" type="search" value="{{profile.user.username}}" name="name">';
             chk = false;
         }
     }
