@@ -1,3 +1,23 @@
+@font-face {
+    font-family: 'NEXON Lv2 Gothic Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+ 
+
+@font-face {
+    font-family: 'DancingScript-VariableFont_wght';
+    src: local('DancingScript-VariableFont_wght'),
+        url('./DancingScript-VariableFont_wght.ttf') format("truetype");
+}
 
 .navbar {
     position: fixed;
@@ -63,7 +83,7 @@ img{
     margin-left: 28%;
     margin-right: 22%;
     padding-top: 3%;
-    font-family: NotoSans;
+    font-family: 'NEXON Lv1 Gothic OTF';
 }
 .button2{
     height: 100%;
@@ -136,12 +156,6 @@ img{
 }
 
 
-@font-face {
-    font-family: 'DancingScript-VariableFont_wght';
-    src: local('DancingScript-VariableFont_wght'),
-        url('./DancingScript-VariableFont_wght.ttf') format("truetype");
-}
-
 .tag_box {
     text-align: center;
     margin-top: 3%;
@@ -154,22 +168,20 @@ img{
     margin-left: 180px;
 }
 
-  .tag_box::-webkit-scrollbar {
+.tag_box::-webkit-scrollbar {
     width: 10px;
-  }
-
-  .tag_box::-webkit-scrollbar-thumb {
-    background-color: #2f3542;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-  }
-
-  .tag_box::-webkit-scrollbar-track {
-    background-color: grey;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px white;
-  }
+}
+.tag_box::-webkit-scrollbar-thumb {
+  background-color: #2f3542;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+.tag_box::-webkit-scrollbar-track {
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}
 
 body{
     margin: 0;
@@ -185,7 +197,7 @@ body{
 
 .section-title{
     color: white;
-    font-family: NotoSans;
+    font-family: 'NEXON Lv1 Gothic OTF';
     font-size: 32px;
     font-weight: bold;
     font-stretch: normal;
@@ -268,3 +280,23 @@ body{
     transform: scale(1.2);
     box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
 } 
+
+
+.card{
+    width: 18rem;
+    background : none;
+    color:white;
+    border: 1px solid white;
+    font-family: 'NEXON Lv1 Gothic OTF';
+    flex:1;
+    margin-left: 1.2rem;
+    margin-right: 1.2rem;
+}
+
+.card_container{
+    display: flex;
+}
+/* 
+.game_container{
+    padding: 0;
+} */
