@@ -1,0 +1,9 @@
+
+.background-crop img{
+    width: 100%;
+    margin: -250px 0 0 0;
+    margin-bottom: 50%;
+}
+body{
+    background-color: black;
+}
