@@ -20,12 +20,13 @@
     <form action="{%url 'search'%}" class="formclass">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
     </form>
-    
+    <center>
     <div class="tag_box">
         {% for tag in tags %}
         <a href="{% url 'tag' tag.id %}" style="padding:2%; color:white; font-family: 'NEXON Lv1 Gothic OTF';">#{{tag}}</a>
         {% endfor %}
     </div>
+    </center>
 </div>
 
 <div class="wrapper">
