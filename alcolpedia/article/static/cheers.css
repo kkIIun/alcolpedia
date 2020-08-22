@@ -7,14 +7,20 @@
 body{
     background-color: black;
 }
-.dropdown{
-    background-color:black;
-    margin-left: 15%;
-    padding-top: 1.5%; padding-bottom: 1.5%;
-
+.card{
+    background-color: black;
+    color: white;
+    padding: 1.3%;
+    padding-bottom: 1.5%; padding-top: 1.5%;
+    vertical-align: middle;
+}
+.card-color{
+    color:white;
 }
 .btn-outline-light{
+    padding: 1.3%;
+    padding-left: 14%;
+}
+.card-body{
     padding-left: 20%;
-    padding-right: 60%;
-    padding-top: 1.5%; padding-bottom: 1.5%;
 }
