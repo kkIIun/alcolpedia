@@ -1,0 +1,20 @@
+
+.background-crop img{
+    width: 100%;
+    margin: -250px 0 0 0;
+    margin-bottom: 3%;
+}
+body{
+    background-color: black;
+}
+.dropdown{
+    background-color:black;
+    margin-left: 15%;
+    padding-top: 1.5%; padding-bottom: 1.5%;
+
+}
+.btn-outline-light{
+    padding-left: 20%;
+    padding-right: 60%;
+    padding-top: 1.5%; padding-bottom: 1.5%;
+}

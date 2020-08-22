@@ -11,12 +11,12 @@
     {{content.title}}
     <hr style="width:30%; border:inset 1px white;">
 </div>
-<p style="text-align: center;">
+<p style="text-align: center; font-size: 20px; color:white;">
     <script>
         for(var i = 0; i < {{content.difficulty}}; i++) {
             document.write("★")
         }
-        for(var i = 0; i < 5-{{content.difficulty}}; i++) {
+        for(var i = 0; i < 3-{{content.difficulty}}; i++) {
             document.write("☆")
         }
     </script>
