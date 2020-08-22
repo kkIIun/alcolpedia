@@ -1,6 +1,6 @@
 img{
-    width: 60%;
-    text-align: center;
+    width: 35%;
+    float: left;
 }
 body{
     background-color: black;
@@ -14,12 +14,17 @@ body{
 .border-light2{
     margin-left: 20%;
     margin-right: 20%;
-    text-align: center;
+    text-align: start;
     padding-top: 1.5%;
+    background-color: black;
+    padding-left: 3%;
 }
 .formclass{
     margin-left: 30%;
     margin-right: 30%;
     margin-bottom: 1.5%;
+    text-align: center;
 }
-
+.content{
+    margin-left:5%;
+}

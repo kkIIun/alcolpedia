@@ -74,6 +74,6 @@ def profile(request):
             profile.avatar = image
         user.save()
         profile.save()
-        return redirect('home')
+        return render(request,'profile.html',{'profile':profile})
     else:
         return render(request,'profile.html',{'profile':profile})

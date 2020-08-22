@@ -21,7 +21,34 @@
 
 .profile-image-box {
     text-align: center;
+    position: relative;
+    left: 50%;
+    transform:translateX(-50%);
+    display: inline-block;
     margin-top: -4rem;
+}
+
+.profile-image img {
+    display: block;
+}
+
+.profile-image-edit {
+    font-size: 3rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    height: 9rem;
+    width: 9rem;
+    border-radius: 4.5rem;
+    cursor: pointer;
+    visibility: hidden;
+    background-color: #bbbbbb;
+    opacity: 70%;
+}
+.profile-image-edit i{
+    color: rgb(46, 46, 46);
+    line-height: 9rem; 
+    opacity: 100%;
 }
 
 .profile-name-box {
