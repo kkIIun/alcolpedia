@@ -55,47 +55,56 @@
         </div>
     </section>
 </div>
-<section id="body2">  
-    <div id="div2" style="padding-top: 10%;" >두부 게임은 뭐에요?</div>
-    <div id="div3">두부 게임은 어려운 게임이 아니에요!<br>
-        정신만 똑바로 차리면 잘 할 수 있답니다</div>
-        <button id="button" type="button" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</button>
-</section>
-
-<section class="container">
-    <h2 class = "section-title">
-        친구가 마실때, 흥을 돋아주자!
-    </h2>
-    <div class="d-flex justify-content-between">
-        {% for bgm in bgms%}
-            <div class="col-md-4" style="width: 18rem;">
-                {% if bgm.image %}
-                    <div class="circle-player" style="background-image: url({{bgm.image.url}});" onclick="playMusic('{{bgm.audio.url}}')">
-                        <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
-                    </div>
-                {% else %}
-                    <div class="circle-player"  onclick="playMusic('{{bgm.audio.url}}')">
-                        <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
-                    </div>
-                {% endif %}
-                <div class="card-body">
-                <h5 class="card-title" style="color:#ffffff;">{{bgm.title}}</h5>
-                <p class="card-text" style="color:#ffffff;">{{bgm.body}}</p>
-                </div>
-            </div>
-        {% endfor %}
+<div class="wrapper">
+    <img src="{% static '오렌지게임.png' %}" style="width: 50%;margin-left: 25%;">
+    <div class="game">
+        <div id="div2" style="padding-top: 10%;" >두부 게임은 뭐에요?</div>
+        <div id="div3">두부 게임은 어려운 게임이 아니에요!<br>
+            정신만 똑바로 차리면 잘 할 수 있답니다</div>
+            <button id="button" type="button" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</button>
     </div>
-</section>
+</div>
 
-<section id="body2">  
-    <div id="div2" style="padding-top: 10%;" >누가 술을 마셔~</div>
-    <div id="div3">친구가 술을 마실 때,<br>
-        가만히 있을 수 없죠! 흥을 같이 돋우어 줍시다!
+<div class="wrapper">
+    <video autoplay muted loop id="myVideo_bgm">
+        <source src="{% static '음악2.mp4'%}" type="video/mp4">
+    </video>
+    <section class="container game">
+        <h2 class = "section-title" style="margin-bottom: 10rem;">
+            친구가 마실때, 흥을 돋아주자!
+        </h2>
+        <div class="d-flex justify-content-between">
+            {% for bgm in bgms%}
+                <div class="col-md-4" style="width: 18rem;">
+                    {% if bgm.image %}
+                        <div class="circle-player" style="background-image: url({{bgm.image.url}});" onclick="playMusic('{{bgm.audio.url}}')">
+                            <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
+                        </div>
+                    {% else %}
+                        <div class="circle-player"  onclick="playMusic('{{bgm.audio.url}}')">
+                            <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
+                        </div>
+                    {% endif %}
+                    <div class="card-body">
+                    <h5 class="card-title" style="color:#ffffff;">{{bgm.title}}</h5>
+                    <p class="card-text" style="color:#ffffff;">{{bgm.body}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+<div class="wrapper">
+    <img src="{% static '왕게임.png' %}" style="width: 50%;margin-left: 25%;">
+    <div class="game">
+        <div id="div2" style="padding-top: 10%;" >누가 술을 마셔~</div>
+        <div id="div3">친구가 술을 마실 때,<br>
+            가만히 있을 수 없죠! 흥을 같이 돋우어 줍시다!
     </div>
     <svg id="button" width="8em" height="8em" viewBox="0 0 16 16" class="bi bi-play-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
     </svg>
-</section>
+</div>
 
 <section id="body3"> 
     <h2 class="section-title" style="padding-top: 10%;">

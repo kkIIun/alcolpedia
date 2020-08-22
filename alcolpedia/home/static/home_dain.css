@@ -65,9 +65,11 @@
 
 #body2{
     width: 100%;
-    background-repeat: no-repeat;
-    margin-top: 0;
-    background-image: url('스트라이프.png');
+    background-image: url('오렌지게임.png');
+}
+
+#alcol_bgm_background{
+    background: url('왕게임.png');
 }
        
        
