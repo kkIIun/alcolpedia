@@ -151,6 +151,8 @@ img{
     overflow-x: scroll;
     overflow-y: hidden;
     padding:24px;
+    width: 1000px;
+    margin-left: 200px;
 }
 
   .tag_box::-webkit-scrollbar {
