@@ -23,7 +23,7 @@
     
     <div class="tag_box">
         {% for tag in tags %}
-        <a href="{% url 'tag' tag.id %}" style="padding:2%; color:white;">#{{tag}}</a>
+        <a href="{% url 'tag' tag.id %}" style="padding:2%; color:white; font-family: 'NEXON Lv1 Gothic OTF';">#{{tag}}</a>
         {% endfor %}
     </div>
 </div>
@@ -34,22 +34,22 @@
     </video>
     <div class="overlay"></div>
     <section style="background-color: #000000;">
-        <div class="container game">
+        <div class="container5 game">
             <h2 class="section-title" style="margin-bottom:150px ;">
                 요즘 뜨는 술게임
             </h2>
-            <div class="row justify-content-between">
+            <div class="card_container">
                 {% for content in contents %}
-                    <div class="col-md-4 col-1 col-sm-2">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{content.image.url}}" class="card-img-top" alt="..." style="border-radius: 4px; height: 15rem">
-                            <div class="card-body">
-                                <h5 class="card-title">{{content.title}}</h5>
-                                <p class="card-text">{{content.summary}}</p>
-                                <a href="{% url 'detail' content.id %}" class="btn btn-dark">게임방법</a>
-                            </div>
+                    
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{content.image.url}}" class="card-img-top" alt="..." style="border-radius: 4px; height: 15rem">
+                        <div class="card-body">
+                            <h5 class="card-title">{{content.title}}</h5>
+                            <p class="card-text">{{content.summary}}</p>
+                            <a href="{% url 'detail' content.id %}" class="btn btn-dark">게임방법</a>
                         </div>
                     </div>
+                   
                 {% endfor %}
             </div>
         </div>
@@ -79,8 +79,8 @@
                     </div>
                 {% endif %}
                 <div class="card-body">
-                <h5 class="card-title" style="color:#ffffff;">{{bgm.title}}</h5>
-                <p class="card-text" style="color:#ffffff;">{{bgm.body}}</p>
+                <h5 class="card-title" style="color:#ffffff; font-family: 'NEXON Lv1 Gothic OTF';">{{bgm.title}}</h5>
+                <p class="card-text" style="color:#ffffff; font-family: 'NEXON Lv1 Gothic OTF';">{{bgm.body}}</p>
                 </div>
             </div>
         {% endfor %}
