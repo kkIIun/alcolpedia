@@ -15,16 +15,15 @@ class Content(models.Model):
     )
     title = models.CharField(max_length = 200)
     publisher = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = MDTextField()
+    body = MDTextField(blank=True, null=True)
     updated_at = models.DateTimeField(auto_now_add = True)
-    tag = models.ManyToManyField(Tag,related_name='hashtag')
+    tag = models.ManyToManyField(Tag,related_name='hashtag', blank=True, null=True)
     like = models.ManyToManyField(User,related_name='likers',blank=True)
-    summary = models.CharField(max_length = 50)
-    difficulty = models.IntegerField(null=True,default=0)
+    summary = models.CharField(max_length = 50, blank=True, null=True)
+    difficulty = models.IntegerField(null=True,default=0, blank=True)
     image = models.ImageField(upload_to="content/", blank=True, null=True)
     sort = models.CharField(max_length=10,choices=SORT,default='술게임')
     audio = models.FileField(upload_to="audio/", blank = True, null = True)
-    # intro = models.AutoField()
 
     def __str__(self):
         return self.title

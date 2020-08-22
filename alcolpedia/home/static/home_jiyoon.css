@@ -149,18 +149,23 @@ img{
     margin-bottom: 10%;
     white-space: nowrap;
     overflow-x: scroll;
+    overflow-y: hidden;
     padding:24px;
+    width: 1000px;
+    margin-left: 200px;
 }
 
   .tag_box::-webkit-scrollbar {
     width: 10px;
   }
+
   .tag_box::-webkit-scrollbar-thumb {
     background-color: #2f3542;
     border-radius: 10px;
     background-clip: padding-box;
     border: 2px solid transparent;
   }
+
   .tag_box::-webkit-scrollbar-track {
     background-color: grey;
     border-radius: 10px;
@@ -192,4 +197,23 @@ body{
 
     margin-bottom: 5%;
     margin-top: 5%;
+}
+
+.circle-player {
+    background-color: black;
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+}
+
+.circle-player i {
+    color: white;
+    font-size: 4.5rem;
+    content: '';
+    position: absolute;
+    left: 3.3rem;
+    top: 2.5rem;
 }

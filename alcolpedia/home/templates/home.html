@@ -6,6 +6,7 @@
 {% block stylesheet %}
 <link rel="stylesheet" href="{% static 'home_jiyoon.css' %}">
 <link rel="stylesheet" href="{% static 'home_dain.css' %}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 {% endblock %}
 {% block content %}
 
@@ -65,35 +66,23 @@
         친구가 마실때, 흥을 돋아주자!
     </h2>
     <div class="d-flex justify-content-between">
-        <div class="col-md-4" style="width: 18rem;">
-            <svg width="8em" height="8em" viewBox="0 0 16 16" class="bi bi-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="8" cy="8" r="8"/>
-            </svg>
-            <div class="card-body">
-            <h5 class="card-title" style="color:#ffffff;">Solution</h5>
-            <p class="card-text" style="color:#ffffff;">Some quick example text to build on the Solution and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</a>
+        {% for bgm in bgms%}
+            <div class="col-md-4" style="width: 18rem;">
+                {% if bgm.image %}
+                    <div class="circle-player" style="background-image: url({{bgm.image.url}});" onclick="playMusic('{{bgm.audio.url}}')">
+                        <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
+                    </div>
+                {% else %}
+                    <div class="circle-player"  onclick="playMusic('{{bgm.audio.url}}')">
+                        <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
+                    </div>
+                {% endif %}
+                <div class="card-body">
+                <h5 class="card-title" style="color:#ffffff;">{{bgm.title}}</h5>
+                <p class="card-text" style="color:#ffffff;">{{bgm.body}}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-md-4" style="width: 18rem;">
-            <svg width="8em" height="8em" viewBox="0 0 16 16" class="bi bi-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="8" cy="8" r="8"/>
-            </svg>
-            <div class="card-body">
-            <h5 class="card-title" style="color:#ffffff;">Solution</h5>
-            <p class="card-text" style="color:#ffffff;">Some quick example text to build on the Solution and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</a>
-        </div>
-    </div>
-    <div class="col-md-4" style="width: 18rem;">
-        <svg width="8em" height="8em" viewBox="0 0 16 16" class="bi bi-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="8" cy="8" r="8"/>
-            </svg>
-        <div class="card-body">
-            <h5 class="card-title" style="color:#ffffff;">Solution</h5>
-            <p class="card-text" style="color:#ffffff;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-dark"  style="background-color: #3c3c3c;">Read More</a>
-        </div>
+        {% endfor %}
     </div>
 </section>
 
@@ -117,4 +106,28 @@
         <button id="button2" type="button" class="btn btn-dark" style="background-color: #000000; border:1px solid #ffffff">검색하기</button>
     </div>
 </section>
+
+{% endblock %}
+
+
+{% block script %}
+<script>
+    var musicPlayer = new Audio();
+    var currentMusic = "";
+
+    function playMusic(url) {
+        if(url == currentMusic) {
+            musicPlayer.pause();
+            document.getElementById("play-icon-"+url).className = "fa fa-play";
+            currentMusic = "";
+        }
+        else {
+            musicPlayer.src = url;
+            document.getElementById("play-icon-"+url).className = "fa fa-pause";
+            musicPlayer.play();
+            currentMusic = url;
+        }
+    }
+
+</script>   
 {% endblock %}
