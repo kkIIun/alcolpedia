@@ -67,14 +67,14 @@
     </h2>
     <div class="d-flex justify-content-between">
         {% for bgm in bgms%}
-        <div class="col-md-4" style="width: 18rem;">
+            <div class="col-md-4" style="width: 18rem;">
                 {% if bgm.image %}
                     <div class="circle-player" style="background-image: url({{bgm.image.url}});" onclick="playMusic('{{bgm.audio.url}}')">
-                        <i class="fas fa-play"></i>
+                        <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
                     </div>
                 {% else %}
                     <div class="circle-player"  onclick="playMusic('{{bgm.audio.url}}')">
-                        <i class="fas fa-play"></i>
+                        <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
                     </div>
                 {% endif %}
                 <div class="card-body">
@@ -118,10 +118,12 @@
     function playMusic(url) {
         if(url == currentMusic) {
             musicPlayer.pause();
+            document.getElementById("play-icon-"+url).className = "fa fa-play";
             currentMusic = "";
         }
         else {
             musicPlayer.src = url;
+            document.getElementById("play-icon-"+url).className = "fa fa-pause";
             musicPlayer.play();
             currentMusic = url;
         }
