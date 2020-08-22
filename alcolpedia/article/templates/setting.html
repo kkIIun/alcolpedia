@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load markdown_deux_tags %}
 {% load static %}
 {% block title%} 
     {{title}}
@@ -9,6 +10,48 @@
 {% block content %}
     {% include 'nav.html' %}
     <div class="background-crop">
-    <img src="{% static 'setting3.jpg'%}">
+        <img src="{% static 'option.jpg'%}">
+        <h3 class = "top-bar-title">
+            깔고 가는 옵션
+        </h3>
     </div>
+    <div class="container">
+        <div class="card-columns col-12">
+        {% for content in posts %}
+            <div class="card" >
+                <h4 style="font-family: 'NEXON Lv2 Gothic Bold'; ">
+                    {{content.title}}
+                </h4>
+                <hr style="width:80%; border:inset 1px white;">
+                <p style="font-family: 'NEXON Lv1 Gothic OTF';">
+                    {{content.summary}}
+                </p>
+                <button type="button" class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
+                    자세히 보기
+                </button>
+            </div>
+            <div class="modal" id = "modal-{{content.id}}" data-keyboard="false" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">{{content.title}}</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                        <div class="modal-body">
+                            {{content.body | markdown}}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                        </div>
+                  </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    
 {% endblock %}
+
+
