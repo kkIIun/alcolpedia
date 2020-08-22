@@ -68,7 +68,7 @@ body{
 }
 
 .card{
-    height: 25rem;
+    height: 30rem;
     margin-left: 2%;
     margin-right: 2%;
     margin-top: 2%;
@@ -94,6 +94,7 @@ body{
 }
 
 .card2{
+
     width: 50%;
     height:80%;
     margin-left: 4%;

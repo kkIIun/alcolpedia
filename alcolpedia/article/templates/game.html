@@ -83,7 +83,16 @@
             <br>
             {{content.title}}
             <hr style="border:inset 1px white;">
-            난이도:{{content.difficulty}}<br><br>
+            난이도:
+                <script>
+                    for(var i = 0; i < {{content.difficulty}}; i++) {
+                        document.write("★")
+                    }
+                    for(var i = 0; i < 5-{{content.difficulty}}; i++) {
+                        document.write("☆")
+                    }
+                </script>
+            <br><br>
             <p>
             <svg width="2em" height="1.5em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
@@ -92,7 +101,7 @@
             <div class="container2">
                 {% for tag in content.tag.all %}
                 <div class="card2">
-                    <a class="btn" href="{% url 'tag' tag.id %}">#{{tag}}</a>
+                    <a class="btn" href="{% url 'tag' tag.id %}"><U style="color: white;">#{{tag}}</U></a>
                 </div>
                 {% endfor %}
             </div>
@@ -100,6 +109,10 @@
     {% endfor %}
     </div>
 </div>
+
+
+
+
 <nav aria-label="..." class="nav_style">
     <div class="pagination_wrapper" style="text-align: center;">
         <ul class="pagination">
