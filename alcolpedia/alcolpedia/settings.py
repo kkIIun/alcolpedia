@@ -162,8 +162,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static') # static 파일을 한곳에 모�
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')    # media 파일이 저장되는 위치
 MEDIA_URL = '/media/'   # 미디어파일 요청 받을 url 주소
 
+X_FRAME_OPTIONS = 'SAMEORIGIN' 
+
 MDEDITOR_CONFIGS = {
     'default':{
+        'language' : 'en',
         'width': '90% ',  # Custom edit box width
         'heigth': 500,  # Custom edit box height
         'toolbar': ["undo", "redo", "|",
