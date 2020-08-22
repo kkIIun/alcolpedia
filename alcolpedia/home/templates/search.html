@@ -11,23 +11,29 @@
 <h2 style="text-align: center; margin-top: 7%;" class="border border-light">Search</h2>
 <hr>
     <form action="{%url 'search'%}" class="formclass">
-        <input class="form-control mr-sm-2" type="search" placeholder="{{title}}" aria-label="Search" name="q">
+        <input class="form-control mr-sm-2" type="search" placeholder="  {{q.title}}" aria-label="Search" name="q">
     </form>
     <div class="border border-light2">
     {% for content in contents %}
         
-        <img src="{{content.image.url}}">
-        
-        <!-- <h3>{{content.title}}</h3> -->
-        <div>간단 소개:{{content.summary}}</div>
-        <div>난이도:{{content.difficulty}}</div>
-        <div>좋아요 수 : {{content.like.all|length}}</div>
+        <img src="{{content.image.url}}" style="padding-right: 5%;">
+        <div class="content">
+            <h3>{{content.title}}</h3>
+            난이도 : {{content.difficulty}}
+            좋아요 수 : {{content.like.all|length}}   
+        </div>
     {% if user in content.like.all %}
         <a href="{%url 'cancel' content.id%} ">좋아요 취소</a>
     {% else %}
         <a href="{%url 'like' content.id%} ">좋아요</a>
     {% endif%}
     <hr>
+    {{content.summary}}
+    <br>
+    <br>
+    <br>
+    <br>
     {% endfor %}
+    
 </div>
 {% endblock %}
