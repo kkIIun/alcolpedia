@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 {% endblock %}
 {% block content %}
-
 <div style="background-color: #000000;">
     {% include 'nav.html'%}
     <div class="image_box">
@@ -24,41 +23,43 @@
     
     <div class="tag_box">
         {% for tag in tags %}
-        <a href="{% url 'tag' tag.id %}" style="padding:2%; color:white;">#{{tag}}</a>
+        <a href="{% url 'tag' tag.id %}" style="padding:2%; color:white; font-family: 'NEXON Lv1 Gothic OTF';">#{{tag}}</a>
         {% endfor %}
     </div>
-    
-    <div style="height: 50px;">
-    </div>
 </div>
-<div class="gredient"></div>
-<section style="background-color: #707077;">
-    <div class="container">
-        <h2 class="section-title">
-            요즘 뜨는 술게임
-        </h2>
-        <div class="row justify-content-between">
-            {% for content in contents %}
-                <div class="col-md-4 col-1 col-sm-2">
-                    <img src="{{content.image.url}}" class="card-img-top" alt="..." style="border-radius: 4px; height: 5rem">
-                    <div class="card-body">
-                    <h5 class="card-title" style="color:#ffffff;">{{content.title}}</h5>
-                    <p class="card-text" style="color:#ffffff;">{{content.summary}}</p>
-                    <a href="{% url 'detail' content.id %}" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</a>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
 
+<div class="wrapper">
+    <video autoplay muted loop id="myVideo">
+        <source src="{% static '술움짤.webm'%}" type="video/webm">
+    </video>
+    <div class="overlay"></div>
+    <section style="background-color: #000000;">
+        <div class="container5 game">
+            <h2 class="section-title" style="margin-bottom:150px ;">
+                요즘 뜨는 술게임
+            </h2>
+            <div class="card_container">
+                {% for content in contents %}
+                    
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{content.image.url}}" class="card-img-top" alt="..." style="border-radius: 4px; height: 15rem">
+                        <div class="card-body">
+                            <h5 class="card-title">{{content.title}}</h5>
+                            <p class="card-text">{{content.summary}}</p>
+                            <a href="{% url 'detail' content.id %}" class="btn btn-dark">게임방법</a>
+                        </div>
+                    </div>
+                   
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
 <section id="body2">  
-    <div>
     <div id="div2" style="padding-top: 10%;" >두부 게임은 뭐에요?</div>
     <div id="div3">두부 게임은 어려운 게임이 아니에요!<br>
         정신만 똑바로 차리면 잘 할 수 있답니다</div>
         <button id="button" type="button" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</button>
-    </div>
 </section>
 
 <section class="container">
@@ -78,8 +79,8 @@
                     </div>
                 {% endif %}
                 <div class="card-body">
-                <h5 class="card-title" style="color:#ffffff;">{{bgm.title}}</h5>
-                <p class="card-text" style="color:#ffffff;">{{bgm.body}}</p>
+                <h5 class="card-title" style="color:#ffffff; font-family: 'NEXON Lv1 Gothic OTF';">{{bgm.title}}</h5>
+                <p class="card-text" style="color:#ffffff; font-family: 'NEXON Lv1 Gothic OTF';">{{bgm.body}}</p>
                 </div>
             </div>
         {% endfor %}

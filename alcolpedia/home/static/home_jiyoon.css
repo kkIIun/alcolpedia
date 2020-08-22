@@ -1,3 +1,23 @@
+@font-face {
+    font-family: 'NEXON Lv2 Gothic Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+ 
+
+@font-face {
+    font-family: 'DancingScript-VariableFont_wght';
+    src: local('DancingScript-VariableFont_wght'),
+        url('./DancingScript-VariableFont_wght.ttf') format("truetype");
+}
 
 .navbar {
     position: fixed;
@@ -14,8 +34,7 @@
 .image_box{
     height: 500px;
     width: 100%;
-    margin-left: 0;
-    margin-top: 0;
+    margin: 0 auto;
 }
 
 .first{
@@ -64,7 +83,7 @@ img{
     margin-left: 28%;
     margin-right: 22%;
     padding-top: 3%;
-    font-family: NotoSans;
+    font-family: 'NEXON Lv1 Gothic OTF';
 }
 .button2{
     height: 100%;
@@ -137,12 +156,6 @@ img{
 }
 
 
-@font-face {
-    font-family: 'DancingScript-VariableFont_wght';
-    src: local('DancingScript-VariableFont_wght'),
-        url('./DancingScript-VariableFont_wght.ttf') format("truetype");
-}
-
 .tag_box {
     text-align: center;
     margin-top: 3%;
@@ -152,31 +165,29 @@ img{
     overflow-y: hidden;
     padding:24px;
     width: 1000px;
-    margin-left: 200px;
+    margin-left: 180px;
 }
 
-  .tag_box::-webkit-scrollbar {
+.tag_box::-webkit-scrollbar {
     width: 10px;
-  }
-
-  .tag_box::-webkit-scrollbar-thumb {
-    background-color: #2f3542;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-  }
-
-  .tag_box::-webkit-scrollbar-track {
-    background-color: grey;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px white;
-  }
+}
+.tag_box::-webkit-scrollbar-thumb {
+  background-color: #2f3542;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+.tag_box::-webkit-scrollbar-track {
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}
 
 body{
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Hide horizontal scrollbar */
-    background-color: #707077;
+    background-color: #000000;
 }
 
 .gredient{
@@ -186,7 +197,7 @@ body{
 
 .section-title{
     color: white;
-    font-family: NotoSans;
+    font-family: 'NEXON Lv1 Gothic OTF';
     font-size: 32px;
     font-weight: bold;
     font-stretch: normal;
@@ -216,4 +227,72 @@ body{
     position: absolute;
     left: 3.3rem;
     top: 2.5rem;
+}
+
+.wrapper{
+    position: relative;
+}
+
+#myVideo {
+    right: 0;
+    top: 0;
+    width: 120%;
+    height: 90%;
+}
+
+.overlay{
+    position: absolute;
+    right: 0;
+    top:0;
+    left:0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+/* 
+.card-image {
+    grid-area: image;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
+}
+
+.card-text {
+    grid-area: text;
+    margin: 25px;
+}
+
+.card-text p{
+    color:grey;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.card-stats {
+    grid-area: stats;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: grey;
+}*/
+
+.card:hover {
+    transform: scale(1.2);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+} 
+
+
+.card{
+    width: 18rem;
+    background : none;
+    color:white;
+    border: 1px solid white;
+    font-family: 'NEXON Lv1 Gothic OTF';
+    flex:1;
+    margin-left: 1.2rem;
+    margin-right: 1.2rem;
+}
+
+.card_container{
+    display: flex;
 }
