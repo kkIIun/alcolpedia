@@ -75,22 +75,22 @@
 
 
 <div class="container">
-    <div class="row justify-content-between">
-    {% for content in posts %}
-        <div class="card p-3 my-3 col-3" onclick="moveDetail('{% url 'detail' content.id %}')">
-            <img src="{{content.image.url}}" style="width: 100%;">
-            <hr>
-            {{content.title}}<br>
-            난이도:{{content.difficulty}}
-            <div class="container2">
-                {% for tag in content.tag.all %}
-                <div class="card2">
-                    <a class="btn btn-secondary btn-sm" href="{% url 'tag' tag.id %}">#{{tag}}</a>
+    <div class="card-columns col-12">
+        {% for content in posts %}
+            <div class="card" onclick="moveDetail('{% url 'detail' content.id %}')">
+                <img src="{{content.image.url}}" style="width: 100%;">
+                <hr>
+                {{content.title}}<br>
+                난이도:{{content.difficulty}}
+                <div class="container2">
+                    {% for tag in content.tag.all %}
+                    <div class="card2">
+                        <a class="btn btn-secondary btn-sm" href="{% url 'tag' tag.id %}">#{{tag}}</a>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
     </div>
 </div>
 <nav aria-label="..." class="nav_style">
