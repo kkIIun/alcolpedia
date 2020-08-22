@@ -250,38 +250,19 @@ body{
 }
 
 
-/* 
-.card-image {
-    grid-area: image;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    background-size: cover;
-}
-
-.card-text {
-    grid-area: text;
-    margin: 25px;
-}
-
-.card-text p{
-    color:grey;
-    font-size: 15px;
-    font-weight: 300;
-}
-
-.card-stats {
-    grid-area: stats;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background: grey;
-}*/
-
 .card:hover {
     transform: scale(1.2);
     box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
 } 
 
 
+#myVideo_bgm {
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 50%;
+
+}
 .card{
     width: 18rem;
     background : none;
@@ -295,4 +276,5 @@ body{
 
 .card_container{
     display: flex;
+
 }
