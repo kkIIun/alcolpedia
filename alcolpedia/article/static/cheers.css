@@ -24,3 +24,10 @@ body{
 .card-body{
     padding-left: 20%;
 }
+.top-bar-title {
+    color: white;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
