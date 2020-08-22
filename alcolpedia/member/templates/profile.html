@@ -4,18 +4,34 @@
     {{profile.user.username}}님의 페이지
 {% endblock %} 
 {% block stylesheet %}
+<link rel="stylesheet" href="{% static 'profile.css' %}">
 {% endblock %}
 {% block content %}
 {% include 'nav.html' %}
-<h1 style="text-align: center;">내 정보</h1>
-<form action="{%url 'profile' %}" method="POST" enctype="multipart/form-data">
-    {%csrf_token%}
-    <h3>프로필 사진</h3>
-    <img src="{{profile.avatar.url}}" style="height: 100px;width: 100px;">
-    <br>
-    <input type="file" class="" name="image">
-    <h3>사용자 이름</h3>
-    <input class="form-control mr-sm-2" type="search" placeholder="{{profile.user.username}}" name="name">
-    <input class="btn btn-dark" type="submit" value="수정하기" style="margin-top:1rem">
-</form>
+<div class="background-crop">
+    <img src="{% static 'cheers.jpg' %}" >
+</div>
+<div class = "profile-image-box">
+    <img src="{{profile.avatar.url}}" class = "profile-image">
+</div>
+<div class = "profile-box">
+    <button type="button" class = "btn btn-dark profile-modify-button">
+        프로필 수정하기
+    </button>
+    <div class = "profile-name-box">
+        <h3>
+            {{profile.user.username}}
+        </h3>
+    </div>
+</div>
+
+<!-- 찜한 목록 들어가야함. -->
+
+
+<!-- <input class="form-control mr-sm-2" type="search" placeholder="{{profile.user.username}}" name="name">
+<input class="btn btn-dark" type="submit" value="수정하기" style="margin-top:1rem"> -->
+
+
+<!-- <form action="{%url 'profile' %}" method="POST" enctype="multipart/form-data"> {%csrf_token%}-->
+    <!-- <input type="file" class="" name="image"> -->
 {% endblock %}

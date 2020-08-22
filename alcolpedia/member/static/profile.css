@@ -1,0 +1,36 @@
+.background-crop {
+    max-height: 30rem;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.background-crop img {
+    width:100%;
+    min-height: 45rem;
+    height: auto;
+    margin: -20rem 0 0 0;
+}
+
+.profile-image {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 5rem;
+    border: 4px solid white;
+}
+
+.profile-image-box {
+    text-align: center;
+    margin-top: -4rem;
+}
+
+.profile-name-box {
+    text-align: center;
+    padding-bottom: 40rem;
+}
+
+.profile-modify-button {
+    float: right;
+    margin-right: 2rem;
+    margin-top: -4rem;
+}
