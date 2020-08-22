@@ -10,91 +10,111 @@
         padding-left: 1%;
         padding-right: 1%;
         font-size: 1.8em;
-        background-color: #404040;
     }
 
     .what{
         font-size: 0.5em;
-        color:white;
+        color:white!important;
+        text-align:center;    
     }
     
     .modal-backdrop { z-index: 0; }
 
     .what:hover {
         text-decoration-line: none;
-        color:grey;
+        color:grey!important;
     }
-    .popup { position: absolute; left:50%;top:50%;z-index: 5;;width: 500px;height: 500px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5); background: #fff; border-radius: 5px; text-align: right;
-        padding: 20px; box-sizing:  border-box; opacity: 0; transition: all 0.5s; transform: translate(-50%,20%)}
 
-    .popup a {color: grey; text-decoration: none;font-size: medium;position: absolute; top:10px; right: 10px;}
-
-    .popup:target { opacity: 1;}
-
-    .popup:target + .dim { opacity: 1; z-index: 2;}
-
-    .dim {position: fixed; left:0; top:0; z-index: -1; width: 100%; height: 100%;
-     background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.5s;}
-
-     .modal-content {
+    .modal-content {
         background-color: #707070;
         color: white;
-     }
+    }
+    .nav-bar-vertical-align-middle li{
+        line-height: 2.5rem;
+    }
 </style>
 
-<nav class="navbar navbar-dark" style="background-color: #000000;">
-    <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
-    <a class="navbar-brand" href="{%url 'home'%}">ALCOLPEDIA</a>
-    <a class="what" href="{%url 'article'%}?name=game">술게임</a>
-    <a class="what" href="{%url 'article'%}?name=bgm">브금</a>
-    <a class="what" href="{%url 'article'%}?name=alcohol">폭탄주</a>
-    <a class="what" href="{%url 'article'%}?name=cheers">건배사</a>
-    <a class="what" href="{%url 'article'%}?name=setting">옵션</a>
-    {% if user.is_authenticated %}
+<nav class="navbar navbar-dark navbar-expand-lg row" style="background-color: #000000;">
 
-    <div class="dropdown">
-        <button class="btn btn- dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <img src="{{profile.getImageURL}}" style="height: 50px; width: 50px; border-radius:25px">
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <a href="{% url 'profile'%}"><button class="dropdown-item" type="button">프로필</button></a>
-            <button class="dropdown-item" type="button">찜 목록</button>
-            <button class="dropdown-item" type="button"data-toggle="modal" data-target="#modal">
-                건의하기
-            </button>
-            <div class="dropdown-divider"></div>
-            <a href="{%url 'sign_out'%}"><button class="dropdown-item" type="button">Sign out</button></a>
-        </div>
+    <a class="navbar-brand col-2" href="{%url 'home'%}">ALCOLPEDIA</a>
+    
+    <button class="navbar-toggler col-2" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse col-8" id = "navbarNav">
+        <ul class = "navbar-nav col-12 nav-bar-vertical-align-middle">
+            <li class="nav-item col-md-2 col-4">
+                <a class="what nav-link" href="{%url 'article'%}?name=game">술게임</a>
+            </li>
+            <li class="navbar-item col-md-2 col-4">
+                <a class="what  nav-link" href="{%url 'article'%}?name=bgm">브금</a>
+            </li>
+            <li class="navbar-item col-md-2 col-4">
+                <a class="what  nav-link" href="{%url 'article'%}?name=alcohol">폭탄주</a>
+            </li>
+            
+            <li class="navbar-item col-md-2 col-4">
+                <a class="what nav-link" href="{%url 'article'%}?name=cheers">건배사</a>
+            </li>
+            
+            <li class="navbar-item col-md-2 col-4">
+                <a class="what nav-link" href="{%url 'article'%}?name=setting">옵션</a>
+            </li>
+            {% if user.is_authenticated %}
+            <div class="col-3"></div>
+            <li class="navbar-item col-md-3 col-4">
+                <div class="nav-item dropdown col-12">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                        <img src="{{profile.getImageURL}}" style="height: 3rem; width: 3rem; border-radius: 1.5rem">
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <a href="{% url 'profile'%}"><button class="dropdown-item" type="button">프로필</button></a>
+                        <button class="dropdown-item" type="button">찜 목록</button>
+                        <button class="dropdown-item" type="button"data-toggle="modal" data-target="#modal">
+                            건의하기
+                        </button>
+                        <div class="dropdown-divider"></div>
+                        <a href="{%url 'sign_out'%}"><button class="dropdown-item" type="button">Sign out</button></a>
+                    </div>
+                </div>
+            </li>
+            
+            {% else %}
+                <div class="col-1"></div>
+                <li class="navbar-item col-md-4 col-12 col-lg-2">
+                    <a class="btn btn-secondary col-md-12 col-12 col-sm-12 col-xs-12" href="{%url 'sign_in'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign in</a>
+                </li>
+                <li class="navbar-item col-md-4 col-12 col-lg-2">
+                    <a class="btn btn-secondary col-md-12 col-12 col-sm-12 col-xs-12" href="{%url 'sign_up'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign up</a>
+                </li>
+            {% endif %}
+        </ul>
     </div>
 
-    <div class="modal" id = "modal" data-keyboard="false" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">건의하기</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form method="POST" action="{% url 'create' %}">
-                <div class="modal-body">
-                    {% csrf_token %}
-                    <h5>제목: <input type="text" name="title" style="width: 80%"></h5>
-                    <textarea name="body" placeholder="건의내용을 입력해주세요" rows = 15 style="font-size: 1rem; width: 95%;"></textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-dark" data-dismiss="modal">닫기</button>
-                    <button type="submit" class="btn btn-primary btn-light btn-outline-success">확인</button>
-                </div>
-            </form>
-          </div>
-        </div>
-    </div>
-
-    {% else %}
-    <a class="btn btn-secondary btn-sm" href="{%url 'sign_up'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign up</a>
-    <a class="btn btn-secondary btn-sm" href="{%url 'sign_in'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign in</a>
-    {% endif %}
 </nav>
+
+
+<div class="modal" id = "modal" data-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">건의하기</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" action="{% url 'create' %}">
+            <div class="modal-body">
+                {% csrf_token %}
+                <h5>제목: <input type="text" name="title" style="width: 80%"></h5>
+                <textarea name="body" placeholder="건의내용을 입력해주세요" rows = 15 style="font-size: 1rem; width: 95%;"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-dark" data-dismiss="modal">닫기</button>
+                <button type="submit" class="btn btn-primary btn-light btn-outline-success">확인</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>

@@ -27,8 +27,6 @@ body{
     color:grey;
 }
 
-
-
 .img{
     
     width: 100%;
@@ -64,24 +62,28 @@ body{
 }
 
 .container{
-    display: flex;
     height: 50%;
     margin-bottom: 10%;
     margin-top: 2%;
 }
 
 .card{
+    height: 25rem;
     margin-left: 2%;
     margin-right: 2%;
     margin-top: 2%;
     padding-left: 1%;
-    flex: 1;
     border-radius: 10%;
     color: white;
     background-color: black;
     border : 1px solid white;
 }
 
+.card img {
+    height: 50%;
+    padding: 0.5rem 0.5rem 0rem 0.5rem;
+    border-radius: 2rem;
+}
 
 .container2{
     display: flex;
@@ -134,4 +136,12 @@ body{
 
 hr{
     color:white;
+}
+.card-columns {
+    @include media-breakpoint-only(lg) {
+      column-count: 2;
+    }
+    @include media-breakpoint-only(xl) {
+      column-count: 3;
+    }
 }

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block content %}
+
 {% load static %}
 {% block title%} 
     {{title}}
@@ -7,6 +7,7 @@
 {% block stylesheet %}
     <link rel="stylesheet" href="{% static 'list.css' %}">
 {% endblock %}
+{% block content %}
 <hr>
 
 <hr>
@@ -75,9 +76,9 @@
 
 
 <div class="container">
-    <div class="row justify-content-between">
+    <div class="card-columns col-12">
     {% for content in posts %}
-        <div class="card p-3 my-3 col-3" onclick="moveDetail('{% url 'detail' content.id %}')">
+        <div class="card" onclick="moveDetail('{% url 'detail' content.id %}')">
             <img src="{{content.image.url}}" style="width: 100%;">
             <br>
             {{content.title}}
@@ -134,8 +135,8 @@
         </ul>
     </div>
 </nav>
-
-
+{% endblock %}
+{% block script %}
 
 <script>
     function moveDetail(url) {
