@@ -75,24 +75,23 @@
         </h2>
         <div class="d-flex justify-content-between">
             {% for bgm in bgms%}
-                <div class="col-md-4" style="width: 18rem;">
+                <div class="col-md-4" style="display: flex;">
                     {% if bgm.image %}
                         <div class="circle-player" style="background-image: url({{bgm.image.url}});" onclick="playMusic('{{bgm.audio.url}}')">
                             <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
                         </div>
                     {% else %}
                         <div class="circle-player"  onclick="playMusic('{{bgm.audio.url}}')">
-                            <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
+                            <i class="fas fa-play" style="display: block;" id = "play-icon-{{bgm.audio.url}}"></i>
+                            <div style="color:#ffffff;margin-top:12rem; font-family: 'NEXON Lv1 Gothic OTF';">{{bgm.title}}</div>
                         </div>
                     {% endif %}
-                    <div class="card-body">
-                    <h5 class="card-title" style="color:#ffffff; font-family: 'NEXON Lv1 Gothic OTF';">{{bgm.title}}</h5>
-                    <p class="card-text" style="color:#ffffff; font-family: 'NEXON Lv1 Gothic OTF';">{{bgm.body}}</p>
-                    </div>
+                </div>
             {% endfor %}
         </div>
     </section>
 </div>
+
 <div class="wrapper">
     <img src="{% static '왕게임.png' %}" style="width: 50%;margin-left: 25%;">
     <div class="game">
