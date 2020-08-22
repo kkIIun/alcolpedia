@@ -1,4 +1,4 @@
-.two{
+.member-box{
     border-radius: 0.5rem;
     padding-bottom: 8%;
     padding-top:5%;
@@ -12,14 +12,11 @@ img{
     width:40%;   
 }
 
-body{
-    background-image: url('drink.jpg');
-    background-size: cover;
-}
 button{
     color:white;
 }
 
 .login-box {
-    margin-top: 7rem;
+    padding-top: 10rem;
+    min-height: 50rem;
 }
