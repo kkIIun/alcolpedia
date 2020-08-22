@@ -196,3 +196,22 @@ body{
     margin-bottom: 5%;
     margin-top: 5%;
 }
+
+.circle-player {
+    background-color: black;
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+}
+
+.circle-player i {
+    color: white;
+    font-size: 4.5rem;
+    content: '';
+    position: absolute;
+    left: 3.5rem;
+    top: 2.5rem;
+}
