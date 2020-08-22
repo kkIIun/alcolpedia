@@ -3,6 +3,7 @@
     height: auto;
     width: 100%;
     overflow: hidden;
+    background-color: black;
 }
 
 .background-crop img {
@@ -16,7 +17,8 @@
     width: 10rem;
     height: 10rem;
     border-radius: 5rem;
-    border: 4px solid white;
+    border: 4px solid black;
+    background-color: #797979;
 }
 
 .profile-image-box {
@@ -53,6 +55,7 @@
 
 .profile-name-box {
     text-align: center;
+    margin-top: 1rem;
     padding-bottom: 40rem;
 }
 
@@ -60,4 +63,17 @@
     float: right;
     margin-right: 2rem;
     margin-top: -4rem;
+}
+
+.profile-content {
+    background-color: black;
+    color: white;
+}
+
+.input-name {
+    width: 20%;
+    text-align: center;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
 }
