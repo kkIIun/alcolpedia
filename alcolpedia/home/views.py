@@ -27,7 +27,7 @@ def search(request) :
     q = request.GET.get('q')
     if q :
         contents = Content.objects.filter(title__icontains=q)
-        return render(request,'search.html',{'contents':contents})
+        return render(request,'search.html',{'contents':contents, 'q':q})
     else : 
         return render(request,'search.html')
 # def detail(request, content_id):
