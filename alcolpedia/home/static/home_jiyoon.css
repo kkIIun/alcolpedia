@@ -14,8 +14,7 @@
 .image_box{
     height: 500px;
     width: 100%;
-    margin-left: 0;
-    margin-top: 0;
+    margin: 0 auto;
 }
 
 .first{
@@ -152,7 +151,7 @@ img{
     overflow-y: hidden;
     padding:24px;
     width: 1000px;
-    margin-left: 200px;
+    margin-left: 180px;
 }
 
   .tag_box::-webkit-scrollbar {
@@ -176,7 +175,7 @@ body{
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Hide horizontal scrollbar */
-    background-color: #707077;
+    background-color: #000000;
 }
 
 .gredient{
@@ -217,3 +216,55 @@ body{
     left: 3.3rem;
     top: 2.5rem;
 }
+
+.wrapper{
+    position: relative;
+}
+
+#myVideo {
+    right: 0;
+    top: 0;
+    width: 120%;
+    height: 90%;
+}
+
+.overlay{
+    position: absolute;
+    right: 0;
+    top:0;
+    left:0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+/* 
+.card-image {
+    grid-area: image;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
+}
+
+.card-text {
+    grid-area: text;
+    margin: 25px;
+}
+
+.card-text p{
+    color:grey;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.card-stats {
+    grid-area: stats;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: grey;
+}*/
+
+.card:hover {
+    transform: scale(1.2);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+} 
