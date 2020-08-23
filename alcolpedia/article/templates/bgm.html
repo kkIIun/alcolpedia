@@ -18,24 +18,27 @@
 
     </div>
     <div id="div5" style="padding-bottom: 50%;">
-
         <div class="container">
             <div class="list-group justify-content-between align-self-center">
             {% for content in posts %}
             <div class="row align-middle" style="margin-top: 2%">
-                    <div class = "col-2">
+                    <div class = "col-lg-1 col-md-1 col-sm-1 col-1">
                     </div>
-                    <div class = "list-group-item col-8">
-                        <audio controls = "controls" id = "audio-{{content.title}}" class = "align-middle col-5 audio-style">
-                            <source src = "{{content.audio.url}}"/>
-                        </audio>
-                        <span class="align-middle col-7" style="color: white;">
-                            <svg width="1em" height="0.8em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                            </svg> : {{content.like.all|length}} &nbsp {{content.title}}
-                        </span>
+                    <div class = "list-group-item col-lg-10 col-md-10 col-sm-10 col-10">
+                        <div class = "row">
+                            <span class="align-middle col-lg-6 col-md-12 col-sm-12 col-12" style="color: white;">
+                                <svg width="1em" height="0.8em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                </svg> : {{content.like.all|length}} &nbsp; {{content.title}}
+                            </span>
+                            <div class="col-md-1 col-sm-1"></div>
+                            <audio controls = "controls" id = "audio-{{content.title}}" class = "align-middle audio-style col-lg-5 col-md-10 col-sm-10 col-12">
+                                <source src = "{{content.audio.url}}"/>
+                            </audio>
+                            <div class="col-md-1 col-sm-1"></div>
+                        </div>
                     </div>
-                    <div class = "col-2">
+                    <div class = "col-lg-1 col-md-1 col-sm-1 col-1">
                     </div>
                 </div>
             {% endfor %}
