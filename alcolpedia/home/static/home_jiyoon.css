@@ -292,6 +292,7 @@ body{
     right: 0;
     left: 0;
     bottom: 0;
+    padding-bottom: 3rem;
 }
 
 .bgm {
@@ -337,9 +338,10 @@ body{
 }
     
 #button {
-    margin-left: 46%;
-    margin-top: 8%;
-    margin-bottom: 10%;
+    position: absolute;
+    top: 19rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #button2 {
