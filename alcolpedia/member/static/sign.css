@@ -20,3 +20,7 @@ button{
     padding-top: 8rem;
     min-height: 50rem;
 }
+
+input {
+    width: 90%;
+}
