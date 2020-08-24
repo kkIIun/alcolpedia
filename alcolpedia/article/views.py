@@ -93,3 +93,19 @@ def filter(request) :
         return render(request,'game.html',{'posts' : list_contents,'profile':profile,'tag':tag,'date':date,'difficulty':difficulty,'tags':tags,'all_tags':all_tags})
     else :
         return render(request,'game.html',{'posts' : list_contents,'tag':tag,'date':date,'difficulty':difficulty,'tags':tags,'all_tags':all_tags})
+        
+@login_required
+def bookmark(request,content_id):
+    content = get_object_or_404(Content,pk=content_id)
+    content.like.add(request.user)
+    content.save()    
+    name = content.sort
+    return redirect('/article/?name='+str(name))
+
+@login_required
+def bookmark_cancel(request, content_id):
+    content = get_object_or_404(Content,pk=content_id)
+    content.like.remove(request.user)
+    content.save()    
+    name = content.sort
+    return redirect('/article/?name='+str(name))
