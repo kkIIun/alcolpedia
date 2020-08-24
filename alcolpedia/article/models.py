@@ -27,3 +27,14 @@ class Content(models.Model):
 
     def __str__(self):
         return self.title
+
+    
+    def like_count(self):
+        return self.like.count()
+
+
+    def get_represent_user(self):
+        ret = ""
+        if len(self.like.all()) > 0:
+            ret = self.like.all()[0].username
+        return ret
