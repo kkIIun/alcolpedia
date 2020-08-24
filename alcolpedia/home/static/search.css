@@ -1,15 +1,6 @@
-img{
-    width: 35%;
-    float: left;
-}
 body{
     background-color: black;
     color: white;
-}
-.border-light{
-    margin-left: 40%;
-    margin-right: 40%;
-    padding: 1.5%;
 }
 .border-light2{
     margin-left: 20%;
@@ -20,11 +11,6 @@ body{
     padding-left: 3%;
 }
 .formclass{
-    margin-left: 30%;
-    margin-right: 30%;
     margin-bottom: 1.5%;
     text-align: center;
-}
-.content{
-    margin-left:5%;
 }

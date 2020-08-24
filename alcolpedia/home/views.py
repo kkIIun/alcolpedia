@@ -29,7 +29,7 @@ def search(request) :
         contents = Content.objects.filter(title__icontains=q)
         try:
             profile = get_object_or_404(Profile, user__username = request.user.username)
-            return render(request,'search.html',{'contents':contents, 'q':q,'profile':profile})
+            return render(request,'search.html',{'contents':contents, 'q':q, 'profile':profile})
         except:
             return render(request,'search.html',{'contents':contents, 'q':q})
     else : 
