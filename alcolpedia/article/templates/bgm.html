@@ -27,9 +27,22 @@
                     <div class = "list-group-item col-lg-10 col-md-10 col-sm-10 col-10">
                         <div class = "row">
                             <span class="align-middle col-lg-6 col-md-12 col-sm-12 col-12" style="color: white;">
-                                <svg width="1em" height="0.8em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                </svg> : {{content.like.all|length}} &nbsp; {{content.title}}
+                                <div class="row">
+                                    <a class = "align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id = "like-text-{{content.id}}" name={{content.id}} style="color: white;">
+                                        {% if user in content.like.all %}
+                                            <svg width="1em" height="0.8em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                            </svg> : {{content.like.all|length}}
+                                        {% else %}
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                        </svg> : {{content.like.all|length}}
+                                        {%endif%}
+                                    </a>
+                                    <span class = "col-lg-9 col-md-9 col-sm-9 col-9" style="font-size: 1.5rem;">
+                                        {{content.title}}
+                                    </span>  
+                                </div>
                             </span>
                             <div class="col-md-1 col-sm-1"></div>
                             <audio controls = "controls" id = "audio-{{content.title}}" class = "align-middle audio-style col-lg-5 col-md-10 col-sm-10 col-12">
@@ -82,4 +95,37 @@
             </div>
         </nav>
     </div>
+{% endblock %}
+
+
+
+{% block script %}
+<script type="text/javascript">
+    $(".like").click(function () {
+        var content_id = $(this).attr('name');
+        $.ajax({
+            type: "POST",
+            url: "{% url 'like' %}",
+            data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+            dataType: "json",
+            success: function (response) {
+                var cnt = response.like_count * 1;
+                if(response.isLiked) {
+                    $("#like-text-" + content_id).html('<svg width="1em" height="0.8em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>\
+                        </svg> : '+cnt+' &nbsp; {{content.title}}');
+                }
+                else {
+                    $("#like-text-" + content_id).html('<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
+                        <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>\
+                    </svg> : '+cnt+' &nbsp;');
+                }
+            },
+            error: function (request, status, error) {
+                alert("로그인이 필요합니다.")
+                //window.location.replace("/account/login/")
+            },
+        });
+    })
+</script>
 {% endblock %}
