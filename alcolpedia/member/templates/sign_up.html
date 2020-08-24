@@ -8,6 +8,8 @@
 {% endblock %}
 {% block content %}
 {% include 'nav.html' %}
+{% include 'alert.html' %}
+
     <div class="row login-box" style="background-image:url('{% static 'bar2.jpg' %}'); background-size:cover; background-repeat: none;">
         <div class="col-lg-2 col-md-2 col-sm-2"></div>
         <div class="col-10 col-lg-8 col-md-8 col-sm-8 member-box">
@@ -20,7 +22,7 @@
                             <div class="row">
                                 <div class="col-lg-3 col-md-2 col-sm-2 col-1"></div>
                                 <p class = "col-lg-6 col-md-8 col-sm-8 col-10">
-                                    username
+                                    유저명
                                 </p>
                                 <div class="col-lg-3 col-md-2 col-sm-2 col-1"></div>
                             </div>
@@ -36,7 +38,7 @@
                             <div class="row">
                                 <div class="col-lg-3 col-md-2 col-sm-2 col-1"></div>
                                 <p class = "col-lg-6 col-md-8 col-sm-8 col-10">
-                                    password
+                                    비밀번호
                                 </p>
                                 <div class="col-lg-3 col-md-2 col-sm-2 col-1"></div>
                             </div>
@@ -50,14 +52,14 @@
                             <br><div class="row">
                                 <div class="col-lg-3 col-md-2 col-sm-2 col-1"></div>
                                 <p class = "col-lg-6 col-md-8 col-sm-8 col-10">
-                                    password
+                                    비밀번호 다시 입력
                                 </p>
                                 <div class="col-lg-3 col-md-2 col-sm-2 col-1"></div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-3 col-md-1 col-sm-2 col-1"></div>
                                 <div class = "col-lg-6 col-md-10 col-sm-8 col-10">
-                                    <input type="password" name = "password">
+                                    <input type="password" name = "confirm_password">
                                 </div>
                                 <div class="col-lg-3 col-md-1 col-sm-2 col-1"></div>
                             </div>
