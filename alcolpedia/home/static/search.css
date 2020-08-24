@@ -3,12 +3,9 @@ body{
     color: white;
 }
 .border-light2{
-    margin-left: 20%;
-    margin-right: 20%;
     text-align: start;
     padding-top: 1.5%;
     background-color: black;
-    padding-left: 3%;
 }
 .formclass{
     margin-bottom: 1.5%;
