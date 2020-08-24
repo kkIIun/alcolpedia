@@ -21,7 +21,7 @@ body{
 .top-bar-title {
     color: white;
     position: absolute;
-    top: 35%;
+    top: 15rem;
     left: 50%;
     transform: translate(-50%, -50%);
 }
