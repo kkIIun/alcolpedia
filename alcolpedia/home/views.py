@@ -9,12 +9,12 @@ def home(request):
     tag = Tag.objects.all()
     contents_list = Content.objects.filter(sort = "game").order_by('updated_at')
     contents_list_len = len(contents_list)
-    contents_list = contents_list[:min(3,contents_list_len)]
+    contents_list = contents_list[:min(6,contents_list_len)]
 
     bgm_list = Content.objects.filter(sort = "bgm").order_by('updated_at')
     
     bgm_list_len = len(bgm_list)
-    bgm_listt = bgm_list[:min(3,bgm_list_len)]
+    bgm_listt = bgm_list[:min(6,bgm_list_len)]
 
     try:
         profile = get_object_or_404(Profile, user__username = request.user.username)

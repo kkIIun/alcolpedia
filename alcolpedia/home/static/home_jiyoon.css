@@ -32,7 +32,7 @@
     background-color: #404040;
 }
 .image_box{
-    height: 500px;
+    height: 40rem;
     width: 100%;
     margin: 0 auto;
 }
@@ -85,15 +85,13 @@ img{
     padding-top: 3%;
     font-family: 'NEXON Lv1 Gothic OTF';
 }
-.button2{
-    height: 100%;
-    width: 15%;
-    border: solid 1px #707070;
-    background-color: #707070;
+
+.addition-box-button {
     border-radius: 10px;
-    margin-right: 8%;
-    padding: 1%;
     color: white;
+    margin-top: 1rem;
+    background-color: #000000; 
+    border:1px solid #ffffff;
 }
 
 .button3{
@@ -185,9 +183,9 @@ img{
 }
 
 body{
-    margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Hide horizontal scrollbar */
+    margin-left: auto;
+    margin-right: auto;
     background-color: #000000;
 }
 
@@ -199,16 +197,15 @@ body{
 .section-title{
     color: white;
     font-family: 'NEXON Lv1 Gothic OTF';
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.31;
     letter-spacing: normal;
     text-align: center;
-
-    margin-bottom: 5%;
-    margin-top: 5%;
+    margin-bottom: 5rem;
+    margin-top: 3rem;
 }
 
 .circle-player {
@@ -241,29 +238,24 @@ body{
     height: 90%;
 }
 
-.overlay{
-    position: absolute;
-    right: 0;
-    top:0;
-    left:0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+#section-game .slick-slide {
+    height: 30rem!important;
 }
 
-
-.card:hover {
-    transform: scale(1.2);
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+#section-game .slick-slide:hover {
+    transform: scale(1.1);
+    transform-origin: top center;
+    vertical-align: middle;
+    /* box-shadow: 5px 5px 15px rgba(0,0,0,0.6); */
 } 
 
 
 #myVideo_bgm {
-    right: 0;
-    top: 0;
     width: 100%;
-    height: 50%;
-
+    min-height: 50rem;
+    height:auto;
 }
+
 .card{
     width: 18rem;
     background : none;
@@ -278,4 +270,142 @@ body{
 .card_container{
     display: flex;
 
+}
+
+
+#div1 {
+    font-family: NotoSans;
+    font-size: 32px;
+    color:#ffffff;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.31;
+    letter-spacing: normal;
+    text-align: center;
+
+}
+
+.game{
+    position: absolute;
+    top:0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.bgm {
+    position: absolute;
+    top:2rem;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.container {
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+}
+    
+.btn-primary:active:hover {
+    background-color: #3d3d3d;
+}
+#div2 {
+    font-family: NotoSans;
+    font-size: 2rem;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.31;
+    letter-spacing: normal;
+    text-align: center;
+    color: #3d3d3d;
+}
+    
+#div3 {
+    padding-top: 1rem;
+    font-family: NotoSans;
+    font-size: 1rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    text-align: center;
+    color: #3d3d3d;
+}
+    
+#button {
+    margin-left: 46%;
+    margin-top: 8%;
+    margin-bottom: 10%;
+}
+
+#button2 {
+    position: absolute;
+    top: 15rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+    
+#pattern {
+    background: repeating-linear-gradient(45deg, rgba(68, 68, 68, 0.082), rgba(68, 68, 68, 0.103) 10px, rgba(136, 136, 136, 0.103) 0, rgba(136, 136, 136, 0.096) 20px);
+}
+
+#body2{
+    width: 100%;
+    background-image: url('오렌지게임.png');
+}
+
+#alcol_bgm_background{
+    background: url('왕게임.png');
+}
+       
+       
+#p7{
+    font-family: NotoSans;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2rem;
+    letter-spacing: normal;
+    text-align: center;
+    color:#ffffff;
+}
+#div8{
+    border: solid 2px #3e3e3e;
+    background-color: #ffffff;
+}
+
+.container5 {
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+    min-height: 60rem;
+    height: auto;
+}
+
+#section-game {
+    min-height: 40rem;
+    height: auto;
+}
+
+#section-game-represent {
+    margin-top:5rem;
+}
+
+#section-bgm {
+    margin-top: 2rem;
+    padding-top:8rem;
+    min-height: 40rem;
+    height: auto;
+}
+
+#section-bgm-represent {
+    margin-top:2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
