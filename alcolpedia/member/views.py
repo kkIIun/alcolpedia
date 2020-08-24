@@ -27,12 +27,11 @@ def sign_up(request):
                         username = request.POST["username"], 
                         password = request.POST["password"],
                     )
-                user.create_user_profile()
-                auth.login(request,user)
+                auth.login(request, user)
+                return redirect('home')
             except:
                 messages.error(request, "다른 사용자가 사용중인 username입니다.")
                 return render(request, 'sign_up.html', {"form": SignUpForm()}) 
-            return redirect('home')
     return render(request, 'sign_up.html', {"form": SignUpForm()})
 
 
