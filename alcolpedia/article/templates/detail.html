@@ -33,20 +33,22 @@
     {{lyrics}} 가사
 
 </p> -->
-
-</body>
 <div class="body2">
-<br><br><br>
-<div class="third">
-    게임방법
-    <hr style="width:20%; border:inset 1px white;">
-    <!-- {{content.people_number}} -->
-</div>
+    <br><br><br>
+    <div class="third">
+        게임방법
+        <hr style="width:20%; border:inset 1px white;">
+        <!-- {{content.people_number}} -->
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1 col-1"></div>
+        <div class="forth col-lg-8 col-md-8 col-sm-10 col-xs-10 col-10">
+            <!-- <div class="forth_baby" style="text-align: right;">{{content.image}} 이미지</div> -->
+            <div class="detail-content-body">{{content.body | markdown }}</div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1 col-1"></div>
 
-<div class="forth">
-    <!-- <div class="forth_baby" style="text-align: right;">{{content.image}} 이미지</div> -->
-    <div class="forth_baby" style="text-align: left;">{{content.body | markdown }}</div>
-</div>
+    </div>
 </div>
 
 {% endblock %}
