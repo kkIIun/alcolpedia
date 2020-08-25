@@ -392,6 +392,12 @@ body{
     height: auto;
 }
 
+.game > h5,.game >  p,.game > a {
+    font-weight: bold;
+    text-shadow: none;
+}
+
+
 #section-bgm-represent {
     margin-top:2rem;
     padding-top: 2rem;
