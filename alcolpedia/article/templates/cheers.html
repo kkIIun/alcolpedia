@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load markdown_deux_tags %}
 {% block title%} 
     {{title}}
 {% endblock %} 
@@ -30,7 +31,7 @@
           
               <div id="collapse{{content.title}}" class="collapse" aria-labelledby="heading{{content.title}}" data-parent="#accordionExample">
                 <div class="card-body" style="font-family: 'NEXON Lv1 Gothic OTF';">
-                  &#10551; {{content.summary}}
+                  {{content.body | markdown}}
                 </div>
               </div>
             </div>
