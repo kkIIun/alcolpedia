@@ -32,14 +32,14 @@
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" style="color: white;">
                         <img src="{{profile.getImageURL}}" style="height: 3rem; width: 3rem; border-radius: 1.5rem">
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <a href="{% url 'profile'%}"><button class="dropdown-item" type="button">프로필</button></a>
-                        <button class="dropdown-item" type="button">찜 목록</button>
-                        <button class="dropdown-item" type="button"data-toggle="modal" data-target="#modal">
+                    <div class="dropdown-menu nav-dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <a href="{% url 'profile'%}"><button class="dropdown-item nav-bar-item btn-dark" type="button">프로필</button></a>
+                        <a href=""><button class="dropdown-item nav-bar-item btn-dark" type="button">찜 목록</button></a>
+                        <a href=""><button class="dropdown-item nav-bar-item btn-dark" type="button"data-toggle="modal" data-target="#modal">
                             건의하기
-                        </button>
+                        </button></a>
                         <div class="dropdown-divider"></div>
-                        <a href="{%url 'sign_out'%}"><button class="dropdown-item" type="button">Sign out</button></a>
+                        <a href="{%url 'sign_out'%}"><button class="dropdown-item nav-bar-item btn-dark" type="button">Sign out</button></a>
                     </div>
                 </div>
             </li>
