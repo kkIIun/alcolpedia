@@ -31,3 +31,14 @@
 .nav-bar-vertical-align-middle li{
     line-height: 2.5rem;
 }
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+    color: #555;
+    background-color: #e7e7e7;
+}
+
+.nav-dropdown-menu a {
+    text-decoration-line: none;
+}
