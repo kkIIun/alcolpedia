@@ -84,45 +84,41 @@
     <div class="card-columns col-12">
     {% for content in posts %}
         <div class="card">
-            <div onclick="moveDetail('{% url 'detail' content.id %}')">
-                <img src="{{content.image.url}}" style="width: 100%;">
-                <br>
-                {{content.title}}
+            <div style="position: relative;">
+                <div onclick="moveDetail('{% url 'detail' content.id %}')">
+                    <img src="{{content.image.url}}" style="width: 100%;">
+                </div>
+                <div style="position: absolute; top:1px;right: 10px;">
+                    <a class="align-middle col-lg-1 col-md-1 col-sm-1 col-1 bookmark" id="bookmark-text-{{content.id}}"
+                        name={{content.id}} style="color: white;">
+                        {% if user in content.bookmark.all %}
+                        <i class="fas fa-bookmark"></i>
+                        {% else %}
+                        <i class="far fa-bookmark"></i>
+                        {%endif%}
+                    </a>
+                </div>
             </div>
-            <hr style="border:inset 1px white;">
-            난이도:
-                <script>
-                    for(var i = 0; i < {{content.difficulty}}; i++) {
-                        document.write("★")
-                    }
-                    for(var i = 0; i < 3-{{content.difficulty}}; i++) {
-                        document.write("☆")
-                    }
-                </script>
-            <br><br>
-            <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}" name={{content.id}}
-                style="color: white;">
-                {% if user in content.like.all %}
-                <svg width="1em" height="0.8em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                </svg> : {{content.like.all|length}}
-                {% else %}
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                </svg> : {{content.like.all|length}}
-                {%endif%}
-            </a>
-            <a class="align-middle col-lg-1 col-md-1 col-sm-1 col-1 bookmark" id="bookmark-text-{{content.id}}" name={{content.id}}
-                style="color: white;">
-                {% if user in content.bookmark.all %}
-                <i class="fas fa-bookmark"></i>
-                {% else %}
-                <i class="far fa-bookmark"></i>
-                {%endif%}
-            </a>
+        </div>
+        <a href="{% url 'detail' content.id%}" style="color: white;">{{content.title}}</a>
+        <div style="display: inline;">
+            <script>
+                for(var i = 0; i < {{content.difficulty}}; i++) {
+                    document.write("★")
+                }
+                for(var i = 0; i < 3-{{content.difficulty}}; i++) {
+                    document.write("☆")
+                }
+            </script>
+        </div>
+        <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}" name={{content.id}}
+            style="color: white;">
+            {% if user in content.like.all %}
+            <i class="fas fa-heart"></i> : {{content.like.all|length}}
+            {% else %}
+            <i class="far fa-heart"></i> : {{content.like.all|length}}
+            {%endif%}
+        </a>
             <div class="container2">
                 {% for tag in content.tag.all %}
                 <div class="card2">
@@ -130,7 +126,6 @@
                 </div>
                 {% endfor %}
             </div>
-        </div>
     {% endfor %}
     </div>
 </div>
@@ -213,14 +208,10 @@
             success: function (response) {
                 var cnt = response.like_count * 1;
                 if (response.isLiked) {
-                    $("#like-text-" + content_id).html('<svg width="1em" height="0.8em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
-                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>\
-                        </svg> : '+ cnt + ' &nbsp; {{content.title}}');
+                    $("#like-text-" + content_id).html('<i class="fas fa-heart"></i> : '+ cnt + ' &nbsp; {{content.title}}');
                 }
                 else {
-                    $("#like-text-" + content_id).html('<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\
-                        <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>\
-                    </svg> : '+ cnt + ' &nbsp;');
+                    $("#like-text-" + content_id).html('<i class="far fa-heart"></i> : '+ cnt + ' &nbsp;');
                 }
             },
             error: function (request, status, error) {
