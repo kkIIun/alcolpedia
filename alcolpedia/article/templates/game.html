@@ -80,57 +80,98 @@
 <hr style="border:inset 1px white;">
 
 
-<div class="container contents">
-    <div class="card-columns col-12">
+<!-- <div class="container contents">
+    <div class="card-columns">
     {% for content in posts %}
-        <div class="card">
-            <div style="position: relative;">
-                <div onclick="moveDetail('{% url 'detail' content.id %}')">
-                    <img src="{{content.image.url}}" style="width: 100%;">
-                </div>
-                <div style="position: absolute; top:1px;right: 10px;">
-                    <a class="align-middle col-lg-1 col-md-1 col-sm-1 col-1 bookmark" id="bookmark-text-{{content.id}}"
-                        name={{content.id}} style="color: white;">
-                        {% if user in content.bookmark.all %}
-                        <i class="fas fa-bookmark"></i>
-                        {% else %}
-                        <i class="far fa-bookmark"></i>
-                        {%endif%}
-                    </a>
-                </div>
+            <div class="card"> 
+                <div style="position: relative;">
+                    <div onclick="moveDetail('{% url 'detail' content.id %}')">
+                        <img src="{{content.image.url}}" style="width: 100%;">
+                    </div>
+                    <div style="position: absolute; top:1px;right: 10px;">
+                        <a class="align-middle col-lg-1 col-md-1 col-sm-1 col-1 bookmark" id="bookmark-text-{{content.id}}"
+                            name={{content.id}} style="color: white;">
+                            {% if user in content.bookmark.all %}
+                            <i class="fas fa-bookmark"></i>
+                            {% else %}
+                            <i class="far fa-bookmark"></i>
+                            {%endif%}
+                        </a>
+                    </div>
+                </div> 
             </div>
-        </div>
-        <a href="{% url 'detail' content.id%}" style="color: white;">{{content.title}}</a>
-        <div style="display: inline;">
-            <script>
-                for(var i = 0; i < {{content.difficulty}}; i++) {
-                    document.write("★")
-                }
-                for(var i = 0; i < 3-{{content.difficulty}}; i++) {
-                    document.write("☆")
-                }
-            </script>
-        </div>
-        <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}" name={{content.id}}
-            style="color: white;">
-            {% if user in content.like.all %}
-            <i class="fas fa-heart"></i> : {{content.like.all|length}}
-            {% else %}
-            <i class="far fa-heart"></i> : {{content.like.all|length}}
-            {%endif%}
-        </a>
+            <a href="{% url 'detail' content.id%}" style="color: white;margin-left: 1rem;">{{content.title}}</a>
+            <div style="display: inline; color: white;">
+                <script>
+                    for(var i = 0; i < {{content.difficulty}}; i++) {
+                        document.write("★")
+                    }
+                    for(var i = 0; i < 3-{{content.difficulty}}; i++) {
+                        document.write("☆")
+                    }
+                </script>
+            </div>
+            <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}" name={{content.id}}
+                style="color: white;">
+                {% if user in content.like.all %}
+                <i class="fas fa-heart"></i> : {{content.like.all|length}}
+                {% else %}
+                <i class="far fa-heart"></i> : {{content.like.all|length}}
+                {%endif%}
+            </a>
             <div class="container2">
                 {% for tag in content.tag.all %}
-                <div class="card2">
                     <a class="btn" href="{% url 'tag' tag.id %}"><U style="color: white;">#{{tag}}</U></a>
-                </div>
                 {% endfor %}
-            </div>
+            </div> 
     {% endfor %}
     </div>
-</div>
+</div> -->
 
-
+<section class="cards container" style="margin-top:5rem;">
+    {% for content in posts %}
+    <div class="card_">
+        <div class="card__image-container">
+            <img src="{{content.image.url}}">
+        </div>
+        <a class="bookmark" id="bookmark-text-{{content.id}}" name={{content.id}} style="color: white; position:absolute;right: 2rem;">
+            {% if user in content.bookmark.all %}
+            <i class="fas fa-bookmark"></i>
+            {% else %}
+            <i class="far fa-bookmark"></i>
+            {%endif%}
+        </a>
+        <div class="card__content">
+            <p class="card__title text-medium">
+                {{content.title}}
+            </p>
+            <div style="display: inline; color: white;">
+                <script>
+                    for (var i = 0; i < {{ content.difficulty }}; i++) {
+                        document.write("★")
+                    }
+                    for (var i = 0; i < 3 - {{ content.difficulty }}; i++) {
+                        document.write("☆")
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="card__info" style="margin-left:3rem">
+            <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}" name={{content.id}} style="color: white;">
+                {% if user in content.like.all %}
+                <i class="fas fa-heart"></i> : {{content.like.all|length}}
+                {% else %}
+                <i class="far fa-heart"></i> : {{content.like.all|length}}
+                {%endif%}
+            </a>
+            {% for tag in content.tag.all %}
+                <a class="btn" href="{% url 'tag' tag.id %}"><U style="color: white;">#{{tag}}</U></a>
+            {% endfor %}
+        </div>
+        
+    </div>
+    {% endfor %}
+</section>
 
 
 <nav aria-label="..." class="nav_style">
