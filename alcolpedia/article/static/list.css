@@ -181,6 +181,11 @@ hr{
     display: none;
 }
 
+.modal-content{
+    color:black;
+    background-color: black;
+}
+
 .pagination a{
     color: white;
     float: left;
