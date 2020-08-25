@@ -13,7 +13,8 @@ def home(request):
 
     bgm_list = Content.objects.filter(sort = "bgm").order_by('updated_at')
 
-    represent_game = Content.objects.filter(sort = "game").order_by('-like', 'updated_at')[0]
+    represent_alcohol = Content.objects.filter(sort = "alcohol").order_by('-like', 'updated_at')[0]
+    represent_cheers = Content.objects.filter(sort = "cheers").order_by('-like', 'updated_at')[0]
     
     
     bgm_list_len = len(bgm_list)
@@ -21,9 +22,9 @@ def home(request):
 
     try:
         profile = get_object_or_404(Profile, user__username = request.user.username)
-        return render(request, 'home.html',{'title': 'Alcolpedia','profile':profile,'tags':tag, 'contents': contents_list, 'bgms': bgm_list, 'represent_game': represent_game})
+        return render(request, 'home.html',{'title': 'Alcolpedia','profile':profile,'tags':tag, 'contents': contents_list, 'bgms': bgm_list, 'represent_alcohol': represent_alcohol, 'represent_cheers': represent_cheers})
     except :
-        return render(request,'home.html',{'title': 'Alcolpedia','tags':tag, 'contents': contents_list, 'bgms': bgm_list, 'represent_game': represent_game})
+        return render(request,'home.html',{'title': 'Alcolpedia','tags':tag, 'contents': contents_list, 'bgms': bgm_list, 'represent_alcohol': represent_alcohol, 'represent_cheers': represent_cheers})
 
 #검색기능
 def search(request) :
