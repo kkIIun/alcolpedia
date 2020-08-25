@@ -56,7 +56,7 @@
 .profile-name-box {
     text-align: center;
     margin-top: 1rem;
-    padding-bottom: 40rem;
+
 }
 
 .profile-modify-button {
@@ -77,3 +77,36 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.bookmark-content{
+    background-color: black;
+    justify-content: center;
+}
+
+#bookmark_a{
+    color: white;
+    text-decoration-line: none;
+    border: 1px solid #ffffff;
+    border-radius: 1em;
+    background-color: black;
+}
+
+#bookmark_a:hover(.active){
+    background-color: rgb(255, 255, 255);
+    text-decoration-line: none;
+
+}
+
+#bookmark_a:hover:not(.active){
+    color: black;
+    background-color:#ddd;
+}
+
+/* .list-group-item{
+    background-color: black;
+    border: 1px solid #ffffff;
+}
+.list-group-item:hover:not(.active){
+    background-color:#ddd;
+    color: black;
+} */
