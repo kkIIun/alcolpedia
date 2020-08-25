@@ -67,7 +67,6 @@ body{
     height: 30rem;
     margin-left: 2%;
     margin-right: 2%;
-    margin-top: 2%;
     padding-left: 1%;
     border-radius: 10%;
     color: white;
@@ -152,6 +151,7 @@ hr{
     margin: -300px 0 0 0;
 }
 
+
 .tag{
     border-radius: 25px;
     border: solid 1px #ffffff;
@@ -180,3 +180,22 @@ hr{
     width: 10px;
     display: none;
 }
+
+.pagination a{
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 3rem;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+/* .pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+} */
+

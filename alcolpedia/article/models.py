@@ -21,13 +21,13 @@ class Content(models.Model):
     like = models.ManyToManyField(User,related_name='likers',blank=True)
     bookmark = models.ManyToManyField(User,related_name='bookmarks',blank=True)
     summary = models.CharField(max_length = 50, blank=True, null=True)
-    difficulty = models.IntegerField(null=True,default=0, blank=True)
+    difficulty = models.IntegerField(null=True,default=1, blank=True)
     image = models.ImageField(upload_to="content/", blank=True, null=True)
     sort = models.CharField(max_length=10,choices=SORT,default='술게임')
     audio = models.FileField(upload_to="audio/", blank = True, null = True)
 
     def __str__(self):
-        return self.title
+        return self.title + "[" + self.sort + "]"
 
     
     def like_count(self):
