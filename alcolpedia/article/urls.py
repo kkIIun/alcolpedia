@@ -9,5 +9,5 @@ urlpatterns = [
     path('tag/<int:tag_id>', views.tag, name="tag"),
     path('detail/<int:content_id>', views.detail, name="detail"),
     path('filter', views.filter, name="filter"),
-    path('bookmark', views.bookmark, name="bookmark"),
+    re_path(r'^bookmark/$', views.bookmark, name='bookmark'),
 ]

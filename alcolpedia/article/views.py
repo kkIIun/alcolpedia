@@ -111,11 +111,27 @@ def filter(request) :
         return render(request,'game.html',{'posts' : list_contents,'tag':tag,'date':date,'difficulty':difficulty,'tags':tags,'all_tags':all_tags})
         
 @login_required
-def bookmark(request,content_id):
-    content = get_object_or_404(Content,pk=content_id)
-    content.like.add(request.user)
-    content.save()    
-    name = content.sort
-    return redirect('/article/?name='+str(name))
+def bookmark(request):
+
+    content_id = request.POST.get('content_id', None)
+
+    content = get_object_or_404(Content, pk=content_id)
+    if request.user in content.bookmark.all():
+        content.bookmark.remove(request.user)
+        isBookmarked = False
+        message = "북마크 취소"
+
+    else:
+        isBookmarked = True
+        content.bookmark.add(request.user)
+        message = "북마크"
+    
+    context = {
+            'message': message,
+            'username': str(request.user.username),
+            "isBookmarked": isBookmarked}
+    
+    return HttpResponse(json.dumps(context), content_type="application/json")
+
 
     
