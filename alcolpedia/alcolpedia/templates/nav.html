@@ -35,7 +35,7 @@
                     <div class="dropdown-menu nav-dropdown-menu" aria-labelledby="dropdownMenu2">
                         <a href="{% url 'profile'%}"><button class="dropdown-item nav-bar-item btn-dark" type="button">프로필</button></a>
                         <a href=""><button class="dropdown-item nav-bar-item btn-dark" type="button">찜 목록</button></a>
-                        <a href=""><button class="dropdown-item nav-bar-item btn-dark" type="button"data-toggle="modal" data-target="#modal">
+                        <a><button class="dropdown-item nav-bar-item btn-dark" type="button"data-toggle="modal" data-target="#modal">
                             건의하기
                         </button></a>
                         <div class="dropdown-divider"></div>
@@ -55,30 +55,29 @@
             {% endif %}
         </ul>
     </div>
-
+    <div class="modal" id = "modal" data-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">건의하기</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <form method="POST" action="{% url 'create' %}">
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <h5>제목: <input type="text" name="title" style="width: 80%"></h5>
+                    <textarea name="body" placeholder="건의내용을 입력해주세요" rows = 15 style="font-size: 1rem; width: 95%;"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-dark" data-dismiss="modal">닫기</button>
+                    <button type="submit" class="btn btn-primary btn-light btn-outline-success">확인</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
 </nav>
 
 
-<div class="modal" id = "modal" data-keyboard="false" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">건의하기</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form method="POST" action="{% url 'create' %}">
-            <div class="modal-body">
-                {% csrf_token %}
-                <h5>제목: <input type="text" name="title" style="width: 80%"></h5>
-                <textarea name="body" placeholder="건의내용을 입력해주세요" rows = 15 style="font-size: 1rem; width: 95%;"></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-dark" data-dismiss="modal">닫기</button>
-                <button type="submit" class="btn btn-primary btn-light btn-outline-success">확인</button>
-            </div>
-        </form>
-      </div>
-    </div>
-</div>

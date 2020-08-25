@@ -19,6 +19,7 @@ class Content(models.Model):
     updated_at = models.DateTimeField(auto_now_add = True)
     tag = models.ManyToManyField(Tag,related_name='hashtag', blank=True)
     like = models.ManyToManyField(User,related_name='likers',blank=True)
+    bookmark = models.ManyToManyField(User,related_name='bookmarks',blank=True)
     summary = models.CharField(max_length = 50, blank=True, null=True)
     difficulty = models.IntegerField(null=True,default=0, blank=True)
     image = models.ImageField(upload_to="content/", blank=True, null=True)
