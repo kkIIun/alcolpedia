@@ -46,9 +46,11 @@ body{
     border: solid 1px #ffffff;
     background-color: #000000;
     flex:1;
-    padding-left: 2%;
-    padding-right: 2%;
-    margin-top: 1%;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 15px;
 }
 
 .star{
@@ -59,12 +61,6 @@ body{
     background-color: #000000;
     margin-right: 0;
     
-}
-
-.container{
-    height: 50%;
-    margin-bottom: 10%;
-    margin-top: 2%;
 }
 
 .card{
@@ -105,11 +101,6 @@ body{
 
 .nav_style{
     margin-left: 45%;
-}
-
-.filter{
-    padding-top:10px;
-    padding-bottom:10px;
 }
 
 .background-crop {
@@ -159,4 +150,33 @@ hr{
 .background-crop img {
     width: 100%;
     margin: -300px 0 0 0;
+}
+
+.tag{
+    border-radius: 25px;
+    border: solid 1px #ffffff;
+    background-color: #000000;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 15px;
+}
+
+.contents{
+    margin-bottom: 10%;
+    margin-top: 2%;
+}
+
+
+#filter{
+    align-content: center;
+    text-align: center;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+#filter::-webkit-scrollbar {
+    width: 10px;
+    display: none;
 }
