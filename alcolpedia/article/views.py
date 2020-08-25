@@ -7,6 +7,8 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 from django.db.models import Q
+from functools import reduce
+from operator import and_, or_
 from django.http import HttpResponse
 import json
 
@@ -85,25 +87,48 @@ def filter(request) :
     tags = Tag.objects.all()[:6]
     all_tags = Tag.objects.all()[6:]
     #변수받기
-    difficulty = request.GET.get('difficulty')
-    tag = request.GET.get('tag')
-    date = request.GET.get('date')
-    q = Q()
-    if not difficulty or difficulty == '0' :
+    name = "game"
+    try:
+        name = request.GET.get('name')
+    except:
+        name = "game"
+
+    try:
+        difficulty = request.GET.get('difficulty')
+        difficulty = int(difficulty)
+        if difficulty == 0:
+            difficulty_list = [0,1,2,3]
+        else:
+            difficulty_list = [difficulty]
+    except:
         difficulty = 0
-    else :
-        q.add(Q(difficulty = difficulty), q.AND)
-    if not tag or tag == '0' :
-        tag = 0
-    else :
-        q.add(Q(tag__title = tag), q.AND)
-    if not date or date == '0' :
-        date = 0
-    else :
-        time_threshold = datetime.now() - timedelta(days=int(date))
-        q.add(Q(updated_at__gt = time_threshold), q.AND)
+        difficulty_list= [0,1,2,3]
+
+    try:
+        tag = request.GET.getlist('tag')
+        tag_list = tag
+    except:
+        tag_list = list(tags) + list(all_tags)
+    else:
+        if not tag or "".join(tag) == "":
+            tag_list = list(tags) + list(all_tags)
+
+    try:
+        date = request.GET.get('date')
+        time_threshold = (datetime.now() - timedelta(days=int(date)))
+    except:
+        time_threshold = datetime.now()- timedelta(days=100)
+        date = None
+
+    q = Q()
+
+
+    q.add(Q(difficulty__in= difficulty_list)&Q(tag__title__in= tag_list)&Q(updated_at__gt=time_threshold), q.AND)
+    q.add(Q(sort=name),q.AND)
+    print(q)
     list_contents = Content.objects.filter(q)
-    print(difficulty,tag,date,type(difficulty),type(tag),type(date))
+    print(list_contents)
+
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)
         return render(request,'game.html',{'posts' : list_contents,'profile':profile,'tag':tag,'date':date,'difficulty':difficulty,'tags':tags,'all_tags':all_tags})

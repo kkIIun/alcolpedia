@@ -142,12 +142,11 @@ img{
     overflow-x: scroll;
     overflow-y: hidden;
     padding:24px;
-    width: 1000px;
-    
 }
 
 .tag_box::-webkit-scrollbar {
     width: 10px;
+    display: none;
 }
 .tag_box::-webkit-scrollbar-thumb {
   background-color: #2f3542;
