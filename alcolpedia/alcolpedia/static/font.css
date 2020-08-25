@@ -18,3 +18,11 @@
     src: local('DancingScript-VariableFont_wght'),
         url('./DancingScript-VariableFont_wght.ttf') format("truetype");
 }
+
+
+@font-face {
+    font-family: 'InkLipquid';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
