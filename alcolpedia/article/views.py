@@ -62,20 +62,15 @@ def like(request):
     
     return HttpResponse(json.dumps(context), content_type="application/json")
 
-#좋아요 취소
-@login_required
-def cancel(request, content_id):
-    content = get_object_or_404(Content,pk=content_id)
-    content.like.remove(request.user)
-    content.save()    
-    name = content.sort
-    return redirect('/article/?name='+str(name))
-
 #태그 누르면 검색됨
 def tag(request,tag_id) : 
     tag = get_object_or_404(Tag,pk=tag_id)
     contents = Content.objects.filter(tag__id = tag.id)
-    return render(request,'search.html',{'contents':contents})
+    try:
+        profile = get_object_or_404(Profile, user__username = request.user.username)
+        return render(request,'search.html',{'contents':contents,'profile':profile})
+    except:
+        return render(request,'search.html',{'contents':contents})
  
 #게시물 보기
 def detail(request,content_id) :
@@ -123,10 +118,4 @@ def bookmark(request,content_id):
     name = content.sort
     return redirect('/article/?name='+str(name))
 
-@login_required
-def bookmark_cancel(request, content_id):
-    content = get_object_or_404(Content,pk=content_id)
-    content.like.remove(request.user)
-    content.save()    
-    name = content.sort
-    return redirect('/article/?name='+str(name))
+    
