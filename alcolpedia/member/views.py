@@ -5,6 +5,7 @@ from django.contrib import auth
 from django.contrib import messages
 from .models import *
 from .forms import *
+from article.models import Content
 from django.contrib.auth.decorators import login_required
 from .forms import SignInForm, SignUpForm
 
@@ -67,6 +68,7 @@ def sign_out(request):
 def profile(request):
     profile = get_object_or_404(Profile,user__username = request.user.username)
     user = get_object_or_404(User, pk = request.user.id)
+    bookmarks = Content.objects.filter(bookmark__id = user.id)
     if request.method == 'POST' :
         name = request.POST.get('name')
         image = request.FILES.get('image')
@@ -76,6 +78,6 @@ def profile(request):
             profile.avatar = image
         user.save()
         profile.save()
-        return render(request,'profile.html',{'profile':profile})
+        return render(request,'profile.html',{'profile':profile,'bookmarks':bookmarks})
     else:
-        return render(request,'profile.html',{'profile':profile})
+        return render(request,'profile.html',{'profile':profile,'bookmarks':bookmarks})
