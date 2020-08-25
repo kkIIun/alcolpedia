@@ -12,27 +12,28 @@ from .forms import SignInForm, SignUpForm
 # POST 메서드로 `username`, `password`, `confirm_password`를 넘겨받아야 한다.
 def sign_up(request):
     if request.method == "POST":
-        # password, confirm_password가 정상적이 값인가?
-        if request.POST["password"] and request.POST["confirm_password"]:
-            print('pass1')
-            # password와 confirn_password가 다른가?
-            if(request.POST["password"] != request.POST["confirm_password"]):
-                messages.error(request, "비밀번호가 서로 다릅니다.")
-            
-            else :
-                try:
-                    user = User.objects.create_user(
+        if request.POST["password"] == "" or request.POST["password"] == None:
+            messages.error(request,"비밀번호를 입력해주세요.")
+            return render(request, 'sign_up.html', {"form": SignUpForm()})
+        elif request.POST["password"]  != request.POST["confirm_password"]:
+            messages.error(request, "비밀번호가 서로 다릅니다.")
+            return render(request, 'sign_up.html', {"form": SignUpForm()}) 
+        elif len(request.POST["password"]) < 4:
+            messages.error(request, "비밀번호가 너무 짧습니다.")
+            return render(request, 'sign_up.html', {"form": SignUpForm()}) 
+        elif request.POST["password"]  == request.POST["confirm_password"]:
+            try:
+                user = User.objects.create_user(
                         username = request.POST["username"], 
                         password = request.POST["password"],
                     )
-                    user.create_user_profile()
-                    auth.login(request,user)
-                except:
-                    messages.error(request, "다른 사용자가 사용 중인 username입니다.")
-        else:
-            messages.error(request, "비밀번호를 입력해주세요.")
-        return redirect('home')
+                auth.login(request, user)
+                return redirect('home')
+            except:
+                messages.error(request, "다른 사용자가 사용중인 username입니다.")
+                return render(request, 'sign_up.html', {"form": SignUpForm()}) 
     return render(request, 'sign_up.html', {"form": SignUpForm()})
+
 
 # 로그인 기능
 # POST 메서드로 'username', 'password'를 넘겨받아야 한다.
@@ -51,7 +52,8 @@ def sign_in(request):
                 auth.login(request, user)
                 return redirect('home')
             except:
-                pass
+                messages.error(request, "username 혹은 password가 올바르지 않습니다.")
+                return render(request, 'sign_in.html',  {"form": SignInForm()})
 
     return render(request, 'sign_in.html',  {"form": SignInForm()})
 

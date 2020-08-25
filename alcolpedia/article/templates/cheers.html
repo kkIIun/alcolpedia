@@ -9,28 +9,35 @@
 {% block content %}
     {% include 'nav.html' %}
     <div class="background-crop">
-    <img src="{% static 'cheers.jpg'%}">
+        <img src="{% static 'cheers.jpg'%}">
+        <h3 class = "top-bar-title" style="width: 100%; text-align: center;">
+            그대의 눈동자에 Cheers
+        </h3>
     </div>
-    <div class="dropdown">
-        <button class="btn btn-outline-light dropdown-toggle"  type="button" id="dropdownMenu2" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"
-        style="color: white;">
-          1.  아우디
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" type="button">아줌마들의 우정은 디질때까지</button>
+    <div class="container">
+        <div class="accordion" id="accordionExample">
+        {% for content in posts %}
+            <div class="card">
+              <div class="card-header" id="heading{{content.title}}">
+                <h2 class="mb-0">
+                  <button class="btn btn-outline-light btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{content.title}}" aria-expanded="true" aria-controls="collapse{{content.title}">
+                    <ol style="list-style-type: inherit; font-family: 'NEXON Lv2 Gothic Bold';">
+                         <li>{{content.title}}</li>
+                    </ol>
+                  </button>
+                </h2>
+              </div>
+          
+              <div id="collapse{{content.title}}" class="collapse" aria-labelledby="heading{{content.title}}" data-parent="#accordionExample">
+                <div class="card-body" style="font-family: 'NEXON Lv1 Gothic OTF';">
+                  {{content.summary}}
+                </div>
+              </div>
+            </div>
+        {% endfor %}
         </div>
     </div>
-    <div class="dropdown">
-        <button class="btn btn-outline-light dropdown-toggle"  type="button" id="dropdownMenu2" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"
-        style="color: white;">
-          2.  한잔하지~질수없지~
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" type="button">한잔하지~질수없지~ 싹~ 묵자~</button>
-        </div>
-    </div>
-     <br>
-        
+
    
     
 {% endblock %}

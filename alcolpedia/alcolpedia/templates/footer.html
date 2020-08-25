@@ -1,31 +1,10 @@
-<style>
-.footer_container{
-    padding-left: 10%;
-    padding-right: 7%;
-    background-color: #000000;
-    padding-top: 10%;
-    padding-bottom: 10%;
-
-}
-
-.footer_container2{
-    background-color: #ebebeb;
-    width:100%;
-    height: 5%;
-    padding-top: 3%;
-    padding-bottom: 2%;
-    padding-left: 15%;
-    padding-right: 5%;
-}
-
-</style>
 <footer style="background-color: #000000;">
     <div class="footer_container" >
         <div class="row">
             <div class="col-12 col-md-4 col-lg-6">
                 <br><br>
                 <p style="font-size: 32px; color : #ffffff; text-align: left;">Alcolpedia  
-                    <a href="" style="text-decoration: none; color: white;">
+                    <a style="text-decoration: none; color: white;" href = "https://www.facebook.com/alcolpedia/" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" fill="white" width="5%" height="5%"><rect fill="none" height="24" width="24"/><path d="M22,12c0-5.52-4.48-10-10-10S2,6.48,2,12c0,4.84,3.44,8.87,8,9.8V15H8v-3h2V9.5C10,7.57,11.57,6,13.5,6H16v3h-2 c-0.55,0-1,0.45-1,1v2h3v3h-3v6.95C18.05,21.45,22,17.19,22,12z"/></svg>
                     
                     </a>
@@ -38,17 +17,28 @@
             </div>
             <div class="col col-lg-2" style="text-align: center;">
                 <p style="font-size: 32px; color : #BDBDBD;">Contents</p>
-                <p style="font-size: 18px; color : #737373;">술게임</p>
-                <p style="font-size: 18px; color : #737373;">폭탄주</p>
-                <p style="font-size: 18px; color : #737373;">BGM/건배사</p>
-                <p style="font-size: 18px; color : #737373;">옵션</p>
+                <p>
+                    <a href = "{%url 'article'%}?name=game" style="font-size: 18px; color : #737373;">술게임</a>
+                </p>
+                <p>
+                    <a href = "{%url 'article'%}?name=bgm" style="font-size: 18px; color : #737373;">BGM</a>
+                </p>
+                <p>
+                    <a href = "{%url 'article'%}?name=alcohol" style="font-size: 18px; color : #737373;">폭탄주</a>
+                </p>
+                <p>
+                    <a href = "{%url 'article'%}?name=cheers" style="font-size: 18px; color : #737373;">건배사</a>
+                </p>
+                <p>
+                    <a href = "{%url 'article'%}?name=setting" style="font-size: 18px; color : #737373;">옵션</a>
+                </p>
             </div>
             <div class="col col-lg-2" style="text-align: center;">
                 <p style="font-size: 32px; color : #BDBDBD; ">Made by</p>
-                <p style="font-size: 18px; color : #737373; ">이기정</p>
-                <p style="font-size: 18px; color : #737373; ">홍다인</p>
-                <p style="font-size: 18px; color : #737373; ">김신건</p>
-                <p style="font-size: 18px; color : #737373; ">정지윤</p>
+                <a href="https://www.facebook.com/profile.php?id=100006548017423" style="font-size: 18px; color : #737373;" target="_blank"><p>이기정</p> </a>
+                <a href="https://www.instagram.com/queen_4.8/" style="font-size: 18px; color : #737373;" target="_blank"><p>홍다인</p></a>
+                <a href="https://www.instagram.com/keon_119/?hl=ko" style="font-size: 18px; color : #737373;" target="_blank"><p>김신건</p></a>
+                <a href="https://www.instagram.com/jis2yooni/" style="font-size: 18px; color : #737373;" target="_blank"><p>정지윤</p></a>
             </div>
             <div class="col col-lg-2" style="text-align: center;">
                 <p style="font-size: 32px; color : #BDBDBD; ">Resources</p>
@@ -70,9 +60,6 @@
             <div class="col col-lg-2">
                 <p>Terms of Service</p>
             </div>
-            </div>
-        
-        
-        
+        </div>
     </div>
 </footer>

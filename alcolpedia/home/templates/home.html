@@ -4,9 +4,10 @@
     {{title}}
 {% endblock %} 
 {% block stylesheet %}
-<link rel="stylesheet" href="{% static 'home_jiyoon.css' %}">
-<link rel="stylesheet" href="{% static 'home_dain.css' %}">
+<link rel="stylesheet" href="{% static 'home.css' %}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'slick/slick.css' %}">
+<link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}">
 {% endblock %}
 {% block content %}
 <div style="background-color: #000000;">
@@ -20,98 +21,126 @@
     <form action="{%url 'search'%}" class="formclass">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
     </form>
-    
-    <div class="tag_box">
-        {% for tag in tags %}
-        <a href="{% url 'tag' tag.id %}" style="padding:2%; color:white; font-family: 'NEXON Lv1 Gothic OTF';">#{{tag}}</a>
-        {% endfor %}
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-2"></div>
+        <div class="tag_box col-lg-8 col-md-8 col-sm-8 col-xs-8 col-8">
+            {% for tag in tags %}
+            <a href="{% url 'tag' tag.id %}" style="padding:2%; color:white; font-family: 'NEXON Lv1 Gothic OTF';">#{{tag}}</a>
+            {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-2"></div>
     </div>
 </div>
 
-<div class="wrapper">
-    <video autoplay muted loop id="myVideo">
+<div class="row wrapper" id = "section-game" style="width: 100%; overflow: hidden;">
+    <video id="myVideo" autoplay muted loop>
         <source src="{% static '술움짤.webm'%}" type="video/webm">
     </video>
-    <div class="overlay"></div>
-    <section style="background-color: #000000;">
+    <div style="background-color: #000000;">
         <div class="container5 game">
-            <h2 class="section-title" style="margin-bottom:150px ;">
+            <h2 class="section-title">
                 요즘 뜨는 술게임
             </h2>
-            <div class="card_container">
+            <div class="slider">
                 {% for content in contents %}
-                    
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{content.image.url}}" class="card-img-top" alt="..." style="border-radius: 4px; height: 15rem">
-                        <div class="card-body">
-                            <h5 class="card-title">{{content.title}}</h5>
-                            <p class="card-text">{{content.summary}}</p>
-                            <a href="{% url 'detail' content.id %}" class="btn btn-dark">게임방법</a>
+                    <div>
+                        <div class="card" style="width: 16rem; margin-left:auto; margin-right: auto;">
+                            <img src="{{content.image.url}}" class="card-img-top" style="border-radius: 0.5rem; height: 15rem">
+                            <div class="card-body">
+                                <h5 class="card-title">{{content.title}}</h5>
+                                <p class="card-text">{{content.summary}}</p>
+                                <a href="{% url 'detail' content.id %}" class="btn btn-dark">게임방법</a>
+                            </div>
                         </div>
                     </div>
-                   
                 {% endfor %}
             </div>
         </div>
-    </section>
+    </div>
 </div>
-<div class="wrapper">
+
+
+<div class="row wrapper" id = "section-game-represent">
     <img src="{% static '오렌지게임.png' %}" style="width: 50%;margin-left: 25%;">
     <div class="game">
-        <div id="div2" style="padding-top: 10%;" >두부 게임은 뭐에요?</div>
-        <div id="div3">두부 게임은 어려운 게임이 아니에요!<br>
-            정신만 똑바로 차리면 잘 할 수 있답니다</div>
+        <div id="div2" style="padding-top: 10%; font-family: 'NEXON Lv2 Gothic Bold';" >오렌지 게임은 뭐에요?</div>
+        <div id="div3" style="font-family: 'NEXON Lv1 Gothic OTF' ;">오렌지 게임은 어려운 게임이 아니에요!<br>
+            당신의 연기력을 보여주세요!</div>
             <button id="button" type="button" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</button>
     </div>
 </div>
 
-<div class="wrapper">
-    <video autoplay muted loop id="myVideo_bgm">
-        <source src="{% static '음악2.mp4'%}" type="video/mp4">
-    </video>
+<div class="row wrapper" id = "section-bgm">
     <section class="container game">
         <h2 class = "section-title" style="margin-bottom: 10rem;">
             친구가 마실때, 흥을 돋아주자!
         </h2>
-        <div class="d-flex justify-content-between">
-            {% for bgm in bgms%}
-                <div class="col-md-4" style="display: flex;">
-                    {% if bgm.image %}
-                        <div class="circle-player" style="background-image: url({{bgm.image.url}});" onclick="playMusic('{{bgm.audio.url}}')">
-                            <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
+        <div class="row">
+            <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="slider">
+                    {% for bgm in bgms%}
+                        <div id = "bgm-box">
+                            {% if bgm.image %}
+                                <div class="circle-player" style="background-image: url({{bgm.image.url}});" onclick="playMusic('{{bgm.audio.url}}')">
+                                    <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
+                                </div>
+                            {% else %}
+                                <div class="circle-player"  onclick="playMusic('{{bgm.audio.url}}')">
+                                    <i class="fas fa-play" style="display: block;" id = "play-icon-{{bgm.audio.url}}"></i>
+                                </div>
+                            {% endif %}
+                            <div style="color:#ffffff;margin-top:2rem; font-family: 'NEXON Lv1 Gothic OTF';">{{bgm.title}}</div>
                         </div>
-                    {% else %}
-                        <div class="circle-player"  onclick="playMusic('{{bgm.audio.url}}')">
-                            <i class="fas fa-play" style="display: block;" id = "play-icon-{{bgm.audio.url}}"></i>
-                            <div style="color:#ffffff;margin-top:12rem; font-family: 'NEXON Lv1 Gothic OTF';">{{bgm.title}}</div>
-                        </div>
-                    {% endif %}
+                    {% endfor %}
                 </div>
-            {% endfor %}
+            </div>
         </div>
     </section>
 </div>
 
-<div class="wrapper">
-    <img src="{% static '왕게임.png' %}" style="width: 50%;margin-left: 25%;">
-    <div class="game">
-        <div id="div2" style="padding-top:10%; font-family: 'NEXON Lv1 Gothic OTF';" >누가 술을 마셔~</div>
-        <div id="div3">친구가 술을 마실 때,<br>
-            가만히 있을 수 없죠! 흥을 같이 돋우어 줍시다!
+<div class="row wrapper"  id = "section-bgm-represent">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <img src="{% static '왕게임.png' %}" style="width: 100%; height:auto">
+            </div>
+            <div class="col-3"></div>
         </div>
-    <svg id="button" width="8em" height="8em" viewBox="0 0 16 16" class="bi bi-play-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-    </svg>
+    </div>
+    <div class="bgm">
+        <div id="div2" style="padding-top: 3rem; font-family:'NEXON Lv2 Gothic Bold' ;" >누가 술을 마셔~</div>
+        <div id="div3" style="font-family: 'NEXON Lv1 Gothic OTF' ;">
+            친구가 술을 마실 때,<br>가만히 있을 수 없죠~ 흥을 같이 돋우어 줍시다
+        </div>
+        <svg id="button2" width="8em" height="8em" viewBox="0 0 16 16" class="bi bi-play-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+        </svg>
+    </div>
 </div>
 
-<section id="body3"> 
-    <h2 class="section-title" style="padding-top: 10%;">
-        어떤 게 궁금하신가요?
-    </h2>
-    <div id="div7" style="color:#ffffff;">술게임 미리 공부해볼까요?</div>
-    <div class="row">
-        <input id="div8" class="form-control" type="text" placeholder="Ex) 딸기게임" >
-        <button id="button2" type="button" class="btn btn-dark" style="background-color: #000000; border:1px solid #ffffff">검색하기</button>
+<section class="row">
+    <div class="col-12">
+        <h2 class="section-title" style="padding-top: 10%;">
+            어떤 게 궁금하신가요?
+        </h2>
+    </div>
+    <div class="col-12">
+        <p id="p7">
+            술게임 미리 공부해볼까요?
+        </p>
+    </div>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-3"></div>
+            <input id="div8" class="form-control col-lg-4 col-md-4 col-sm-4 col-xs-4 col-6" type="text" placeholder="Ex) 딸기게임" >
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-sx-5 col-4"></div>
+            <button type="button" class="btn btn-dark addition-box-button col-lg-2 col-md-2 col-sm-2 col-xs-2 col-4">검색하기</button>
+            <div class="col-lg-5 col-md-5 col-sm-5 col-sx-5 col-4"></div>
+        </div>
     </div>
 </section>
 
@@ -119,6 +148,60 @@
 
 
 {% block script %}
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'slick/slick.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.slider').slick({
+        useCSS: true,
+        pauseOnHover: true,
+        useTransform: true,
+        slide: 'div',		//슬라이드 되어야 할 태그
+        infinite : true, 	//무한 반복 옵션	 
+        slidesToShow : 4,		// 한 화면에 보여질 컨텐츠 개수
+        slidesToScroll : 1,		//스크롤 한번에 움직일 컨텐츠 개수
+        speed : 100,	 // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
+        arrows : true, 		// 옆으로 이동하는 화살표 표시 여부
+        dots : true, 		// 스크롤바 아래 점으로 페이지네이션 여부
+        autoplay : true,			// 자동 스크롤 사용 여부
+        autoplaySpeed : 3000, 		// 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
+        pauseOnHover : true,		// 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
+        vertical : false,		// 세로 방향 슬라이드 옵션
+        adaptiveHeight: true,
+        centerMode: true,
+        centerPadding: "2rem",
+        prevArrow : "<button type='button' class='slick-prev'>Previous</button>",		// 이전 화살표 모양 설정
+        nextArrow : "<button type='button' class='slick-next'>Next</button>",		// 다음 화살표 모양 설정
+        dotsClass : "slick-dots", 	//아래 나오는 페이지네이션(점) css class 지정
+        draggable : true, 	//드래그 가능 여부 
+        
+        responsive: [ // 반응형 웹 구현 옵션
+            {  
+                breakpoint: 1800, //화면 사이즈 960px
+                settings: {
+                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+                    slidesToShow:3 
+                }
+            },
+            {  
+                breakpoint: 1200, //화면 사이즈 960px
+                settings: {
+                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+                    slidesToShow:2 
+                }
+            },
+            {  
+                breakpoint: 800, //화면 사이즈 960px
+                settings: {
+                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+                    slidesToShow:1 
+                }
+            },
+        ]
+
+      });
+    });
+  </script>
 <script>
     var musicPlayer = new Audio();
     var currentMusic = "";

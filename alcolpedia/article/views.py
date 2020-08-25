@@ -7,7 +7,8 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 from django.db.models import Q
-
+from django.http import HttpResponse
+import json
 
 
 #술게임페이지
@@ -33,13 +34,33 @@ def table_contents(request):
     else :
         return render(request,name+'.html',{'title': board_name[name], 'posts' : posts,'range' : [i for i in range(start, end+1)],'tags':tag,'all_tags':all_tags})
 #좋아요
-@login_required
-def like(request, content_id):
-    content = get_object_or_404(Content,pk=content_id)
-    content.like.add(request.user)
-    content.save()    
-    name = content.sort
-    return redirect('/article/?name='+str(name))
+@login_required(login_url='/member/signin/')
+def like(request):
+    # ajax 통신을 통해서 template에서 POST방식으로 전달
+    content_id = request.POST.get('content_id', None)
+
+    content = get_object_or_404(Content, pk=content_id)
+
+    if request.user in content.like.all():
+        content.like.remove(request.user)
+        isLiked = False
+        message = "좋아요 취소"
+    else:
+        isLiked = True
+        content.like.add(request.user)
+        message = "좋아요"
+    
+    represent_user = ""
+    if len(content.like.all()) > 0:
+        represent_user = content.like.all()[0].username
+    
+    context = {'like_count': str(content.like_count()),
+            'message': message,
+            'username': str(request.user.username),
+            "represent_user":represent_user,
+            "isLiked": isLiked}
+    
+    return HttpResponse(json.dumps(context), content_type="application/json")
 
 #좋아요 취소
 @login_required

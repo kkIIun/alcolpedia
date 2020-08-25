@@ -8,32 +8,101 @@
 {% endblock %}
 {% block content %}
     {% include 'nav.html' %}
-<h2 style="text-align: center; margin-top: 7%;" class="border border-light">Search</h2>
-<hr>
+    <div class="row">
+        <div class="col-lg-5 col-md-4 col-sm-4 col-xs-4 col-4"></div>
+        <h2 class="border border-light col-lg-2 col-md-4 col-sm-4 col-xs-4 col-4" style="text-align: center; margin-top: 9rem;">Search</h2>
+        <div class="col-lg-5 col-md-4 col-sm-4 col-xs-4 col-4"></div>
+    </div>
     <form action="{%url 'search'%}" class="formclass">
-        <input class="form-control mr-sm-2" type="search" placeholder="  {{q.title}}" aria-label="Search" name="q">
-    </form>
-    <div class="border border-light2">
-    {% for content in contents %}
-        
-        <img src="{{content.image.url}}" style="padding-right: 5%;">
-        <div class="content">
-            <h3>{{content.title}}</h3>
-            난이도 : {{content.difficulty}}
-            좋아요 수 : {{content.like.all|length}}   
+    <div class="row">
+            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-3 col-3"></div>
+            <input class="form-control col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6" type="search" placeholder="{{q}}" aria-label="Search" name="q">
+            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-3 col-3"></div>
         </div>
-    {% if user in content.like.all %}
-        <a href="{%url 'cancel' content.id%} ">좋아요 취소</a>
-    {% else %}
-        <a href="{%url 'like' content.id%} ">좋아요</a>
-    {% endif%}
-    <hr>
-    {{content.summary}}
-    <br>
-    <br>
-    <br>
-    <br>
-    {% endfor %}
-    
-</div>
+    </form>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-2 col-2"></div>
+        <div class="border border-light2 col-lg-8 col-md-8 col-sm-6 col-xs-8 col-8">
+        {% for content in contents %}
+            <div class= "row" style = "margin-bottom: 2rem;">
+                {% if content.image %}
+                    <img class = "col-lg-5 col-md-5 col-sm-12 col-12"src="{{content.image.url}}">
+                {% else %}
+                    <img class = "col-lg-5 col-md-5 col-sm-12 col-12" src="" style=" border: solid 1px white; height: 9rem;" >
+                {% endif %}
+                <div class="content col-lg-7 col-md-7 col-sm-12 col-12">
+                    <div class="row">
+                        <p class = "col-12"></p>
+                    </div>
+                    <div class="row">
+                        <span class = "col-lg-12 col-md-12 col-sm-12 col-12">
+                            <h3 style="display:inline;">{{content.title}}</h3>
+                            ({{content.get_sort_display}})
+                        </span>
+                    </div>
+                    <div class="row">
+                        <span class = "col-lg-4 col-md-12 col-sm-12 col-12"> 난이도 : 
+                            <script>
+                                for(var i = 0; i < {{content.difficulty}}; i++) {
+                                    document.write("★");
+                                }
+                                for(var i = 0; i < 3 - {{content.difficulty}}; i++) {
+                                    document.write("☆");
+                                }
+                            </script>
+                        </span> 
+                        <a class = "like col-lg-8 col-md-12 col-sm-12 col-12" id = "like-text-{{content.id}}" name={{content.id}}>
+                            {% if content.like_count == 1%}
+                                {{content.get_represent_user}} 님이 좋아합니다.
+                            {% elif content.like_count > 1%} 
+                                {{content.get_represent_user}} 님 외에 <script> document.write({{ content.like_count }} -1); </script> 명이 좋아합니다.
+                            {% else %}
+                                좋아요 : 0 개
+                            {%endif%}
+                        </a>   
+                    </div>
+                    <div class="row">
+                        <p class = "col-lg-12 col-md-12 col-sm-12 col-12">
+                            {{content.summary}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-2 col-2"></div>
+    </div>
+{% endblock %}
+
+
+{% block script %}
+
+<script type="text/javascript">
+    $(".like").click(function () {
+        var content_id = $(this).attr('name');
+        $.ajax({
+            type: "POST",
+            url: "{% url 'like' %}",
+            data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+            dataType: "json",
+            success: function (response) {
+                var cnt = response.like_count * 1;
+                if(cnt == 0) {
+                    $("#like-text-" + content_id).html("좋아요 0개");
+                }
+                else if(cnt == 1) {
+                    $("#like-text-" + content_id).html(response.represent_user + "님이 좋아합니다.");
+                }
+                else {
+                    $("#like-text-" + content_id).html(response.represent_user + "님 외에" + (cnt - 1) + "명이 좋아합니다.");
+                }
+            },
+            error: function (request, status, error) {
+                alert("로그인이 필요합니다.")
+                //window.location.replace("/account/login/")
+            },
+        });
+    })
+</script>
+
 {% endblock %}

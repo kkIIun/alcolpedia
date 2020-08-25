@@ -12,6 +12,19 @@
     font-style: normal;
 }
 
+
+@font-face {
+    font-family: 'InkLipquid';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+            
+
+body {
+    background-color: #000000;
+}
+
 a.what {
     text-decoration : none;
     color:white;
@@ -31,13 +44,6 @@ a.what {
     text-align: left;
 }
 
-.container-md{
-    width: 70% !important;
-    height: 15%;
-    border: solid 1px #707070;
-    background-color: #ffffff;
-}
-
 .text{
     font-family: SegoeUI;
     font-size: 100%;
@@ -52,22 +58,28 @@ a.what {
 }
 
 .background-crop {
+    max-height: 30rem;
+    height: auto;
     width: 100%;
-    height: 500px;
     overflow: hidden;
+    background-color: black;
 }
 
 .background-crop img {
     width: 100%;
-    margin: -300px 0 0 0;
+    min-height: 40rem;
+    height: auto;
+    margin: -20rem 0 0 0;
 }
 
 .top-bar-title {
     color: white;
     position: absolute;
-    top: 35%;
+    top: 15rem;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-family: 'NEXON Lv1 Gothic OTF' ;
+    font-size:30px;
 }
 
 .top-bar-sub-title {
@@ -88,3 +100,64 @@ a.what {
     font-family: 'NEXON Lv2 Gothic Bold';
     font-size: 25px;
 }
+
+
+/* audio::-webkit-media-controls-panel {
+
+}
+
+ audio::-webkit-media-controls-mute-button {
+
+}
+
+audio::-webkit-media-controls-play-button {
+
+}
+
+audio::-webkit-media-controls-timeline-container {
+
+}
+
+audio::-webkit-media-controls-current-time-display {
+
+}
+
+audio::-webkit-media-controls-time-remaining-display {
+
+}
+
+audio::-webkit-media-controls-timeline {
+
+}
+
+audio::-webkit-media-controls-volume-slider-container {
+
+}
+
+audio::-webkit-media-controls-volume-slider {
+
+}
+
+audio::-webkit-media-controls-seek-back-button {
+
+}
+
+audio::-webkit-media-controls-seek-forward-button {
+
+}
+
+audio::-webkit-media-controls-fullscreen-button {
+
+}
+
+audio::-webkit-media-controls-rewind-button {
+
+}
+
+audio::-webkit-media-controls-return-to-realtime-button {
+
+}
+
+audio::-webkit-media-controls-toggle-closed-captions-button {
+
+} */
