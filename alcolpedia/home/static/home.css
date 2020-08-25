@@ -392,7 +392,7 @@ body{
     height: auto;
 }
 
-#section-game h5,p,a {
+.game > h5,.game >  p,.game > a {
     font-weight: bold;
     text-shadow: none;
 }
