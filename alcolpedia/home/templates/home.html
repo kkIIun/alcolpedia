@@ -61,11 +61,12 @@
 
 
 <div class="row wrapper" id = "section-game-represent">
-    <img src="{% static '오렌지게임.png' %}" style="width: 50%;margin-left: 25%;">
+    <img src="{{represent_game.image.url}}" style="width: 50%;margin-left: 25%;">
     <div class="game">
-        <div id="div2" style="padding-top: 10%; font-family: 'NEXON Lv2 Gothic Bold';" >오렌지 게임은 뭐에요?</div>
-        <div id="div3" style="font-family: 'NEXON Lv1 Gothic OTF' ;">오렌지 게임은 어려운 게임이 아니에요!<br>
-            당신의 연기력을 보여주세요!</div>
+        <div id="div2" style="padding-top: 10%; font-family: 'NEXON Lv2 Gothic Bold';" >{{represent_game.title}}</div>
+        <div id="div3" style="font-family: 'NEXON Lv1 Gothic OTF' ;">
+            {{represent_game.summary}}
+        </div>
             <button id="button" type="button" class="btn btn-dark" style="background-color: #3c3c3c;">Read More</button>
     </div>
 </div>

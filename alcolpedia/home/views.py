@@ -12,15 +12,18 @@ def home(request):
     contents_list = contents_list[:min(6,contents_list_len)]
 
     bgm_list = Content.objects.filter(sort = "bgm").order_by('updated_at')
+
+    represent_game = Content.objects.filter(sort = "game").order_by('-like', 'updated_at')[0]
+    
     
     bgm_list_len = len(bgm_list)
     bgm_listt = bgm_list[:min(6,bgm_list_len)]
 
     try:
         profile = get_object_or_404(Profile, user__username = request.user.username)
-        return render(request, 'home.html',{'title': 'Alcolpedia','profile':profile,'tags':tag, 'contents': contents_list, 'bgms': bgm_list})
+        return render(request, 'home.html',{'title': 'Alcolpedia','profile':profile,'tags':tag, 'contents': contents_list, 'bgms': bgm_list, 'represent_game': represent_game})
     except :
-        return render(request,'home.html',{'title': 'Alcolpedia','tags':tag, 'contents': contents_list, 'bgms': bgm_list})
+        return render(request,'home.html',{'title': 'Alcolpedia','tags':tag, 'contents': contents_list, 'bgms': bgm_list, 'represent_game': represent_game})
 
 #검색기능
 def search(request) :
