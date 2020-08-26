@@ -136,28 +136,10 @@ img{
 .tag_box {
     align-content: center;
     text-align: center;
-    margin-top: 3%;
-    margin-bottom: 10%;
+    margin-top: 4rem;
+    margin-bottom: 10rem;
     white-space: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    padding:24px;
-}
-
-.tag_box::-webkit-scrollbar {
-    width: 10px;
-    display: none;
-}
-.tag_box::-webkit-scrollbar-thumb {
-  background-color: #2f3542;
-  border-radius: 10px;
-  background-clip: padding-box;
-  border: 2px solid transparent;
-}
-.tag_box::-webkit-scrollbar-track {
-  background-color: grey;
-  border-radius: 10px;
-  box-shadow: inset 0px 0px 5px white;
+    padding: 0 5rem 0 5rem;
 }
 
 body{
