@@ -35,8 +35,8 @@
     </form>
     <div class="tag_box">
         {% for tag in tags %}
-        <div>
-            <a style="color:white; font-family: 'NEXON Lv1 Gothic OTF';" class = "tag-button">#{{tag}}</a>
+        <div class = "tagButton">
+            <a style="color:white; font-family: 'NEXON Lv1 Gothic OTF';"  onclick="tagSelected(this);">#{{tag}}</a>
         </div>
         {% endfor %}
     </div>
@@ -106,12 +106,13 @@
 
     var searchs = [];
     var prevText = "";
-     $('.chips').chips({
+    
+    $('.chips').chips({
         placeholder: '검색어를 입력해주세요.',
     });
     
-    $(".tag-button").on("click",function(e){
-        var text = $(this).text();
+    function tagSelected(e){
+        var text = $(e).text();
         
         var elem = document.querySelectorAll('.chips')[0];
         var instance = M.Chips.getInstance(elem);
@@ -120,7 +121,7 @@
             tag: text,
             image: '', // optional
         });
-    });
+    }
 
     $("#searchButton").on("click", function(e) {
         var words = M.Chips.getInstance($('.chips')).chipsData;

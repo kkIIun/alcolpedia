@@ -27,7 +27,6 @@ def home(request):
 def search(request) :
     search_words = request.GET.getlist('search_word')
     search_words = [urllib.parse.unquote(i) for i in search_words]
-    print(search_words)
 
     contents = Content.objects.filter() #title__icontains=q
 
