@@ -12,26 +12,28 @@
 {% block content %}
 <div style="background-color: #000000;">
     {% include 'nav.html'%}
-    <div class="image_box">
-        <img src="{% static 'neon.jpg' %}" style="height:100%; width: 100%; z-index: 0;">
-    </div>
-    <div class="first">
-        <p class="font" style="color: #ffffff;">Alcolpedia</p>
-    </div>
-    <form class="formclass">
-        <div class="chips">
-            <input class="chipsInput">
-            <button id="searchButton" type="button">
-                <i class="fas fa-search"></i>
-            </button>
+    <div class="background-crop">
+        <img src="{% static 'neon.jpg' %}">
+        <div class="first">
+            <p class="font" style="color: #ffffff;">Alcolpedia</p>
         </div>
-    </form>
-    <div class="tag_box">
-        {% for tag in tags %}
-        <div class = "tagButton">
-            <a style="color:white; font-family: 'NEXON Lv1 Gothic OTF';"  onclick="tagSelected(this);">#{{tag}}</a>
+        <form class="formclass">
+            <div class="chips">
+                <input class="chipsInput">
+                <button id="searchButton" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="tag_box-wrapper">
+        <div class="tag_box">
+            {% for tag in tags %}
+            <div class = "tagButton">
+                <a style="color:white; font-family: 'NEXON Lv1 Gothic OTF';"  onclick="tagSelected(this);">#{{tag}}</a>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </div>
 
@@ -141,7 +143,7 @@
         useTransform: true,
         slide: 'div',		//슬라이드 되어야 할 태그
         infinite : true, 	//무한 반복 옵션	 
-        slidesToShow : 4,		// 한 화면에 보여질 컨텐츠 개수
+        slidesToShow : 3,		// 한 화면에 보여질 컨텐츠 개수
         slidesToScroll : 1,		//스크롤 한번에 움직일 컨텐츠 개수
         speed : 2500,	 // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
         arrows : true, 		// 옆으로 이동하는 화살표 표시 여부
@@ -160,23 +162,20 @@
         
         responsive: [ // 반응형 웹 구현 옵션
             {  
-                breakpoint: 1800, //화면 사이즈 960px
+                breakpoint: 1800,
                 settings: {
-                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
                     slidesToShow:3 
                 }
             },
             {  
-                breakpoint: 1200, //화면 사이즈 960px
+                breakpoint: 1200, 
                 settings: {
-                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
                     slidesToShow:2 
                 }
             },
             {  
-                breakpoint: 800, //화면 사이즈 960px
+                breakpoint: 800,
                 settings: {
-                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
                     slidesToShow:1 
                 }
             },
@@ -209,38 +208,33 @@
         
         responsive: [ // 반응형 웹 구현 옵션
             {  
-                breakpoint: 1800, //화면 사이즈 960px
+                breakpoint: 1800,
                 settings: {
-                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
                     slidesToShow:8
                 }
             },
             {  
-                breakpoint: 1200, //화면 사이즈 960px
+                breakpoint: 1200,
                 settings: {
-                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
                     slidesToShow:5
                 }
             },
             {  
-                breakpoint: 800, //화면 사이즈 960px
+                breakpoint: 800,
                 settings: {
-                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
                     slidesToShow:3
                 }
             },
             
             {  
-                breakpoint: 500, //화면 사이즈 960px
+                breakpoint: 500,
                 settings: {
-                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
                     slidesToShow:2
                 }
             },
             {  
-                breakpoint: 300, //화면 사이즈 960px
+                breakpoint: 300, 
                 settings: {
-                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
                     slidesToShow:1
                 }
             },

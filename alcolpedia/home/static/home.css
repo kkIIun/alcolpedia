@@ -17,8 +17,11 @@
 }
 
 .first{
+    position: absolute;
+    top: 15rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
     margin-bottom: 3%;
-    padding-top: 5%;
 }
 
 .font{
@@ -38,11 +41,14 @@ img{
     height: 13%;
     width: 8%;
 }
+
 .formclass{
+    position: absolute;
+    top: 20rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width:54.8%;
     height:7.6%;
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
 }
 
@@ -134,8 +140,13 @@ img{
     border-right: white;
 }
 
+.tag_box-wrapper {
+    margin-top: -18rem;
+    margin-bottom: 18rem;
+}
 
 .tag_box {
+    position: fixed;
     align-content: center;
     text-align: center;
     margin-top: 4rem;
@@ -474,4 +485,21 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
 
 .chips {
     border-radius: 1rem;
+}
+
+.background-crop {
+    max-height: 40rem;
+    height: auto;
+    width: 100%;
+    background-color: black;
+    padding-bottom: 20rem;
+}
+
+.background-crop img {
+    width: 100%;
+    min-height: 40rem;
+    height: auto;
+    margin: -10rem 0 0 0;
+    z-index: 999;
+    opacity: 0.7;
 }
