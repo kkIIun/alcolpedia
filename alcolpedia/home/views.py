@@ -3,6 +3,7 @@ from article.models import *
 from member.models import Profile
 from django.utils.timezone import localdate
 from django.core.paginator import Paginator
+import urllib
 
 #메인화면
 def home(request):
@@ -24,15 +25,18 @@ def home(request):
 
 #검색기능
 def search(request) :
-    q = request.GET.get('q')
-    if q :
-        contents = Content.objects.filter(title__icontains=q)
-        try:
-            profile = get_object_or_404(Profile, user__username = request.user.username)
-            return render(request,'search.html',{'contents':contents, 'q':q, 'profile':profile})
-        except:
-            return render(request,'search.html',{'contents':contents, 'q':q})
-    else : 
-        return render(request,'search.html')
-# def detail(request, content_id):
+    search_words = request.GET.getlist('search_word')
+    search_words = [urllib.parse.unquote(i) for i in search_words]
+    print(search_words)
+
+    contents = Content.objects.filter() #title__icontains=q
+
+    try:
+        profile = get_object_or_404(Profile, user__username = request.user.username)
+        return render(request,'search.html',{'contents':contents,  'profile':profile})
+    except:
+        return render(request,'search.html',{'contents':contents})
+
+    return render(request,'search.html',{'search_words': search_words})
+    # return render(request,'search.html')
 

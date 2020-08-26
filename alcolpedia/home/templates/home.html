@@ -24,14 +24,14 @@
             </ul>
             <input type="search" placeholder="Search" aria-label="Search" id = "searchInput" name="q" onchange="changeSearch()">
         </div> -->
-        <i class="close fas fa-times" onclick="this.parentElement.style.display='none'"></i>
-
         <div class="chips">
-            <input class="custom-class">
+            <input class="chipsInput">
+            <button id="searchButton" type="button">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
+            
 
-        <button id="searchButton" type="button">
-        </button>
     </form>
     <div class="row">
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-2"></div>
@@ -126,24 +126,15 @@
 
     $("#searchButton").on("click", function(e) {
         var words = M.Chips.getInstance($('.chips')).chipsData;
-        var searchWords = [];
-        var tagWords = [];
-        var queryWords = [];
+        var searchWords = "?";
         for(var i = 0; i < words.length; i++) {
-            searchWords.push(words[i]["tag"]);
+            searchWords+="search_word="+encodeURIComponent(words[i]['tag']);
+            if(i != words.length-1) {
+                searchWords += "&";
+            }
         }
-
-        searchWords.forEach(function(item, index){ 
-            if(item[0] == "#") {
-                tagWords.push(item);
-            }
-            else {
-                queryWords.push(item);
-            }
-        });
-        
-        console.log(tagWords);
-        console.log(queryWords);
+        var param = encodeURI(searchWords);
+        document.location.href = "{%url 'search' %}" + param;
     });
 
 </script>
