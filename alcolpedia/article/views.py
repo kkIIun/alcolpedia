@@ -125,9 +125,7 @@ def filter(request) :
 
     q.add(Q(difficulty__in= difficulty_list)&Q(tag__title__in= tag_list)&Q(updated_at__gt=time_threshold), q.AND)
     q.add(Q(sort=name),q.AND)
-    print(q)
     list_contents = Content.objects.filter(q)
-    print(list_contents)
 
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)

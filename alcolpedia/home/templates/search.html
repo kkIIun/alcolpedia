@@ -14,10 +14,12 @@
         <div class="col-lg-5 col-md-4 col-sm-4 col-xs-4 col-4"></div>
     </div>
     <form action="{%url 'search'%}" class="formclass">
-    <div class="row">
-            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-3 col-3"></div>
-            <input class="form-control col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6" type="search" placeholder="{{q}}" aria-label="Search" name="q">
-            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-3 col-3"></div>
+    <form class="formclass">
+        <div class="chips">
+            <input class="chipsInput">
+            <button id="searchButton" type="button">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
     </form>
     <div class="row">
@@ -105,5 +107,57 @@
             },
         });
     })
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+
+    var searchs = [];
+    var prevText = "";
+
+    
+    $(window).on('load',function() {
+        var searchedWords = ""+decodeURIComponent("{{search_words}}");
+        searchedWords = searchedWords.replace(/&#x27;/gi,"");
+        searchedWords = searchedWords.substr(1, searchedWords.length-2).split(",");
+        var elem = document.querySelectorAll('.chips')[0];
+        var instance = M.Chips.getInstance(elem);
+
+        for(var i = 0; i < searchedWords.length; i++) {
+            instance.addChip({
+                tag: searchedWords[i],
+            });
+        }
+    });   
+
+    $('.chips').chips({
+        placeholder: '검색어를 입력해주세요.',
+    });
+    
+    function tagSelected(e){
+        var text = $(e).text();
+        
+        var elem = document.querySelectorAll('.chips')[0];
+        var instance = M.Chips.getInstance(elem);
+
+        instance.addChip({
+            tag: text,
+            image: '', // optional
+        });
+    }
+
+    $("#searchButton").on("click", function(e) {
+        var words = M.Chips.getInstance($('.chips')).chipsData;
+        var searchWords = "?";
+        for(var i = 0; i < words.length; i++) {
+            searchWords+="search_word="+encodeURIComponent(words[i]['tag']);
+            if(i != words.length-1) {
+                searchWords += "&";
+            }
+        }
+        var param = encodeURI(searchWords);
+        document.location.href = "{%url 'search' %}" + param;
+    });
+
 </script>
 {% endblock %}

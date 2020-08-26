@@ -18,20 +18,13 @@
     <div class="first">
         <p class="font" style="color: #ffffff;">Alcolpedia</p>
     </div>
-    <form class="formclass"> <!--action="{%url 'search'%}" -->
-        <!-- <div id = "searchBox" style="background-color: white;">
-            <ul id = "searchList">
-            </ul>
-            <input type="search" placeholder="Search" aria-label="Search" id = "searchInput" name="q" onchange="changeSearch()">
-        </div> -->
+    <form class="formclass">
         <div class="chips">
             <input class="chipsInput">
             <button id="searchButton" type="button">
                 <i class="fas fa-search"></i>
             </button>
         </div>
-            
-
     </form>
     <div class="tag_box">
         {% for tag in tags %}
