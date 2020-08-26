@@ -208,17 +208,64 @@ hr{
 .cards{
     display: grid;
     grid-template-columns: repeat(12, minmax(auto, 60px));
-    grid-gap: 40px;
-    grid-column:  2 / span 12;
+    grid-gap: 30px;
 }
 
 .card_{
     position: relative;
-    grid-column-end: span 4;
+    grid-column: span 4;
     display: flex;
     flex-direction: column;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+}
+.card_blank {
+    display: none;
+}
+
+
+@media screen and (max-width: 900px) and (min-width: 601px) {
+    .cards{
+        display: grid;
+        grid-template-columns: repeat(12, minmax(auto, 50px));
+        grid-gap: 20px;
+    }
+    .card_{
+        position: relative;
+        grid-column: span 6;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+    }
+    .card_blank {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .card_blank {
+        position: relative;
+        grid-column: span 1;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+    }
+    .cards{
+        display: grid;
+        grid-template-columns: repeat(12, minmax(auto, 25px));
+        grid-gap: 20px;
+    }
+    .card_{
+        position: relative;
+        grid-column: span 10;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+    }
 }
 
 .card__image-container{

@@ -130,6 +130,7 @@
 
 <section class="cards container" style="margin-top:5rem;">
     {% for content in posts %}
+    <div class="card_blank"></div>
     <div class="card_">
         <div class="card__image-container" onclick="moveDetail('{% url 'detail' content.id %}')">
             <img src="{{content.image.url}}">
@@ -142,7 +143,7 @@
             {%endif%}
         </a>
         <div class="card__content">
-            <p class="card__title text-medium" onclick="moveDetail('{% url 'detail' content.id %}')">
+            <p class="card_title text-medium" onclick="moveDetail('{% url 'detail' content.id %}')">
                 {{content.title}}
             </p>
             <div style="display: inline; color: white;" onclick="moveDetail('{% url 'detail' content.id %}')">
@@ -164,12 +165,14 @@
                 <i class="far fa-heart"></i> : {{content.like.all|length}}
                 {%endif%}
             </a>
+            <br>
             {% for tag in content.tag.all %}
                 <a class="btn" href="{% url 'tag' tag.id %}"><U style="color: white;">#{{tag}}</U></a>
             {% endfor %}
         </div>
         
     </div>
+    <div class="card_blank"></div>
     {% endfor %}
 </section>
 
