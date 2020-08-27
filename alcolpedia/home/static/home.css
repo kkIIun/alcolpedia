@@ -16,13 +16,6 @@
     margin: 0 auto;
 }
 
-.first{
-    position: absolute;
-    top: 15rem;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-bottom: 3%;
-}
 
 .font{
     font-family: 'DancingScript-VariableFont_wght';
@@ -43,12 +36,8 @@ img{
 }
 
 .formclass{
-    position: absolute;
-    top: 20rem;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 3rem auto -2rem;
     width:54.8%;
-    height:7.6%;
     text-align: center;
 }
 
@@ -140,17 +129,11 @@ img{
     border-right: white;
 }
 
-.tag_box-wrapper {
-    margin-top: -18rem;
-    margin-bottom: 18rem;
-}
-
 .tag_box {
     position: fixed;
     align-content: center;
     text-align: center;
     margin-top: 4rem;
-    margin-bottom: 10rem;
     white-space: nowrap;
     padding: 0 5rem 0 5rem;
 }
@@ -177,8 +160,7 @@ body{
     line-height: 1.31;
     letter-spacing: normal;
     text-align: center;
-    margin-bottom: 5rem;
-    margin-top: 3rem;
+    margin-bottom: 9rem;
 }
 
 .circle-player {
@@ -207,8 +189,8 @@ body{
 #myVideo {
     right: 0;
     top: 0;
-    width: 120%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
 }
 
 #section-game .slick-slide {
@@ -260,7 +242,6 @@ body{
 }
 
 .game{
-    position: absolute;
     top:0;
     right: 0;
     left: 0;
@@ -352,6 +333,7 @@ body{
     text-align: center;
     color:#ffffff;
 }
+
 #div8{
     border: solid 2px #3e3e3e;
     background-color: #ffffff;
@@ -487,13 +469,13 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
     border-radius: 1rem;
 }
 
-.background-crop {
+/* .background-crop {
     max-height: 40rem;
     height: auto;
     width: 100%;
     background-color: black;
     padding-bottom: 20rem;
-}
+} */
 
 .background-crop img {
     width: 100%;
@@ -503,3 +485,26 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
     z-index: 999;
     opacity: 0.7;
 }
+
+.overlay{
+    position: absolute;
+    background-color: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+.home-main_logo{
+    transform: translate(0%,-120%);
+}
+
+.home-main_logo_fixed{
+    display: none;
+}
+
+@media screen and (min-width: 1450px){
+    
+    .home-main_logo{
+        transform: translate(0%,-200%);
+    }
+} 
