@@ -108,8 +108,8 @@
                 </script>
             </div>
         </div>
-        <div class="card__info" style="margin-left:3rem">
-            <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}" name={{content.id}} style="color: white;">
+        <div class="card__info" style="margin-left:2vw;">
+            <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}" name={{content.id}} style="color: white; padding:0;">
                 {% if user in content.like.all %}
                 <i class="fas fa-heart"></i> : {{content.like.all|length}}
                 {% else %}
@@ -118,7 +118,7 @@
             </a>
             <br>
             {% for tag in content.tag.all %}
-                <a class="btn" href="{% url 'tag' tag.id %}"><U style="color: white;">#{{tag}}</U></a>
+                <a class="btn" href="{% url 'tag' tag.id %}" style="padding-left:0"><U style="color: white; ">#{{tag}}</U></a>
             {% endfor %}
         </div>
         
@@ -133,13 +133,8 @@
         <ul class="pagination justify-content-center">
             {% if posts.has_previous %}
             <li class="page-item">
-<<<<<<< HEAD
                 <a class="page-white" href="?name=game&page={{posts.previous_page_number}}&page_cnt=10" tabindex="-1"
                     aria-disabled="false">Pre</a>
-=======
-                <a class="page-white" href="?name=game&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
-                    aria-disabled="false">Previous</a>
->>>>>>> feb39c23f7997b104ec0b59e3d909775bc6373f3
             </li>
             {% else %}
             <li class="page-item disabled">

@@ -210,13 +210,18 @@ hr{
     flex-direction: column;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+    border: 1px solid white;
+    padding-top : 1rem;
+    padding-bottom : 1rem;
+    border-radius: 5px;
+    height: 25rem;
 }
 .card_blank {
     display: none;
 }
 
 
-@media screen and (max-width: 900px) and (min-width: 601px) {
+@media screen and (max-width: 1000px) and (min-width: 601px) {
     .cards{
         display: grid;
         grid-template-columns: repeat(12, minmax(auto, 50px));
@@ -276,10 +281,10 @@ hr{
 }
 
 .text-medium {
-    margin-left: 4rem;
+    margin-left: 2vw;
     display: inline;
     font-family: 'Open Sans',sans-serif;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 1.5rem;
+    line-height: 2rem;
     font-weight: 400;
     color: #ecf0f1;
