@@ -190,7 +190,7 @@ body{
     right: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: 56rem;
 }
 
 #section-game .slick-slide {
@@ -495,7 +495,7 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
 }
 
 .home-main_logo{
-    transform: translate(0%,-120%);
+    transform: translate(0%,-200%);
 }
 
 .home-main_logo_fixed{
