@@ -508,7 +508,7 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
     }
     .home-main_logo{
         position: absolute;
-        top:30rem;
+        top:20rem;
     }
 } 
 
