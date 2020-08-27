@@ -32,6 +32,7 @@ def table_contents(request):
 
     for i in range(len(posts)):
         posts[i].no_blank_title = posts[i].title.replace(" ","")
+        posts[i].no_blank_title = posts[i].title.replace("!","")
 
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)
