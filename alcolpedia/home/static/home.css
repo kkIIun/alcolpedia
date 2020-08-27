@@ -509,6 +509,6 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
 } 
 
 .game_img{
-    width:40%;
-    height: 20%;
+    width:30rem;
+    height:20rem;
 }
