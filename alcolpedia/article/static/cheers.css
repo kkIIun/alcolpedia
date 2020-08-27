@@ -27,6 +27,7 @@ body{
 
 .background-crop {
     padding-top:5rem;
+    margin-bottom: 4rem;
     max-height: 30rem;
     height: auto;
     width: 100%;

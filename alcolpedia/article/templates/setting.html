@@ -5,7 +5,7 @@
     {{title}}
 {% endblock %} 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'setting.css' %}">
+    <link rel="stylesheet" href="{% static 'setting.css' %}?v=1.0">
 {% endblock %}
 {% block content %}
     {% include 'nav.html' %}
@@ -16,25 +16,27 @@
         </h3>
     </div>
     <div class="container">
-        <div class="card-columns col-12">
+        <div class="card-columns row card-row">
         {% for content in posts %}
-            <div class="card" >
-                <h4 style="font-family: 'NEXON Lv2 Gothic Bold'; ">
-                    {{content.title}}
-                </h4>
-                <hr style="width:80%; border:inset 1px white;">
-                <p style="font-family: 'NEXON Lv1 Gothic OTF';">
-                    {{content.summary}}
-                </p>
-                <button type="button" class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
-                    자세히 보기
-                </button>
+            <div class="card-div col-lg-4 col-md-4 col-sm-6 col-xs-12 col-12" style="padding: 1.2rem">
+                <div class="card">
+                    <h4 style="font-family: 'NEXON Lv2 Gothic Bold'; ">
+                        {{content.title}}
+                    </h4>
+                    <hr style="width:80%; border:inset 1px white;">
+                    <p style="font-family: 'NEXON Lv1 Gothic OTF';">
+                        {{content.summary}}
+                    </p>
+                    <button type="button" class=" btn" style="border: 1px solid white; color:white;" data-toggle="modal" data-target="#modal-{{content.id}}">
+                        자세히 보기
+                    </button>
+                </div>
             </div>
             <div class="modal" id = "modal-{{content.id}}" data-keyboard="false" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                  <div class="modal-content">
+                  <div class="modal-content" style="color:#303030; background-color:rgba(226, 224, 224, 0.897); border:2px solid #494848; font-size: 1.5rem;">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="staticBackdropLabel">{{content.title}}</h5>
+                      <h5 class="modal-title" id="staticBackdropLabel">{{content.title}} <i class="fas fa-mouse-pointer"></i></h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -43,7 +45,7 @@
                             {{content.body | markdown}}
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
                         </div>
                   </div>
                 </div>
@@ -67,15 +69,15 @@
                 {% for i in range %}
                 {% if i == posts.number  %}
                 <li class="page-item active" aria-current="page">
-                    <a class="page-white" href="?name=setting&page={{i}}&page_cnt=10"> {{i}} <span class="sr-only">(current)</span></a>
+                    <a class="page-white" href="?name=setting&page={{i}}&page_cnt=6"> {{i}} <span class="sr-only">(current)</span></a>
                 </li>
                 {% else %}
-                <li class="page-item"><a class="page-white" href="?name=setting&page={{i}}&page_cnt=10">{{i}}</a></li>
+                <li class="page-item"><a class="page-white" href="?name=setting&page={{i}}&page_cnt=6">{{i}}</a></li>
                 {% endif %}
                 {% endfor %}
                 {% if posts.has_next %}
                 <li class="page-item">
-                    <a class="page-white" href="?name=setting&page={{posts.next_page_number}}&page_cnt=10">Next</a>
+                    <a class="page-white" href="?name=setting&page={{posts.next_page_number}}&page_cnt=6">Next</a>
                 </li>
                 {% else %}
                 <li class="page-item disabled">

@@ -64,14 +64,9 @@ body{
 }
 
 .card{
-    height: 30rem;
-    margin-left: 2%;
-    margin-right: 2%;
-    padding-left: 1%;
-    border-radius: 10%;
-    color: white;
     background-color: black;
-    border : 1px solid white;
+    border-radius: 20px;
+    color: white;
 }
 
 .card img {
@@ -98,9 +93,6 @@ body{
     
 }
 
-.nav_style{
-    margin-left: 45%;
-}
 
 .background-crop {
     padding-top:5rem;
@@ -131,12 +123,13 @@ body{
 hr{
     color:white;
 }
+
 .card-columns {
     @include media-breakpoint-only(lg) {
-      column-count: 2;
+      column-count: 4;
     }
     @include media-breakpoint-only(xl) {
-      column-count: 3;
+      column-count: 5;
     }
 }
 
@@ -181,6 +174,11 @@ hr{
     display: none;
 }
 
+.modal-content{
+    color:black;
+    background-color: black;
+}
+
 .pagination a{
     color: white;
     float: left;
@@ -199,6 +197,89 @@ hr{
     color: white;
 } */
 
-#card_margin{
-    margin-top: 2rem;
+.cards{
+    display: grid;
+    grid-template-columns: repeat(12, minmax(auto, 60px));
+    grid-gap: 30px;
 }
+
+.card_{
+    position: relative;
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.card_blank {
+    display: none;
+}
+
+
+@media screen and (max-width: 900px) and (min-width: 601px) {
+    .cards{
+        display: grid;
+        grid-template-columns: repeat(12, minmax(auto, 50px));
+        grid-gap: 20px;
+    }
+    .card_{
+        position: relative;
+        grid-column: span 6;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+    }
+    .card_blank {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .card_blank {
+        position: relative;
+        grid-column: span 1;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+    }
+    .cards{
+        display: grid;
+        grid-template-columns: repeat(12, minmax(auto, 25px));
+        grid-gap: 20px;
+    }
+    .card_{
+        position: relative;
+        grid-column: span 10;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+    }
+}
+
+.card__image-container{
+    height: 100%;
+    padding-top:56.25%;
+    overflow: hidden;
+    position: relative;
+}
+
+.card__image-container img{
+    height: 100%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.text-medium {
+    margin-left: 4rem;
+    display: inline;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #ecf0f1;

@@ -13,7 +13,6 @@ from django.http import HttpResponse
 import json
 
 
-#술게임페이지
 def table_contents(request):
     board_name = {'game': '술게임', 'bgm':'브금', 'alcohol': '폭탄주', 'cheers':'건배사', 'setting': '옵션'}
     name= request.GET.get('name')
@@ -22,7 +21,7 @@ def table_contents(request):
     contents_list = Content.objects.filter(sort = name)
     page_cnt = request.GET.get('page_cnt')
     if not page_cnt:
-        page_cnt = 10
+        page_cnt = 6
     paginator = Paginator(contents_list,page_cnt)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
@@ -30,6 +29,11 @@ def table_contents(request):
         page = 1
     start = max(int(page)-5, 1)
     end = min(int(page)+5, paginator.num_pages)
+
+    for i in range(len(posts)):
+        posts[i].no_blank_title = posts[i].title.replace(" ","")
+        posts[i].no_blank_title = posts[i].no_blank_title.replace("!","")
+
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)
         return render(request,name+'.html',{'title': board_name[name],'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile,'tags':tag,'all_tags':all_tags})
@@ -125,9 +129,7 @@ def filter(request) :
 
     q.add(Q(difficulty__in= difficulty_list)&Q(tag__title__in= tag_list)&Q(updated_at__gt=time_threshold), q.AND)
     q.add(Q(sort=name),q.AND)
-    print(q)
     list_contents = Content.objects.filter(q)
-    print(list_contents)
 
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)

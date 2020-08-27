@@ -6,7 +6,7 @@
 {% load markdown_deux_tags %}
 {% block content %}
 {% include 'nav.html' %}
-<link rel="stylesheet" href="{% static 'style_detail.css' %}">
+<link rel="stylesheet" href="{% static 'style_detail.css' %}?v=1.0">
 <div class="first">
     {{content.title}}
     <hr style="width:30%; border:inset 1px white;">
@@ -35,6 +35,18 @@
 </p> -->
 <div class="body2">
     <br><br><br>
+    
+    {% if content.audio %}
+    <div class="third">
+        <p>
+            인트로
+        </p>
+        <hr style="width:20%; border:inset 1px white;">
+        <audio controls = "controls" id = "audio-{{content.title}}" class = "align-middle audio-style">
+            <source src = "{{content.audio.url}}"/>
+        </audio>
+    </div>
+    {% endif %}
     <div class="third">
         게임방법
         <hr style="width:20%; border:inset 1px white;">

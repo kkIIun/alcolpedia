@@ -7,6 +7,7 @@
                                minimum-scale=1.0,maximum-scale=1.0,
                                user-scalable=no" />
     <title>{% block title%} {% endblock %} </title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="shortcut icon" href="{% static 'sullicon.png' %}" type="image/x-icon">
@@ -22,11 +23,11 @@
             background-color: transparent;
         }
     </style>
-    <link rel="stylesheet" href="{% static 'font.css' %}">
+    <link rel="stylesheet" href="{% static 'font.css' %}?v=1.0">
     {% block stylesheet %}
     {% endblock %}
-    <link rel="stylesheet" href="{% static 'nav.css' %}">
-    <link rel="stylesheet" href="{% static 'footer.css' %}">
+    <link rel="stylesheet" href="{% static 'nav.css' %}?v=1.0">
+    <link rel="stylesheet" href="{% static 'footer.css' %}?v=1.0">
 </head>
 <body style="overflow-x:hidden;">
     {% block content %}

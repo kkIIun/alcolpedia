@@ -43,6 +43,10 @@
     text-decoration-line: none;
 }
 
+
+.modal-content{
+    font-family: 'NEXON Lv1 Gothic OTF';
+}
 #dropdownMenu2{
     box-shadow:none;
 }
