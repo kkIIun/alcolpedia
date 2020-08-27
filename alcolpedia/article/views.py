@@ -21,7 +21,7 @@ def table_contents(request):
     contents_list = Content.objects.filter(sort = name)
     page_cnt = request.GET.get('page_cnt')
     if not page_cnt:
-        page_cnt = 10
+        page_cnt = 6
     paginator = Paginator(contents_list,page_cnt)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
