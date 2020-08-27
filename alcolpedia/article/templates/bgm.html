@@ -64,7 +64,7 @@
                 <ul class="pagination justify-content-center" style="margin-top: 10%;">
                     {% if posts.has_previous %}
                     <li class="page-item">
-                        <a class="page-white" href="?name=bgm&page={{posts.previous_page_number}}&page_cnt=10" tabindex="-1"
+                        <a class="page-white" href="?name=bgm&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
                             aria-disabled="false">Previous</a>
                     </li>
                     {% else %}
@@ -75,15 +75,15 @@
                     {% for i in range %}
                     {% if i == posts.number  %}
                     <li class="page-item active" aria-current="page">
-                        <a class="page-white" href="?name=bgm&page={{i}}&page_cnt=10"> {{i}} <span class="sr-only">(current)</span></a>
+                        <a class="page-white" href="?name=bgm&page={{i}}&page_cnt=6"> {{i}} <span class="sr-only">(current)</span></a>
                     </li>
                     {% else %}
-                    <li class="page-item"><a class="page-white" href="?name=bgm&page={{i}}&page_cnt=10">{{i}}</a></li>
+                    <li class="page-item"><a class="page-white" href="?name=bgm&page={{i}}&page_cnt=6">{{i}}</a></li>
                     {% endif %}
                     {% endfor %}
                     {% if posts.has_next %}
                     <li class="page-item">
-                        <a class="page-white" href="?name=bgm&page={{posts.next_page_number}}&page_cnt=10">Next</a>
+                        <a class="page-white" href="?name=bgm&page={{posts.next_page_number}}&page_cnt=6">Next</a>
                     </li>
                     {% else %}
                     <li class="page-item disabled">
