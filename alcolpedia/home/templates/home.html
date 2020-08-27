@@ -11,41 +11,40 @@
 {% endblock %}
 {% block content %}
 
-<div style="background-color: #000000;">
+<div style="background-color: #000000;position: relative;">
     {% include 'nav.html'%}
     <div class="background-crop">
         <img src="{% static 'neon.jpg' %}">
     </div>
-</div>
-<div class="home-main_logo">
-    <p class="font" style="color: #ffffff;">Alcolpedia</p>
-    <form class="formclass">
-        <div class="chips">
-            <input class="chipsInput">
-            <button id="searchButton" type="button">
-                <i class="fas fa-search"></i>
-            </button>
+    <div class="home-main_logo game">
+        <p class="font" style="color: #ffffff;">Alcolpedia</p>
+        <form class="formclass">
+            <div class="chips">
+                <input class="chipsInput">
+                <button id="searchButton" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+        <div class="tag_box">
+            {% for tag in tags %}
+            <div class="tagButton">
+                <a style="color:white; font-family: 'NEXON Lv1 Gothic OTF';" onclick="tagSelected(this);">#{{tag}}</a>
+            </div>
+            {% endfor %}
         </div>
-    </form>
-    <div class="tag_box">
-        {% for tag in tags %}
-        <div class="tagButton">
-            <a style="color:white; font-family: 'NEXON Lv1 Gothic OTF';" onclick="tagSelected(this);">#{{tag}}</a>
-        </div>
-        {% endfor %}
     </div>
-    <div class="home-main_logo_fixed"></div>
 </div>
 
 <div class="row wrapper" id = "section-game" style="width: 100%; overflow: hidden;">
-    <video id="myVideo" autoplay muted loop>
+    <video id="myVideo" autoplay muted loop style="height: 65rem;">
         <source src="{% static '술움짤.webm'%}" type="video/webm">
     </video>
     <div style="background-color: #000000;">
         <div class="container5 game" style="position: absolute;">
-            <h2 class="section-title" style="margin-top:8rem;margin-bottom:10rem;">
+            <div class="section-title" style="margin-top:12rem;margin-bottom:6rem;">
                 요즘 뜨는 술게임
-            </h2>
+            </div>
             <div class="slider">
                 {% for content in contents %}
                     <div>
@@ -62,11 +61,10 @@
             </div>
         </div>
     </div>
-    <!-- <div class="overlay"></div> -->
 </div>
 
 <div class="row wrapper" id = "section-bgm">
-    <video id="myVideo" autoplay muted loop style="position: realtive; z-index: 5;">
+    <video id="myVideo" autoplay muted loop style="position: realtive;">
         <source src="{% static 'bgm.mp4'%}" type="video/mp4">
     </video>
     <section class="container game" style="position: absolute;">
