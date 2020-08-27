@@ -33,8 +33,7 @@ body{
     border: 1px solid white;
     margin-top : 30px;
     color: white;
-    padding-left: 10px;
-    padding-top: 3px;
+    padding: 1rem;
 }
 
 .btn{
@@ -53,4 +52,9 @@ body{
 
 .pagination a:hover:not(.active) {
     background-color: #ddd;
+}
+
+.card-row {
+    -webkit-column-gap: 0rem;
+    column-gap: 0rem;
 }
