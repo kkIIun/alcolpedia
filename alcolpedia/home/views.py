@@ -1,3 +1,4 @@
+from typing import ContextManager
 from django.shortcuts import render,get_object_or_404,redirect
 from article.models import *
 from member.models import Profile
@@ -7,11 +8,12 @@ import urllib
 from django.db.models import Q
 from functools import reduce
 from operator import and_, or_
+from django.db.models import Count
 
 #메인화면
 def home(request):
     tag = Tag.objects.all()
-    contents_list = Content.objects.filter(sort = "game").order_by('updated_at')
+    contents_list = Content.objects.annotate(like_count=Count('like')).filter(sort = "game", like_count__gt=-1).order_by('updated_at')
     contents_list_len = len(contents_list)
     contents_list = contents_list[:min(6,contents_list_len)]
 
