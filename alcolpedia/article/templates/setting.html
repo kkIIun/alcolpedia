@@ -26,15 +26,15 @@
                 <p style="font-family: 'NEXON Lv1 Gothic OTF';">
                     {{content.summary}}
                 </p>
-                <button type="button" class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
+                <button type="button" class=" btn" style="border: 1px solid white; color:white;" data-toggle="modal" data-target="#modal-{{content.id}}">
                     자세히 보기
                 </button>
             </div>
             <div class="modal" id = "modal-{{content.id}}" data-keyboard="false" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                  <div class="modal-content">
+                  <div class="modal-content" style="color:#303030; background-color:rgba(226, 224, 224, 0.897); border:2px solid #494848; font-size: 1.5rem;">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="staticBackdropLabel">{{content.title}}</h5>
+                      <h5 class="modal-title" id="staticBackdropLabel">{{content.title}} <i class="fas fa-mouse-pointer"></i></h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -43,7 +43,7 @@
                             {{content.body | markdown}}
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
                         </div>
                   </div>
                 </div>
