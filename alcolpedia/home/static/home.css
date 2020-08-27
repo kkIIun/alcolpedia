@@ -17,8 +17,11 @@
 }
 
 .first{
+    position: absolute;
+    top: 15rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
     margin-bottom: 3%;
-    padding-top: 5%;
 }
 
 .font{
@@ -38,10 +41,15 @@ img{
     height: 13%;
     width: 8%;
 }
+
 .formclass{
+    position: absolute;
+    top: 20rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width:54.8%;
     height:7.6%;
-    margin-left: 22.6%;
+    text-align: center;
 }
 
 
@@ -132,32 +140,19 @@ img{
     border-right: white;
 }
 
+.tag_box-wrapper {
+    margin-top: -18rem;
+    margin-bottom: 18rem;
+}
 
 .tag_box {
+    position: fixed;
     align-content: center;
     text-align: center;
-    margin-top: 3%;
-    margin-bottom: 10%;
+    margin-top: 4rem;
+    margin-bottom: 10rem;
     white-space: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    padding:24px;
-}
-
-.tag_box::-webkit-scrollbar {
-    width: 10px;
-    display: none;
-}
-.tag_box::-webkit-scrollbar-thumb {
-  background-color: #2f3542;
-  border-radius: 10px;
-  background-clip: padding-box;
-  border: 2px solid transparent;
-}
-.tag_box::-webkit-scrollbar-track {
-  background-color: grey;
-  border-radius: 10px;
-  box-shadow: inset 0px 0px 5px white;
+    padding: 0 5rem 0 5rem;
 }
 
 body{
@@ -271,9 +266,6 @@ body{
     left: 0;
     bottom: 0;
     padding-bottom: 3rem;
-    text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
-    -moz-text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
-    -webkit-text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
     color : #000000
 }
 
@@ -283,9 +275,6 @@ body{
     right: 0;
     left: 0;
     bottom: 0;
-    text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
-    -moz-text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
-    -webkit-text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
     color : #000000
 }
 
@@ -402,4 +391,115 @@ body{
     margin-top:2rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
+}
+
+.chips {
+    color: black;
+    background-color: white;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin: 0 0 8px 0;
+    min-height: 45px;
+    outline: none;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.chip {
+    display: inline-block;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0,0,0,0.6);
+    line-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    background-color: #e4e4e4;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.input-field {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.chip .close {
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+    line-height: 32px;
+    padding-left: 8px;
+}
+
+.chips .input {
+    background: none;
+    border: 0;
+    color: rgba(0,0,0,0.6);
+    display: inline-block;
+    font-size: 1rem;
+    height: 3rem;
+    line-height: 3rem;
+    outline: 0;
+    margin: 0 0 0 1rem;
+    padding: 0 !important;
+    width: 200px !important;
+}
+
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 16px;
+    margin: 0 0 8px 0;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-transition: border .3s, -webkit-box-shadow .3s;
+    transition: border .3s, -webkit-box-shadow .3s;
+    transition: box-shadow .3s, border .3s;
+    transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
+}
+
+.chip:focus {
+    background-color: #26a69a;
+}
+
+#searchButton {
+    position: absolute;
+    top:50%;
+    right: 0.2rem;
+    transform: translate(-50%, -50%);
+    border: none;
+    background-color: white;
+}
+
+.chips {
+    border-radius: 1rem;
+}
+
+.background-crop {
+    max-height: 40rem;
+    height: auto;
+    width: 100%;
+    background-color: black;
+    padding-bottom: 20rem;
+}
+
+.background-crop img {
+    width: 100%;
+    min-height: 40rem;
+    height: auto;
+    margin: -10rem 0 0 0;
+    z-index: 999;
+    opacity: 0.7;
 }

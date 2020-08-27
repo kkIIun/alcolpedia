@@ -81,8 +81,9 @@
 
 <section class="cards container" style="margin-top:5rem;">
     {% for content in posts %}
+    <div class="card_blank"></div>
     <div class="card_">
-        <div class="card__image-container">
+        <div class="card__image-container" onclick="moveDetail('{% url 'detail' content.id %}')">
             <img src="{{content.image.url}}">
         </div>
         <a class="bookmark" id="bookmark-text-{{content.id}}" name={{content.id}} style="color: white; position:absolute;right: 2rem;">
@@ -93,10 +94,10 @@
             {%endif%}
         </a>
         <div class="card__content">
-            <p class="card__title text-medium">
+            <p class="card_title text-medium" onclick="moveDetail('{% url 'detail' content.id %}')">
                 {{content.title}}
             </p>
-            <div style="display: inline; color: white;">
+            <div style="display: inline; color: white;" onclick="moveDetail('{% url 'detail' content.id %}')">
                 <script>
                     for (var i = 0; i < {{ content.difficulty }}; i++) {
                         document.write("★")
@@ -115,12 +116,14 @@
                 <i class="far fa-heart"></i> : {{content.like.all|length}}
                 {%endif%}
             </a>
+            <br>
             {% for tag in content.tag.all %}
                 <a class="btn" href="{% url 'tag' tag.id %}"><U style="color: white;">#{{tag}}</U></a>
             {% endfor %}
         </div>
         
     </div>
+    <div class="card_blank"></div>
     {% endfor %}
 </section>
 
