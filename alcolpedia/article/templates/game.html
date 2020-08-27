@@ -179,7 +179,7 @@
 
 <nav aria-label="..." class="nav_style">
     <div class="pagination_wrapper" style="text-align: center; margin-top: 10%;"> 
-        <ul class="pagination">
+        <ul class="pagination justify-content-center">
             {% if posts.has_previous %}
             <li class="page-item">
                 <a class="page-white" href="?name=game&page={{posts.previous_page_number}}&page_cnt=10" tabindex="-1"
@@ -216,6 +216,7 @@
 
 <script>
     function moveDetail(url) {
+        window.move
         window.location.href = url;
     }
 
