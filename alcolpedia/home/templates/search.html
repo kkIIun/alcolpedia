@@ -17,7 +17,7 @@
     <form action="{%url 'search'%}" class="formclass">
     <form class="formclass">
         <div class="chips">
-            <input class="chipsInput">
+            <input class="chipsInput" id = "searchChipsInput">
             <button id="searchButton" type="button">
                 <i class="fas fa-search"></i>
             </button>
@@ -183,13 +183,17 @@
     $('.chips').chips({
         placeholder: '검색어를 입력해주세요.',
     });
+
+    $('#searchChipsInput').on("change", function() {
+        var currentVal  = $(this).val();
+        alert(currentVal);
+    });
     
     function tagSelected(e){
         var text = $(e).text();
         
         var elem = document.querySelectorAll('.chips')[0];
         var instance = M.Chips.getInstance(elem);
-
         instance.addChip({
             tag: text,
             image: '', // optional

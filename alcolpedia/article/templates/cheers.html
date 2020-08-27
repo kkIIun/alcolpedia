@@ -19,9 +19,9 @@
         <div class="accordion" id="accordionExample">
         {% for content in posts %}
             <div class="card">
-              <div class="card-header" id="heading{{content.title}}">
+              <div class="card-header" id="heading{{content.no_blank_title}}">
                 <h2 class="mb-0">
-                  <button class="btn btn-outline-light btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{content.title}}" aria-expanded="true" aria-controls="collapse{{content.title}">
+                  <button class="btn btn-outline-light btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{content.no_blank_title}}" aria-expanded="true" aria-controls="collapse{{content.no_blank_title}}">
                     <ol style="list-style-type: inherit; font-family: 'NEXON Lv2 Gothic Bold'; margin-top: 1rem;">
                          <li>{{content.title}}</li>
                     </ol>
@@ -29,7 +29,7 @@
                 </h2>
               </div>
           
-              <div id="collapse{{content.title}}" class="collapse" aria-labelledby="heading{{content.title}}" data-parent="#accordionExample">
+              <div id="collapse{{content.no_blank_title}}" class="collapse" aria-labelledby="heading{{content.no_blank_title}}" data-parent="#accordionExample">
                 <div class="card-body" style="font-family: 'NEXON Lv1 Gothic OTF';">
                   {{content.body | markdown}}
                 </div>

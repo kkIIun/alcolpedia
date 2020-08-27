@@ -13,7 +13,6 @@ from django.http import HttpResponse
 import json
 
 
-#술게임페이지
 def table_contents(request):
     board_name = {'game': '술게임', 'bgm':'브금', 'alcohol': '폭탄주', 'cheers':'건배사', 'setting': '옵션'}
     name= request.GET.get('name')
@@ -30,6 +29,10 @@ def table_contents(request):
         page = 1
     start = max(int(page)-5, 1)
     end = min(int(page)+5, paginator.num_pages)
+
+    for i in range(len(posts)):
+        posts[i].no_blank_title = posts[i].title.replace(" ","")
+
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)
         return render(request,name+'.html',{'title': board_name[name],'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile,'tags':tag,'all_tags':all_tags})
