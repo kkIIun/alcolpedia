@@ -94,7 +94,7 @@
             {%endif%}
         </a>
         <div class="card__content">
-            <p class="card_title text-large" onclick="moveDetail('{% url 'detail' content.id %}')">
+            <p class="card_title text-medium" onclick="moveDetail('{% url 'detail' content.id %}')">
                 {{content.title}}
             </p>
             <div style="display: inline; color: white;" onclick="moveDetail('{% url 'detail' content.id %}')">
@@ -133,13 +133,8 @@
         <ul class="pagination justify-content-center">
             {% if posts.has_previous %}
             <li class="page-item">
-<<<<<<< HEAD
                 <a class="page-white" href="?name=game&page={{posts.previous_page_number}}&page_cnt=10" tabindex="-1"
                     aria-disabled="false">Pre</a>
-=======
-                <a class="page-white" href="?name=game&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
-                    aria-disabled="false">Previous</a>
->>>>>>> feb39c23f7997b104ec0b59e3d909775bc6373f3
             </li>
             {% else %}
             <li class="page-item disabled">
