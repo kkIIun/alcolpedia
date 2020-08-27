@@ -94,6 +94,7 @@ body{
 }
 
 
+
 .background-crop {
     padding-top:5rem;
     max-height: 30rem;
@@ -283,3 +284,4 @@ hr{
     line-height: 20px;
     font-weight: 400;
     color: #ecf0f1;
+}
