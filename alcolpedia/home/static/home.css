@@ -483,7 +483,7 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
     height: auto;
     margin: -10rem 0 0 0;
     z-index: 999;
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 .overlay{
@@ -508,3 +508,4 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
         transform: translate(0%,-200%);
     }
 } 
+
