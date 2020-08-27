@@ -5,7 +5,7 @@
     {{title}}
 {% endblock %} 
 {% block stylesheet %}  
-    <link rel="stylesheet" href="{% static 'search.css' %}">
+    <link rel="stylesheet" href="{% static 'search.css' %}?v=1.0">
 {% endblock %}
 {% block content %}
     {% include 'nav.html' %}
@@ -160,6 +160,11 @@
     function moveDetail(url) {
         window.location.href = url;
     }
+    
+    $('#searchChipsInput').on("change", function() {
+        var currentVal  = $(this).val();
+        alert(currentVal);
+    });
 
     var searchs = [];
     var prevText = "";
@@ -182,11 +187,6 @@
 
     $('.chips').chips({
         placeholder: '검색어를 입력해주세요.',
-    });
-
-    $('#searchChipsInput').on("change", function() {
-        var currentVal  = $(this).val();
-        alert(currentVal);
     });
     
     function tagSelected(e){
