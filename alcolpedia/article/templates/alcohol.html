@@ -20,7 +20,7 @@
         <div class="row">
         {% for content in posts %}
             <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
-            <div class="card col-lg-4 col-md-4 col-sm-6 col-xs-10 col-10" id='card_margin' style="min-height: 30rem; max-height: 60rem; height:auto">
+            <div class="card col-lg-4 col-md-6 col-sm-6 col-xs-10 col-10" id='card_margin' style="min-height: 30rem; max-height: 60rem; height:auto">
                 <div style="margin: 1rem; padding: 2rem; border : 1px solid white; border-radius: 20px;">
                     <img src="{{content.image.url}}" style="width: 100%;">
                     <hr>
@@ -31,9 +31,15 @@
                     <p style="font-family: 'NEXON Lv1 Gothic OTF';">
                         {{content.summary}}
                     </p>
-                    <svg width="2em" height="1.5em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                    </svg> : {{content.like.all|length}}<br>
+                    <p>
+                        <a class="like" id="like-text-{{content.id}}" name={{content.id}} style="color: white;">
+                            {% if user in content.like.all %}
+                            <i class="fas fa-heart"></i> : {{content.like.all|length}}
+                            {% else %}
+                            <i class="far fa-heart"></i> : {{content.like.all|length}}
+                            {%endif%}
+                        </a>
+                    </p>
                     <button type="button" style="margin-top:0.5rem; background-color: black; border:1px solid white; color: white;" class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
                         자세히 보기
                     </button>
@@ -97,4 +103,34 @@
         </div>
     </nav>
     
+{% endblock %}
+
+
+
+{% block script %}
+<script>
+    $(".like").click(function () {
+        var content_id = $(this).attr('name');
+        $.ajax({
+            type: "POST",
+            url: "{% url 'like' %}",
+            data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+            dataType: "json",
+            success: function (response) {
+                var cnt = response.like_count * 1;
+                if (response.isLiked) {
+                    $("#like-text-" + content_id).html('<i class="fas fa-heart"></i> : '+ cnt + ' &nbsp; {{content.title}}');
+                }
+                else {
+                    $("#like-text-" + content_id).html('<i class="far fa-heart"></i> : '+ cnt + ' &nbsp;');
+                }
+            },
+            error: function (request, status, error) {
+                alert("로그인이 필요합니다.")
+                //window.location.replace("/account/login/")
+            },
+        });
+    })
+</script>
+
 {% endblock %}
