@@ -55,7 +55,6 @@ def sign_in(request):
             except:
                 messages.error(request, "username 혹은 password가 올바르지 않습니다.")
                 return render(request, 'sign_in.html',  {"form": SignInForm()})
-
     return render(request, 'sign_in.html',  {"form": SignInForm()})
 
 # 로그아웃 기능
