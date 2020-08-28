@@ -18,7 +18,7 @@
         </h3>
 
     </div>
-    <div id="div5" style="padding-bottom: 50%;">
+    <div id="div5">
         <div class="container">
             <div class="list-group justify-content-between align-self-center">
             {% for content in posts %}
@@ -65,7 +65,7 @@
                             </div>
                                 <div class="modal-body">
                                     {{content.body|markdown}}
-                                </div>
+                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
                                 </div>
