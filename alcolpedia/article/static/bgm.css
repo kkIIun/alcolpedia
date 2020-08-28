@@ -1,5 +1,6 @@
 body {
     background-color: #000000;
+    line-height: 2;
 }
 
 a.what {
@@ -91,7 +92,9 @@ a.what {
     background-color: #ddd;
 }
 
-
+.btn-outline-light{
+    margin: 0.5em 0 0.5em 0;
+}
 
 /* audio::-webkit-media-controls-panel {
 
