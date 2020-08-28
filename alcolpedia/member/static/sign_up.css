@@ -24,3 +24,8 @@ button{
 input {
     width: 90%;
 }
+body{
+    background-image: url('bar2.jpg');
+    background-size: cover;
+    background-repeat: none;
+}

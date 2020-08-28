@@ -4,12 +4,12 @@
     로그인
 {% endblock %} 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'sign.css' %}?v=1.0">
+    <link rel="stylesheet" href="{% static 'sign_in.css' %}?v=1.0">
 {% endblock %}
 {% block content %}
     {% include 'nav.html' %}
     {% include 'alert.html' %}
-    <div class="row login-box" style="background-image:url('{% static 'drink.jpg' %}'); background-size:cover; background-repeat: none;">
+    <div class="row login-box">
         <div class="col-lg-2 col-md-2 col-sm-2"></div>
         <div class="col-10 col-lg-8 col-md-8 col-sm-8 member-box">
             <div class="row">
@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
                             <p class = "col-lg-8 col-md-8 col-sm-8 col-10">
-                                유저명
+                                Username
                             </p>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
                         </div>
@@ -37,7 +37,7 @@
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
                             <p class = "col-lg-8 col-md-8 col-sm-8 col-10">
-                                비밀번호
+                                Password
                             </p>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
                         </div>
