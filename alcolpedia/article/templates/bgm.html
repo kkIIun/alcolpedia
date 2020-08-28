@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load markdown_deux_tags %}
 {% block title%} 
     {{title}}
 {% endblock %} 
@@ -63,7 +64,7 @@
                             </button>
                             </div>
                                 <div class="modal-body">
-                                    {{content.body}}
+                                    {{content.body|markdown}}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
