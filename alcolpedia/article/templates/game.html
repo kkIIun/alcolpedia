@@ -133,7 +133,7 @@
         <ul class="pagination justify-content-center">
             {% if posts.has_previous %}
             <li class="page-item">
-                <a class="page-white" href="?name=game&page={{posts.previous_page_number}}&page_cnt=10" tabindex="-1"
+                <a class="page-white" href="?name=game&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
                     aria-disabled="false">Pre</a>
             </li>
             {% else %}
@@ -144,7 +144,7 @@
             {% for i in range %}
             {% if i == posts.number  %}
             <li class="page-item active" aria-current="page">
-                <a class="page-white" href="?name=game&page={{i}}&page_cnt=6"> {{i}} <span class="sr-only">(current)</span></a>
+                <a class="page-white" href="?name=game&page={{i}}&page_cnt=6" style="color: black;"> {{i}} <span class="sr-only">(current)</span></a>
             </li>
             {% else %}
             <li class="page-item"><a class="page-white" href="?name=game&page={{i}}&page_cnt=6">{{i}}</a></li>
