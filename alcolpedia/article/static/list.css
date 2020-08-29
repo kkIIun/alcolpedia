@@ -195,8 +195,7 @@ hr{
 
 .pagination .active {
     background-color: white;
-    border-radius: 3rem;
-    
+    border-radius: 3rem;   
 }
 
 .cards{
