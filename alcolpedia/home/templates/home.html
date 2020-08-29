@@ -287,6 +287,11 @@ $(document).ready(function(){
     var musicPlayer = new Audio();
     var currentMusic = "";
 
+    musicPlayer.ended = function() {
+        document.getElementById("play-icon-"+url).className = "fa fa-play";
+        currentMusic = "";
+    }
+
     function playMusic(url) {
         if(url == currentMusic) {
             musicPlayer.pause();
