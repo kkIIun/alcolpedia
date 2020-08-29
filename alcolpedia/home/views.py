@@ -13,7 +13,7 @@ from django.db.models import Count
 #메인화면
 def home(request):
     tag = Tag.objects.all()
-    contents_list = Content.objects.annotate(like_count=Count('like')).filter(sort = "game", like_count__gt=-1).order_by('updated_at')
+    contents_list = Content.objects.annotate(like_count=Count('like')).filter(sort = "game", like_count__gt=-1).order_by('like_count','updated_at')
     contents_list_len = len(contents_list)
     contents_list = contents_list[:min(6,contents_list_len)]
 
