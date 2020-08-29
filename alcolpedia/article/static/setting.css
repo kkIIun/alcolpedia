@@ -54,6 +54,11 @@ body{
     background-color: #ddd;
 }
 
+.pagination .active {
+    background-color: white;
+    border-radius: 3rem;   
+}
+
 .card-row {
     -webkit-column-gap: 0rem;
     column-gap: 0rem;

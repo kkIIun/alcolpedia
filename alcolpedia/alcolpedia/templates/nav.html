@@ -58,7 +58,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content" style="overflow-y: scroll; color:#303030; background-color:rgba(226, 224, 224, 0.897); border:2px solid #494848; font-size: 1.5rem;">
             <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel"> <i class="far fa-bell"> 건의하기</i></h5>
+            <h5 class="modal-title" id="staticBackdropLabel"> <i class="far fa-bell"> 건의하기(술게임아이디어환영!)</i></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -67,10 +67,10 @@
                 <div class="modal-body">
                     {% csrf_token %}
                     <h5>제목: <input type="text" name="title" style="width: 80%"></h5>
-                    <textarea name="body" placeholder="건의내용을 입력해주세요!" rows = 15 style="font-size: 1rem; width: 95%;"></textarea>
+                    <textarea name="body" placeholder="건의내용을 입력해주세요!(ex: 술게임건의하기, 오류건의하기, 건배사건의하기, 자기지역만의 특별한 bgm 등등)" rows = 15 style="font-size: 1rem; width: 95%;"></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-dark" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary btn-light btn-outline-secondary" data-dismiss="modal">닫기</button>
                     <button type="submit" class="btn btn-primary btn-light btn-outline-secondary">확인</button>
                 </div>
             </form>

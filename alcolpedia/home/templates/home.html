@@ -36,7 +36,7 @@
     </div>
 </div>
 
-<div class="row wrapper" id = "section-game" style="width: 100%; overflow: hidden;">
+<div class="row wrapper" id = "section-game">
     <video id="myVideo" autoplay muted loop style="height: 65rem;">
         <source src="{% static '술움짤.webm'%}" type="video/webm">
     </video>
@@ -98,9 +98,44 @@
 
 
 {% block script %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
 
+function getBrowserType() {
+    var _ua = navigator.userAgent;
+    var rv = -1; //IE 11,10,9,8 
+    var trident = _ua.match(/Trident\/(\d.\d)/i); 
+    if( trident != null ){ 
+        if( trident[1] == "7.0" ) return rv = "IE" + 11;
+        if( trident[1] == "6.0" ) return rv = "IE" + 10;
+        if( trident[1] == "5.0" ) return rv = "IE" + 9; 
+        if( trident[1] == "4.0" ) return rv = "IE" + 8; 
+    } //IE 7...
+    if( navigator.appName == 'Microsoft Internet Explorer' ) return rv = "IE" + 7; //other 
+    var agt = _ua.toLowerCase(); 
+    if (agt.indexOf("chrome") != -1) return 'Chrome'; 
+    if (agt.indexOf("opera") != -1) return 'Opera'; 
+    if (agt.indexOf("staroffice") != -1) return 'Star Office'; 
+    if (agt.indexOf("webtv") != -1) return 'WebTV'; 
+    if (agt.indexOf("beonex") != -1) return 'Beonex'; 
+    if (agt.indexOf("chimera") != -1) return 'Chimera'; 
+    if (agt.indexOf("netpositive") != -1) return 'NetPositive'; 
+    if (agt.indexOf("phoenix") != -1) return 'Phoenix'; 
+    if (agt.indexOf("firefox") != -1) return 'Firefox'; 
+    if (agt.indexOf("safari") != -1) return 'Safari'; 
+    if (agt.indexOf("skipstone") != -1) return 'SkipStone'; 
+    if (agt.indexOf("netscape") != -1) return 'Netscape'; 
+    if (agt.indexOf("mozilla/5.0") != -1) return 'Mozilla'; 
+}
+
+$(document).ready(function(){
+    if(getBrowserType() != "Chrome") {
+        alert("크롬 브라우저로 접속하지 않으신 경우, 비디오, 오디오 등의 컨텐츠가 제대로 재생되지 않을 수 있습니다.");
+    }
+});
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
     var searchs = [];
     var prevText = "";
     
@@ -187,21 +222,19 @@
 
       $('.tag_box').slick({
         useCSS: true,
-        pauseOnHover: true,
         useTransform: true,
         slide: 'div',		//슬라이드 되어야 할 태그
         infinite : true, 	//무한 반복 옵션	 
         slidesToShow : 8,		// 한 화면에 보여질 컨텐츠 개수
-        slidesToScroll : 1,		//스크롤 한번에 움직일 컨텐츠 개수
+        slidesToScroll : 4,		//스크롤 한번에 움직일 컨텐츠 개수
         speed : 2000,	 // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
         arrows : true, 		// 옆으로 이동하는 화살표 표시 여부
         dots : false, 		// 스크롤바 아래 점으로 페이지네이션 여부
         autoplay : true,			// 자동 스크롤 사용 여부
         autoplaySpeed : 3000, 		// 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
-        pauseOnHover : true,		// 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
+        pauseOnHover : false,		// 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
         vertical : false,		// 세로 방향 슬라이드 옵션
         adaptiveHeight: true,
-        centerMode: true,
         centerPadding: "2rem",
         prevArrow : "<button type='button' class='slick-prev'>Previous</button>",		// 이전 화살표 모양 설정
         nextArrow : "<button type='button' class='slick-next'>Next</button>",		// 다음 화살표 모양 설정
@@ -212,32 +245,37 @@
             {  
                 breakpoint: 1800,
                 settings: {
-                    slidesToShow:8
+                    slidesToShow:8,
+                    slidesToScroll:4
                 }
             },
             {  
                 breakpoint: 1200,
                 settings: {
-                    slidesToShow:5
+                    slidesToShow:5,
+                    slidesToScroll : 5
                 }
             },
             {  
                 breakpoint: 800,
                 settings: {
-                    slidesToShow:3
+                    slidesToShow:3,
+                    slidesToScroll : 3
                 }
             },
             
             {  
                 breakpoint: 500,
                 settings: {
-                    slidesToShow:2
+                    slidesToShow:2,
+                    slidesToScroll : 2
                 }
             },
             {  
                 breakpoint: 300, 
                 settings: {
-                    slidesToShow:1
+                    slidesToShow:1,
+                    slidesToScroll :1
                 }
             },
         ]
@@ -248,6 +286,11 @@
 <script>
     var musicPlayer = new Audio();
     var currentMusic = "";
+
+    musicPlayer.ended = function() {
+        document.getElementById("play-icon-"+url).className = "fa fa-play";
+        currentMusic = "";
+    }
 
     function playMusic(url) {
         if(url == currentMusic) {

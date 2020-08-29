@@ -54,11 +54,11 @@
         </div>
     </div>
     <nav aria-label="..." class="nav_style">
-        <div class="pagination_wrapper" style="text-align: center;">
-            <ul class="pagination justify-content-center" style="margin-top: 10%;">
+        <div class="pagination_wrapper" style="text-align: center; margin-top: 10%;">
+            <ul class="pagination justify-content-center">
                 {% if posts.has_previous %}
                 <li class="page-item">
-                    <a class="page-white" href="?name=setting&page={{posts.previous_page_number}}&page_cnt=10" tabindex="-1"
+                    <a class="page-white" href="?name=setting&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
                         aria-disabled="false">Pre</a>
                 </li>
                 {% else %}
@@ -69,7 +69,8 @@
                 {% for i in range %}
                 {% if i == posts.number  %}
                 <li class="page-item active" aria-current="page">
-                    <a class="page-white" href="?name=setting&page={{i}}&page_cnt=6"> {{i}} <span class="sr-only">(current)</span></a>
+                    <a class="page-white" href="?name=setting&page={{i}}&page_cnt=6" style="color: black;"> {{i}} <span
+                            class="sr-only">(current)</span></a>
                 </li>
                 {% else %}
                 <li class="page-item"><a class="page-white" href="?name=setting&page={{i}}&page_cnt=6">{{i}}</a></li>
@@ -84,7 +85,6 @@
                     <a class="page-white" href="">Next</a>
                 </li>
                 {% endif %}
-    
             </ul>
         </div>
     </nav>
