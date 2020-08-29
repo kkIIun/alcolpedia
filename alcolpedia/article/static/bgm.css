@@ -92,6 +92,11 @@ a.what {
     background-color: #ddd;
 }
 
+.pagination .active {
+    background-color: white;
+    border-radius: 3rem;   
+}
+
 .btn-outline-light{
     margin: 0.5em 0 0.5em 0;
 }
