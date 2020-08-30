@@ -40,9 +40,15 @@
                             {%endif%}
                         </a>
                     </p>
-                    <button type="button" style="margin-top:0.5rem; background-color: black; border:1px solid white; color: white;" class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
-                        자세히 보기
-                    </button>
+                    <span>
+                        <button type="button" style="margin-top:0.5rem; background-color: black; border:1px solid white; color: white;" class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
+                            자세히 보기
+                        </button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" style="margin-top:0.5rem; background-color: black; color: white; " class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
+                            Tip
+                        </button>
+                    </span>
                 </div>
             </div>
             <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
@@ -72,7 +78,7 @@
             <ul class="pagination justify-content-center">
                 {% if posts.has_previous %}
                 <li class="page-item">
-                    <a class="page-white" href="?name=game&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
+                    <a class="page-white" href="?name=alcohol&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
                         aria-disabled="false">Pre</a>
                 </li>
                 {% else %}
@@ -83,16 +89,16 @@
                 {% for i in range %}
                 {% if i == posts.number  %}
                 <li class="page-item active" aria-current="page">
-                    <a class="page-white" href="?name=game&page={{i}}&page_cnt=6" style="color: black;"> {{i}} <span
+                    <a class="page-white" href="?name=alcohol&page={{i}}&page_cnt=6" style="color: black;"> {{i}} <span
                             class="sr-only">(current)</span></a>
                 </li>
                 {% else %}
-                <li class="page-item"><a class="page-white" href="?name=game&page={{i}}&page_cnt=6">{{i}}</a></li>
+                <li class="page-item"><a class="page-white" href="?name=alcohol&page={{i}}&page_cnt=6">{{i}}</a></li>
                 {% endif %}
                 {% endfor %}
                 {% if posts.has_next %}
                 <li class="page-item">
-                    <a class="page-white" href="?name=game&page={{posts.next_page_number}}&page_cnt=6">Next</a>
+                    <a class="page-white" href="?name=alcohol&page={{posts.next_page_number}}&page_cnt=6">Next</a>
                 </li>
                 {% else %}
                 <li class="page-item disabled">
