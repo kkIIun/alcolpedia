@@ -13,9 +13,9 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Profile
-        fields = ('user', 'avatar', 'location')
+        fields = ('user', 'avatar')
 
 class ContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Content
-        fields = ('title', 'body')
+        fields = ('sort','title', 'body','tag','difficulty','like','bookmark','updated_at','summary','image','audio')
