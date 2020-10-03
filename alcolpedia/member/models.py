@@ -9,7 +9,6 @@ class Profile(models.Model):
     
     def __str__(self):
         return self.user.username
-    #신건아 모르겠다 도와줘...
     def getImageURL(self):
         if self.avatar.url :
             return self.avatar.url
