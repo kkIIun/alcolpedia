@@ -13,6 +13,13 @@ class Content(models.Model):
     SORT = (
         ('bgm','브금'),('setting','옵션'),('game','술게임'),('cheers','건배사'),('alcohol','폭탄주'),
     )
+    
+    STATUS_CHOICES = (
+        ('d', 'draft'),
+        ('p', 'published'),
+        ('w', 'withdrawn')
+    )
+
     title = models.CharField(max_length = 200)
     publisher = models.ForeignKey(User, on_delete=models.CASCADE)
     body = MDTextField(blank=True, null=True)
@@ -25,6 +32,8 @@ class Content(models.Model):
     image = models.ImageField(upload_to="content/", blank=True, null=True)
     sort = models.CharField(max_length=10,choices=SORT,default='술게임')
     audio = models.FileField(upload_to="audio/", blank = True, null = True)
+
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='d')
 
     def __str__(self):
         return self.title + "[" + self.sort + "]"
