@@ -18,7 +18,7 @@ def table_contents(request):
     name= request.GET.get('name')
     tag = Tag.objects.all()[:6]
     all_tags = Tag.objects.all()[6:]
-    contents_list = Content.objects.filter(sort = name)
+    contents_list = Content.objects.filter(sort = name).exclude(or_(Q(status = 'd'),Q(status = 'w')))
     page_cnt = request.GET.get('page_cnt')
     if not page_cnt:
         page_cnt = 6
