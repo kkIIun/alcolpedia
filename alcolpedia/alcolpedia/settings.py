@@ -2,6 +2,8 @@ import os, json
 import datetime
 import re
 
+from django.core.exceptions import ImproperlyConfigured
+
 SITE_ID = 1
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
