@@ -24,7 +24,7 @@ class ContentAdmin(admin.ModelAdmin):
     list_display = ("title", "status", "publisher", "sort",
                     "difficulty", 'bookmark_count', )
     list_filter = ('sort', 'status',)
-
+    actions = ['make_published', 'make_draft', 'make_withdrawn']
     fieldsets = (
         ("컨텐츠 정보", {
             "fields": (
@@ -52,4 +52,20 @@ class ContentAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         obj.publisher = request.user
-        super().save_model(request, obj, form, change)
+        super().save_model(request, obj, form, change
+
+    def make_published(self, request, queryset):
+        updated_count = queryset.update(status='p') #queryset.update
+        self.message_user(request, '{}개의 컨텐츠를 배포 상태로 변경'.format(updated_count))
+    make_published.short_description = '지정 컨텐츠를 배포 상태로 변경'
+
+    def make_draft(self, request, queryset):
+        updated_count = queryset.update(status='d') #queryset.update
+        self.message_user(request, '{}개의 컨텐츠를 중 상태 로 변경'.format(updated_count))
+    make_draft.short_description = '지정 컨텐츠를 준비 중 상태로 변경'
+
+    def make_withdrawn(self, request, queryset):
+        updated_count = queryset.update(status='w') #queryset.update
+        self.message_user(request, '{}개의 컨텐츠를 철수 상태 로 변경'.format(updated_count))
+    make_withdrawn.short_description = '지정 컨텐츠를 철수 상태로 변경'
+
