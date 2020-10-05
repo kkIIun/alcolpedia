@@ -37,11 +37,12 @@ class Content(models.Model):
 
     def __str__(self):
         return self.title + "[" + self.sort + "]"
-
     
     def like_count(self):
         return self.like.count()
 
+    def bookmark_count(self):
+        return self.bookmark.count()
 
     def get_represent_user(self):
         ret = ""
