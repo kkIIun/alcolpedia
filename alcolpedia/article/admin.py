@@ -52,7 +52,7 @@ class ContentAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         obj.publisher = request.user
-        super().save_model(request, obj, form, change
+        super().save_model(request, obj, form, change)
 
     def make_published(self, request, queryset):
         updated_count = queryset.update(status='p') #queryset.update
