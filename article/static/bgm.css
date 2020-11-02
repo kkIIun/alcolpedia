@@ -1,15 +1,6 @@
-@font-face {
-    font-family: 'NEXON Lv2 Gothic Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic Bold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'NEXON Lv1 Gothic OTF';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+body {
+    background-color: #000000;
+    line-height: 2;
 }
 
 a.what {
@@ -31,13 +22,6 @@ a.what {
     text-align: left;
 }
 
-.container-md{
-    width: 70% !important;
-    height: 15%;
-    border: solid 1px #707070;
-    background-color: #ffffff;
-}
-
 .text{
     font-family: SegoeUI;
     font-size: 100%;
@@ -52,22 +36,28 @@ a.what {
 }
 
 .background-crop {
+    max-height: 30rem;
+    height: auto;
     width: 100%;
-    height: 500px;
     overflow: hidden;
+    background-color: black;
 }
 
 .background-crop img {
     width: 100%;
-    margin: -300px 0 0 0;
+    min-height: 40rem;
+    height: auto;
+    margin: -20rem 0 0 0;
 }
 
 .top-bar-title {
     color: white;
     position: absolute;
-    top: 35%;
+    top: 15rem;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-family: 'NEXON Lv1 Gothic OTF' ;
+    font-size:30px;
 }
 
 .top-bar-sub-title {
@@ -87,4 +77,93 @@ a.what {
 .align-middle{
     font-family: 'NEXON Lv2 Gothic Bold';
     font-size: 25px;
+}
+
+.pagination a{
+    color: white;
+    float: left;
+    padding: 8px 20px;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 3rem;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.pagination .active {
+    background-color: white;
+    border-radius: 3rem;   
+}
+
+.btn-outline-light{
+    margin: 0.5em 0 0.5em 0;
+}
+
+/* audio::-webkit-media-controls-panel {
+
+}
+
+ audio::-webkit-media-controls-mute-button {
+
+}
+
+audio::-webkit-media-controls-play-button {
+
+}
+
+audio::-webkit-media-controls-timeline-container {
+
+}
+
+audio::-webkit-media-controls-current-time-display {
+
+}
+
+audio::-webkit-media-controls-time-remaining-display {
+
+}
+
+audio::-webkit-media-controls-timeline {
+
+}
+
+audio::-webkit-media-controls-volume-slider-container {
+
+}
+
+audio::-webkit-media-controls-volume-slider {
+
+}
+
+audio::-webkit-media-controls-seek-back-button {
+
+}
+
+audio::-webkit-media-controls-seek-forward-button {
+
+}
+
+audio::-webkit-media-controls-fullscreen-button {
+
+}
+
+audio::-webkit-media-controls-rewind-button {
+
+}
+
+audio::-webkit-media-controls-return-to-realtime-button {
+
+}
+
+audio::-webkit-media-controls-toggle-closed-captions-button {
+
+} */
+
+
+.modal-body img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
 }

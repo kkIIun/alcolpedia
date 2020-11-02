@@ -5,7 +5,7 @@
     {{title}}
 {% endblock %} 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'list.css' %}">
+    <link rel="stylesheet" href="{% static 'list.css' %}?v=1.0">
 {% endblock %}
 {% block content %}
 <hr>
@@ -14,137 +14,93 @@
 
 {% include 'nav.html' %}
 
-<div style="text-align: center;">
-    <img src="{% static 'chess.jpg' %}" class="img">
+<div class = "background-crop" style="text-align: center;">
+    <img src="{% static 'party.jpg' %}" style="margin: -5rem 0 0 0;">
+    <h3 class = "top-bar-title" style="width: 100%; text-align: center;">
+        &nbsp 엄준식이~ 좋아하는~ 랜덤게임~
+    </h3>
 </div>
 
-
-<div style="display: inline; margin-left: 130px;">
-    <button class="starbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        {% if difficulty and difficulty != '0' %}
-            <div class="filter" style="color: #646262; font-family:NotoSans;">{{difficulty}}</div>
-        {% else %}
-            <div class="filter" style="color: #8b8b8b; font-family:NotoSans;">난이도 ▼</div>
-        {% endif %}
-    </button>
-
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'filter'%}?difficulty=1&tag={{tag}}&date={{date}}">★</a>
-        <a class="dropdown-item" href="{% url 'filter'%}?difficulty=2&tag={{tag}}&date={{date}}">★★</a>
-        <a class="dropdown-item" href="{% url 'filter'%}?difficulty=3&tag={{tag}}&date={{date}}">★★★</a>
-    </div>
-</div>
-
-<div style="display:inline;margin-right: 200px;margin-left: 20px;">
-    <button class="starbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        {% if date != '0' and date %}
-            <div class="filter" style="color: #8b8b8b; font-family:NotoSans;">{{date}}일</div>
-        {% else %}
-            <div class="filter" style="color: #8b8b8b; font-family:NotoSans;">날짜순 ▼</div>
-        {% endif %}
-    </button>
-
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'filter'%}?date=7&tag={{tag}}&difficulty={{difficulty}}">일주일</a>
-        <a class="dropdown-item" href="{% url 'filter'%}?date=30&tag={{tag}}&difficulty={{difficulty}}">1개월</a>
-        <a class="dropdown-item" href="{% url 'filter'%}?date=90&tag={{tag}}&difficulty={{difficulty}}">3개월</a>
-    </div>
-</div>
-{% for tag in tags %}
-    <div style="display: inline;margin-left: 15px;">
-        <a class="starbutton" style="padding: 15px 15px;color: #707077;"href="{% url 'filter' %}?tag={{tag}}&date={{date}}&difficulty={{difficulty}}" >#{{tag}}</a>
-    </div>
-{% endfor %}
-
-<div style="display: inline;margin-left: 20px;">
-    <button class="starbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        <div class="filter" style="color: #8b8b8b; font-family:NotoSans;">▼</div>
-    </button>
-
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        {% for tag in all_tags%}
-            <a class="dropdown-item" href="{% url 'filter'%}?date=7&tag={{tag}}&difficulty={{difficulty}}">#{{tag}}</a>
-        {% endfor %}
-    </div>
-</div>
-
-
-<hr style="border:inset 1px white;">
-
-
-<div class="container">
-    <div class="card-columns col-12">
+<section class="cards container" style="margin-top:5rem;">
     {% for content in posts %}
-        <div class="card" onclick="moveDetail('{% url 'detail' content.id %}')">
-            <img src="{{content.image.url}}" style="width: 100%;">
-            <br>
-            {{content.title}}
-            <hr style="border:inset 1px white;">
-            난이도:
+    <div class="card_blank"></div>
+    <div class="card_">
+        <div class="card__image-container" onclick="moveDetail('{% url 'detail' content.id %}')">
+            <img src="{{content.image.url}}">
+        </div>
+        <a class="bookmark" id="bookmark-text-{{content.id}}" name={{content.id}} style="color: white; position:absolute;right: 2rem;">
+            {% if user in content.bookmark.all %}
+            <i class="fas fa-bookmark"></i>
+            {% else %}
+            <i class="far fa-bookmark"></i>
+            {%endif%}
+        </a>
+        <div class="card__content">
+            <p class="card_title text-medium" onclick="moveDetail('{% url 'detail' content.id %}')">
+                {{content.title}}
+            </p>
+            <div style="display: inline; color: white;" onclick="moveDetail('{% url 'detail' content.id %}')">
                 <script>
-                    for(var i = 0; i < {{content.difficulty}}; i++) {
+                    for (var i = 0; i < {{ content.difficulty }}; i++) {
                         document.write("★")
                     }
-                    for(var i = 0; i < 3-{{content.difficulty}}; i++) {
+                    for (var i = 0; i < 3 - {{ content.difficulty }}; i++) {
                         document.write("☆")
                     }
                 </script>
-            <br><br>
-            <p>
-            <svg width="2em" height="1.5em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-            </svg> : {{content.like.all|length}}
-            </p>
-            <div class="container2">
-                {% for tag in content.tag.all %}
-                <div class="card2">
-                    <a class="btn" href="{% url 'tag' tag.id %}"><U style="color: white;">#{{tag}}</U></a>
-                </div>
-                {% endfor %}
             </div>
         </div>
-    {% endfor %}
+        <div class="card__info" style="margin-left:2vw;">
+            <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}" name={{content.id}} style="color: white; padding:0;">
+                {% if user in content.like.all %}
+                <i class="fas fa-heart"></i> : {{content.like.all|length}}
+                {% else %}
+                <i class="far fa-heart"></i> : {{content.like.all|length}}
+                {%endif%}
+            </a>
+            <br>
+            {% for tag in content.tag.all %}
+                <a class="btn" href="{% url 'tag' tag.id %}" style="padding-left:0"><U style="color: white; ">#{{tag}}</U></a>
+            {% endfor %}
+        </div>
+        
     </div>
-</div>
-
-
+    <div class="card_blank"></div>
+    {% endfor %}
+</section>
 
 
 <nav aria-label="..." class="nav_style">
-    <div class="pagination_wrapper" style="text-align: center;">
-        <ul class="pagination">
+    <div class="pagination_wrapper" style="text-align: center; margin-top: 10%;"> 
+        <ul class="pagination justify-content-center">
             {% if posts.has_previous %}
             <li class="page-item">
-                <a class="page-link" href="?page={{posts.previous_page_number}}&page_cnt=10" tabindex="-1"
-                    aria-disabled="false">Previous</a>
+                <a class="page-white" href="?name=game&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
+                    aria-disabled="false">Pre</a>
             </li>
             {% else %}
             <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                <a class="page-white" href="" tabindex="-1" aria-disabled="true">Pre</a>
             </li>
             {% endif %}
             {% for i in range %}
             {% if i == posts.number  %}
             <li class="page-item active" aria-current="page">
-                <a class="page-link" href="?page={{i}}&page_cnt=10"> {{i}} <span class="sr-only">(current)</span></a>
+                <a class="page-white" href="?name=game&page={{i}}&page_cnt=6" style="color: black;"> {{i}} <span class="sr-only">(current)</span></a>
             </li>
             {% else %}
-            <li class="page-item"><a class="page-link" href="?page={{i}}&page_cnt=10">{{i}}</a></li>
+            <li class="page-item"><a class="page-white" href="?name=game&page={{i}}&page_cnt=6">{{i}}</a></li>
             {% endif %}
             {% endfor %}
             {% if posts.has_next %}
             <li class="page-item">
-                <a class="page-link" href="?page={{posts.next_page_number}}&page_cnt=10">Next</a>
+                <a class="page-white" href="?name=game&page={{posts.next_page_number}}&page_cnt=6">Next</a>
             </li>
             {% else %}
             <li class="page-item disabled">
-                <a class="page-link" href="#">Next</a>
+                <a class="page-white" href="">Next</a>
             </li>
             {% endif %}
-
         </ul>
     </div>
 </nav>
@@ -152,11 +108,57 @@
 {% block script %}
 
 <script>
+
+
     function moveDetail(url) {
         window.move
         window.location.href = url;
     }
 
+    $(".bookmark").click(function () {
+            var content_id = $(this).attr('name');
+            $.ajax({
+                type: "POST",
+                url: "{% url 'bookmark' %}",
+                data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+                dataType: "json",
+                success: function (response) {
+                    if (response.isBookmarked) {
+                        $("#bookmark-text-" + content_id).html('<i class="fas fa-bookmark"></i>');
+                    }
+                    else {
+                        $("#bookmark-text-" + content_id).html('<i class="far fa-bookmark"></i>');
+                    }
+                },
+                error: function (request, status, error) {
+                    alert("로그인이 필요합니다.")
+                    //window.location.replace("/account/login/")
+                },
+            });
+        })
+
+    $(".like").click(function () {
+        var content_id = $(this).attr('name');
+        $.ajax({
+            type: "POST",
+            url: "{% url 'like' %}",
+            data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+            dataType: "json",
+            success: function (response) {
+                var cnt = response.like_count * 1;
+                if (response.isLiked) {
+                    $("#like-text-" + content_id).html('<i class="fas fa-heart"></i> : '+ cnt + ' &nbsp; {{content.title}}');
+                }
+                else {
+                    $("#like-text-" + content_id).html('<i class="far fa-heart"></i> : '+ cnt + ' &nbsp;');
+                }
+            },
+            error: function (request, status, error) {
+                alert("로그인이 필요합니다.")
+                //window.location.replace("/account/login/")
+            },
+        });
+    })
 </script>
 
 {% endblock %}

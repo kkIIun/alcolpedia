@@ -18,3 +18,4 @@ def contents_function(request):
     contents = Content.objects.filter(updated_at__isnull=False).order_by('updated_at')
     content_list = serializers.serialize('json', contents)
     return HttpResponse(content_list, content_type="text/json-comment-filtered")
+

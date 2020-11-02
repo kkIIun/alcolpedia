@@ -1,29 +1,68 @@
-
 {% extends "base_no_footer.html" %}
 {% load static %}
 {% block title%} 
     로그인
 {% endblock %} 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'sign_in.css' %}">
+    <link rel="stylesheet" href="{% static 'sign_in.css' %}?v=1.0">
 {% endblock %}
 {% block content %}
     {% include 'nav.html' %}
-    <div class="two">
-        <form method="post">
-            <div id="one" class="border border-light">
-                {% csrf_token %}
-                <p>
-                    username
-                </p>{{ form.username }}<br>
-                <br>
-                <p>
-                    password
-                </p>
-                <input type="password" name = "password">
-                <br><br><br>
-                <input type="submit" value="Sign In" class="btn btn-outline-light" style="margin-left: 50%;">
+    {% include 'alert.html' %}
+    <div class="row login-box">
+        <div class="col-lg-2 col-md-2 col-sm-2"></div>
+        <div class="col-10 col-lg-8 col-md-8 col-sm-8 member-box">
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-2"></div>
+                <div id="one" class="border border-light col-lg-6 col-md-8 col-sm-12 col-10">
+                    <form method="post">
+                        {% csrf_token %}
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
+                            <p class = "col-lg-8 col-md-8 col-sm-8 col-10">
+                                Username
+                            </p>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-1 col-sm-2 col-1"></div>
+                            <div class = "col-lg-8 col-md-10 col-sm-8 col-10">
+                                {{ form.username }}
+                                
+                            </div>
+                            <div class="col-lg-2 col-md-1 col-sm-2 col-1"></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
+                            <p class = "col-lg-8 col-md-8 col-sm-8 col-10">
+                                Password
+                            </p>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-1 col-sm-2 col-1"></div>
+                            <div class = "col-lg-8 col-md-10 col-sm-8 col-10">
+                                <input type="password" name = "password">
+                            </div>
+                            <div class="col-lg-2 col-md-1 col-sm-2 col-1"></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-4"></div>
+                            <div class = "col-lg-4 col-md-4 col-sm-4 col-4">
+                                <input type="submit" value="Sign In" class="btn btn-outline-light">
+
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-4"></div>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+                <div class="col-lg-3 col-md-2 col-sm-2 col-2"></div>
             </div>
-        </form>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2"></div>
     </div>
 {% endblock %}

@@ -1,29 +1,18 @@
-@font-face {
-    font-family: 'NEXON Lv2 Gothic Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic Bold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-@font-face {
-    font-family: 'NEXON Lv1 Gothic OTF';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-        
-
-.background-crop img{
-    width: 100%;
-    margin: -300px 0 0 0;
-    margin-bottom: 50%;
-}
-
+      
 .background-crop {
+    padding-top:8rem;
+    max-height: 30rem;
+    height: auto;
     width: 100%;
-    height: 500px;
     overflow: hidden;
+    background-color: black;
+}
+
+.background-crop img {
+    width: 100%;
+    min-height: 40rem;
+    height: auto;
+    margin: -25rem 0 0 0;
 }
 
 body{
@@ -33,7 +22,7 @@ body{
 .top-bar-title {
     color: white;
     position: absolute;
-    top: 40%;
+    top: 15rem;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'NEXON Lv1 Gothic OTF';
@@ -44,13 +33,33 @@ body{
     border: 1px solid white;
     margin-top : 30px;
     color: white;
-    padding-left: 10px;
-    padding-top: 3px;
+    padding: 1rem;
 }
 
 .btn{
-    border-color:white;
     color: white;
     margin-bottom: 3px;
 }
 
+.pagination a{
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 3rem;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.pagination .active {
+    background-color: white;
+    border-radius: 3rem;   
+}
+
+.card-row {
+    -webkit-column-gap: 0rem;
+    column-gap: 0rem;
+}

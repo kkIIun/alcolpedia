@@ -1,21 +1,4 @@
-@font-face {
-    font-family: 'NEXON Lv2 Gothic Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic Bold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'NEXON Lv1 Gothic OTF';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-            
-
 body{
-    height: 100%;
-    width: 100%;
     background-color: #000000;
 }
 .navbar {
@@ -43,7 +26,7 @@ body{
 }
 
 .first{
-    margin-top: 12.6%;
+    margin-top: 10rem;
     text-align: center;
     font-size: 45px;
     background-color: #000000;
@@ -88,18 +71,29 @@ body{
 
 .forth{
     color:white;
-    display: flex;
     background-color: #000000;
-    margin-left: 30%;
-    margin-right: 30%;
 }
 
-.forth_baby{
+.detail-content-body{
     color:white;
-    flex:1;
-    margin-right: 3%;
-    margin-left: 3%;
     font-family: 'NEXON Lv1 Gothic OTF';
+    text-align: center;
+}
+
+.detail-content-body img {
+    width: 40%;
+}
+.detail-content-body forth {
+    text-align: center;
+}
+.detail-content-body ul {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+.detail-content-body li{
+    text-align: center;
+    width: fit-content;
 }
 
 .body2{

@@ -9,13 +9,11 @@ class Profile(models.Model):
     
     def __str__(self):
         return self.user.username
-    #신건아 모르겠다 도와줘...
     def getImageURL(self):
         if self.avatar.url :
             return self.avatar.url
         else :
             return "media/사용자.png"
-
 
 @receiver(post_save, sender = User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -25,10 +23,3 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender = User)
 def save_user_profilepost_save(sender, instance, **kwargs):
     instance.profile.save()
-
-
-
-# class Bookmark(models.Model):
-#     content = models.ForeignKey(Content, on_delete=models.CASCADE)
-#     # member = models.ForeignKey(Profile, on_delete=models.CASCADE)
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
