@@ -1,0 +1,292 @@
+body{
+    background-color: rgb(0, 0, 0);
+    margin: 0;
+    padding: 0;
+    
+}
+.navbar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 12.6%;
+    width: 100%;
+    margin: 0;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-size: 1.8em;
+    background-color: #404040;
+}
+
+.what{
+    font-size: 0.5em;
+    color:white;
+}
+
+
+.what:hover {
+    color:grey;
+}
+
+.img{
+    
+    width: 100%;
+    height: 500px;
+}
+
+.top2{
+    margin-left: 5%;
+    display: inline;
+    height: 5%;
+    width: 25%;
+    
+}
+
+.starbutton{
+    border-radius: 25px;
+    border: solid 1px #ffffff;
+    background-color: #000000;
+    flex:1;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 15px;
+}
+
+.star{
+    width: 6%;
+    height: 10%;
+    border-radius: 25px;
+    border: solid 1px #ffffff;
+    background-color: #000000;
+    margin-right: 0;
+    
+}
+
+.card{
+    background-color: black;
+    border-radius: 20px;
+    color: white;
+}
+
+.card img {
+    height: auto;
+    padding: 0.5rem 0.5rem 0rem 0.5rem;
+    border-radius: 2rem;
+}
+
+.container2{
+    display: flex;
+    height: 50%;
+    margin-bottom: 10%;
+    margin-right: 5%;
+    padding-top: 5%;
+}
+
+.card2{
+
+    width: 50%;
+    height:80%;
+    margin-left: 4%;
+    margin-right: 3%;
+    margin-bottom: 1%;
+    
+}
+
+
+
+.background-crop {
+    padding-top:5rem;
+    max-height: 30rem;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    background-color: black;
+}
+
+.background-crop img {
+    width: 100%;
+    min-height: 40rem;
+    height: auto;
+    margin: -25rem 0 0 0;
+}
+.top-bar-title {
+    color: white;
+    position: absolute;
+    top: 15rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'InkLipquid';
+    font-size:40px;
+}
+
+
+hr{
+    color:white;
+}
+
+.card-columns {
+    @include media-breakpoint-only(lg) {
+      column-count: 4;
+    }
+    @include media-breakpoint-only(xl) {
+      column-count: 5;
+    }
+}
+
+.background-crop {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+.background-crop img {
+    width: 100%;
+    margin: -300px 0 0 0;
+}
+
+
+.tag{
+    border-radius: 25px;
+    border: solid 1px #ffffff;
+    background-color: #000000;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 15px;
+}
+
+.contents{
+    margin-bottom: 10%;
+    margin-top: 2%;
+}
+
+
+#filter{
+    align-content: center;
+    text-align: center;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+#filter::-webkit-scrollbar {
+    width: 10px;
+    display: none;
+}
+
+.modal-content{
+    color:black;
+    background-color: black;
+}
+
+.pagination a{
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 3rem;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.pagination .active {
+    background-color: white;
+    border-radius: 3rem;   
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(12, minmax(auto, 60px));
+    grid-gap: 30px;
+}
+
+.card_{
+    position: relative;
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    border: 1px solid white;
+    padding-top : 1rem;
+    padding-bottom : 1rem;
+    border-radius: 5px;
+    height: 25rem;
+}
+.card_blank {
+    display: none;
+}
+
+
+@media screen and (max-width: 1000px) and (min-width: 601px) {
+    .cards{
+        display: grid;
+        grid-template-columns: repeat(12, minmax(auto, 50px));
+        grid-gap: 20px;
+    }
+    .card_{
+        position: relative;
+        grid-column: span 6;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+    }
+    .card_blank {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .card_blank {
+        position: relative;
+        grid-column: span 1;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+    }
+    .cards{
+        display: grid;
+        grid-template-columns: repeat(12, minmax(auto, 25px));
+        grid-gap: 20px;
+    }
+    .card_{
+        position: relative;
+        grid-column: span 10;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+    }
+}
+
+.card__image-container{
+    height: 100%;
+    padding-top:56.25%;
+    overflow: hidden;
+    position: relative;
+}
+
+.card__image-container img{
+    height: 100%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.text-medium {
+    margin-left: 2vw;
+    display: inline;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 400;
+    color: #ecf0f1;
+}

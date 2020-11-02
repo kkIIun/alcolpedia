@@ -1,0 +1,110 @@
+
+body{
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    
+}
+.navbar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 12.6%;
+    width: 100%;
+    margin: 0;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-size: 1.8em;
+    background-color: #404040;
+}
+
+.what{
+    font-size: 0.5em;
+    color:white;
+}
+
+
+.what:hover {
+    color:grey;
+}
+
+
+
+.img{
+    margin-top: 2.5%;
+    width: 100%;
+}
+
+.top2{
+    margin-top: 2.9%;
+    margin-right: 70%;
+    margin-left: 5%;
+    display: inline;
+    height: 5%;
+    width: 25%;
+    
+}
+
+.starbutton{
+    height:100%;
+    width: 1%;
+    border-radius: 25px;
+    border: solid 1px #707070;
+    background-color: #ffffff;
+    margin-right: 5%;
+    margin-top: 0;
+    flex:1;
+    padding-top: 1%;
+   
+}
+
+.star{
+    width: 7%;
+    height: 13%;
+    border-radius: 25px;
+    border: solid 1px #707070;
+    background-color: #ffffff;
+    margin-right: 0;
+    
+}
+
+.container{
+    display: flex;
+    height: 50%;
+    margin-bottom: 10%;
+    margin-top: 2%;
+}
+
+.card{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    padding-left: 1%;
+    flex: 1;
+    border-radius: 10%;
+    box-shadow: 3px 3px 3px 3px gray;
+    color: #404040;
+    font-family: NotoSans;
+}
+
+
+.container2{
+    display: flex;
+    height: 50%;
+    margin-bottom: 10%;
+    margin-right: 5%;
+    padding-top: 5%;
+}
+
+.card2{
+    width: 50%;
+    height:80%;
+    margin-left: 4%;
+    margin-right: 3%;
+    margin-bottom: 1%;
+    
+}
+
+.nav_style{
+    margin-left: 45%;
+}

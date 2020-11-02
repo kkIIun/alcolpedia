@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title%} 
+    {{profile.user.username}}님의 페이지
+{% endblock %} 
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'profile.css' %}?v=1.0">
+{% endblock %}
+{% block content %}
+{% include 'nav.html' %}
+<div class="background-crop">
+    <img src="{% static 'field_cheers.jpg' %}" >
+</div>
+<section class = "profile-content">
+    <form action="{%url 'profile' %}" method="POST" enctype="multipart/form-data"> 
+        {%csrf_token%}
+        <input type="file" id = "file" class="" name="image" style="display: none;">
+        <div class = "profile-image-box">
+            <img src="{{profile.avatar.url}}" class = "profile-image" id = "profile-image">
+            <div class = "profile-image-edit" id = "profile-image-edit" onclick="fileUpload()">
+                <i class="far fa-edit"></i>
+            </div>
+        </div>
+    
+        <div class = "profile-box">
+            <button type="button" class = "btn btn-dark profile-modify-button" id = "modify-button">
+                프로필 수정하기
+            </button>
+            <button type="submit" class = "btn btn-dark profile-modify-button" id = "complete-button" style="visibility: hidden;">
+                완료
+            </button>
+            <div class = "profile-name-box" id = "profile-name-box">
+                <h3 style="margin-bottom: 0;">
+                    {{profile.user.username}}
+                </h3>
+            </div>
+        </div>
+    </form>
+</section>
+
+<section class="bookmark-content">
+    <br>
+    <hr style="width:30%; background-color: white;">
+    <br>
+    <h4 style="color: white; text-align:center;"><i class="far fa-bookmark"></i>  BOOKMARK <i class="far fa-bookmark"></i></h4>
+    {% for bookmark in bookmarks %}
+    <br>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2"></div>
+            
+            <div class="col-lg-8 col-md-8 col-sm-8 col-8">   
+                <a class="list-group-item "
+                id="bookmark_a" href="{% url 'detail' bookmark.id%}">{{bookmark.title}}
+                </a>
+            </div>   
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2"></div> 
+    </div>      
+    {% endfor %}
+</section>
+<!-- 찜한 목록 들어가야함. -->
+
+{% endblock %}
+
+
+{% block script %}
+
+<script>
+    var chk = true;
+    document.getElementById("modify-button").onclick = modify;
+    document.getElementById("complete-button").onclick = modify;
+
+    
+    function fileUpload() {
+        onclick=document.all.file.click();
+    }
+
+    var file = document.getElementById('file');
+    file.onchange = function(e) {
+        var fileReader = new FileReader();
+        fileReader.readAsDataURL(e.target.files[0]);
+        fileReader.onload = function(e) { 
+            console.log(e.target.result);
+            document.getElementById("profile-image").src = e.target.result;
+        }
+    }
+
+    function modify() {
+        if(chk) {
+            document.getElementById("modify-button").style.visibility = "hidden";
+            document.getElementById("complete-button").style.visibility = "visible";
+            document.getElementById("profile-image-edit").style.visibility = "visible";
+            document.getElementById("profile-name-box").innerHTML = '<input class="form-control input-name" type="search" value="{{profile.user.username}}" name="name">';
+            chk = false;
+        }
+    }
+</script>
+
+{% endblock%}
