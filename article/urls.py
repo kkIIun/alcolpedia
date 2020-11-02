@@ -10,5 +10,8 @@ urlpatterns = [
     path('detail/<int:content_id>', views.detail, name="detail"),
     path('filter', views.filter, name="filter"),
     re_path(r'^bookmark/$', views.bookmark, name='bookmark'),
+<<<<<<< HEAD:article/urls.py
     path('commenting/<int:content_id>', views.commenting, name='commenting'),
+=======
+>>>>>>> 3b83b424d86a2804b163edd62c76807d953ce7e2:alcolpedia/article/urls.py
 ]
