@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+{% load markdown_deux_tags %}
+{% block title%} 
+    {{title}}
+{% endblock %} 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'cheers.css' %}?v=1.0">
+{% endblock %}
+{% block content %}
+    {% include 'nav.html' %}
+    <div class="background-crop">
+        <img src="{% static 'cheers.jpg'%}">
+        <h3 class = "top-bar-title" style="width: 100%; text-align: center;">
+            그대의 눈동자에 Cheers
+        </h3>
+    </div>
+    <div class="container">
+        <div class="accordion" id="accordionExample">
+        {% for content in posts %}
+            <div class="card">
+              <div class="card-header" id="heading{{content.no_blank_title}}">
+                <h2 class="mb-0">
+                  <button class="btn btn-outline-light btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{content.no_blank_title}}" aria-expanded="true" aria-controls="collapse{{content.no_blank_title}}">
+                    <ol style="list-style-type: inherit; font-family: 'NEXON Lv2 Gothic Bold'; margin-top: 1rem;">
+                         <li>{{content.title}}</li>
+                    </ol>
+                  </button>
+                </h2>
+              </div>
+          
+              <div id="collapse{{content.no_blank_title}}" class="collapse" aria-labelledby="heading{{content.no_blank_title}}" data-parent="#accordionExample">
+                <div class="card-body" style="font-family: 'NEXON Lv1 Gothic OTF';">
+                  {{content.body | markdown}}
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+    <nav aria-label="..." class="nav_style">
+      <div class="pagination_wrapper" style="text-align: center; margin-top: 10%;">
+        <ul class="pagination justify-content-center">
+          {% if posts.has_previous %}
+          <li class="page-item">
+            <a class="page-white" href="?name=cheers&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
+              aria-disabled="false">Pre</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="page-white" href="" tabindex="-1" aria-disabled="true">Pre</a>
+          </li>
+          {% endif %}
+          {% for i in range %}
+          {% if i == posts.number  %}
+          <li class="page-item active" aria-current="page">
+            <a class="page-white" href="?name=cheers&page={{i}}&page_cnt=6" style="color: black;"> {{i}} <span
+                class="sr-only">(current)</span></a>
+          </li>
+          {% else %}
+          <li class="page-item"><a class="page-white" href="?name=cheers&page={{i}}&page_cnt=6">{{i}}</a></li>
+          {% endif %}
+          {% endfor %}
+          {% if posts.has_next %}
+          <li class="page-item">
+            <a class="page-white" href="?name=cheers&page={{posts.next_page_number}}&page_cnt=6">Next</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="page-white" href="">Next</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+   
+    
+{% endblock %}

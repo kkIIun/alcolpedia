@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static %}
+{% load markdown_deux_tags %}
+{% block title%} 
+    {{title}}
+{% endblock %} 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'list.css' %}?v=1.0">
+{% endblock %}
+{% block content %}
+    {% include 'nav.html' %}
+    <div class="background-crop">
+        <img src="{% static 'drink2.jpg' %}" >
+        <h3 class = "top-bar-title" style="width: 100%; text-align: center;">
+            술은 섞을수록 더 단 법
+        </h3>
+    </div>
+    
+    <div class="container" style="margin-top: 5rem;">
+        <div class="row">
+        {% for content in posts %}
+            <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
+            <div class="card col-lg-4 col-md-6 col-sm-6 col-xs-10 col-10" id='card_margin' style="min-height: 30rem; max-height: 60rem; height:auto">
+                <div style="margin: 1rem; padding: 2rem; border : 1px solid white; border-radius: 20px;">
+                    <img src="{{content.image.url}}" style="width: 100%;">
+                    <hr>
+                    <h4 style="font-family: 'NEXON Lv2 Gothic Bold';">
+                        {{content.title}}
+                    </h4>
+                    <hr style="border:1px solid white">
+                    <p style="font-family: 'NEXON Lv1 Gothic OTF';">
+                        {{content.summary}}
+                    </p>
+                    <p>
+                        <a class="like" id="like-text-{{content.id}}" name={{content.id}} style="color: white;">
+                            {% if user in content.like.all %}
+                            <i class="fas fa-heart"></i> : {{content.like.all|length}}
+                            {% else %}
+                            <i class="far fa-heart"></i> : {{content.like.all|length}}
+                            {%endif%}
+                        </a>
+                    </p>
+                    <span>
+                        <button type="button" style="margin-top:0.5rem; background-color: black; border:1px solid white; color: white;" class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
+                            자세히 보기
+                        </button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" style="margin-top:0.5rem; background-color: black; color: white; " class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
+                            Tip
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
+            <div class="modal" id = "modal-{{content.id}}" data-keyboard="false" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content" style="color:#303030; background-color:rgba(226, 224, 224, 0.897); border:2px solid #494848; font-size: 1.5rem;">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">{{content.title}} <i class="fab fa-bitbucket"></i></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                        <div class="modal-body">
+                            {{content.body | markdown}}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
+                        </div>
+                  </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <nav aria-label="..." class="nav_style">
+        <div class="pagination_wrapper" style="text-align: center; margin-top: 10%;">
+            <ul class="pagination justify-content-center">
+                {% if posts.has_previous %}
+                <li class="page-item">
+                    <a class="page-white" href="?name=alcohol&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
+                        aria-disabled="false">Pre</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-white" href="" tabindex="-1" aria-disabled="true">Pre</a>
+                </li>
+                {% endif %}
+                {% for i in range %}
+                {% if i == posts.number  %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-white" href="?name=alcohol&page={{i}}&page_cnt=6" style="color: black;"> {{i}} <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                {% else %}
+                <li class="page-item"><a class="page-white" href="?name=alcohol&page={{i}}&page_cnt=6">{{i}}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if posts.has_next %}
+                <li class="page-item">
+                    <a class="page-white" href="?name=alcohol&page={{posts.next_page_number}}&page_cnt=6">Next</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-white" href="">Next</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    
+{% endblock %}
+
+
+
+{% block script %}
+<script>
+    $(".like").click(function () {
+        var content_id = $(this).attr('name');
+        $.ajax({
+            type: "POST",
+            url: "{% url 'like' %}",
+            data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+            dataType: "json",
+            success: function (response) {
+                var cnt = response.like_count * 1;
+                if (response.isLiked) {
+                    $("#like-text-" + content_id).html('<i class="fas fa-heart"></i> : '+ cnt + ' &nbsp; {{content.title}}');
+                }
+                else {
+                    $("#like-text-" + content_id).html('<i class="far fa-heart"></i> : '+ cnt + ' &nbsp;');
+                }
+            },
+            error: function (request, status, error) {
+                alert("로그인이 필요합니다.")
+                //window.location.replace("/account/login/")
+            },
+        });
+    })
+</script>
+
+{% endblock %}

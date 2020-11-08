@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,
+                               minimum-scale=1.0,maximum-scale=1.0,
+                               user-scalable=no" />
+    <title>{% block title%} {% endblock %} </title>
+    <script data-ad-client="ca-pub-4109124908326756" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<<<<<<< HEAD:alcolpedia/templates/base_no_footer.html
+=======
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+>>>>>>> 3b83b424d86a2804b163edd62c76807d953ce7e2:alcolpedia/alcolpedia/templates/base.html
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{% static 'sullicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <style>
+        body::-webkit-scrollbar {
+            width: 4px;
+        }
+        body::-webkit-scrollbar-thumb {
+            background-color: #2f3542;
+        }
+        body::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+    </style>
+<<<<<<< HEAD:alcolpedia/templates/base_no_footer.html
+    {% block stylesheet %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'font.css' %}?v=1.0">
+=======
+    <link rel="stylesheet" href="{% static 'font.css' %}?v=1.0">
+    {% block stylesheet %}
+    {% endblock %}
+>>>>>>> 3b83b424d86a2804b163edd62c76807d953ce7e2:alcolpedia/alcolpedia/templates/base.html
+    <link rel="stylesheet" href="{% static 'nav.css' %}?v=1.0">
+    <link rel="stylesheet" href="{% static 'footer.css' %}?v=1.0">
+</head>
+<body style="overflow-x:hidden;">
+    {% block content %}
+    {% endblock %}
+
+<<<<<<< HEAD:alcolpedia/templates/base_no_footer.html
+=======
+    {% include 'footer.html' %}
+>>>>>>> 3b83b424d86a2804b163edd62c76807d953ce7e2:alcolpedia/alcolpedia/templates/base.html
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script>
+        var box1 = document.getElementById("box1");
+        var k = 0;
+        var size = 0;
+        var i, j;
+        function navClicked() {
+            if (k == 0) {
+                box1.style.height = size + "px";
+                box1.style.visibility = "visible";
+                i = setInterval(expand, 5);
+            }
+            else {
+                clearInterval(i);
+                ight = size + "px";
+                j = setInterval(contract, 5);
+            }
+            k = 1 - k;
+        }
+
+        function expand() {
+            if (size == 200) {
+                clearInterval(i);
+            }
+            else {
+                size += 10;
+                box1.style.height = size + "px";
+            }
+        }
+
+        function contract() {
+            if (size <= 0) {
+                clearInterval(j);
+                box1.style.visibility = "hidden";
+            }
+            else {
+                size -= 10;
+                box1.style.height = size + "px";
+            }
+        }
+    </script>
+    {% block script %}
+    {% endblock %}
+    
+</body>
+</html>

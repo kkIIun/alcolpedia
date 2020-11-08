@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load markdown_deux_tags %}
+{% load static %}
+{% block title%} 
+    {{title}}
+{% endblock %} 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'setting.css' %}?v=1.0">
+{% endblock %}
+{% block content %}
+    {% include 'nav.html' %}
+    <div class="background-crop">
+        <img src="{% static 'option.jpg'%}">
+        <h3 class = "top-bar-title" style="width: 100%; text-align: center;">
+            깔고 가는 옵션
+        </h3>
+    </div>
+    <div class="container">
+        <div class="card-columns row card-row">
+        {% for content in posts %}
+            <div class="card-div col-lg-4 col-md-4 col-sm-6 col-xs-12 col-12" style="padding: 1.2rem">
+                <div class="card">
+                    <h4 style="font-family: 'NEXON Lv2 Gothic Bold'; ">
+                        {{content.title}}
+                    </h4>
+                    <hr style="width:80%; border:inset 1px white;">
+                    <p style="font-family: 'NEXON Lv1 Gothic OTF';">
+                        {{content.summary}}
+                    </p>
+                    <button type="button" class=" btn" style="border: 1px solid white; color:white;" data-toggle="modal" data-target="#modal-{{content.id}}">
+                        자세히 보기
+                    </button>
+                    <button type="button" class=" btn" style="border: 1px solid white; color:white;" data-toggle="modal" data-target="#modal2-{{content.id}}">
+                        댓글
+                    </button>
+                </div>
+            </div>
+            <div class="modal" id = "modal-{{content.id}}" data-keyboard="false" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content" style="color:#303030; background-color:rgba(226, 224, 224, 0.897); border:2px solid #494848; font-size: 1.5rem;">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">{{content.title}} <i class="fas fa-mouse-pointer"></i></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                        <div class="modal-body">
+                            {{content.body | markdown}}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
+                        </div>
+                  </div>
+                </div>
+            </div>
+            <div class="modal" id = "modal2-{{content.id}}" data-keyboard="false" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content" style="color:#303030; background-color:rgba(226, 224, 224, 0.897); border:2px solid #494848; font-size: 1.5rem;">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">{{content.title}} <i class="fas fa-mouse-pointer"></i></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                        <div class="modal-body">
+                            {% for comment in comments %}
+                            <br>작성자 : {{comment.author}}
+                            <br>내용 : {{comment.body}}
+                            <br>{{comment.pub_date}}
+                            <hr>
+                            {% endfor %}
+                            <form action="/article/commenting/{{content.id}}" method="post">
+                                {%csrf_token%}
+                                <input type="text" name='body'>
+                                <button type="submit">작성</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
+                        </div>
+                  </div>
+                </div>
+            </div>
+            
+        {% endfor %}
+        </div>
+    </div>
+    <nav aria-label="..." class="nav_style">
+        <div class="pagination_wrapper" style="text-align: center; margin-top: 10%;">
+            <ul class="pagination justify-content-center">
+                {% if posts.has_previous %}
+                <li class="page-item">
+                    <a class="page-white" href="?name=setting&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
+                        aria-disabled="false">Pre</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-white" href="" tabindex="-1" aria-disabled="true">Pre</a>
+                </li>
+                {% endif %}
+                {% for i in range %}
+                {% if i == posts.number  %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-white" href="?name=setting&page={{i}}&page_cnt=6" style="color: black;"> {{i}} <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                {% else %}
+                <li class="page-item"><a class="page-white" href="?name=setting&page={{i}}&page_cnt=6">{{i}}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if posts.has_next %}
+                <li class="page-item">
+                    <a class="page-white" href="?name=setting&page={{posts.next_page_number}}&page_cnt=6">Next</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-white" href="">Next</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    
+{% endblock %}
+
+
