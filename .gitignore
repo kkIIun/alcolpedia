@@ -1,6 +1,8 @@
 # created by shinkeonkim
 
 secrets.json
+uploads/profile
+uploads/audio
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,django,venv
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,django,venv
