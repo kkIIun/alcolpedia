@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="{% static 'list.css' %}?v=1.0">
 {% endblock %}
 {% block content %}
+<div class="content">
     {% include 'nav.html' %}
     <div class="background-crop">
-        <img src="{% static 'drink2.jpg' %}" >
-        <h3 class = "top-bar-title" style="width: 100%; text-align: center;">
-            술은 섞을수록 더 단 법
+            <h3 class = "top-bar-title" style="width: 100%; text-align: center;">
+            폭탄주
         </h3>
     </div>
     
@@ -20,8 +20,8 @@
         <div class="row">
         {% for content in posts %}
             <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
-            <div class="card col-lg-4 col-md-6 col-sm-6 col-xs-10 col-10" id='card_margin' style="min-height: 30rem; max-height: 60rem; height:auto">
-                <div style="margin: 1rem; padding: 2rem; border : 1px solid white; border-radius: 20px;">
+            <div class="card col-lg-4 col-md-6 col-sm-6 col-xs-10 col-10" id='card_margin' style="min-height: 30rem; max-height: 60rem; height:auto; ">
+                <div style="margin: 1rem; padding: 2rem; ">
                     <img src="{{content.image.url}}" style="width: 100%;">
                     <hr>
                     <h4 style="font-family: 'NEXON Lv2 Gothic Bold';">
@@ -133,7 +133,7 @@
             </ul>
         </div>
     </nav>
-    
+</div>    
 {% endblock %}
 
 
