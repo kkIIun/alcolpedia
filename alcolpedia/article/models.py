@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from mdeditor.fields import MDTextField
 from django.utils import timezone
+from django.conf import settings
+
 
 class Tag(models.Model):
     title = models.CharField(max_length = 50)
@@ -49,3 +51,12 @@ class Content(models.Model):
         if len(self.like.all()) > 0:
             ret = self.like.all()[0].username
         return ret
+
+class Comment(models.Model):
+    content = models.ForeignKey(Content, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name='comments')
+    body = models.TextField()
+    pub_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.author}님이 {self.content}에 단 댓글"

@@ -10,4 +10,5 @@ urlpatterns = [
     path('detail/<int:content_id>', views.detail, name="detail"),
     path('filter', views.filter, name="filter"),
     re_path(r'^bookmark/$', views.bookmark, name='bookmark'),
+    path('commenting/<int:content_id>', views.commenting, name='commenting')
 ]
