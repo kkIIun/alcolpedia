@@ -34,6 +34,7 @@ def contents_function(request):
 def profile_function(request):
     profile = Profile.objects.filter(user = request.user)
     if request.method == 'GET' :
+        profile = Profile.objects.filter(user = request.user)
         profile_serialize = json.loads(serializers.serialize('json', profile))
         bookmarks = Content.objects.filter(bookmark__id = request.user.id)
         bookmark_list = json.loads(serializers.serialize('json', bookmarks)) 
@@ -46,12 +47,26 @@ def profile_function(request):
     #         serializer.save()
     #     return HttpResponse(serializer, content_type="text/json-comment-filtered")
 
+    if request.method == 'PUT' :
+        profile = get_object_or_404(Profile,user__username = request.user.username)
+        user = get_object_or_404(User, pk = request.user.id)
+        username = request.GET.get('username')
+        image = request.FILES.get('image')
+        if username:
+            user.username = username
+        if image:
+            profile.avatar = image
+        user.save()
+        profile.save()
+
+
 @permission_classes((IsAuthenticated, ))
 @authentication_classes((JSONWebTokenAuthentication,))
 def tag_function(request):
     tags = Tag.objects.all()
     tags = serializers.serialize('json', tags)
     return HttpResponse(tags, content_type="text/json-comment-filtered")
+
 # def comment_create(request, music_id):
 #     serializer = ProfileSerializer(data=request.data)
 #     if serializer.is_valid(raise_exception=True):
