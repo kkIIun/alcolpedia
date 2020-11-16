@@ -28,11 +28,6 @@
             </div>
         </form>
         <div class = 'tag_box'>
-            {% for tag in tags%}
-            <div class='tagButton'">
-                <a style=" font-family: 'NEXON Lv1 Gothic OTF'; "onclick='tagSelected(this);'>#{{tag}}</a>
-            </div>
-            {%endfor%}
         </div>
     </div>
 </div>
@@ -311,7 +306,7 @@
         }
     }
 </script>
-<!-- <script>
+<script>
     var data
     $.ajax({
         method: "GET",
@@ -319,13 +314,10 @@
         headers: { Authorization: "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IjEyMyIsImV4cCI6MTYwNTUyNjk3OCwiZW1haWwiOiIiLCJvcmlnX2lhdCI6MTYwNDkyMjE3OH0._8MIKCISqykcYjyFGbtyYFklBcOVdLQ6rPElKgg3-uY" },
     })
         .done(function (msg) {
-            var result
             $.each(msg, function(index,item){
-                result += ("#" + item.fields.title)
+                $(".tag_box").append("<div onclick='tagSelected(this);'>" + item.fields.title +"</div>")
             })
-            $(".tagButton a").append(result)
         })
-</script> -->
-
+</script>
 
 {% endblock %}
