@@ -1,3 +1,4 @@
+
 from django.shortcuts import render,get_object_or_404,redirect
 from rest_framework import viewsets, pagination
 from .serializers import ProfileSerializer, UserSerializer, ContentSerializer
@@ -14,8 +15,6 @@ from article.models import Tag
 from django.contrib.auth.decorators import login_required
 import json
 from django.contrib import auth
-
-
 
 @api_view(['GET', 'POST'])
 @permission_classes((IsAuthenticated, ))
