@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="{% static 'list.css' %}?v=1.0">
 {% endblock %}
 {% block content %}
+<div class="content">
     {% include 'nav.html' %}
     <div class="background-crop">
-        <img src="{% static 'drink2.jpg' %}" >
-        <h3 class = "top-bar-title" style="width: 100%; text-align: center;">
-            술은 섞을수록 더 단 법
+            <h3 class = "top-bar-title" style="width: 100%; text-align: center;">
+            폭탄주
         </h3>
     </div>
     
@@ -20,8 +20,8 @@
         <div class="row">
         {% for content in posts %}
             <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
-            <div class="card col-lg-4 col-md-6 col-sm-6 col-xs-10 col-10" id='card_margin' style="min-height: 30rem; max-height: 60rem; height:auto">
-                <div style="margin: 1rem; padding: 2rem; border : 1px solid white; border-radius: 20px;">
+            <div class="card col-lg-4 col-md-6 col-sm-6 col-xs-10 col-10" id='card_margin' style="min-height: 30rem; max-height: 60rem; height:auto; ">
+                <div style="margin: 1rem; padding: 2rem; ">
                     <img src="{{content.image.url}}" style="width: 100%;">
                     <hr>
                     <h4 style="font-family: 'NEXON Lv2 Gothic Bold';">
@@ -45,7 +45,7 @@
                             자세히 보기
                         </button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="button" style="margin-top:0.5rem; background-color: black; color: white; " class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
+                        <button type="button" style="margin-top:0.5rem; background-color: black; color: white; " class="btn" data-toggle="modal" data-target="#modal2-{{content.id}}">
                             Tip
                         </button>
                     </span>
@@ -63,6 +63,38 @@
                     </div>
                         <div class="modal-body">
                             {{content.body | markdown}}
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
+                        </div>
+                  </div>
+                </div>
+            </div>
+            <div class="modal" id = "modal2-{{content.id}}" data-keyboard="false" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content" style="color:#303030; background-color:rgba(226, 224, 224, 0.897); border:2px solid #494848; font-size: 1.5rem;">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">{{content.title}} <i class="fab fa-bitbucket"></i></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                        <div class="modal-body">
+                            {{comment.content | markdown}}
+                            <hr>
+                            {% if user.is_authenticated %}
+                            <form action = "/article/commenting/{{content.id}}" method = "post">
+                                {%csrf_token%}
+                                <input type="text" name="body">
+                                <button type = "submit">작성</button>
+                            </form>
+                            {%else%}
+                            <p>댓글 달기는 로그인 후 이용하실 수 있습니다! 
+                                <a href="{%url 'sign_in'%}"> 로그인 하러가기</a>
+                                <a href="{%url 'sign_up'%}"> 회원가입 하러가기</a>
+                            </p>
+                            {%endif%}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
@@ -108,7 +140,7 @@
             </ul>
         </div>
     </nav>
-    
+</div>    
 {% endblock %}
 
 

@@ -160,5 +160,11 @@ def bookmark(request):
     
     return HttpResponse(json.dumps(context), content_type="application/json")
 
-
+def commenting(request, content_id):
+    new_comment = Comment()
+    new_comment = get_object_or_404(Content, pk=content_id)
+    new_comment.author = request.user
+    new_comment.body = request.POST.get('body')
+    new_comment.save()
+    return redirect('/article/' + str(content_id))
     
