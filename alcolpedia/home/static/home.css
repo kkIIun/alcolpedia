@@ -1,3 +1,10 @@
+body {
+    width: 100%;
+    height: auto;
+    padding: 0 0 3px;
+    background-image: linear-gradient(to bottom, #4b8c69, #0e0e0e 33%, #4b8c69 42%, #0e0e0e 52%, #4b8c69);
+}
+
 .navbar {
     position: fixed;
     top: 0px;
@@ -17,8 +24,9 @@
 }
 
 
+
 .font{
-    font-family: 'DancingScript-VariableFont_wght';
+    /* font-family: 'DancingScript-VariableFont_wght';
     font-size: 56px;
     font-weight: bold;
     font-stretch: normal;
@@ -27,7 +35,19 @@
     letter-spacing: normal;
     text-align: center;
     margin: 0;
-    padding: 0;
+    padding: 0; */
+   
+    margin: 0;
+    text-shadow: 0 0 60px #9effc6;
+    font-family: NotoSansCJKKR;
+    font-size: 60px;
+    
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: 1.6px;
+    text-align: center;
+    color: #ffffff;
     
 }
 img{
@@ -138,12 +158,7 @@ img{
     padding: 0 5rem 0 5rem;
 }
 
-body{
-    padding: 0;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #000000;
-}
+
 
 .gredient{
     height: 300px;
@@ -152,7 +167,7 @@ body{
 
 .section-title{
     color: white;
-    font-family: 'NEXON Lv1 Gothic OTF';
+    font-family: NotoSansCJKKR;
     font-size: 2rem;
     font-weight: bold;
     font-stretch: normal;
@@ -219,6 +234,9 @@ body{
     flex:1;
     margin-left: 1.2rem;
     margin-right: 1.2rem;
+    
+       
+    
 }
 
 .card_container{
@@ -515,4 +533,26 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
 .game_img{
     width:30rem;
     height:20rem;
+}
+
+.more {
+    width: 1920px;
+    height: 5644px;
+    padding: 0 0 3px;
+    background-image: linear-gradient(to bottom, #4b8c69, #0e0e0e 33%, #4b8c69 42%, #0e0e0e 52%, #4b8c69);
+  }
+
+.cheers {
+  width: 40rem;
+  height: 5rem;
+  margin: 0 auto;
+  justify-content: center;
+  border-radius: 100px;
+  box-shadow: 0 3px 20px 0 rgba(177, 255, 193, 0.59);
+  background-image: linear-gradient(to bottom, #7dffcb, #b7ff80);
+  font-weight:bold;
+  font-size: 1rem;
+  text-align: center;
+  padding-top: 25px;
+  
 }
