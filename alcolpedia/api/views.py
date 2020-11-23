@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from rest_framework import viewsets, pagination
 from .serializers import ProfileSerializer, UserSerializer, ContentSerializer
 from member.models import Profile
@@ -11,7 +11,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.response import Response
 from article.models import Tag
+from django.contrib.auth.decorators import login_required
 import json
+from django.contrib import auth
 
 
 
@@ -32,21 +34,16 @@ def contents_function(request):
 @permission_classes((IsAuthenticated, ))
 @authentication_classes((JSONWebTokenAuthentication,))
 def profile_function(request):
-    profile = Profile.objects.filter(user = request.user)
     if request.method == 'GET' :
         profile = Profile.objects.filter(user = request.user)
         profile_serialize = json.loads(serializers.serialize('json', profile))
         bookmarks = Content.objects.filter(bookmark__id = request.user.id)
         bookmark_list = json.loads(serializers.serialize('json', bookmarks)) 
         profile_serialize[0] = [profile_serialize[0], bookmark_list]
-        # print(profile_serialize[0][1][1]['fields']['title']) 
+        profile_serialize[0][0]['fields']['user'] = request.user.username
+        print(profile_serialize[0][0]['fields']['user']) 
         return HttpResponse(json.dumps(profile_serialize), content_type="text/json-comment-filtered")
-    # elif request.method == 'PUT' :
-    #     serializer = ProfileSerializer(profile ,data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #     return HttpResponse(serializer, content_type="text/json-comment-filtered")
-
+    
     if request.method == 'PUT' :
         profile = get_object_or_404(Profile,user__username = request.user.username)
         user = get_object_or_404(User, pk = request.user.id)
@@ -67,8 +64,3 @@ def tag_function(request):
     tags = serializers.serialize('json', tags)
     return HttpResponse(tags, content_type="text/json-comment-filtered")
 
-# def comment_create(request, music_id):
-#     serializer = ProfileSerializer(data=request.data)
-#     if serializer.is_valid(raise_exception=True):
-#         serializer.save(music_id=music_id)
-#         return Response(serializer.data)

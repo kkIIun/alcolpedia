@@ -130,14 +130,17 @@ img{
 }
 
 .tag_box {
-    position: fixed;
+    
     align-content: center;
     text-align: center;
     margin-top: 4rem;
     white-space: nowrap;
-    color : white;
     padding: 0 5rem 0 5rem;
     font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+div.tag_box div{
+    color:white;
 }
 
 body{
