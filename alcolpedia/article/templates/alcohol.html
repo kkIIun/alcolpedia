@@ -83,11 +83,18 @@
                         <div class="modal-body">
                             {{comment.content | markdown}}
                             <hr>
+                            {% if user.is_authenticated %}
                             <form action = "/article/commenting/{{content.id}}" method = "post">
                                 {%csrf_token%}
                                 <input type="text" name="body">
                                 <button type = "submit">작성</button>
                             </form>
+                            {%else%}
+                            <p>댓글 달기는 로그인 후 이용하실 수 있습니다! 
+                                <a href="{%url 'sign_in'%}"> 로그인 하러가기</a>
+                                <a href="{%url 'sign_up'%}"> 회원가입 하러가기</a>
+                            </p>
+                            {%endif%}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
