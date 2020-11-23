@@ -12,10 +12,10 @@
 {% endblock %}
 {% block content %}
 
-<div style="background-color: #000000;position: relative;">
+<div >
     {% include 'nav.html'%}
     <div class="background-crop">
-        <img src="{% static 'neon.jpg' %}">
+        <!-- <img src="{% static 'neon.jpg' %}"> -->
     </div>
     <div class="home-main_logo game">
         <p class="font" style="color: #ffffff;">Alcolpedia</p>
@@ -39,14 +39,16 @@
 
 <div class="row wrapper" id="section-game">
     <video id="myVideo" autoplay muted loop style="height: 65rem;">
-        <source src="{% static '술움짤.webm'%}" type="video/webm">
+        <!-- <source src="{% static '술움짤.webm'%}" type="video/webm"> -->
     </video>
     <div style="background-color: #000000;">
         <div class="container5 game" style="position: absolute;">
-            <div class="section-title" style="margin-top:12rem;margin-bottom:6rem;">
+
+            <div class="section-title" style="margin-top:50rem;">
                 요즘 뜨는 술게임
             </div>
-            <div class="slider">
+            
+            <!-- <div class="slider">
                 {% for content in contents %}
                 <div>
                     <div class="card" style="width: 16rem; margin-left:auto; margin-right: auto;">
@@ -60,7 +62,7 @@
                     </div>
                 </div>
                 {% endfor %}
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -70,8 +72,8 @@
         <source src="{% static 'bgm.mp4'%}" type="video/mp4">
     </video>
     <section class="container game" style="position: absolute;">
-        <h2 class="section-title" style="margin-top:18rem;margin-bottom: 10rem;">
-            친구가 마실때, 흥을 돋아주자!
+        <h2 class = "section-title" style="margin-top:18rem;margin-bottom: 10rem;">
+            오늘의 추천 BGM
         </h2>
         <div class="row">
             <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -96,6 +98,13 @@
             </div>
         </div>
     </section>
+</div>
+<div>
+    <h2 class="section-title" style="margin-top:18rem;margin-bottom: 10rem;">
+        오늘의 추천 건배사</h2>
+    <div style="text-align: right;"> 더보기
+    </div>
+    <section class="cheers">아이유</section>
 </div>
 
 {% endblock %}
