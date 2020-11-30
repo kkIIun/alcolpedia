@@ -22,10 +22,9 @@
     </script>
 </p>
 <div class="second">
-    {% for tag in content.tag.all %}
+    {% for tag in tags %}
         <div class="second_baby">{{tag}}</div>
     {% endfor %}
-
 </div>
 <!-- <p style="text-align: center;">
     {{music}} 플레이

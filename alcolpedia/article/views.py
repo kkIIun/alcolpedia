@@ -81,11 +81,13 @@ def tag(request,tag_id) :
 #게시물 보기
 def detail(request,content_id) :
     content = get_object_or_404(Content,pk = content_id)
+    tags = content.tag.all
+    print(tags)
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)
-        return render(request,'detail.html',{'title': content.title ,'content':content,'profile':profile})
+        return render(request,'detail.html',{'title': content.title ,'content':content,'profile':profile, 'tags': tags})
     else :
-        return render(request,'detail.html',{'title': content.title ,'content':content})
+        return render(request,'detail.html',{'title': content.title ,'content':content, 'tags': tags})
 
 def filter(request) : 
     tags = Tag.objects.all()[:6]
