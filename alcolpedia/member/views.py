@@ -62,7 +62,6 @@ def sign_out(request):
     auth.logout(request)
     return redirect('/')
 
-
 @login_required
 def profile(request):
     profile = get_object_or_404(Profile,user__username = request.user.username)

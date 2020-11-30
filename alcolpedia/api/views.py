@@ -1,4 +1,3 @@
-
 from django.shortcuts import render,get_object_or_404,redirect
 from rest_framework import viewsets, pagination
 from .serializers import ProfileSerializer, UserSerializer, ContentSerializer
@@ -40,7 +39,6 @@ def profile_function(request):
         bookmark_list = json.loads(serializers.serialize('json', bookmarks)) 
         profile_serialize[0] = [profile_serialize[0], bookmark_list]
         profile_serialize[0][0]['fields']['user'] = request.user.username
-        print(profile_serialize[0][0]['fields']['user']) 
         return HttpResponse(json.dumps(profile_serialize), content_type="text/json-comment-filtered")
     
     if request.method == 'PUT' :
@@ -55,11 +53,11 @@ def profile_function(request):
         user.save()
         profile.save()
 
-
 @permission_classes((IsAuthenticated, ))
 @authentication_classes((JSONWebTokenAuthentication,))
 def tag_function(request):
     tags = Tag.objects.all()
     tags = serializers.serialize('json', tags)
-    return HttpResponse(tags, content_type="text/json-comment-filtered")
-
+    return HttpResponse(tags, content_type="text/json-comment-filtered")            
+# login, logout, registration 은 rest-auth를 사용
+    
