@@ -23,7 +23,38 @@ body {
     margin: 0 auto;
 }
 
-
+/* .textwrap {
+    width: 320px;
+    height: 80px;
+    position: absolute;
+    
+    border-radius: 42px;
+    border: solid 2px #b6ffbf;
+} */
+.bgmbar {
+    width: 800px;
+    height: 160px;
+    margin: 0 auto;
+    justify-content: center;
+    border-radius: 100px;
+    box-shadow: 0 3px 20px 0 rgba(177, 255, 193, 0.59);
+    background-color: #0e0e0e;
+    font-weight:bold;
+    font-size: 1rem;
+    text-align: center;
+    padding: 35px 38.5px 35px 64.4px;
+    
+    
+  }
+  .Icon-awesome-play-circle {
+    width: 100px;
+    height: 100px;
+    padding-bottom: 10px;
+    
+    
+    border-radius: 100px;
+    background-color: #7dffcb;
+  }
 
 .font{
     /* font-family: 'DancingScript-VariableFont_wght';
@@ -374,6 +405,13 @@ img{
 }
 
 #section-bgm {
+    margin-top: 2rem;
+    padding-top:8rem;
+    min-height: 40rem;
+    height: auto;
+}
+
+#section-cheers {
     margin-top: 2rem;
     padding-top:8rem;
     min-height: 40rem;
