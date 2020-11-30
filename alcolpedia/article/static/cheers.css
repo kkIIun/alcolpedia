@@ -7,6 +7,10 @@ body{
     vertical-align: middle;
     margin: 0 4vw 0 4vw;
 }
+.content{
+    background : linear-gradient(#4B8C69, black);
+}
+
 .card-color{
     color:white;
 }
@@ -26,22 +30,24 @@ body{
     font-size: 30px;
 }
 
+ul.pagination{
+    margin-bottom: 0;
+}
 .background-crop {
     padding-top:5rem;
-    margin-bottom: 4rem;
+    margin-bottom: 8rem;
     max-height: 30rem;
-    height: auto;
+    height: 8rem;
     width: 100%;
     overflow: hidden;
-    background-color: black;
 }
 
-.background-crop img {
+/* .background-crop img {
     width: 100%;
     min-height: 40rem;
     height: auto;
     margin: -20rem 0 0 0;
-}
+} */
 
 .pagination a{
     color: white;
