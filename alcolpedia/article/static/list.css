@@ -208,6 +208,7 @@ hr{
 }
 
 .card_{
+    background-color: black;
     position: relative;
     grid-column: span 4;
     display: flex;
