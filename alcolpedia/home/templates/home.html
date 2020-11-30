@@ -178,7 +178,7 @@
     $.ajax({
         method: "GET",
         url: "http://127.0.0.1:8000/api/tag/",
-        headers: { Authorization: "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IjEyMyIsImV4cCI6MTYwNTUyNjk3OCwiZW1haWwiOiIiLCJvcmlnX2lhdCI6MTYwNDkyMjE3OH0._8MIKCISqykcYjyFGbtyYFklBcOVdLQ6rPElKgg3-uY" },
+        headers: { Authorization: "jwt token" },
     })
         .done(function (msg) {
             $.each(msg, function (index, item) {
