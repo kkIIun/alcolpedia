@@ -11,7 +11,13 @@
     <link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}?v=1.0">
     {% endblock %}
     {% block content %}
+    <div>
+    <section class="bottle01"></section>
+    <div class="bottle03"></div>
+    <div class="bottle02"></div>
     
+    <div class="bottle04"></div>
+    </div>
     <div style="background-color: red;">
         {% include 'nav.html'%}
         
@@ -47,7 +53,8 @@
                     요즘 뜨는 술게임
                     </div>
                 </div>
-                
+                <div style="text-align: right; color: white;"> 더보기 <br><br>
+                </div>
                 <div class="slider">
                     {% for content in contents %}
                         <div>
@@ -74,10 +81,12 @@
             <h2 class = "section-title" style="margin-top:18rem;margin-bottom: 10rem;">
                 오늘의 추천 BGM
             </h2>
+            <div style="text-align: right; color: white;"> 더보기 <br><br>
+            </div>
             <section class="bgmbar">
-                <section class="Icon-awesome-play-circle">
-                    
-                </section><br>
+                <section class="Icon-awesome-play-circle"></section>
+                <div>어깨춤  0:00 / 0:03</div>
+
             </section>
             <div class="row">
                 <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
