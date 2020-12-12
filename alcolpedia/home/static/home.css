@@ -4,6 +4,16 @@ body {
     padding: 0 0 3px;
     background-image: linear-gradient(to bottom, #4b8c69, #0e0e0e 33%, #4b8c69 42%, #0e0e0e 52%, #4b8c69);
 }
+
+.circle{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    text-align: center;
+    border: solid 4px #7dffcb;
+    border-radius: 129px;
+    
+}
 .bottle01 {
     width: 180px;
     height: 500px;
