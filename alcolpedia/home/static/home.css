@@ -297,18 +297,29 @@ img{
 
 .card{
     width: 18rem;
-    background : none;
+    background-color: #0e0e0e;
     color:white;
-    border: 1px solid white;
-    font-family: 'NEXON Lv1 Gothic OTF';
+    font-family: 'NotoSansCJKKR';
     flex:1;
-    margin-left: 1.2rem;
-    margin-right: 1.2rem;
-    
-       
-    
+    padding: 25px 21px 23px;
+    border-radius: 20px;
+    box-shadow: 0 3px 20px 0 rgba(177, 255, 193, 0.59);
+   
 }
 
+.card-title{
+    width: 344px;
+    margin: 12px 8px 0 4px;
+    height: 48px;
+    font-family: NotoSansCJKKR;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.card-text{
+    font-family: NotoSansCJKKR;
+    font-size: 20px;
+}
 .card_container{
     display: flex;
 
@@ -445,7 +456,7 @@ img{
 
 #section-bgm {
     margin-top: 2rem;
-    padding-top:8rem;
+    padding-top:5rem;
     min-height: 40rem;
     height: auto;
 }
