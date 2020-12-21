@@ -7,11 +7,11 @@
 {% block content %}
 {% include 'nav.html' %}
 <link rel="stylesheet" href="{% static 'style_detail.css' %}?v=1.0">
-<div class="first">
+<div class="first" style="background-color: none;">
     {{content.title}}
-    <hr style="width:30%; border:inset 1px white;">
+    <!-- <hr style="width:30%; border:inset 1px white;"> -->
 </div>
-<p style="text-align: center; font-size: 20px; color:white;">
+<p style="text-align: center; font-size: 40px; color:#72e9a0;">
     <script>
         for(var i = 0; i < {{content.difficulty}}; i++) {
             document.write("★")
@@ -23,7 +23,7 @@
 </p>
 <div class="second">
     {% for tag in content.tag.all %}
-        <div class="second_baby">{{tag}}</div>
+        <div class="second_baby">#{{tag}}</div>
     {% endfor %}
 
 </div>
@@ -38,18 +38,13 @@
     
     {% if content.audio %}
     <div class="third">
-        <p>
-            인트로
-        </p>
-        <hr style="width:20%; border:inset 1px white;">
         <audio controls = "controls" id = "audio-{{content.title}}" class = "align-middle audio-style">
             <source src = "{{content.audio.url}}"/>
         </audio>
     </div>
     {% endif %}
-    <div class="third">
+    <div class="third" style="border: 1px solid #72e9a0;">
         게임방법
-        <hr style="width:20%; border:inset 1px white;">
         <!-- {{content.people_number}} -->
     </div>
     <div class="row">

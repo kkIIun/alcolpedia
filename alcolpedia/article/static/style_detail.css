@@ -1,5 +1,8 @@
-body{
-    background-color: #000000;
+body {
+    width: 100%;
+    height: auto;
+    padding: 0 0 3px;
+    background-image: linear-gradient(to bottom, #4b8c69, #0e0e0e 33%, #4b8c69 42%, #0e0e0e 52%, #4b8c69);
 }
 .navbar {
     position: fixed;
@@ -11,7 +14,7 @@ body{
     padding-left: 1%;
     padding-right: 1%;
     font-size: 1.8em;
-    background-color: #000000;
+
 }
 
 
@@ -29,7 +32,7 @@ body{
     margin-top: 10rem;
     text-align: center;
     font-size: 45px;
-    background-color: #000000;
+
     font-family: 'NEXON Lv2 Gothic Bold';
     color:white;
 
@@ -55,7 +58,6 @@ body{
     border-radius: 30px;
     padding-top: 2%;
     padding-bottom: 2%;
-    border: solid 1px #000000;
     color:white;
     font-family: 'NEXON Lv1 Gothic OTF';
 }
@@ -64,15 +66,17 @@ body{
     margin-bottom: 5%;
     text-align: center;
     font-size: 35px;
-    background-color: #000000;
     font-family: 'NEXON Lv2 Gothic Bold';
     color:white;
+    margin-left: 40vw;
+    margin-right: 40vw;
 }
 
 .forth{
     color:white;
-    background-color: #000000;
 }
+
+
 
 .detail-content-body{
     color:white;
@@ -94,8 +98,4 @@ body{
 .detail-content-body li{
     text-align: center;
     width: fit-content;
-}
-
-.body2{
-    background-color: #000000;
 }

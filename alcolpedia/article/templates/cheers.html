@@ -10,26 +10,67 @@
 {% block content %}
     {% include 'nav.html' %}
     <div class="background-crop">
-        <img src="{% static 'cheers.jpg'%}">
-        <h3 class = "top-bar-title" style="width: 100%; text-align: center;">
-            그대의 눈동자에 Cheers
+        <h3 class = "top-bar-title" style="width: 100%; text-align: center; color: white;">
+            건배사
         </h3>
     </div>
-    <div class="container">
+    <div class="middle-title">
+      <h2 class = "middle-container" style="border: solid 2px #72e9a0; font-size: medium; color: white;">
+        오늘의 추천 건배사
+      </h2>
+      <div class="accordion" id="accordionExample">
+        <div class="middle-card" style="margin: 5vw 30vw; border-radius: 3rem; background-image: linear-gradient(to bottom, #7dffcb, #b7ff80);">
+          <div class="card-header" id="heading{{content.no_blank_title}}">
+            <h2 class="mb-0">
+              <button class="btn btn-block text-left" style="border:none; background-image: linear-gradient(to bottom, #7dffcb, #b7ff80); text-align: center;" type="button" data-toggle="collapse" data-target="#collapse{{content.no_blank_title}}" aria-expanded="true" aria-controls="collapse{{content.no_blank_title}}">
+                <ol style="list-style-type: inherit; font-family: 'NEXON Lv2 Gothic Bold'; margin-top: 1rem; text-align: center;">
+                  <li>{{content.title}}</li>
+                </ol>
+              </button>
+            </h2>
+          </div>
+      
+          <div id="collapse{{content.no_blank_title}}" class="collapse" aria-labelledby="heading{{content.no_blank_title}}" data-parent="#accordionExample">
+            <div class="card-body">
+              {{content.body | markdown}}
+            </div>
+          </div>
+        </div>
+      <!-- <div class="accordion" id="accordionExample">
+        <div class="middle-card">
+          <div class="card-header" id="heading{{content.no_blank_title}}">
+            <h2 class="mb-0">
+              <button class="btn btn-outline-light btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{content.no_blank_title}}" aria-expanded="true" aria-controls="collapse{{content.no_blank_title}}">
+                <ol style="list-style-type: inherit; font-family: 'NEXON Lv2 Gothic Bold'; margin-top: 1rem; text-align: left;">
+                    <li>{{content.title}}</li>
+                </ol>
+              </button>
+            </h2>
+          </div>
+    
+        <div id="collapse{{content.no_blank_title}}" class="collapse" aria-labelledby="heading{{content.no_blank_title}}" data-parent="#accordionExample">
+          <div class="card-body" style="font-family: 'NEXON Lv1 Gothic OTF';">
+            {{content.body | markdown}}
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="container" style="margin-top: 5rem;">
+      <div class="row">
         <div class="accordion" id="accordionExample">
         {% for content in posts %}
-            <div class="card">
+            <div class="card" style="border-radius: 3rem; background-color: black; box-shadow: 0 3px 20px 0 rgba(177, 255, 193, 0.59); text-align: center;">
               <div class="card-header" id="heading{{content.no_blank_title}}">
                 <h2 class="mb-0">
-                  <button class="btn btn-outline-light btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{content.no_blank_title}}" aria-expanded="true" aria-controls="collapse{{content.no_blank_title}}">
-                    <ol style="list-style-type: inherit; font-family: 'NEXON Lv2 Gothic Bold'; margin-top: 1rem;">
+                  <button class="btn  btn-block text-left" style="color: white;"type="button" data-toggle="collapse" data-target="#collapse{{content.no_blank_title}}" aria-expanded="true" aria-controls="collapse{{content.no_blank_title}}">
+                    <ol style="list-style-type: inherit; font-family: 'NEXON Lv2 Gothic Bold'; margin-top: 1rem; text-align: center;">
                          <li>{{content.title}}</li>
                     </ol>
                   </button>
                 </h2>
               </div>
           
-              <div id="collapse{{content.no_blank_title}}" class="collapse" aria-labelledby="heading{{content.no_blank_title}}" data-parent="#accordionExample">
+              <div id="collapse{{content.no_blank_title}}" style="color: white;"class="collapse" aria-labelledby="heading{{content.no_blank_title}}" data-parent="#accordionExample">
                 <div class="card-body" style="font-family: 'NEXON Lv1 Gothic OTF';">
                   {{content.body | markdown}}
                 </div>
@@ -37,6 +78,7 @@
             </div>
         {% endfor %}
         </div>
+      </div>
     </div>
 
     <nav aria-label="..." class="nav_style">

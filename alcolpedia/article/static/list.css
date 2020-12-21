@@ -1,8 +1,8 @@
-body{
-    background-color: #000000;
-    margin: 0;
-    padding: 0;
-    
+body {
+    width: 100%;
+    height: auto;
+    padding: 0 0 3px;
+    background-image: linear-gradient(to bottom, #4b8c69, #0e0e0e 33%, #4b8c69 42%, #0e0e0e 52%, #4b8c69);
 }
 .navbar {
     position: fixed;
@@ -14,7 +14,7 @@ body{
     padding-left: 1%;
     padding-right: 1%;
     font-size: 1.8em;
-    background-color: #404040;
+
 }
 
 .what{
@@ -100,7 +100,7 @@ body{
 
 
 .background-crop {
-    padding-top:5rem;
+
     max-height: 30rem;
     height: auto;
     width: 100%;
@@ -188,16 +188,16 @@ hr{
     float: left;
     padding: 8px 16px;
     text-decoration: none;
-    border: 1px solid white;
+    border: 1px solid #72e9a0;
     border-radius: 3rem;
 }
 
 .pagination a:hover:not(.active) {
-    background-color: #ddd;
+    background-color: #72e9a0;
 }
 
 .pagination .active {
-    background-color: white;
+    background-color: #72e9a0;
     border-radius: 3rem;   
 }
 
