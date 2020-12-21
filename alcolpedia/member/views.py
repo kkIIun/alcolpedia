@@ -57,6 +57,7 @@ def sign_in(request):
                 return render(request, 'sign_in.html',  {"form": SignInForm()})
     return render(request, 'sign_in.html',  {"form": SignInForm()})
 
+
 # 로그아웃 기능
 def sign_out(request):
     auth.logout(request)
