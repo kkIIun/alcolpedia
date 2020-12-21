@@ -113,7 +113,51 @@
                     <div style="color: #7dffcb; font-size: 50px; padding-top:50px;">?</div></section>
             <br>
                     <div class="card-text" style="color: white;">좋아하는 게임 스타일을 골라주세요!</div>
-            </div>
+                    
+
+                <div class="row" style="padding-top: 50px;">
+                    
+                    <div class="col">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                          선택해주세요
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% for tag in tags %}
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    </div> 
+                    <script>bootstrap.bundle.min.js</script>
+                    <div class="col">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                              선택해주세요
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {% for tag in tags %}
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                        </div> 
+
+                        <div class="col">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                  선택해주세요
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                {% for tag in tags %}
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                            </div> 
+                </div>
+
+                </div>
     </div>
 
 
@@ -125,16 +169,14 @@
             </h2><br>
             <div style="text-align: right; color: white;"> 더보기 <br><br>
             </div>
-            <section class="bgmbar">
-                <section class="Icon-awesome-play-circle"></section>
-                <div>어깨춤  0:00 / 0:03</div>
+           
 
             </section>
             <div class="row">
                 <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="slider">
                         {% for bgm in bgms%}
-                            <!-- <div id = "bgm-box">
+                            <div id = "bgm-box">
                                 {% if bgm.image %}
                                      <div class="circle-player" style="background-image: url({{bgm.image.url}});" onclick="playMusic('{{bgm.audio.url}}')"> 
                                         <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
@@ -143,7 +185,7 @@
                                     <div class="circle-player"  onclick="playMusic('{{bgm.audio.url}}')">
                                         <i class="fas fa-play" style="display: block;" id = "play-icon-{{bgm.audio.url}}"></i>
                                     </div>
-                                {% endif %} -->
+                                {% endif %}
                                 <div style="color:#ffffff;margin-top:2rem; font-family: 'NEXON Lv1 Gothic OTF';">{{bgm.title}}</div>
                             </div>
                          
