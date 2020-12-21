@@ -80,14 +80,19 @@ def tag(request,tag_id) :
  
 #게시물 보기
 def detail(request,content_id) :
+
+    q = Q()
+
     content = get_object_or_404(Content,pk = content_id)
-    tags = content.tag.all
-    print(tags)
+    tags = content.tag.all()
+    for tag in tags:
+        q.add(Q(tag__id = tag.id), q.OR)
+    recommend_contents = Content.objects.filter(q)
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)
-        return render(request,'detail.html',{'title': content.title ,'content':content,'profile':profile, 'tags': tags})
+        return render(request,'detail.html',{'title': content.title ,'content':content,'profile':profile, 'tags': tags, 'recommend_contents' : recommend_contents })
     else :
-        return render(request,'detail.html',{'title': content.title ,'content':content, 'tags': tags})
+        return render(request,'detail.html',{'title': content.title ,'content':content, 'tags': tags, 'recommend_contents' : recommend_contents})
 
 def filter(request) : 
     tags = Tag.objects.all()[:6]
@@ -143,7 +148,6 @@ def filter(request) :
 def bookmark(request):
 
     content_id = request.POST.get('content_id', None)
-
     content = get_object_or_404(Content, pk=content_id)
     if request.user in content.bookmark.all():
         content.bookmark.remove(request.user)
