@@ -208,6 +208,7 @@ hr{
 }
 
 .card_{
+    background-color: black;
     position: relative;
     grid-column: span 4;
     display: flex;
@@ -293,3 +294,14 @@ hr{
     font-weight: 400;
     color: #ecf0f1;
 }
+
+.text-small {
+    margin-left: 2vw;
+    display: inline;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 1rem;
+    line-height: 2rem;
+    font-weight: 400;
+    color: #ecf0f1;
+}
+
