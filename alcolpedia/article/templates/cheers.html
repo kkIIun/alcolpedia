@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'cheers.css' %}?v=1.0">
 {% endblock %}
 {% block content %}
+<div class="content">
     {% include 'nav.html' %}
     <div class="background-crop">
         <h3 class = "top-bar-title" style="width: 100%; text-align: center; color: white;">
@@ -76,6 +77,7 @@
                 </div>
               </div>
             </div>
+        
         {% endfor %}
         </div>
       </div>
@@ -117,5 +119,5 @@
       </div>
     </nav>
    
-    
+  </div>    
 {% endblock %}

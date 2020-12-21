@@ -39,6 +39,8 @@ def table_contents(request):
         return render(request,name+'.html',{'title': board_name[name],'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile,'tags':tag,'all_tags':all_tags})
     else :
         return render(request,name+'.html',{'title': board_name[name], 'posts' : posts,'range' : [i for i in range(start, end+1)],'tags':tag,'all_tags':all_tags})
+
+
 #좋아요
 @login_required(login_url='/member/signin/')
 def like(request):
@@ -68,6 +70,7 @@ def like(request):
     
     return HttpResponse(json.dumps(context), content_type="application/json")
 
+
 #태그 누르면 검색됨
 def tag(request,tag_id) : 
     tag = get_object_or_404(Tag,pk=tag_id)
@@ -77,7 +80,8 @@ def tag(request,tag_id) :
         return render(request,'search.html',{'contents':contents,'profile':profile})
     except:
         return render(request,'search.html',{'contents':contents})
- 
+
+
 #게시물 보기
 def detail(request,content_id) :
     content = get_object_or_404(Content,pk = content_id)
@@ -86,6 +90,7 @@ def detail(request,content_id) :
         return render(request,'detail.html',{'title': content.title ,'content':content,'profile':profile})
     else :
         return render(request,'detail.html',{'title': content.title ,'content':content})
+
 
 def filter(request) : 
     tags = Tag.objects.all()[:6]
@@ -136,7 +141,8 @@ def filter(request) :
         return render(request,'game.html',{'posts' : list_contents,'profile':profile,'tag':tag,'date':date,'difficulty':difficulty,'tags':tags,'all_tags':all_tags})
     else :
         return render(request,'game.html',{'posts' : list_contents,'tag':tag,'date':date,'difficulty':difficulty,'tags':tags,'all_tags':all_tags})
-        
+
+
 @login_required
 def bookmark(request):
 
