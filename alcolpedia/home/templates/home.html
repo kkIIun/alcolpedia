@@ -27,12 +27,10 @@
                 </button>
             </div>
         </form>
-        <div class = 'tag_box'>
+        <div class='tag_box' style="color: white;">
             {% for tag in tags%}
-            <div class='tagButton' style="color: white;">
-                <a style=" font-family: 'NEXON Lv1 Gothic OTF'; "onclick='tagSelected(this);'>#{{tag}}</a>
-            </div>
-            {%endfor%}
+            <div onclick='tagSelected(this);'>#{{tag}}</div>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -185,6 +183,18 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
+<!-- <script>
+    $.ajax({
+        method: "GET",
+        url: "http://127.0.0.1:8000/api/tag/",
+        headers: { Authorization: "jwt token" },
+    })
+        .done(function (msg) {
+            $.each(msg, function (index, item) {
+                $(".tag_box").append("<div style='display: inline;' onclick='tagSelected(this);'>#" + item.fields.title + "</div>")
+            })
+        })
+</script>  slick-slider 적용시 오류 발생 -->
 <script type="text/javascript" src="{% static 'slick/slick.js' %}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -233,6 +243,7 @@
             ]
 
         });
+
 
         $('.tag_box').slick({
             useCSS: true,
@@ -320,6 +331,5 @@
         }
     }
 </script>
-
 
 {% endblock %}
