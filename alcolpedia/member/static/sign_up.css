@@ -25,7 +25,12 @@ input {
     width: 90%;
 }
 body{
-    background-image: url('bar2.jpg');
+    background-image: linear-gradient(to bottom, #4b8c69, #0e0e0e 33%, #4b8c69 42%, #0e0e0e 52%, #4b8c69);
     background-size: cover;
     background-repeat: none;
+}
+#one{
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 240, 0.377);
+
 }
