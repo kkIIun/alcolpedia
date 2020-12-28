@@ -10,7 +10,6 @@
     padding-left: 1%;
     padding-right: 1%;
     font-size: 1.8em;
-    
 }
 
 .navbar-brand{
@@ -45,7 +44,6 @@
 }
 .nav-bar-vertical-align-middle li{
     line-height: 2.5rem;
-    
 }
 
 .navbar-default .navbar-nav>.open>a,
