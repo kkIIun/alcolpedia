@@ -318,6 +318,7 @@ img{
 }
 
 .card-title{
+    margin: 12px 8px 0 4px;
     width: 100%;
     text-align: left;
     font-family: NotoSansCJKKR;
