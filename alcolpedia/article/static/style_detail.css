@@ -4,18 +4,6 @@ body {
     padding: 0 0 3px;
     background-image: linear-gradient(to bottom, #4b8c69, #0e0e0e 33%, #4b8c69 42%, #0e0e0e 52%, #4b8c69);
 }
-.navbar {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    height: 12.6%;
-    width: 100%;
-    margin: 0;
-    padding-left: 1%;
-    padding-right: 1%;
-    font-size: 1.8em;
-
-}
 
 .recommend_img{
     width: 175px;

@@ -29,6 +29,8 @@ def table_contents(request):
         page = 1
     start = max(int(page)-5, 1)
     end = min(int(page)+5, paginator.num_pages)
+        
+
 
     for i in range(len(posts)):
         posts[i].no_blank_title = posts[i].title.replace(" ","")

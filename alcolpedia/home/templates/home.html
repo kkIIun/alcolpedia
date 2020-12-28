@@ -1,26 +1,27 @@
 <body>
     {% extends "base.html" %}
     {% load static %}
-    {% block title%} 
-        {{title}}
-    {% endblock %} 
+    {% block title%}
+    {{title}}
+    {% endblock %}
     {% block stylesheet %}
     <link rel="stylesheet" href="{% static 'home.css' %}?v=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'slick/slick.css' %}?v=1.0">
     <link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}?v=1.0">
     {% endblock %}
     {% block content %}
     <div>
-    <section class="bottle01"></section>
-    <div class="bottle03"></div>
-    <div class="bottle02"></div>
-    
-    <div class="bottle04"></div>
+        <section class="bottle01"></section>
+        <div class="bottle03"></div>
+        <div class="bottle02"></div>
+
+        <div class="bottle04"></div>
     </div>
     <div style="background-color: red;">
         {% include 'nav.html'%}
-        
+
         <div class="home-main_logo game">
             <p class="font" style="color: #ffffff;">Alcolpedia</p>
             <form class="formclass">
@@ -34,393 +35,363 @@
             <div class="tag_box">
                 {% for tag in tags %}
                 <div class="tagButton">
-                    <a style="color:white; font-family: 'NEXON Lv1 Gothic OTF';" onclick="tagSelected(this);">#{{tag}}</a>
+                    <a style="color:white; font-family: 'NEXON Lv1 Gothic OTF';"
+                        onclick="tagSelected(this);">#{{tag}}</a>
                 </div>
                 {% endfor %}
             </div>
         </div>
     </div>
-    
-    <div class="row wrapper" id = "section-game">
+
+    <div class="row wrapper" id="section-game">
         
-        <div>
-            <div class="container5 game" style="position: absolute;">
-    
-                <div class="section-title" >
+        <div class="container5 game" style="position: absolute;">
+            <div class="section-title">
                 <div class="textwrap" style="margin-top:5rem;">
                     요즘 뜨는 술게임
-                    </div>
                 </div>
-                <div style=" text-align: right; color: white;"> 더보기 <br><br>
-                </div>
-                
-                <div class="container">
-                    <div class="row align-items-start" >
-                        {% for content in contents %} 
-                        <div class="col">
-                            <div class="card" style="width: 16rem; margin-left:auto; margin-right: auto;">
-                                <a href="{% url 'detail' content.id %}" class="btn btn-dark"></a>
-                                <img src="{{content.image.url}}" class="card-img-top" style="border-radius: 0.5rem; height: 15rem">
-                                <div>
-                                    <h5 class="card-title">
-                                       {{content.title}}
-                                    </h5>
-                                    <p class="card-text">
-                                        {{content.summary}}
-                                    </p>
-                                    </a>
-                                </div>
-                            </div>
+            </div>
+            <div style=" text-align: right; color: white;"> 더보기 <br><br>
+            </div>
+            <div class="slider">
+                {% for content in contents %}
+                <div>
+                    <div class="card" style="width: 16rem; margin-left:auto; margin-right: auto;">
+                        <img src="{{content.image.url}}" class="card-img-top" style="border-radius: 0.5rem; height: 15rem">
+                        <div class="card-body">
+                            <h5 class="card-title">{{content.title}}</h5>
+                            <p class="card-text">{{content.summary}}</p>
+                            <a href="{% url 'detail' content.id %}" class="btn btn-dark">게임방법</a>
                         </div>
-                        {% endfor %}
-                        
                     </div>
                 </div>
-
-                    <!-- <div class="slider"></div>
-                    {% for content in contents %} 
-                         <div>
-                            <div class="card" style="width: 16rem; margin-left:auto; margin-right: auto;">
-                                <img src="{{content.image.url}}" class="card-img-top" style="border-radius: 0.5rem; height: 15rem">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                       {{content.title}} -
-                                    </h5>
-                                    <p class="card-text"> -->
-                                        <!-- {{content.summary}} -->
-                                    <!-- </p>
-                                    <a href="{% url 'detail' content.id %}" class="btn btn-dark">게임방법</a>
-                                </div>
-                            </div>
-                        </div> -->
-                    <!-- {% endfor %} -->
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-    
-    <div class="row wrapper" id = "section-game" style="margin-top:18rem;">
-        
-            <div class="container5 game" style="position: absolute;">
-    
-                <div class="section-title" >
+
+    <div class="row wrapper" id="section-game" style="margin-top:18rem;">
+
+        <div class="container5 game" style="position: absolute;">
+
+            <div class="section-title">
                 <div class="textwrap" style="margin-top:5rem;">
                     알콜피디아! 게임 추천해줘!
-                    </div>
                 </div>
+            </div>
             <br><br><br>
-                <section class="circle">
-                    <div style="color: #7dffcb; font-size: 50px; padding-top:50px;">?</div></section>
+            <section class="circle">
+                <div style="color: #7dffcb; font-size: 50px; padding-top:50px;">?</div>
+            </section>
             <br>
-                    <div class="card-text" style="color: white;">좋아하는 게임 스타일을 골라주세요!</div>
-                    
+            <div class="card-text" style="color: white;">좋아하는 게임 스타일을 골라주세요!</div>
 
-                <div class="row" style="padding-top: 50px;">
-                    
-                    <div class="col">
+
+            <div class="row" style="padding-top: 50px;">
+
+                <div class="col">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                          선택해주세요
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            선택해주세요
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        {% for tag in tags %}
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        {% endfor %}
-                        </ul>
-                    </div>
-                    </div> 
-                    <script>bootstrap.bundle.min.js</script>
-                    <div class="col">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                              선택해주세요
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             {% for tag in tags %}
                             <li><a class="dropdown-item" href="#">Action</a></li>
                             {% endfor %}
-                            </ul>
-                        </div>
-                        </div> 
-
-                        <div class="col">
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                  선택해주세요
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                {% for tag in tags %}
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                            </div> 
+                        </ul>
+                    </div>
+                </div>
+                <script>bootstrap.bundle.min.js</script>
+                <div class="col">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            선택해주세요
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {% for tag in tags %}
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
 
+                <div class="col">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            선택해주세요
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {% for tag in tags %}
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
+            </div>
+
+        </div>
     </div>
 
-
-    <div class="row wrapper" id = "section-bgm" style="margin-top:18rem;margin-bottom: 10rem;">
-       
-        <section class="container game" style="position: absolute;">
-            <h2 class = "section-title" >
-                오늘의 추천 BGM
-            </h2><br>
-            <div style="text-align: right; color: white;"> 더보기 <br><br>
-            </div>
-           
-
-            </section>
+    <div class="row wrapper" id="section-bgm">
+        <section class="container game" style="">
+            <h2 class="section-title" style="margin-top:18rem;margin-bottom: 10rem;">
+                친구가 마실때, 흥을 돋아주자!
+            </h2>
             <div class="row">
                 <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="slider">
                         {% for bgm in bgms%}
-                            <div id = "bgm-box">
-                                {% if bgm.image %}
-                                     <div class="circle-player" style="background-image: url({{bgm.image.url}});" onclick="playMusic('{{bgm.audio.url}}')"> 
-                                        <i class="fas fa-play" id = "play-icon-{{bgm.audio.url}}"></i>
-                                    </div> 
-                                {% else %}
-                                    <div class="circle-player"  onclick="playMusic('{{bgm.audio.url}}')">
-                                        <i class="fas fa-play" style="display: block;" id = "play-icon-{{bgm.audio.url}}"></i>
-                                    </div>
-                                {% endif %}
-                                <div style="color:#ffffff;margin-top:2rem; font-family: 'NEXON Lv1 Gothic OTF';">{{bgm.title}}</div>
+                        <div id="bgm-box">
+                            {% if bgm.image %}
+                            <div class="circle-player" style="background-image: url({{bgm.image.url}});"
+                                onclick="playMusic('{{bgm.audio.url}}')">
+                                <i class="fas fa-play" id="play-icon-{{bgm.audio.url}}"></i>
                             </div>
-                         
+                            {% else %}
+                            <div class="circle-player" onclick="playMusic('{{bgm.audio.url}}')">
+                                <i class="fas fa-play" style="display: block;" id="play-icon-{{bgm.audio.url}}"></i>
+                            </div>
+                            {% endif %}
+                            <div style="color:#ffffff;margin-top:2rem; font-family: 'NEXON Lv1 Gothic OTF';">{{bgm.title}}
+                            </div>
+                        </div>
                         {% endfor %}
                     </div>
                 </div>
             </div>
         </section>
     </div>
-    <div class="row wrapper" id = "section-cheers">
-    <section class="container game" style="position: absolute;">
-    
-        <h2 class="section-title" >
-            오늘의 추천 건배사</h2>
-            
-        <div style="text-align: right; color: white;"> 더보기 <br><br>
-        </div>
-        <section class="cheers">아이유</section>
-        <div style="color: white; padding-top: 50px;">아름다운 이 세상 유감없이 살다가자</div>
-        
-    
-    </section>
+
+    <div class="row wrapper" id="section-cheers">
+        <section class="container game" style="position: absolute;">
+
+            <h2 class="section-title">
+                오늘의 추천 건배사</h2>
+
+            <div style="text-align: right; color: white;"> 더보기 <br><br>
+            </div>
+            <section class="cheers">아이유</section>
+            <div style="color: white; padding-top: 50px;">아름다운 이 세상 유감없이 살다가자</div>
+
+
+        </section>
     </div>
     {% endblock %}
-    
-    
+
+
     {% block script %}
     <script>
-    
-    function getBrowserType() {
-        var _ua = navigator.userAgent;
-        var rv = -1; //IE 11,10,9,8 
-        var trident = _ua.match(/Trident\/(\d.\d)/i); 
-        if( trident != null ){ 
-            if( trident[1] == "7.0" ) return rv = "IE" + 11;
-            if( trident[1] == "6.0" ) return rv = "IE" + 10;
-            if( trident[1] == "5.0" ) return rv = "IE" + 9; 
-            if( trident[1] == "4.0" ) return rv = "IE" + 8; 
-        } //IE 7...
-        if( navigator.appName == 'Microsoft Internet Explorer' ) return rv = "IE" + 7; //other 
-        var agt = _ua.toLowerCase(); 
-        if (agt.indexOf("chrome") != -1) return 'Chrome'; 
-        if (agt.indexOf("opera") != -1) return 'Opera'; 
-        if (agt.indexOf("staroffice") != -1) return 'Star Office'; 
-        if (agt.indexOf("webtv") != -1) return 'WebTV'; 
-        if (agt.indexOf("beonex") != -1) return 'Beonex'; 
-        if (agt.indexOf("chimera") != -1) return 'Chimera'; 
-        if (agt.indexOf("netpositive") != -1) return 'NetPositive'; 
-        if (agt.indexOf("phoenix") != -1) return 'Phoenix'; 
-        if (agt.indexOf("firefox") != -1) return 'Firefox'; 
-        if (agt.indexOf("safari") != -1) return 'Safari'; 
-        if (agt.indexOf("skipstone") != -1) return 'SkipStone'; 
-        if (agt.indexOf("netscape") != -1) return 'Netscape'; 
-        if (agt.indexOf("mozilla/5.0") != -1) return 'Mozilla'; 
-    }
-    
-    $(document).ready(function(){
-        if(getBrowserType() != "Chrome") {
-            alert("크롬 브라우저로 접속하지 않으신 경우, 비디오, 오디오 등의 컨텐츠가 제대로 재생되지 않을 수 있습니다.");
+
+        function getBrowserType() {
+            var _ua = navigator.userAgent;
+            var rv = -1; //IE 11,10,9,8 
+            var trident = _ua.match(/Trident\/(\d.\d)/i);
+            if (trident != null) {
+                if (trident[1] == "7.0") return rv = "IE" + 11;
+                if (trident[1] == "6.0") return rv = "IE" + 10;
+                if (trident[1] == "5.0") return rv = "IE" + 9;
+                if (trident[1] == "4.0") return rv = "IE" + 8;
+            } //IE 7...
+            if (navigator.appName == 'Microsoft Internet Explorer') return rv = "IE" + 7; //other 
+            var agt = _ua.toLowerCase();
+            if (agt.indexOf("chrome") != -1) return 'Chrome';
+            if (agt.indexOf("opera") != -1) return 'Opera';
+            if (agt.indexOf("staroffice") != -1) return 'Star Office';
+            if (agt.indexOf("webtv") != -1) return 'WebTV';
+            if (agt.indexOf("beonex") != -1) return 'Beonex';
+            if (agt.indexOf("chimera") != -1) return 'Chimera';
+            if (agt.indexOf("netpositive") != -1) return 'NetPositive';
+            if (agt.indexOf("phoenix") != -1) return 'Phoenix';
+            if (agt.indexOf("firefox") != -1) return 'Firefox';
+            if (agt.indexOf("safari") != -1) return 'Safari';
+            if (agt.indexOf("skipstone") != -1) return 'SkipStone';
+            if (agt.indexOf("netscape") != -1) return 'Netscape';
+            if (agt.indexOf("mozilla/5.0") != -1) return 'Mozilla';
         }
-    });
+
+        $(document).ready(function () {
+            if (getBrowserType() != "Chrome") {
+                alert("크롬 브라우저로 접속하지 않으신 경우, 비디오, 오디오 등의 컨텐츠가 제대로 재생되지 않을 수 있습니다.");
+            }
+        });
     </script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
         var searchs = [];
         var prevText = "";
-        
+
         $('.chips').chips({
             placeholder: '검색어를 입력해주세요.',
         });
-        
-        function tagSelected(e){
+
+        function tagSelected(e) {
             var text = $(e).text();
-            
+
             var elem = document.querySelectorAll('.chips')[0];
             var instance = M.Chips.getInstance(elem);
-    
+
             instance.addChip({
                 tag: text,
                 image: '', // optional
             });
         }
-    
-        $("#searchButton").on("click", function(e) {
+
+        $("#searchButton").on("click", function (e) {
             var words = M.Chips.getInstance($('.chips')).chipsData;
             var searchWords = "?";
-            for(var i = 0; i < words.length; i++) {
-                searchWords+="search_word="+encodeURIComponent(words[i]['tag']);
-                if(i != words.length-1) {
+            for (var i = 0; i < words.length; i++) {
+                searchWords += "search_word=" + encodeURIComponent(words[i]['tag']);
+                if (i != words.length - 1) {
                     searchWords += "&";
                 }
             }
             var param = encodeURI(searchWords);
             document.location.href = "{%url 'search' %}" + param;
         });
-    
+
     </script>
-    
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static 'slick/slick.js' %}"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-          $('.slider').slick({
-            useCSS: true,
-            pauseOnHover: true,
-            useTransform: true,
-            slide: 'div',		//슬라이드 되어야 할 태그
-            infinite : true, 	//무한 반복 옵션	 
-            slidesToShow : 3,		// 한 화면에 보여질 컨텐츠 개수
-            slidesToScroll : 1,		//스크롤 한번에 움직일 컨텐츠 개수
-            speed : 2500,	 // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
-            arrows : true, 		// 옆으로 이동하는 화살표 표시 여부
-            dots : true, 		// 스크롤바 아래 점으로 페이지네이션 여부
-            autoplay : true,			// 자동 스크롤 사용 여부
-            autoplaySpeed : 3000, 		// 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
-            pauseOnHover : true,		// 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
-            vertical : false,		// 세로 방향 슬라이드 옵션
-            adaptiveHeight: true,
-            centerMode: true,
-            centerPadding: "2rem",
-            prevArrow : "<button type='button' class='slick-prev'>Previous</button>",		// 이전 화살표 모양 설정
-            nextArrow : "<button type='button' class='slick-next'>Next</button>",		// 다음 화살표 모양 설정
-            dotsClass : "slick-dots", 	//아래 나오는 페이지네이션(점) css class 지정
-            draggable : true, 	//드래그 가능 여부 
-            
-            responsive: [ // 반응형 웹 구현 옵션
-                {  
-                    breakpoint: 1800,
-                    settings: {
-                        slidesToShow:3 
-                    }
-                },
-                {  
-                    breakpoint: 1200, 
-                    settings: {
-                        slidesToShow:2 
-                    }
-                },
-                {  
-                    breakpoint: 800,
-                    settings: {
-                        slidesToShow:1 
-                    }
-                },
-            ]
-    
-          });
-    
-          $('.tag_box').slick({
-            useCSS: true,
-            useTransform: true,
-            slide: 'div',		//슬라이드 되어야 할 태그
-            infinite : true, 	//무한 반복 옵션	 
-            slidesToShow : 8,		// 한 화면에 보여질 컨텐츠 개수
-            slidesToScroll : 4,		//스크롤 한번에 움직일 컨텐츠 개수
-            speed : 2000,	 // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
-            arrows : true, 		// 옆으로 이동하는 화살표 표시 여부
-            dots : false, 		// 스크롤바 아래 점으로 페이지네이션 여부
-            autoplay : true,			// 자동 스크롤 사용 여부
-            autoplaySpeed : 3000, 		// 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
-            pauseOnHover : false,		// 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
-            vertical : false,		// 세로 방향 슬라이드 옵션
-            adaptiveHeight: true,
-            centerPadding: "2rem",
-            prevArrow : "<button type='button' class='slick-prev'>Previous</button>",		// 이전 화살표 모양 설정
-            nextArrow : "<button type='button' class='slick-next'>Next</button>",		// 다음 화살표 모양 설정
-            dotsClass : "slick-dots", 	//아래 나오는 페이지네이션(점) css class 지정
-            draggable : true, 	//드래그 가능 여부 
-            
-            responsive: [ // 반응형 웹 구현 옵션
-                {  
-                    breakpoint: 1800,
-                    settings: {
-                        slidesToShow:8,
-                        slidesToScroll:4
-                    }
-                },
-                {  
-                    breakpoint: 1200,
-                    settings: {
-                        slidesToShow:5,
-                        slidesToScroll : 5
-                    }
-                },
-                {  
-                    breakpoint: 800,
-                    settings: {
-                        slidesToShow:3,
-                        slidesToScroll : 3
-                    }
-                },
-                
-                {  
-                    breakpoint: 500,
-                    settings: {
-                        slidesToShow:2,
-                        slidesToScroll : 2
-                    }
-                },
-                {  
-                    breakpoint: 300, 
-                    settings: {
-                        slidesToShow:1,
-                        slidesToScroll :1
-                    }
-                },
-            ]
-    
-          });
+        $(document).ready(function () {
+            $('.slider').slick({
+                useCSS: true,
+                pauseOnHover: true,
+                useTransform: true,
+                slide: 'div',      //슬라이드 되어야 할 태그
+                infinite: true,    //무한 반복 옵션    
+                slidesToShow: 3,      // 한 화면에 보여질 컨텐츠 개수
+                slidesToScroll: 1,      //스크롤 한번에 움직일 컨텐츠 개수
+                speed: 2500,    // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
+                arrows: true,       // 옆으로 이동하는 화살표 표시 여부
+                dots: true,       // 스크롤바 아래 점으로 페이지네이션 여부
+                autoplay: true,         // 자동 스크롤 사용 여부
+                autoplaySpeed: 3000,       // 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
+                pauseOnHover: true,      // 슬라이드 이동   시 마우스 호버하면 슬라이더 멈추게 설정
+                vertical: false,      // 세로 방향 슬라이드 옵션
+                adaptiveHeight: true,
+                centerMode: true,
+                centerPadding: "2rem",
+                prevArrow: "<button type='button' class='slick-prev'>Previous</button>",      // 이전 화살표 모양 설정
+                nextArrow: "<button type='button' class='slick-next'>Next</button>",      // 다음 화살표 모양 설정
+                dotsClass: "slick-dots",    //아래 나오는 페이지네이션(점) css class 지정
+                draggable: true,    //드래그 가능 여부 
+
+                responsive: [ // 반응형 웹 구현 옵션
+                    {
+                        breakpoint: 1800,
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 1200,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 800,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    },
+                ]
+
+            });
+
+            $('.tag_box').slick({
+                useCSS: true,
+                useTransform: true,
+                slide: 'div',      //슬라이드 되어야 할 태그
+                infinite: true,    //무한 반복 옵션    
+                slidesToShow: 8,      // 한 화면에 보여질 컨텐츠 개수
+                slidesToScroll: 4,      //스크롤 한번에 움직일 컨텐츠 개수
+                speed: 2000,    // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
+                arrows: true,       // 옆으로 이동하는 화살표 표시 여부
+                dots: false,       // 스크롤바 아래 점으로 페이지네이션 여부
+                autoplay: true,         // 자동 스크롤 사용 여부
+                autoplaySpeed: 3000,       // 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
+                pauseOnHover: false,      // 슬라이드 이동   시 마우스 호버하면 슬라이더 멈추게 설정
+                vertical: false,      // 세로 방향 슬라이드 옵션
+                adaptiveHeight: true,
+                centerPadding: "2rem",
+                prevArrow: "<button type='button' class='slick-prev'>Previous</button>",      // 이전 화살표 모양 설정
+                nextArrow: "<button type='button' class='slick-next'>Next</button>",      // 다음 화살표 모양 설정
+                dotsClass: "slick-dots",    //아래 나오는 페이지네이션(점) css class 지정
+                draggable: true,    //드래그 가능 여부 
+
+                responsive: [ // 반응형 웹 구현 옵션
+                    {
+                        breakpoint: 1800,
+                        settings: {
+                            slidesToShow: 8,
+                            slidesToScroll: 4
+                        }
+                    },
+                    {
+                        breakpoint: 1200,
+                        settings: {
+                            slidesToShow: 5,
+                            slidesToScroll: 5
+                        }
+                    },
+                    {
+                        breakpoint: 800,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+
+                    {
+                        breakpoint: 500,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 300,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    },
+                ]
+
+            });
         });
-      </script>
+    </script>
     <script>
         var musicPlayer = new Audio();
         var currentMusic = "";
-    
-        musicPlayer.ended = function() {
-            document.getElementById("play-icon-"+url).className = "fa fa-play";
+
+        musicPlayer.ended = function () {
+            document.getElementById("play-icon-" + url).className = "fa fa-play";
             currentMusic = "";
         }
-    
+
         function playMusic(url) {
-            if(url == currentMusic) {
+            if (url == currentMusic) {
                 musicPlayer.pause();
-                document.getElementById("play-icon-"+url).className = "fa fa-play";
+                document.getElementById("play-icon-" + url).className = "fa fa-play";
                 currentMusic = "";
             }
             else {
                 musicPlayer.src = url;
-                document.getElementById("play-icon-"+url).className = "fa fa-pause";
+                document.getElementById("play-icon-" + url).className = "fa fa-pause";
                 musicPlayer.play();
                 currentMusic = url;
             }
         }
-        
-    </script>   
+
+    </script>
     {% endblock %}
-    </body>
+</body>

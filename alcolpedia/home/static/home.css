@@ -335,6 +335,7 @@ div.tag_box div{
     text-align: left;
     font-family: NotoSansCJKKR;
     font-size: 20px;
+    text-align: center;
 }
 .card_container{
     display: flex;
@@ -459,6 +460,7 @@ div.tag_box div{
     text-align: center;
     min-height: 60rem;
     height: auto;
+    margin-top:7rem;
 }
 
 #section-game {
@@ -478,7 +480,7 @@ div.tag_box div{
 }
 
 #section-cheers {
-    margin-top: 2rem;
+    margin-top: 15rem;
     padding-top:8rem;
     min-height: 40rem;
     height: auto;
