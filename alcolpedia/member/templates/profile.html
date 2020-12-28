@@ -9,8 +9,8 @@
 {% block content %}
 {% include 'nav.html' %}
 <div class="background-crop">
-    <img src="{% static 'field_cheers.jpg' %}" >
-</div>
+ </div>
+
 <section class = "profile-content">
     <form action="{%url 'profile' %}" method="POST" enctype="multipart/form-data"> 
         {%csrf_token%}
@@ -30,7 +30,7 @@
                 완료
             </button>
             <div class = "profile-name-box" id = "profile-name-box">
-                <h3 style="margin-bottom: 0;">
+                <h3 style="margin-bottom: 0; -webkit-text-stroke: 0.8px #000;">
                     {{profile.user.username}}
                 </h3>
             </div>
@@ -40,7 +40,7 @@
 
 <section class="bookmark-content">
     <br>
-    <hr style="width:30%; background-color: white;">
+    <hr style="width:30%; background-color: black;">
     <br>
     <h4 style="color: white; text-align:center;"><i class="far fa-bookmark"></i>  BOOKMARK <i class="far fa-bookmark"></i></h4>
     {% for bookmark in bookmarks %}
