@@ -4,7 +4,6 @@ from mdeditor.fields import MDTextField
 from django.utils import timezone
 from django.conf import settings
 
-
 class Tag(models.Model):
     title = models.CharField(max_length = 50)
 
