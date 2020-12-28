@@ -14,6 +14,14 @@ body{
     background-color: #000000;
 }
 
+.recommend_img{
+    width: 175px;
+    height: 160px;
+    margin: 0 39px;
+    border: solid 1px #707070;
+    background-color: #ffffff;
+}
+
 
 .what{
     font-size: 0.5em;
@@ -98,4 +106,29 @@ body{
 
 .body2{
     background-color: #000000;
+}
+
+.reccomend{
+    margin-top: 7rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 15px;
+    background-color: #000000;
+    color:white;
+}
+
+.slider{
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.back_game{
+    width: 13rem;
+    height: 2.5rem;
+    margin: 2rem auto;
+    padding: 5px 34.5px 8px 30.5px;
+    border-radius: 42px;
+    border: solid 2px #b6ffbf;
+    text-align: center;
+    font-size: 15px;
 }
