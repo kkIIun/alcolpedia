@@ -9,14 +9,16 @@
     <link rel="stylesheet" href="{% static 'bgm.css' %}?v=1.0">
 {% endblock %}
 {% block content %}
+<div class="content">
     {% include 'nav.html' %}
-
     <div class="background-crop">
-        <img src="{% static 'dj.jpg' %}" >
+      
         <h3 class = "top-bar-title" style="width: 100%; text-align: center;">
-            Listen to BGM
+            BGM
         </h3>
-
+        <h2 class = "middle-container" style="border: solid 2px #72e9a0; font-size: medium; color: white;">
+            오늘의 추천 BGM
+        </h2>
     </div>
     <div id="div5">
         <div class="container">
@@ -114,6 +116,7 @@
             </div>
         </nav>
     </div>
+</div>
 {% endblock %}
 
 

@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse col-8" id = "navbarNav">
+    <div class="collapse navbar-collapse col-8" id = "mysidenav">
         <ul class = "navbar-nav col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12 nav-bar-vertical-align-middle">
             <li class="nav-item col-lg-2 col-md-2 col-sm-4 col-6">
                 <a class="what nav-link" href="{%url 'article'%}?name=game">술게임</a>
@@ -46,13 +46,17 @@
             {% else %}
                 <div class="col-1"></div>
                 <li class="navbar-item col-md-4 col-12 col-lg-2">
-                    <a class="btn btn-secondary col-md-12 col-12 col-sm-12 col-xs-12" href="{%url 'sign_in'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign in</a>
+                    <a class="btn col-md-12 col-12 col-sm-12 col-xs-12" href="{%url 'sign_in'%}" style="background-color:none; border:1px solid #ffffff; color: white;">Sign in</a>
                 </li>
                 <li class="navbar-item col-md-4 col-12 col-lg-2">
-                    <a class="btn btn-secondary col-md-12 col-12 col-sm-12 col-xs-12" href="{%url 'sign_up'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign up</a>
+                    <a class="btn col-md-12 col-12 col-sm-12 col-xs-12" href="{%url 'sign_up'%}" style="background-color:none; border:1px solid #ffffff; color: white;">Sign up</a>
                 </li>
             {% endif %}
+<<<<<<< HEAD
             
+=======
+            <span class="openmenu" onclick='openNav()'><i class="fas fa-bars" style="color: #ffffff;" aria-hidden="true"></i> </span>
+>>>>>>> 621743ff8b4d3087a5cc2b67dccb8af2624f7596
         </ul>
     </div>
     <div class="modal" id = "modal" data-keyboard="false" tabindex="-1">

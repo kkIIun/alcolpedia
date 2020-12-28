@@ -40,11 +40,12 @@
 }
 
 .modal-content {
-    background-color: #707070;
+
     color: white;
 }
 .nav-bar-vertical-align-middle li{
     line-height: 2.5rem;
+    
 }
 
 .navbar-default .navbar-nav>.open>a,
