@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="{% static 'list.css' %}?v=1.0">
 {% endblock %}
 {% block content %}
-<hr>
-
-<hr>
 <div class="content">
     {% include 'nav.html' %}
     
@@ -33,6 +30,7 @@
         <div class="card_">
             <div class="card__image-container" onclick="moveDetail('{% url 'detail' content.id %}')">
                 <img src="{{content.image.url}}">
+
             </div>
             <a class="bookmark" id="bookmark-text-{{content.id}}" name={{content.id}} style="color: white; position:absolute;right: 2rem;">
                 {% if user in content.bookmark.all %}

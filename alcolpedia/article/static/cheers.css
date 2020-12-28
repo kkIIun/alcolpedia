@@ -1,27 +1,49 @@
-body{
-    background-color: #4B8C69;
+body {
+    width: 100%;
+    height: auto;
+    padding: 0 0 3px;
+    background-image: linear-gradient(to bottom, #4b8c69, #0e0e0e 33%, #4b8c69 42%, #0e0e0e 52%, #4b8c69);
 }
-.card{
-    background-color: black;
-    color: white;
-    vertical-align: middle;
-    margin: 0 4vw 0 4vw;
-}
-.content{
-    background : linear-gradient(#4B8C69, black);
+.navbar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 12.6%;
+    width: 100%;
+    margin: 0;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-size: 1.8em;
+
 }
 
-.card-color{
-    color:white;
+.middle-container{
+    text-align: center;
+    border-radius: 3rem;
+    padding: 1vw;
+    margin-left: 40vw;
+    margin-right: 40vw;
+    margin-top: 25vw;
+    text-size-adjust: inherit;
 }
-.btn-outline-light{
-    padding-left: 14%;
+.middle-card{
+    vertical-align: middle;
+    text-align: center;
 }
-.card-body{
-    padding-left: 10vw;
+
+.card{
+    position: inherit;
+    background-color: none;
+    vertical-align: middle;
+    margin: 5vw 20.5vw;
+    padding: 0 14vw;
 }
+
+/* .btn{
+    padding-left: 50vw;
+} */
+
 .top-bar-title {
-    color: white;
     position: absolute;
     top: 15rem;
     left: 50%;
@@ -34,32 +56,37 @@ ul.pagination{
     margin-bottom: 0;
 }
 .background-crop {
-    padding-top:5rem;
-    margin-bottom: 8rem;
+    margin-bottom: 4rem;
     max-height: 30rem;
-    height: 8rem;
+    height: auto;
     width: 100%;
     overflow: hidden;
 }
 
-/* .background-crop img {
+.background-crop img {
     width: 100%;
     min-height: 40rem;
     height: auto;
-    margin: -20rem 0 0 0;
-} */
+    margin: -25rem 0 0 0;
+}
+
 
 .pagination a{
     color: white;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
-    border: 1px solid white;
+    border: 1px solid #72e9a0;
     border-radius: 3rem;
 }
 
 .pagination a:hover:not(.active) {
-    background-color: #ddd;
+    background-color: #72e9a0;
+}
+
+.pagination .active {
+    background-color: #72e9a0;
+    border-radius: 3rem;   
 }
 
 strong{
@@ -67,7 +94,3 @@ strong{
     font-size: 1.1rem;
 }
 
-.pagination .active {
-    background-color: white;
-    border-radius: 3rem;   
-}
