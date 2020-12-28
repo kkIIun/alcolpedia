@@ -5,6 +5,55 @@ body {
     background-image: linear-gradient(to bottom, #4b8c69, #0e0e0e 33%, #4b8c69 42%, #0e0e0e 52%, #4b8c69);
 }
 
+.circle{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    text-align: center;
+    border: solid 4px #7dffcb;
+    border-radius: 129px;
+    
+}
+.bottle01 {
+    width: 180px;
+    height: 500px;
+    margin: 50px 100px 0 248px;
+    border-radius: 129px;
+    position: relative;
+    background-image: linear-gradient(to bottom, #7dffcb, #b6ffc1 47%, #b7ff80);
+  }
+
+  .bottle02 {
+    width: 80px;
+    height: 300px;
+    margin: 0 0 0 500px;
+    position: absolute;
+
+    border-radius: 129px;
+    background-image: linear-gradient(to bottom, #ddffc5, #b8f9be 47%, #fe619f);
+  }
+
+  .bottle03 {
+    width: 100px;
+    height: 200px;
+    margin: -500px 40px 0 900px;
+    border-radius: 129px;
+    position: relative;
+
+    background-image: linear-gradient(to bottom, #7dffcb, #b6ffc1 47%, #b7ff80);
+  }
+  .bottle04 {
+    width: 122px;
+    height: 274px;
+    margin: 50px -140px 0 1200px;
+    border-radius: 129px;
+    position: relative;
+
+
+
+    background-image: linear-gradient(to bottom, #7dffcb, #b6ffc1 47%, #b7ff80);
+    opacity: 70%;
+}
 .navbar {
     position: fixed;
     top: 0px;
@@ -22,7 +71,38 @@ body {
     margin: 0 auto;
 }
 
-
+/* .textwrap {
+    width: 320px;
+    height: 80px;
+    position: absolute;
+    
+    border-radius: 42px;
+    border: solid 2px #b6ffbf;
+} */
+.bgmbar {
+    width: 800px;
+    height: 160px;
+    margin: 0 auto;
+    justify-content: center;
+    border-radius: 100px;
+    box-shadow: 0 3px 20px 0 rgba(177, 255, 193, 0.59);
+    background-color: #0e0e0e;
+    font-weight:bold;
+    font-size: 1rem;
+    text-align: center;
+    padding: 35px 38.5px 35px 64.4px;
+    
+    
+  }
+  .Icon-awesome-play-circle {
+    width: 100px;
+    height: 100px;
+    padding-bottom: 10px;
+    
+    
+    border-radius: 100px;
+    background-color: #7dffcb;
+  }
 
 .font{
     /* font-family: 'DancingScript-VariableFont_wght';
@@ -38,7 +118,7 @@ body {
    
     margin: 0;
     text-shadow: 0 0 60px #9effc6;
-    font-family: NotoSansCJKKR;
+    font-family: 'NEXON Lv1 Gothic OTF';
     font-size: 60px;
     
     font-stretch: normal;
@@ -149,16 +229,18 @@ img{
 }
 
 .tag_box {
-    position: fixed;
+    
     align-content: center;
     text-align: center;
     margin-top: 4rem;
     white-space: nowrap;
-<<<<<<< HEAD
-=======
     color : white;
->>>>>>> 4a8b989976208e394d14df03e9dc336e7fb2df8e
     padding: 0 5rem 0 5rem;
+    font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+div.tag_box div{
+    color:white;
 }
 
 
@@ -230,18 +312,31 @@ img{
 
 .card{
     width: 18rem;
-    background : none;
+    background-color: #0e0e0e;
     color:white;
-    border: 1px solid white;
-    font-family: 'NEXON Lv1 Gothic OTF';
+    font-family: 'NotoSansCJKKR';
     flex:1;
-    margin-left: 1.2rem;
-    margin-right: 1.2rem;
-    
-       
-    
+    padding: 25px 21px 23px;
+    border-radius: 20px;
+    box-shadow: 0 3px 20px 0 rgba(177, 255, 193, 0.59);
+   
 }
 
+.card-title{
+    margin: 12px 8px 0 4px;
+    width: 100%;
+    text-align: left;
+    font-family: NotoSansCJKKR;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.card-text{
+    text-align: left;
+    font-family: NotoSansCJKKR;
+    font-size: 20px;
+    text-align: center;
+}
 .card_container{
     display: flex;
 
@@ -365,6 +460,7 @@ img{
     text-align: center;
     min-height: 60rem;
     height: auto;
+    margin-top:7rem;
 }
 
 #section-game {
@@ -378,6 +474,13 @@ img{
 
 #section-bgm {
     margin-top: 2rem;
+    padding-top:5rem;
+    min-height: 40rem;
+    height: auto;
+}
+
+#section-cheers {
+    margin-top: 15rem;
     padding-top:8rem;
     min-height: 40rem;
     height: auto;

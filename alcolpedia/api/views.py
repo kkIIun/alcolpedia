@@ -1,4 +1,3 @@
-
 from django.shortcuts import render,get_object_or_404
 from rest_framework import viewsets, pagination
 from .serializers import ProfileSerializer, UserSerializer, ContentSerializer
@@ -12,11 +11,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.response import Response
 from article.models import Tag
+from django.contrib.auth.decorators import login_required
 import json
+from django.contrib import auth
 
-@api_view(['GET', 'POST'])
-@permission_classes((IsAuthenticated, ))
-@authentication_classes((JSONWebTokenAuthentication,))
+@api_view(['GET'])
 def contents_function(request):
     if request.method == 'GET' :
         name= request.GET.get('name')
@@ -31,24 +30,31 @@ def contents_function(request):
 @permission_classes((IsAuthenticated, ))
 @authentication_classes((JSONWebTokenAuthentication,))
 def profile_function(request):
-    profile = Profile.objects.filter(user = request.user)
     if request.method == 'GET' :
+        profile = Profile.objects.filter(user = request.user)
         profile_serialize = json.loads(serializers.serialize('json', profile))
         bookmarks = Content.objects.filter(bookmark__id = request.user.id)
         bookmark_list = json.loads(serializers.serialize('json', bookmarks)) 
         profile_serialize[0] = [profile_serialize[0], bookmark_list]
-        # print(profile_serialize[0][1][1]['fields']['title']) 
+        profile_serialize[0][0]['fields']['user'] = request.user.username
         return HttpResponse(json.dumps(profile_serialize), content_type="text/json-comment-filtered")
-    # elif request.method == 'PUT' :
-    #     serializer = ProfileSerializer(profile ,data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #     return HttpResponse(serializer, content_type="text/json-comment-filtered")
+    
+    if request.method == 'PUT' :
+        profile = get_object_or_404(Profile,user__username = request.user.username)
+        user = get_object_or_404(User, pk = request.user.id)
+        username = request.GET.get('username')
+        image = request.FILES.get('image')
+        if username:
+            user.username = username
+        if image:
+            profile.avatar = image
+        user.save()
+        profile.save()
 
-@permission_classes((IsAuthenticated, ))
-@authentication_classes((JSONWebTokenAuthentication,))
+
 def tag_function(request):
     tags = Tag.objects.all()
     tags = serializers.serialize('json', tags)
-    return HttpResponse(tags, content_type="text/json-comment-filtered")
-
+    return HttpResponse(tags, content_type="text/json-comment-filtered")            
+# login, logout, registration 은 rest-auth를 사용
+    

@@ -4,17 +4,13 @@ body {
     padding: 0 0 3px;
     background-image: linear-gradient(to bottom, #4b8c69, #0e0e0e 33%, #4b8c69 42%, #0e0e0e 52%, #4b8c69);
 }
-.navbar {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    height: 12.6%;
-    width: 100%;
-    margin: 0;
-    padding-left: 1%;
-    padding-right: 1%;
-    font-size: 1.8em;
 
+.recommend_img{
+    width: 175px;
+    height: 160px;
+    margin: 0 39px;
+    border: solid 1px #707070;
+    background-color: #ffffff;
 }
 
 
@@ -99,3 +95,34 @@ body {
     text-align: center;
     width: fit-content;
 }
+
+
+.body2{
+    background-color: #000000;
+}
+
+.reccomend{
+    margin-top: 7rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 15px;
+    background-color: #000000;
+    color:white;
+}
+
+.slider{
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.back_game{
+    width: 13rem;
+    height: 2.5rem;
+    margin: 2rem auto;
+    padding: 5px 34.5px 8px 30.5px;
+    border-radius: 42px;
+    border: solid 2px #b6ffbf;
+    text-align: center;
+    font-size: 15px;
+}
+
