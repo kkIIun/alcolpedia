@@ -95,3 +95,7 @@ body{
 .nav_style{
     margin-left: 45%;
 }
+
+.navbar-collapse{
+    padding-left: 6rem;
+}

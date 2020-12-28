@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark navbar-expand-lg row">
 
-    <a class="navbar-brand col-2" href="{%url 'home'%}">ALCOLPEDIA</a>
+    <a class="navbar-brand col-2" href="{%url 'home'%}" style="margin-right:4rem;">ALCOLPEDIA</a>
     <button class="navbar-toggler col-2" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,6 +24,7 @@
             <li class="navbar-item col-lg-2 col-md-2 col-sm-4 col-6">
                 <a class="what nav-link" href="{%url 'article'%}?name=setting">옵션</a>
             </li>
+            
             {% if user.is_authenticated %}
             <div class="col-3"></div>
             <li class="navbar-item col-md-3 col-4">
@@ -51,6 +52,7 @@
                     <a class="btn btn-secondary col-md-12 col-12 col-sm-12 col-xs-12" href="{%url 'sign_up'%}" style="background-color:#000000; border:1px solid #ffffff;">Sign up</a>
                 </li>
             {% endif %}
+            
         </ul>
     </div>
     <div class="modal" id = "modal" data-keyboard="false" tabindex="-1">
@@ -79,7 +81,7 @@
 </nav>
 
 <script type="text/javascript">
-    window.addEventListener("scroll", function () {
+    window.addEventListener("scroll", function(){
         var nav = document.querySelector("nav");
         nav.classList.toggle("sticky", window.scrollY > 0);
     })

@@ -1,4 +1,3 @@
-
 from django.shortcuts import render,get_object_or_404
 from rest_framework import viewsets, pagination
 from .serializers import ProfileSerializer, UserSerializer, ContentSerializer
@@ -14,9 +13,7 @@ from rest_framework.response import Response
 from article.models import Tag
 import json
 
-@api_view(['GET', 'POST'])
-@permission_classes((IsAuthenticated, ))
-@authentication_classes((JSONWebTokenAuthentication,))
+@api_view(['GET'])
 def contents_function(request):
     if request.method == 'GET' :
         name= request.GET.get('name')
@@ -45,8 +42,7 @@ def profile_function(request):
     #         serializer.save()
     #     return HttpResponse(serializer, content_type="text/json-comment-filtered")
 
-@permission_classes((IsAuthenticated, ))
-@authentication_classes((JSONWebTokenAuthentication,))
+
 def tag_function(request):
     tags = Tag.objects.all()
     tags = serializers.serialize('json', tags)

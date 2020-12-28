@@ -27,15 +27,17 @@
                 </button>
             </div>
         </form>
-        <div class = 'tag_box'>
-            {% for tag in tags%}
-            <div onclick='tagSelected(this);'>#{{tag}}</div>
-            {%endfor%}
+        <div class="tag_box">
+            {% for tag in tags %}
+            <div class="tagButton">
+                <a style="color:white; font-family: 'NEXON Lv1 Gothic OTF';" onclick="tagSelected(this);">#{{tag}}</a>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
 
-<div class="row wrapper" id="section-game">
+<div class="row wrapper" id="section-game" style="z-index:-1;">
     <video id="myVideo" autoplay muted loop style="height: 65rem;">
         <!-- <source src="{% static '술움짤.webm'%}" type="video/webm"> -->
     </video>
@@ -144,7 +146,6 @@
         }
     });
 </script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
     var searchs = [];
