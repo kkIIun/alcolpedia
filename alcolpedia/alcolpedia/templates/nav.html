@@ -1,7 +1,6 @@
-<nav class="navbar navbar-dark navbar-expand-lg row" style="background-color: #000000;">
+<nav class="navbar navbar-dark navbar-expand-lg row">
 
     <a class="navbar-brand col-2" href="{%url 'home'%}">ALCOLPEDIA</a>
-    
     <button class="navbar-toggler col-2" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -79,4 +78,9 @@
     </div>
 </nav>
 
-
+<script type="text/javascript">
+    window.addEventListener("scroll", function () {
+        var nav = document.querySelector("nav");
+        nav.classList.toggle("sticky", window.scrollY > 0);
+    })
+</script>

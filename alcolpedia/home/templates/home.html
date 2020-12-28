@@ -12,7 +12,7 @@
 {% endblock %}
 {% block content %}
 
-<div >
+<div>
     {% include 'nav.html'%}
     <div class="background-crop">
         <!-- <img src="{% static 'neon.jpg' %}"> -->
@@ -29,9 +29,7 @@
         </form>
         <div class = 'tag_box'>
             {% for tag in tags%}
-            <div class='tagButton' style="color: white;">
-                <a style=" font-family: 'NEXON Lv1 Gothic OTF'; "onclick='tagSelected(this);'>#{{tag}}</a>
-            </div>
+            <div onclick='tagSelected(this);'>#{{tag}}</div>
             {%endfor%}
         </div>
     </div>
