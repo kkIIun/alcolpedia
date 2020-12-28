@@ -318,15 +318,15 @@ img{
 }
 
 .card-title{
-    width: 344px;
-    margin: 12px 8px 0 4px;
-    height: 48px;
+    width: 100%;
+    text-align: left;
     font-family: NotoSansCJKKR;
     font-size: 30px;
     font-weight: bold;
 }
 
 .card-text{
+    text-align: left;
     font-family: NotoSansCJKKR;
     font-size: 20px;
 }
