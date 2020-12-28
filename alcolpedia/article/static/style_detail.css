@@ -1,17 +1,16 @@
-body{
-    background-color: #000000;
-}
-.navbar {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    height: 12.6%;
+body {
     width: 100%;
-    margin: 0;
-    padding-left: 1%;
-    padding-right: 1%;
-    font-size: 1.8em;
-    background-color: #000000;
+    height: auto;
+    padding: 0 0 3px;
+    background-image: linear-gradient(to bottom, #4b8c69, #0e0e0e 33%, #4b8c69 42%, #0e0e0e 52%, #4b8c69);
+}
+
+.recommend_img{
+    width: 175px;
+    height: 160px;
+    margin: 0 39px;
+    border: solid 1px #707070;
+    background-color: #ffffff;
 }
 
 
@@ -29,7 +28,7 @@ body{
     margin-top: 10rem;
     text-align: center;
     font-size: 45px;
-    background-color: #000000;
+
     font-family: 'NEXON Lv2 Gothic Bold';
     color:white;
 
@@ -55,7 +54,6 @@ body{
     border-radius: 30px;
     padding-top: 2%;
     padding-bottom: 2%;
-    border: solid 1px #000000;
     color:white;
     font-family: 'NEXON Lv1 Gothic OTF';
 }
@@ -64,15 +62,17 @@ body{
     margin-bottom: 5%;
     text-align: center;
     font-size: 35px;
-    background-color: #000000;
     font-family: 'NEXON Lv2 Gothic Bold';
     color:white;
+    margin-left: 40vw;
+    margin-right: 40vw;
 }
 
 .forth{
     color:white;
-    background-color: #000000;
 }
+
+
 
 .detail-content-body{
     color:white;
@@ -96,6 +96,33 @@ body{
     width: fit-content;
 }
 
+
 .body2{
     background-color: #000000;
 }
+
+.reccomend{
+    margin-top: 7rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 15px;
+    background-color: #000000;
+    color:white;
+}
+
+.slider{
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.back_game{
+    width: 13rem;
+    height: 2.5rem;
+    margin: 2rem auto;
+    padding: 5px 34.5px 8px 30.5px;
+    border-radius: 42px;
+    border: solid 2px #b6ffbf;
+    text-align: center;
+    font-size: 15px;
+}
+

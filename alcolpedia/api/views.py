@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404,redirect
+from django.shortcuts import render,get_object_or_404
 from rest_framework import viewsets, pagination
 from .serializers import ProfileSerializer, UserSerializer, ContentSerializer
 from member.models import Profile
@@ -15,9 +15,7 @@ from django.contrib.auth.decorators import login_required
 import json
 from django.contrib import auth
 
-@api_view(['GET', 'POST'])
-@permission_classes((IsAuthenticated, ))
-@authentication_classes((JSONWebTokenAuthentication,))
+@api_view(['GET'])
 def contents_function(request):
     if request.method == 'GET' :
         name= request.GET.get('name')
@@ -53,8 +51,7 @@ def profile_function(request):
         user.save()
         profile.save()
 
-@permission_classes((IsAuthenticated, ))
-@authentication_classes((JSONWebTokenAuthentication,))
+
 def tag_function(request):
     tags = Tag.objects.all()
     tags = serializers.serialize('json', tags)
