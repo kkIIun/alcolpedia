@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.core import serializers
 from django.http import HttpResponse,JsonResponse
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.response import Response
 from article.models import Tag
@@ -16,6 +16,7 @@ import json
 from django.contrib import auth
 
 @api_view(['GET'])
+@permission_classes((IsAuthenticatedOrReadOnly, ))
 def contents_function(request):
     if request.method == 'GET' :
         name= request.GET.get('name')
@@ -25,6 +26,7 @@ def contents_function(request):
         return Response(serializer.data)
         # content_list = json.loads(serializers.serialize('json', contents)) 
         # return HttpResponse(json.dumps(content_list), content_type="text/json-comment-filtered")
+
 
 @api_view(['GET', 'PUT'])
 @permission_classes((IsAuthenticated, ))
@@ -52,6 +54,7 @@ def profile_function(request):
         profile.save()
 
 
+@permission_classes((IsAuthenticatedOrReadOnly, ))
 def tag_function(request):
     tags = Tag.objects.all()
     tags = serializers.serialize('json', tags)
