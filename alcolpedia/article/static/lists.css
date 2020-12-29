@@ -208,6 +208,10 @@ hr{
     border-radius: 3rem;   
 }
 
+#card_margin{
+    position:relative;
+    box-shadow: 0 3px 20px 0 rgba(177, 255, 193, 0.59);
+}
 .cards{
     display: grid;
     grid-template-columns: repeat(12, minmax(auto, 60px));
