@@ -6,14 +6,13 @@
 {% load markdown_deux_tags %}
 {% block content %}
 {% include 'nav.html' %}
-<link rel="stylesheet" href="{% static 'style_detail.css' %}?v=1.0">
+<link rel="stylesheet" href="{% static 'detail.css' %}?v=1.0">
 <link rel="stylesheet" href="{% static 'slick/slick.css' %}?v=1.0">
 <link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}?v=1.0">>
 <div class="first">
     {{content.title}}
-    <!-- <hr style="width:30%; border:inset 1px white;"> -->
 </div>
-<p style="text-align: center; font-size: 40px; color:#72e9a0;">
+<p style="text-align: center; font-size: 40px; color:#b7ff80;">
     <script>
         for(var i = 0; i < {{content.difficulty}}; i++) {
             document.write("★")
@@ -28,13 +27,8 @@
         <div class="second_baby">{{tag}}</div>
     {% endfor %}
 </div>
-<!-- <p style="text-align: center;">
-    {{music}} 플레이
-    <br>
-    {{lyrics}} 가사
 
-</p> -->
-<div class="body2">
+<div>
     <br><br><br>
     
     {% if content.audio %}
@@ -70,7 +64,7 @@
         {% endif%}
 {% endfor %}
 </div>
-<a href="{%url 'article'%}?name=game" style="color:white; text-align: center;text-decoration: none;">
+<a href="{%url 'article'%}?name=game" style="color:white; text-align: center;text-decoration: none;margin-bottom:">
     <div class="back_game">목록으로 돌아가기</div>
 </a>
 {% endblock %}
