@@ -19,11 +19,21 @@
     <div class="container">
         <div class="row" style="flex-wrap: wrap;">
         {% for content in posts %}
-        <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
-        <div class="card col-lg-4 col-md-6 col-sm-6 col-xs-10 col-10" id='card_margin' style="min-height: 30rem; max-height: 60rem; height:auto">
-            <div style="margin: 1rem; padding: 2rem; border-radius: 20px;">
+        <!-- <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div> -->
+        <div class="card col-lg-4 col-md-6 col-sm-6 col-xs-10 col-10" id='card_margin' style="min-height: 30rem; max-height: 60rem; height:auto; margin: 1rem;">
+            <div style="margin: 0.5rem; padding: 0.3rem; border-radius: 10px;">
                 <img src="{{content.image.url}}" style="width: 100%;">
-                <hr>
+            </div>
+            <a class="bookmark" id="bookmark-text-{{content.id}}" name={{content.id}}
+                style="color: white; position:absolute;right: 1.2rem;">
+                {% if user in content.bookmark.all %}
+                <i class="fas fa-bookmark fa-lg"></i>
+                {% else %}
+                <i class="far fa-bookmark fa-lg"></i>
+                {%endif%}
+            </a>
+            <hr>
+            <div class = "card__content">
                 <h4 style="font-family: 'NEXON Lv2 Gothic Bold';">
                     {{content.title}}
                 </h4>
@@ -40,9 +50,7 @@
                     </a>
                 </p>
                 <span>
-                    <button type="button" style="margin-top:0.5rem; background-color: black; color: white; " class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
-                        Tip
-                    </button>
+
                     <button type="button" style="margin-top:0.5rem; background-color: black; border:1px solid #72e9a0; color: white;" class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
                         자세히 보기
                     </button>
@@ -70,7 +78,7 @@
                   </div>
                 </div>
             </div>
-            <div class="modal" id = "modal2-{{content.id}}" data-keyboard="false" tabindex="-1">
+            <!-- <div class="modal" id = "modal2-{{content.id}}" data-keyboard="false" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                   <div class="modal-content" style="color:#303030; background-color:rgba(226, 224, 224, 0.897); border:2px solid #494848; font-size: 1.5rem;">
                     <div class="modal-header">
@@ -99,9 +107,9 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
                         </div>
-                  </div>
+                    </div>
                 </div>
-            </div>
+            </div> -->
         {% endfor %}
         </div>
     </div>
