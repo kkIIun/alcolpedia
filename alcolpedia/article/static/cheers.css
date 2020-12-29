@@ -16,6 +16,9 @@ body {
     font-size: 1.8em;
 
 }
+ul{
+    margin-bottom: 0;
+}
 .middle-container{
     text-align: center;
     border-radius: 3rem;

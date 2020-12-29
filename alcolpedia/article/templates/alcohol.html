@@ -5,7 +5,8 @@
     {{title}}
 {% endblock %} 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'list.css' %}?v=1.0">
+<link rel="stylesheet" href="{% static 'list.css' %}?v=1.0">
+
 {% endblock %}
 {% block content %}
 <div class="content">
@@ -79,6 +80,7 @@
                       </button>
                     </div>
                         <div class="modal-body">
+                            for
                             {{comment.content | markdown}}
                             <hr>
                             {% if user.is_authenticated %}
@@ -105,7 +107,7 @@
     </div>
     <nav aria-label="..." class="nav_style">
         <div class="pagination_wrapper" style="text-align: center; margin-top: 10%;">
-            <ul class="pagination justify-content-center">
+            <ul class="pagination justify-content-center" >
                 {% if posts.has_previous %}
                 <li class="page-item">
                     <a class="page-white" href="?name=alcohol&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
