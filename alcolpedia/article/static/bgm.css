@@ -4,6 +4,9 @@ body {
     padding: 0 0 3px;
     background-image: linear-gradient(to bottom, #4b8c69, #0e0e0e 33%, #4b8c69 42%, #0e0e0e 52%, #4b8c69);
 }
+ul{
+    margin-bottom: 0;
+}
 
 a.what {
     text-decoration : none;
