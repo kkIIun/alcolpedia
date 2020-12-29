@@ -18,6 +18,7 @@
   <h2 class="middle-container" style="border: solid 2px #72e9a0; font-size: medium; color: white;">
     오늘의 추천 건배사
   </h2>
+
   <div class="accordion" id="accordionExample">
     <div class="middle-card"
       style="margin: 5vw 30vw; border-radius: 3rem; background-image: linear-gradient(to bottom, #7dffcb, #b7ff80);">
@@ -76,19 +77,19 @@
                   <ol
                     style="list-style-type: inherit; font-family: 'NEXON Lv2 Gothic Bold'; margin-top: 1rem;">
                     <li>{{content.title}}
-                      <div style="text-align: right;">  
-                        <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}" name={{content.id}} style="color: white; padding:0; text-align: end;">
-                          {% if user in content.like.all %}
-                          <i class="fas fa-heart"></i> : {{content.like.all|length}}
-                          {% else %}
-                          <i class="far fa-heart"></i> : {{content.like.all|length}}
-                          {%endif%}                        
-                        </a>
-                      </div>  
                     </li>
-                    </ol>                  
-                  </button>
+                  </ol>                  
+                </button>
               </h2>
+              <div style="text-align: end;">
+                <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}" name={{content.id}} style="color: white; padding:0; text-align: end;">
+                  {% if user in content.like.all %}
+                  <i class="fas fa-heart"></i> : {{content.like.all|length}}
+                  {% else %}
+                  <i class="far fa-heart"></i> : {{content.like.all|length}}
+                  {%endif%}                        
+                </a>
+              </div>  
             </div>
 
             <div id="collapse{{content.no_blank_title}}" style="color: white;" class="collapse"
@@ -141,3 +142,61 @@
 
 
     {% endblock %}
+    {% block script %}
+
+<script>
+
+
+    function moveDetail(url) {
+        window.move
+        window.location.href = url;
+    }
+
+    $(".bookmark").click(function () {
+            var content_id = $(this).attr('name');
+            $.ajax({
+                type: "POST",
+                url: "{% url 'bookmark' %}",
+                data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+                dataType: "json",
+                success: function (response) {
+                    if (response.isBookmarked) {
+                        $("#bookmark-text-" + content_id).html('<i class="fas fa-bookmark"></i>');
+                    }
+                    else {
+                        $("#bookmark-text-" + content_id).html('<i class="far fa-bookmark"></i>');
+                    }
+                },
+                error: function (request, status, error) {
+                    alert("로그인이 필요합니다.")
+                    //window.location.replace("/account/login/")
+                },
+            });
+        })
+
+    $(".like").click(function () {
+        var content_id = $(this).attr('name');
+        $.ajax({
+            type: "POST",
+            url: "{% url 'like' %}",
+            data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+            dataType: "json",
+            success: function (response) {
+                var cnt = response.like_count * 1;
+                if (response.isLiked) {
+                    $("#like-text-" + content_id).html('<i class="fas fa-heart"></i> : '+ cnt + ' &nbsp; {{content.title}}');
+                }
+                else {
+                    $("#like-text-" + content_id).html('<i class="far fa-heart"></i> : '+ cnt + ' &nbsp;');
+                }
+            },
+            error: function (request, status, error) {
+                alert("로그인이 필요합니다.")
+                //window.location.replace("/account/login/")
+            },
+        });
+    })
+</script>
+
+{% endblock %}
+
