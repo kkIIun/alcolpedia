@@ -18,6 +18,11 @@ ul{
     font-family: 'NEXON Lv1 Gothic OTF';
 }
 
+.content{
+    background : linear-gradient(#4B8C69, black);
+}
+
+
 .card{
     background-color: black;
     border: 1px solid none;
