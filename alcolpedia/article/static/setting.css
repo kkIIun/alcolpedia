@@ -16,11 +16,9 @@ ul{
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'NEXON Lv1 Gothic OTF';
+    font-size: 40px;
 }
 
-.content{
-    background : linear-gradient(#4B8C69, black);
-}
 
 
 .card{
@@ -33,9 +31,9 @@ ul{
 }
 
 .background-crop {
-    margin-bottom: 30rem;
+    margin-bottom: 30px;
     max-height: 30rem;
-    height: auto;
+    height: 100px;
     width: 100%;
     overflow: hidden;
 }
@@ -72,4 +70,41 @@ ul{
 .card-row {
     -webkit-column-gap: 0rem;
     column-gap: 0rem;
+}
+.bottle01 {
+    width: 180px;
+    height: 500px;
+    margin: 50px 100px 0 248px;
+    border-radius: 129px;
+    position: relative;
+    background-image: linear-gradient(to bottom, #7dffcb, #b6ffc1 47%, #b7ff80);
+  }
+
+  .bottle02 {
+    width: 80px;
+    height: 200px;
+    margin: 0 0 0 500px;
+    position: absolute;
+
+    border-radius: 129px;
+    background-image: linear-gradient(to bottom, #ddffc5, #b8f9be 47%, #fe619f);
+  }
+
+  .bottle03 {
+    width: 100px;
+    height: 200px;
+    margin: -600px 40px 0 900px;
+    border-radius: 129px;
+    position: relative;
+
+    background-image: linear-gradient(to bottom, #7dffcb, #b6ffc1 47%, #b7ff80);
+  }
+  .bottle04 {
+    width: 122px;
+    height: 200px;
+    margin: 0px -140px 0 1100px;
+    border-radius: 129px;
+    position: relative;
+    background-image: linear-gradient(to bottom, #7dffcb, #b6ffc1 47%, #b7ff80);
+    opacity: 70%;
 }
