@@ -106,7 +106,6 @@ body {
     margin-bottom: 2rem;
     text-align: center;
     font-size: 15px;
-    background-color: #000000;
     color:white;
 }
 
@@ -124,5 +123,6 @@ body {
     border: solid 2px #b6ffbf;
     text-align: center;
     font-size: 15px;
+    margin-bottom: 8rem;
 }
 

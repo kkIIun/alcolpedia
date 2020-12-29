@@ -5,7 +5,7 @@
     {{title}}
     {% endblock %}
     {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'home.css' %}?v=1.0">
+    <link rel="stylesheet" href="{% static 'homes.css' %}?v=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'slick/slick.css' %}?v=1.0">
@@ -44,22 +44,24 @@
     </div>
 
     <div class="row wrapper" id="section-game">
-        
-        <div class="container5 game" style="position: absolute;">
+
+        <div class="container5 game" style="position: absolute;s">
             <div class="section-title">
                 <div class="textwrap" style="margin-top:5rem;">
                     요즘 뜨는 술게임
                 </div>
             </div>
-            <div style=" text-align: right; color: white;"> 더보기 <br><br>
+            <div style="text-align: right;">
+                <a style="color: white; text-decoration:none;" href="{%url 'article'%}?name=game"> 더보기 </a><br><br>
             </div>
             <div class="slider">
                 {% for content in contents %}
                 <div>
-                    <div class="card" style="width: 16rem; margin-left:auto; margin-right: auto;">
-                        <img src="{{content.image.url}}" class="card-img-top" style="border-radius: 0.5rem; height: 15rem">
+                    <div class="card" style="margin-left:auto; margin-right: auto;">
+                        <img src="{{content.image.url}}" class="card-img-top"
+                            style="border-radius: 0.5rem; height: 15rem">
                         <div class="card-body">
-                            <h5 class="card-title">{{content.title}}</h5>
+                            <p class="card-title">{{content.title}}</p>
                             <p class="card-text">{{content.summary}}</p>
                             <a href="{% url 'detail' content.id %}" class="btn btn-dark">게임방법</a>
                         </div>
@@ -155,7 +157,8 @@
                                 <i class="fas fa-play" style="display: block;" id="play-icon-{{bgm.audio.url}}"></i>
                             </div>
                             {% endif %}
-                            <div style="color:#ffffff;margin-top:2rem; font-family: 'NEXON Lv1 Gothic OTF';">{{bgm.title}}
+                            <div style="color:#ffffff;margin-top:2rem; font-family: 'NEXON Lv1 Gothic OTF';">
+                                {{bgm.title}}
                             </div>
                         </div>
                         {% endfor %}
@@ -170,8 +173,8 @@
 
             <h2 class="section-title">
                 오늘의 추천 건배사</h2>
-
-            <div style="text-align: right; color: white;"> 더보기 <br><br>
+            <div style="text-align: right;">
+                <a style="color: white; text-decoration:none;" href="{%url 'article'%}?name=cheers"> 더보기 </a><br><br>
             </div>
             <section class="cheers">아이유</section>
             <div style="color: white; padding-top: 50px;">아름다운 이 세상 유감없이 살다가자</div>
