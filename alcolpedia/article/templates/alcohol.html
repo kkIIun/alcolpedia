@@ -20,38 +20,39 @@
     <div class="container">
         <div class="row" style="flex-wrap: wrap;">
         {% for content in posts %}
-            
-            <div class="card col-lg-4 col-md-6 col-sm-6 col-xs-10 col-10" id='card_margin' style="min-height: 20rem; max-height: 60rem; height:auto; box-shadow: 0 3px 20px 0 rgba(177, 255, 193, 0.59); margin-right: 2rem; margin-bottom: 2rem; ">
-                <div style="margin: 0.5rem;">
-                    <img src="{{content.image.url}}" style="width: 100%;">
-                    <div style="margin-top:2rem; margin-left: 2rem; margin-bottom: rem;">
-                        <h4 style="font-family: 'NEXON Lv2 Gothic Bold';">
-                            {{content.title}}
-                                <a class="like" id="like-text-{{content.id}}" name={{content.id}} style="color: white; margin-left: 7rem;">
-                                    {% if user in content.like.all %}
-                                    <i class="fas fa-heart"></i> : {{content.like.all|length}}
-                                    {% else %}
-                                    <i class="far fa-heart"></i> : {{content.like.all|length}}
-                                    {%endif%}
-                                </a>
-                        </h4>
-                        <p style="font-family: 'NEXON Lv1 Gothic OTF';">
-                            {{content.summary}}
-                        </p>
-                        <span>
-                            <button type="button" style="margin-top:0.5rem; background-color: black; color: white; margin-left: 9rem; " class="btn" data-toggle="modal" data-target="#modal2-{{content.id}}">
-                                Tip
-                            </button>
-                            <button type="button" style="margin-top:0.5rem; background-color: black; border:2.5px solid #72e9a0; color: white;" class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
-                                자세히
-                            </button>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            
-                        </span>
-                    </div>
-                </div>
+        <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
+        <div class="card col-lg-4 col-md-6 col-sm-6 col-xs-10 col-10" id='card_margin' style="min-height: 30rem; max-height: 60rem; height:auto">
+            <div style="margin: 1rem; padding: 2rem; border-radius: 20px;">
+                <img src="{{content.image.url}}" style="width: 100%;">
+                <hr>
+                <h4 style="font-family: 'NEXON Lv2 Gothic Bold';">
+                    {{content.title}}
+                </h4>
+                <p style="font-family: 'NEXON Lv1 Gothic OTF';">
+                    {{content.summary}}
+                </p>
+                <p>
+                    <a class="like" id="like-text-{{content.id}}" name={{content.id}} style="color: white;">
+                        {% if user in content.like.all %}
+                        <i class="fas fa-heart"></i> : {{content.like.all|length}}
+                        {% else %}
+                        <i class="far fa-heart"></i> : {{content.like.all|length}}
+                        {%endif%}
+                    </a>
+                </p>
+                <span>
+                    <button type="button" style="margin-top:0.5rem; background-color: black; color: white; " class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
+                        Tip
+                    </button>
+                    <button type="button" style="margin-top:0.5rem; background-color: black; border:1px solid #72e9a0; color: white;" class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
+                        자세히 보기
+                    </button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                </span>
             </div>
-            <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
+        </div>
+        <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
             <div class="modal" id = "modal-{{content.id}}" data-keyboard="false" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                   <div class="modal-content" style="color:#303030; background-color:rgba(226, 224, 224, 0.897); border:2px solid #494848; font-size: 1.5rem;">
