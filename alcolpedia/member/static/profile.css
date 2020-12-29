@@ -1,17 +1,19 @@
+
+body{
+    background-image: url('neon_profile.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .background-crop {
-    max-height: 30rem;
+    max-height: 100rem;
     height: auto;
     width: 100%;
     overflow: hidden;
-    background-color: black;
+    margin-top: 20vw;
 }
 
-.background-crop img {
-    width:100%;
-    min-height: 45rem;
-    height: auto;
-    margin: -20rem 0 0 0;
-}
+
 
 .profile-image {
     width: 10rem;
@@ -66,10 +68,13 @@
 }
 
 .profile-content {
-    background-color: black;
-    color: white;
+    color: #ffffff;
 }
-
+h3{
+    font-family:'NEXON Lv1 Gothic OTF';
+    font-size: 2rem;
+    text-shadow: 1px 1px 8px #000;
+}
 .input-name {
     width: 20%;
     text-align: center;
@@ -79,7 +84,7 @@
 }
 
 .bookmark-content{
-    background-color: black;
+    
     justify-content: center;
 }
 
@@ -89,6 +94,9 @@
     border: 1px solid #ffffff;
     border-radius: 1em;
     background-color: black;
+    text-align: center;
+    width: 70%;
+    margin-left: 10vw;
 }
 
 #bookmark_a:hover(.active){
@@ -99,7 +107,7 @@
 
 #bookmark_a:hover:not(.active){
     color: black;
-    background-color:#ddd;
+    background-image: linear-gradient(to bottom, #7dffcb, #b7ff80);
 }
 
 /* .list-group-item{

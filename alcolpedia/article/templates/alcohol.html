@@ -5,7 +5,7 @@
     {{title}}
 {% endblock %} 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'list.css' %}?v=1.0">
+    <link rel="stylesheet" href="{% static 'lists.css' %}?v=1.0">
 {% endblock %}
 {% block content %}
 <div class="content">
@@ -16,42 +16,42 @@
         </h3>
     </div>
     
-    <div class="container" style="margin-top: 5rem;">
-        <div class="row">
+    <div class="container">
+        <div class="row" style="flex-wrap: wrap;">
         {% for content in posts %}
-            <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
-            <div class="card col-lg-4 col-md-6 col-sm-6 col-xs-10 col-10" id='card_margin' style="min-height: 30rem; max-height: 60rem; height:auto; ">
-                <div style="margin: 1rem; padding: 2rem; ">
-                    <img src="{{content.image.url}}" style="width: 100%;">
-                    <hr>
-                    <h4 style="font-family: 'NEXON Lv2 Gothic Bold';">
-                        {{content.title}}
-                    </h4>
-                    <hr style="border:1px solid white">
-                    <p style="font-family: 'NEXON Lv1 Gothic OTF';">
-                        {{content.summary}}
-                    </p>
-                    <p>
-                        <a class="like" id="like-text-{{content.id}}" name={{content.id}} style="color: white;">
-                            {% if user in content.like.all %}
-                            <i class="fas fa-heart"></i> : {{content.like.all|length}}
-                            {% else %}
-                            <i class="far fa-heart"></i> : {{content.like.all|length}}
-                            {%endif%}
-                        </a>
-                    </p>
-                    <span>
-                        <button type="button" style="margin-top:0.5rem; background-color: black; border:1px solid white; color: white;" class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
-                            자세히 보기
-                        </button>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="button" style="margin-top:0.5rem; background-color: black; color: white; " class="btn" data-toggle="modal" data-target="#modal2-{{content.id}}">
-                            Tip
-                        </button>
-                    </span>
-                </div>
+        <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
+        <div class="card col-lg-4 col-md-6 col-sm-6 col-xs-10 col-10" id='card_margin' style="min-height: 30rem; max-height: 60rem; height:auto">
+            <div style="margin: 1rem; padding: 2rem; border-radius: 20px;">
+                <img src="{{content.image.url}}" style="width: 100%;">
+                <hr>
+                <h4 style="font-family: 'NEXON Lv2 Gothic Bold';">
+                    {{content.title}}
+                </h4>
+                <p style="font-family: 'NEXON Lv1 Gothic OTF';">
+                    {{content.summary}}
+                </p>
+                <p>
+                    <a class="like" id="like-text-{{content.id}}" name={{content.id}} style="color: white;">
+                        {% if user in content.like.all %}
+                        <i class="fas fa-heart"></i> : {{content.like.all|length}}
+                        {% else %}
+                        <i class="far fa-heart"></i> : {{content.like.all|length}}
+                        {%endif%}
+                    </a>
+                </p>
+                <span>
+                    <button type="button" style="margin-top:0.5rem; background-color: black; color: white; " class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
+                        Tip
+                    </button>
+                    <button type="button" style="margin-top:0.5rem; background-color: black; border:1px solid #72e9a0; color: white;" class="btn" data-toggle="modal" data-target="#modal-{{content.id}}">
+                        자세히 보기
+                    </button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                </span>
             </div>
-            <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
+        </div>
+        <div class="d-lg-none d-md-none d-sm-none col-xs-1 col-1"></div>
             <div class="modal" id = "modal-{{content.id}}" data-keyboard="false" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                   <div class="modal-content" style="color:#303030; background-color:rgba(226, 224, 224, 0.897); border:2px solid #494848; font-size: 1.5rem;">
@@ -63,7 +63,6 @@
                     </div>
                         <div class="modal-body">
                             {{content.body | markdown}}
-                            
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-dark" data-dismiss="modal">닫기</button>
@@ -81,6 +80,7 @@
                       </button>
                     </div>
                         <div class="modal-body">
+                            for
                             {{comment.content | markdown}}
                             <hr>
                             {% if user.is_authenticated %}
@@ -107,7 +107,7 @@
     </div>
     <nav aria-label="..." class="nav_style">
         <div class="pagination_wrapper" style="text-align: center; margin-top: 10%;">
-            <ul class="pagination justify-content-center">
+            <ul class="pagination justify-content-center" >
                 {% if posts.has_previous %}
                 <li class="page-item">
                     <a class="page-white" href="?name=alcohol&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"

@@ -69,3 +69,6 @@ class ContentAdmin(admin.ModelAdmin):
         self.message_user(request, '{}개의 컨텐츠를 철수 상태 로 변경'.format(updated_count))
     make_withdrawn.short_description = '지정 컨텐츠를 철수 상태로 변경'
 
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    pass

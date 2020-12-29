@@ -1,109 +1,123 @@
 {% extends "base.html" %}
 
 {% load static %}
-{% block title%} 
-    {{title}}
-{% endblock %} 
+{% block title%}
+{{title}}
+{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'list.css' %}?v=1.0">
+<link rel="stylesheet" href="{% static 'lists.css' %}?v=1.0">
 {% endblock %}
 {% block content %}
-<hr>
-
-<hr>
-
 {% include 'nav.html' %}
+<div class="content">
 
-<div class = "background-crop" style="text-align: center;">
-    <img src="{% static 'party.jpg' %}" style="margin: -5rem 0 0 0;">
-    <h3 class = "top-bar-title" style="width: 100%; text-align: center;">
-        &nbsp 엄준식이~ 좋아하는~ 랜덤게임~
-    </h3>
-</div>
+    <div class="background-crop" style="text-align: center;">
 
-<section class="cards container" style="margin-top:5rem;">
-    {% for content in posts %}
-    <div class="card_blank"></div>
-    <div class="card_">
-        <div class="card__image-container" onclick="moveDetail('{% url 'detail' content.id %}')">
-            <img src="{{content.image.url}}">
-        </div>
-        <a class="bookmark" id="bookmark-text-{{content.id}}" name={{content.id}} style="color: white; position:absolute;right: 2rem;">
-            {% if user in content.bookmark.all %}
-            <i class="fas fa-bookmark"></i>
-            {% else %}
-            <i class="far fa-bookmark"></i>
-            {%endif%}
-        </a>
-        <div class="card__content">
-            <p class="card_title text-medium" onclick="moveDetail('{% url 'detail' content.id %}')">
-                {{content.title}}
-            </p>
-            <div style="display: inline; color: white;" onclick="moveDetail('{% url 'detail' content.id %}')">
-                <script>
-                    for (var i = 0; i < {{ content.difficulty }}; i++) {
-                        document.write("★")
-                    }
-                    for (var i = 0; i < 3 - {{ content.difficulty }}; i++) {
-                        document.write("☆")
-                    }
-                </script>
+        <h3 class="top-bar-title" style="width: 100%; text-align: center;">
+            술게임
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+            </svg>
+        </h3>
+    </div>
+
+    <section class="cards container">
+        {% for content in posts %}
+        <div class="card_">
+            <div class="card__image-container" onclick="moveDetail('{% url 'detail' content.id %}')">
+                <img src="{{content.image.url}}">
+
             </div>
-        </div>
-        <div class="card__info" style="margin-left:2vw;">
-            <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}" name={{content.id}} style="color: white; padding:0;">
-                {% if user in content.like.all %}
-                <i class="fas fa-heart"></i> : {{content.like.all|length}}
+            <a class="bookmark" id="bookmark-text-{{content.id}}" name={{content.id}}
+                style="color: white; position:absolute;right: 1.2rem;">
+                {% if user in content.bookmark.all %}
+                <i class="fas fa-bookmark fa-lg"></i>
                 {% else %}
-                <i class="far fa-heart"></i> : {{content.like.all|length}}
+                <i class="far fa-bookmark fa-lg"></i>
                 {%endif%}
             </a>
-            <br>
-            {% for tag in content.tag.all %}
-                <a class="btn" href="{% url 'tag' tag.id %}" style="padding-left:0"><U style="color: white; ">#{{tag}}</U></a>
-            {% endfor %}
+            <div class="card__content">
+                <p class="card_title text-medium" onclick="moveDetail('{% url 'detail' content.id %}')">
+                    {{content.title}}
+                </p>
+                <div style="display: inline; font-size:25px; color:#b7ff80;" onclick="moveDetail('{% url 'detail' content.id %}')">
+                    <script>
+                        for (var i = 0; i < {{ content.difficulty }}; i++) {
+                            document.write("★")
+                        }
+                        for (var i = 0; i < 3 - {{ content.difficulty }}; i++) {
+                            document.write("☆")
+                        }
+                    </script>
+                </div>
+                <br>
+                <p class="card_title text-small">
+                    {{content.title}}
+                </p>
+            </div>
+            <div class="card__info" style="margin-left:2vw; margin-right: 2vw;margin-top:1rem;">
+                
+                <div style="text-align: right;">
+                    <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}"
+                        name={{content.id}} style="color: white; padding:0; text-align: end;">
+                        {% if user in content.like.all %}
+                        <i class="fas fa-heart fa-lg"></i> {{content.like.all|length}}
+                        {% else %}
+                        <i class="far fa-heart fa-lg"></i> {{content.like.all|length}}
+                        {%endif%}
+                    </a>
+                </div>
+                <div class="tag_flex_container" >
+                    {% for tag in content.tag.all %}
+                    <div class="tag_felx_item">
+                    <a href="{% url 'tag' tag.id %}" style="color: white;">#{{tag}}</a></div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
         
-    </div>
-    <div class="card_blank"></div>
-    {% endfor %}
-</section>
+        {% endfor %}
+    </section>
 
 
-<nav aria-label="..." class="nav_style">
-    <div class="pagination_wrapper" style="text-align: center; margin-top: 10%;"> 
-        <ul class="pagination justify-content-center">
-            {% if posts.has_previous %}
-            <li class="page-item">
-                <a class="page-white" href="?name=game&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
-                    aria-disabled="false">Pre</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-white" href="" tabindex="-1" aria-disabled="true">Pre</a>
-            </li>
-            {% endif %}
-            {% for i in range %}
-            {% if i == posts.number  %}
-            <li class="page-item active" aria-current="page">
-                <a class="page-white" href="?name=game&page={{i}}&page_cnt=6" style="color: black;"> {{i}} <span class="sr-only">(current)</span></a>
-            </li>
-            {% else %}
-            <li class="page-item"><a class="page-white" href="?name=game&page={{i}}&page_cnt=6">{{i}}</a></li>
-            {% endif %}
-            {% endfor %}
-            {% if posts.has_next %}
-            <li class="page-item">
-                <a class="page-white" href="?name=game&page={{posts.next_page_number}}&page_cnt=6">Next</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-white" href="">Next</a>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
-</nav>
+    <nav aria-label="..." class="nav_style">
+        <div class="pagination_wrapper" style="text-align: center; margin-top: 10%;">
+            <ul class="pagination justify-content-center">
+                {% if posts.has_previous %}
+                <li class="page-item">
+                    <a class="page-white" href="?name=game&page={{posts.previous_page_number}}&page_cnt=6" tabindex="-1"
+                        aria-disabled="false">Pre</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-white" href="" tabindex="-1" aria-disabled="true">Pre</a>
+                </li>
+                {% endif %}
+                {% for i in range %}
+                {% if i == posts.number  %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-white" href="?name=game&page={{i}}&page_cnt=6" style="color: black;"> {{i}} <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                {% else %}
+                <li class="page-item"><a class="page-white" href="?name=game&page={{i}}&page_cnt=6">{{i}}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if posts.has_next %}
+                <li class="page-item">
+                    <a class="page-white" href="?name=game&page={{posts.next_page_number}}&page_cnt=6">Next</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-white" href="">Next</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
 {% endblock %}
 {% block script %}
 
@@ -116,26 +130,26 @@
     }
 
     $(".bookmark").click(function () {
-            var content_id = $(this).attr('name');
-            $.ajax({
-                type: "POST",
-                url: "{% url 'bookmark' %}",
-                data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
-                dataType: "json",
-                success: function (response) {
-                    if (response.isBookmarked) {
-                        $("#bookmark-text-" + content_id).html('<i class="fas fa-bookmark"></i>');
-                    }
-                    else {
-                        $("#bookmark-text-" + content_id).html('<i class="far fa-bookmark"></i>');
-                    }
-                },
-                error: function (request, status, error) {
-                    alert("로그인이 필요합니다.")
-                    //window.location.replace("/account/login/")
-                },
-            });
-        })
+        var content_id = $(this).attr('name');
+        $.ajax({
+            type: "POST",
+            url: "{% url 'bookmark' %}",
+            data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+            dataType: "json",
+            success: function (response) {
+                if (response.isBookmarked) {
+                    $("#bookmark-text-" + content_id).html('<i class="fas fa-bookmark fa-lg"></i>');
+                }
+                else {
+                    $("#bookmark-text-" + content_id).html('<i class="far fa-bookmark fa-lg"></i>');
+                }
+            },
+            error: function (request, status, error) {
+                alert("로그인이 필요합니다.")
+                //window.location.replace("/account/login/")
+            },
+        });
+    })
 
     $(".like").click(function () {
         var content_id = $(this).attr('name');
@@ -147,10 +161,10 @@
             success: function (response) {
                 var cnt = response.like_count * 1;
                 if (response.isLiked) {
-                    $("#like-text-" + content_id).html('<i class="fas fa-heart"></i> : '+ cnt + ' &nbsp; {{content.title}}');
+                    $("#like-text-" + content_id).html('<i class="fas fa-heart"></i> : ' + cnt + ' &nbsp; {{content.title}}');
                 }
                 else {
-                    $("#like-text-" + content_id).html('<i class="far fa-heart"></i> : '+ cnt + ' &nbsp;');
+                    $("#like-text-" + content_id).html('<i class="far fa-heart"></i> : ' + cnt + ' &nbsp;');
                 }
             },
             error: function (request, status, error) {
@@ -162,4 +176,3 @@
 </script>
 
 {% endblock %}
-

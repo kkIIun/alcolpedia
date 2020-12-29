@@ -29,6 +29,8 @@ def table_contents(request):
         page = 1
     start = max(int(page)-5, 1)
     end = min(int(page)+5, paginator.num_pages)
+        
+
 
     for i in range(len(posts)):
         posts[i].no_blank_title = posts[i].title.replace(" ","")
@@ -39,6 +41,8 @@ def table_contents(request):
         return render(request,name+'.html',{'title': board_name[name],'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile,'tags':tag,'all_tags':all_tags})
     else :
         return render(request,name+'.html',{'title': board_name[name], 'posts' : posts,'range' : [i for i in range(start, end+1)],'tags':tag,'all_tags':all_tags})
+
+
 #좋아요
 @login_required(login_url='/member/signin/')
 def like(request):
@@ -68,6 +72,7 @@ def like(request):
     
     return HttpResponse(json.dumps(context), content_type="application/json")
 
+
 #태그 누르면 검색됨
 def tag(request,tag_id) : 
     tag = get_object_or_404(Tag,pk=tag_id)
@@ -77,15 +82,24 @@ def tag(request,tag_id) :
         return render(request,'search.html',{'contents':contents,'profile':profile})
     except:
         return render(request,'search.html',{'contents':contents})
- 
+
+
 #게시물 보기
 def detail(request,content_id) :
+
+    q = Q()
+
     content = get_object_or_404(Content,pk = content_id)
+    tags = content.tag.all()
+    for tag in tags:
+        q.add(Q(tag__id = tag.id), q.OR)
+    recommend_contents = Content.objects.filter(q)
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)
-        return render(request,'detail.html',{'title': content.title ,'content':content,'profile':profile})
+        return render(request,'detail.html',{'title': content.title ,'content':content,'profile':profile, 'tags': tags, 'recommend_contents' : recommend_contents })
     else :
-        return render(request,'detail.html',{'title': content.title ,'content':content})
+        return render(request,'detail.html',{'title': content.title ,'content':content, 'tags': tags, 'recommend_contents' : recommend_contents})
+
 
 def filter(request) : 
     tags = Tag.objects.all()[:6]
@@ -136,12 +150,12 @@ def filter(request) :
         return render(request,'game.html',{'posts' : list_contents,'profile':profile,'tag':tag,'date':date,'difficulty':difficulty,'tags':tags,'all_tags':all_tags})
     else :
         return render(request,'game.html',{'posts' : list_contents,'tag':tag,'date':date,'difficulty':difficulty,'tags':tags,'all_tags':all_tags})
-        
+
+
 @login_required
 def bookmark(request):
 
     content_id = request.POST.get('content_id', None)
-
     content = get_object_or_404(Content, pk=content_id)
     if request.user in content.bookmark.all():
         content.bookmark.remove(request.user)
@@ -162,9 +176,9 @@ def bookmark(request):
 
 def commenting(request, content_id):
     new_comment = Comment()
-    new_comment = get_object_or_404(Content, pk=content_id)
+    new_comment.content = get_object_or_404(Content, pk=content_id)
     new_comment.author = request.user
     new_comment.body = request.POST.get('body')
     new_comment.save()
-    return redirect('/article/' + str(content_id))
+    return redirect('/article/?name=alcohol')
     
