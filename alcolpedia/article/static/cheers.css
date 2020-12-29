@@ -25,7 +25,6 @@ ul{
     padding: 1vw;
     margin-left: 40vw;
     margin-right: 40vw;
-    margin-top: 25rem;
     text-size-adjust: inherit;
 
 }
@@ -54,8 +53,8 @@ ul{
     top: 15rem;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: 'InkLipquid';
-    font-size: 30px;
+    font-family: 'NEXON Lv1 Gothic OTF';
+    font-size: 40px;
 }
 
 .background-crop {
@@ -94,4 +93,41 @@ ul{
 strong{
     font-weight: 1000;
     font-size: 1.1rem;
+}
+.bottle01 {
+    width: 180px;
+    height: 500px;
+    margin: 50px 100px 0 248px;
+    border-radius: 129px;
+    position: relative;
+    background-image: linear-gradient(to bottom, #7dffcb, #b6ffc1 47%, #b7ff80);
+  }
+
+  .bottle02 {
+    width: 80px;
+    height: 200px;
+    margin: 0 0 0 500px;
+    position: absolute;
+
+    border-radius: 129px;
+    background-image: linear-gradient(to bottom, #ddffc5, #b8f9be 47%, #fe619f);
+  }
+
+  .bottle03 {
+    width: 100px;
+    height: 200px;
+    margin: -600px 40px 0 900px;
+    border-radius: 129px;
+    position: relative;
+
+    background-image: linear-gradient(to bottom, #7dffcb, #b6ffc1 47%, #b7ff80);
+  }
+  .bottle04 {
+    width: 122px;
+    height: 200px;
+    margin: 0px -140px 0 1100px;
+    border-radius: 129px;
+    position: relative;
+    background-image: linear-gradient(to bottom, #7dffcb, #b6ffc1 47%, #b7ff80);
+    opacity: 70%;
 }
