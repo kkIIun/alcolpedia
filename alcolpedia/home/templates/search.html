@@ -1,3 +1,4 @@
+<body>
 {% extends "base.html" %}
 {% load static %}
 {% load markdown_deux_tags %}
@@ -11,7 +12,7 @@
     {% include 'nav.html' %}
     <div class="row">
         <div class="col-lg-5 col-md-4 col-sm-4 col-xs-4 col-4"></div>
-        <h2 class="border border-light col-lg-2 col-md-4 col-sm-4 col-xs-4 col-4" style="text-align: center; margin-top: 9rem;">Search</h2>
+        <h2 class="title col-lg-2 col-md-4 col-sm-4 col-xs-4 col-4" style="text-align: center; margin-top: 9rem;">Search</h2>
         <div class="col-lg-5 col-md-4 col-sm-4 col-xs-4 col-4"></div>
     </div>
     <form action="{%url 'search'%}" class="formclass">
@@ -210,3 +211,4 @@
 
 </script>
 {% endblock %}
+</body>
