@@ -109,7 +109,6 @@ ul{
     margin-bottom: 2rem;
     text-align: center;
     font-size: 15px;
-    background-color: #000000;
     color:white;
 }
 
@@ -127,5 +126,6 @@ ul{
     border: solid 2px #b6ffbf;
     text-align: center;
     font-size: 15px;
+    margin-bottom: 8rem;
 }
 

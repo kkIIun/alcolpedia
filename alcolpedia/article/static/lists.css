@@ -208,7 +208,7 @@ hr{
 .cards{
     display: grid;
     grid-template-columns: repeat(12, minmax(auto, 60px));
-    grid-gap: 30px;
+    grid-gap: 40px;
 }
 
 .card_{
@@ -219,22 +219,20 @@ hr{
     flex-direction: column;
     cursor: pointer;
     transition: all 0.3s ease 0s;
-    border: 1px solid white;
     padding-top : 1rem;
     padding-bottom : 1rem;
-    border-radius: 5px;
+    border-radius: 15px;
     height: 25rem;
-}
-.card_blank {
-    display: none;
+    box-shadow: 0 3px 20px 0 rgba(177, 255, 193, 0.59);
+
 }
 
 
-@media screen and (max-width: 1000px) and (min-width: 601px) {
+@media screen and (max-width: 1000px) and (min-width: 770px) {
     .cards{
         display: grid;
         grid-template-columns: repeat(12, minmax(auto, 50px));
-        grid-gap: 20px;
+        grid-gap: 40px;
     }
     .card_{
         position: relative;
@@ -250,23 +248,15 @@ hr{
 }
 
 
-@media screen and (max-width: 600px) {
-    .card_blank {
-        position: relative;
-        grid-column: span 1;
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-        transition: all 0.3s ease 0s;
-    }
+@media screen and (max-width: 769px) {
     .cards{
         display: grid;
         grid-template-columns: repeat(12, minmax(auto, 25px));
-        grid-gap: 20px;
+        grid-gap: 40px;
     }
     .card_{
         position: relative;
-        grid-column: span 10;
+        grid-column:3/11;
         display: flex;
         flex-direction: column;
         cursor: pointer;
@@ -309,3 +299,9 @@ hr{
     color: #ecf0f1;
 }
 
+.tag_flex_container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}

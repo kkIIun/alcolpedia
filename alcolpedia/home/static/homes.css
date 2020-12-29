@@ -308,26 +308,28 @@ div.tag_box div{
     width: 100%;
     min-height: 50rem;
     height:auto;
+    
 }
-
+    
+    
 .card{
-    width: 18rem;
+    margin-top:0.2rem;
+    width:18rem;
     background-color: #0e0e0e;
     color:white;
     font-family: 'NotoSansCJKKR';
     flex:1;
-    padding: 25px 21px 23px;
-    border-radius: 20px;
+    padding-top : 1rem;
+    padding-bottom : 1rem;
+    border-radius: 15px;
+    height: 27rem;
     box-shadow: 0 3px 20px 0 rgba(177, 255, 193, 0.59);
-   
 }
 
 .card-title{
-    margin: 12px 8px 0 4px;
-    width: 100%;
-    text-align: left;
+    text-align: center;
     font-family: NotoSansCJKKR;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
 }
 
