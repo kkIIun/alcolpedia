@@ -1,7 +1,10 @@
-body{
-    background-color: black;
-    color: white;
+body {
+    width: 100%;
+    height: auto;
+    padding: 0 0 3px;
+    background-image: linear-gradient(to bottom, #4b8c69, #0e0e0e 33%, #4b8c69 42%, #0e0e0e 52%, #4b8c69);
 }
+
 .border-light2{
     text-align: start;
     padding-top: 1.5%;
@@ -10,6 +13,18 @@ body{
 .formclass{
     text-align: center;
     margin: 1rem 9rem 2rem 9rem;
+}
+
+.title{
+    color: white;
+    font-family: 'NEXON Lv1 Gothic OTF';
+    font-size: 2rem;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.31;
+    letter-spacing: normal;
+    text-align: center;
 }
 
 .chips {
