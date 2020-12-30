@@ -100,6 +100,7 @@ strong{
     margin: 50px 100px 0 248px;
     border-radius: 129px;
     position: relative;
+    z-index: -1;
     background-image: linear-gradient(to bottom, #7dffcb, #b6ffc1 47%, #b7ff80);
   }
 
@@ -108,7 +109,6 @@ strong{
     height: 200px;
     margin: 0 0 0 500px;
     position: absolute;
-
     border-radius: 129px;
     background-image: linear-gradient(to bottom, #ddffc5, #b8f9be 47%, #fe619f);
   }

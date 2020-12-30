@@ -30,24 +30,21 @@
     <div class="middle-card"
       style="margin: 5vw 30vw; border-radius: 3rem; background-image: linear-gradient(to bottom, #7dffcb, #b7ff80);">
       <div class="card-header" id="heading{{content.no_blank_title}}">
-        
-          <h2 class="mb-0">
-            <button class="btn btn-block text-center"
-            style="border:none; background-image: linear-gradient(to bottom, #7dffcb, #b7ff80); text-align: center;"
-            type="button" data-toggle="collapse" data-target="#collapse{{content.no_blank_title}}" aria-expanded="true"
-            aria-controls="collapse{{content.no_blank_title}}">
-              <ol
-              style="list-style-type: inherit; font-family: 'NEXON Lv2 Gothic Bold'; margin-top: 1rem; text-align: center;">
-              <li>{{content.title}}</li>
-              </ol>
-            </button>
-          </h2>
+        <button class="btn btn-block text-center"
+          style="border:none; background-image: linear-gradient(to bottom, #7dffcb, #b7ff80); text-align: center;"
+          type="button" data-toggle="collapse" data-target="#collapse{{content.no_blank_title}}" aria-expanded="true"
+          aria-controls="collapse{{content.no_blank_title}}">
+          <ol
+            style="list-style-type: inherit; font-family: 'NEXON Lv2 Gothic Bold'; margin-top: 1rem; text-align: center;">
+            <li>{{hot_content.title}}</li>
+          </ol>
+        </button>
       </div>
 
       <div id="collapse{{content.no_blank_title}}" class="collapse" aria-labelledby="heading{{content.no_blank_title}}"
         data-parent="#accordionExample">
         <div class="card-body">
-          {{content.body | markdown}}
+          {{hot_content.body | markdown}}
         </div>
       </div>
     </div>
@@ -77,26 +74,27 @@
           <div class="card"
             style="border-radius: 3rem; background-color: black; box-shadow: 0 3px 20px 0 rgba(177, 255, 193, 0.59);">
             <div class="card-header" id="heading{{content.no_blank_title}}">
-              <h2 class="mb-0">
+
+              <div style="position:relative;">
                 <button class="btn  btn-block text-left" style="color: white;" type="button" data-toggle="collapse"
                   data-target="#collapse{{content.no_blank_title}}" aria-expanded="true"
                   aria-controls="collapse{{content.no_blank_title}}">
-                  <ol
-                    style="list-style-type: inherit; font-family: 'NEXON Lv2 Gothic Bold'; margin-top: 1rem;">
+                  <ol style="list-style-type: inherit; font-family: 'NEXON Lv2 Gothic Bold'; margin-top: 1rem;">
                     <li>{{content.title}}
                     </li>
-                  </ol>                  
+                  </ol>
                 </button>
-              </h2>
-              <div style="text-align: end;">
-                <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}" name={{content.id}} style="color: white; padding:0; text-align: end;">
-                  {% if user in content.like.all %}
-                  <i class="fas fa-heart"></i> : {{content.like.all|length}}
-                  {% else %}
-                  <i class="far fa-heart"></i> : {{content.like.all|length}}
-                  {%endif%}                        
-                </a>
-              </div>  
+                <div style="position:absolute;top:2rem;right:1rem;">
+                  <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}"
+                    name={{content.id}} style="color: white; padding:0; ">
+                    {% if user in content.like.all %}
+                    <i class="fas fa-heart fa-lg"></i>{{content.like.all|length}}
+                    {% else %}
+                    <i class="far fa-heart fa-lg"></i>{{content.like.all|length}}
+                    {%endif%}
+                  </a>
+                </div>
+              </div>
             </div>
 
             <div id="collapse{{content.no_blank_title}}" style="color: white;" class="collapse"
@@ -151,59 +149,58 @@
     {% endblock %}
     {% block script %}
 
-<script>
+    <script>
 
 
-    function moveDetail(url) {
+      function moveDetail(url) {
         window.move
         window.location.href = url;
-    }
+      }
 
-    $(".bookmark").click(function () {
-            var content_id = $(this).attr('name');
-            $.ajax({
-                type: "POST",
-                url: "{% url 'bookmark' %}",
-                data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
-                dataType: "json",
-                success: function (response) {
-                    if (response.isBookmarked) {
-                        $("#bookmark-text-" + content_id).html('<i class="fas fa-bookmark"></i>');
-                    }
-                    else {
-                        $("#bookmark-text-" + content_id).html('<i class="far fa-bookmark"></i>');
-                    }
-                },
-                error: function (request, status, error) {
-                    alert("로그인이 필요합니다.")
-                    //window.location.replace("/account/login/")
-                },
-            });
-        })
-
-    $(".like").click(function () {
+      $(".bookmark").click(function () {
         var content_id = $(this).attr('name');
         $.ajax({
-            type: "POST",
-            url: "{% url 'like' %}",
-            data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
-            dataType: "json",
-            success: function (response) {
-                var cnt = response.like_count * 1;
-                if (response.isLiked) {
-                    $("#like-text-" + content_id).html('<i class="fas fa-heart"></i> : '+ cnt + ' &nbsp; {{content.title}}');
-                }
-                else {
-                    $("#like-text-" + content_id).html('<i class="far fa-heart"></i> : '+ cnt + ' &nbsp;');
-                }
-            },
-            error: function (request, status, error) {
-                alert("로그인이 필요합니다.")
-                //window.location.replace("/account/login/")
-            },
+          type: "POST",
+          url: "{% url 'bookmark' %}",
+          data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+          dataType: "json",
+          success: function (response) {
+            if (response.isBookmarked) {
+              $("#bookmark-text-" + content_id).html('<i class="fas fa-bookmark"></i>');
+            }
+            else {
+              $("#bookmark-text-" + content_id).html('<i class="far fa-bookmark"></i>');
+            }
+          },
+          error: function (request, status, error) {
+            alert("로그인이 필요합니다.")
+            //window.location.replace("/account/login/")
+          },
         });
-    })
-</script>
+      })
 
-{% endblock %}
+      $(".like").click(function () {
+        var content_id = $(this).attr('name');
+        $.ajax({
+          type: "POST",
+          url: "{% url 'like' %}",
+          data: { 'content_id': content_id, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+          dataType: "json",
+          success: function (response) {
+            var cnt = response.like_count * 1;
+            if (response.isLiked) {
+              $("#like-text-" + content_id).html('<i class="fas fa-heart fa-lg"></i>' + cnt);
+            }
+            else {
+              $("#like-text-" + content_id).html('<i class="far fa-heart fa-lg"></i>' + cnt);
+            }
+          },
+          error: function (request, status, error) {
+            alert("로그인이 필요합니다.")
+            //window.location.replace("/account/login/")
+          },
+        });
+      })
+    </script>
 
+    {% endblock %}

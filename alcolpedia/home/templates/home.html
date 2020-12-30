@@ -5,7 +5,8 @@
     {{title}}
     {% endblock %}
     {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'homes.css' %}?v=1.0">
+    {% load markdown_deux_tags %}
+    <link rel="stylesheet" href="{% static 'home.css' %}?v=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'slick/slick.css' %}?v=1.0">
@@ -176,10 +177,9 @@
             <div style="text-align: right;">
                 <a style="color: white; text-decoration:none;" href="{%url 'article'%}?name=cheers"> 더보기 </a><br><br>
             </div>
-            <section class="cheers">아이유</section>
-            <div style="color: white; padding-top: 50px;">아름다운 이 세상 유감없이 살다가자</div>
-
-
+            <div class="cheers">{{hot_content.title}}
+                <div class="cheers_body">{{hot_content.body | markdown}}</div>
+            </div>
         </section>
     </div>
     {% endblock %}
@@ -394,6 +394,15 @@
                 currentMusic = url;
             }
         }
+
+    </script>
+    <script>
+        var cheerBtn = document.querySelector('.cheers');
+        var cheerBd = document.querySelector('.cheers_body');
+        cheerBtn.addEventListener('click', function(){
+            cheerBd.classList.toggle("cheers-active");
+        })
+        
 
     </script>
     {% endblock %}
