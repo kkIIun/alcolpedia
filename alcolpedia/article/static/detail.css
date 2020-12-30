@@ -64,13 +64,17 @@ ul{
 .third{
     margin-bottom: 5%;
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
     font-family: 'NEXON Lv2 Gothic Bold';
     color:white;
-    margin-left: 40vw;
-    margin-right: 40vw;
+    margin-left: 42vw;
+    margin-right: 42vw;
 }
 
+.audio{
+    margin-bottom: 5%;
+    text-align: center;
+}
 .forth{
     color:white;
 }
