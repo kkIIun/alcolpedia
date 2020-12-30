@@ -21,7 +21,7 @@ def contents_function(request):
     if request.method == 'GET' :
         name= request.GET.get('name')
         # contents = Content.objects.filter(updated_at__isnull=False).order_by('updated_at')
-        contents = Content.objects.filter(sort = name)
+        contents = Content.objects.filter(sort = name, status = 'p')
         serializer = ContentSerializer(contents, many= True)
         return Response(serializer.data)
         # content_list = json.loads(serializers.serialize('json', contents)) 
