@@ -175,6 +175,7 @@ def bookmark(request):
     
     return HttpResponse(json.dumps(context), content_type="application/json")
 
+
 def commenting(request, content_id):
     new_comment = Comment()
     new_comment.content = get_object_or_404(Content, pk=content_id)
@@ -182,4 +183,33 @@ def commenting(request, content_id):
     new_comment.body = request.POST.get('body')
     new_comment.save()
     return redirect('/article/?name=alcohol')
+
+
+def selected_tag_filter(request):
+    selected_tags = request.POST.getlist('tags[]', None)
+        
+    q = Q()
+    q.add(Q(status = 'p'), q.AND)
+    q.add(Q(sort = 'game'), q.AND)
+    q2 = Q()
+    for tag in selected_tags:
+        q2.add(Q(tag__title = tag), q2.OR)
+    q.add(q2, q2.AND)
     
+    recommend_content = Content.objects.filter(q).order_by('?').first()
+
+    if selected_tags == None or len(selected_tags) == 0 or recommend_content == None:
+        context = {
+            'id' : '',
+            'title' : '좋아하는 게임 스타일을 골라주세요!',
+            'image_url' : '',
+        }
+        return HttpResponse(json.dumps(context), content_type='application/json')
+
+    context = {
+        'id' : recommend_content.id,
+        'title' : recommend_content.title,
+        'image_url': str(recommend_content.image)
+    }
+
+    return HttpResponse(json.dumps(context), content_type='application/json')
