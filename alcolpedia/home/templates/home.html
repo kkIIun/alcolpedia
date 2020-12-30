@@ -11,6 +11,12 @@
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'slick/slick.css' %}?v=1.0">
     <link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}?v=1.0">
+    <style>
+        .dropdown-menu {
+            max-height: 200px;
+            overflow: scroll;
+        }
+    </style>
     {% endblock %}
     {% block content %}
     <div>
@@ -83,54 +89,51 @@
                 </div>
             </div>
             <br><br><br>
-            <section class="circle">
-                <div style="color: #7dffcb; font-size: 50px; padding-top:50px;">?</div>
+            <section class="circle" style = "overflow: hidden;">
+                <div id = "recommend_game_img">
+                    <div style="color: #7dffcb; font-size: 50px; padding-top:50px;">?</div>
+                </div>
             </section>
             <br>
-            <div class="card-text" style="color: white;">좋아하는 게임 스타일을 골라주세요!</div>
+            <div class="card-text" id = "recommend_game_title"  style="color: white;">좋아하는 게임 스타일을 골라주세요!</div>
 
 
             <div class="row" style="padding-top: 50px;">
 
                 <div class="col">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            선택해주세요
+                        <button class="btn btn-secondary dropdown-toggle tag-select" type="button" id="first-selection" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            선택해주세요.
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu" aria-labelledby="first-selection">
                             {% for tag in tags %}
-                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                <a class="dropdown-item">{{tag}}</a>
                             {% endfor %}
-                        </ul>
+                        </div>
                     </div>
                 </div>
-                <script>bootstrap.bundle.min.js</script>
                 <div class="col">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            선택해주세요
+                        <button class="btn btn-secondary dropdown-toggle tag-select" type="button" id="second-selection" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            선택해주세요.
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu" aria-labelledby="second-selection">
                             {% for tag in tags %}
-                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                <a class="dropdown-item">{{tag}}</a>
                             {% endfor %}
-                        </ul>
+                        </div>
                     </div>
                 </div>
-
                 <div class="col">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            선택해주세요
+                        <button class="btn btn-secondary dropdown-toggle tag-select" type="button" id="third-selection" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            선택해주세요.
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu" aria-labelledby="third-selection">
                             {% for tag in tags %}
-                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                <a class="dropdown-item">{{tag}}</a>
                             {% endfor %}
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -402,7 +405,50 @@
         cheerBtn.addEventListener('click', function(){
             cheerBd.classList.toggle("cheers-active");
         })
-        
+    </script>
+
+    <script>
+        $(".dropdown-menu a").click(function(){
+            $(this).parents(".dropdown").find('.tag-select').html($(this).text());
+            $(this).parents(".dropdown").find('.tag-select').val($(this).data('value'));
+
+            loadTagGame();
+        });
+
+
+        loadTagGame = () => {
+            var selectedTags = $(".dropdown .tag-select").map(function(){
+               return $.trim($(this).text());
+            }).get().filter(tag => tag !== "선택해주세요.")
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'selected_tag_filter' %}",
+                data: {'tags' : selectedTags, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response);
+                    if(response.id === "") {
+                        $("#recommend_game_title").html(response.title);
+
+                    }
+                    else {
+                        $("#recommend_game_title").html("<a style = 'color: white; text-decoration: none;' href= '/article/detail/" + response.id +"'>"+ response.title + "</a>");
+                    }
+                    if(response.image_url === "") {
+                        $("#recommend_game_img").html("<div style='color: #7dffcb; font-size: 50px; padding-top:50px;'>?</div>");
+                    }
+                    else {
+                        $("#recommend_game_img").html("<a href= '/article/detail/" + response.id +"'>" + "<img src = '/media/" + response.image_url + "' alt = '게임 이미지' style = 'width: 100%; height: 100%'> </a>")
+                    }
+
+                },
+                error: function(response, status, error) {
+                    alert("오류가 발생하였습니다.", error)
+                    location.reload();
+                }
+            })
+        }
 
     </script>
     {% endblock %}
