@@ -88,9 +88,9 @@
                   <a class="align-middle col-lg-3 col-md-3 col-sm-3 col-3 like" id="like-text-{{content.id}}"
                     name={{content.id}} style="color: white; padding:0; ">
                     {% if user in content.like.all %}
-                    <i class="fas fa-heart fa-lg"></i>{{content.like.all|length}}
+                    <i class="fas fa-heart fa-lg"></i> {{content.like.all|length}}
                     {% else %}
-                    <i class="far fa-heart fa-lg"></i>{{content.like.all|length}}
+                    <i class="far fa-heart fa-lg"></i> {{content.like.all|length}}
                     {%endif%}
                   </a>
                 </div>
