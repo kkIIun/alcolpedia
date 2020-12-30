@@ -9,6 +9,7 @@ urlpatterns = [
     path('tag/<int:tag_id>', views.tag, name="tag"),
     path('detail/<int:content_id>', views.detail, name="detail"),
     path('filter', views.filter, name="filter"),
+    path('selected_tag_filter', views.selected_tag_filter, name="selected_tag_filter"),
     re_path(r'^bookmark/$', views.bookmark, name='bookmark'),
     path('commenting/<int:content_id>', views.commenting, name='commenting')
 ]

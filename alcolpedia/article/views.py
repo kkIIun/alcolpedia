@@ -16,8 +16,6 @@ import json
 def table_contents(request):
     board_name = {'game': '술게임', 'bgm':'브금', 'alcohol': '폭탄주', 'cheers':'건배사', 'setting': '옵션'}
     name= request.GET.get('name')
-    tag = Tag.objects.all()[:6]
-    all_tags = Tag.objects.all()[6:]
     contents_list = Content.objects.filter(sort = name).exclude(or_(Q(status = 'd'),Q(status = 'w')))
     page_cnt = request.GET.get('page_cnt')
     if not page_cnt:
@@ -29,8 +27,7 @@ def table_contents(request):
         page = 1
     start = max(int(page)-5, 1)
     end = min(int(page)+5, paginator.num_pages)
-        
-
+    dic = {'title': board_name[name],'posts' : posts,'range' : [i for i in range(start, end+1)]}
 
     for i in range(len(posts)):
         posts[i].no_blank_title = posts[i].title.replace(" ","")
@@ -38,9 +35,13 @@ def table_contents(request):
 
     if request.user.is_authenticated :
         profile = get_object_or_404(Profile,user__username = request.user.username)
-        return render(request,name+'.html',{'title': board_name[name],'posts' : posts,'range' : [i for i in range(start, end+1)],'profile':profile,'tags':tag,'all_tags':all_tags})
-    else :
-        return render(request,name+'.html',{'title': board_name[name], 'posts' : posts,'range' : [i for i in range(start, end+1)],'tags':tag,'all_tags':all_tags})
+        dic['profile'] = profile
+    
+    if name=='cheers' : 
+        hot_cheer = Content.objects.filter(sort = name).order_by("-like")[0]
+        dic['hot_content'] = hot_cheer
+
+    return render(request,name+'.html',dic)
 
 
 #좋아요
@@ -174,6 +175,7 @@ def bookmark(request):
     
     return HttpResponse(json.dumps(context), content_type="application/json")
 
+
 def commenting(request, content_id):
     new_comment = Comment()
     new_comment.content = get_object_or_404(Content, pk=content_id)
@@ -181,4 +183,33 @@ def commenting(request, content_id):
     new_comment.body = request.POST.get('body')
     new_comment.save()
     return redirect('/article/?name=alcohol')
+
+
+def selected_tag_filter(request):
+    selected_tags = request.POST.getlist('tags[]', None)
+        
+    q = Q()
+    q.add(Q(status = 'p'), q.AND)
+    q.add(Q(sort = 'game'), q.AND)
+    q2 = Q()
+    for tag in selected_tags:
+        q2.add(Q(tag__title = tag), q2.OR)
+    q.add(q2, q2.AND)
     
+    recommend_content = Content.objects.filter(q).order_by('?').first()
+
+    if selected_tags == None or len(selected_tags) == 0 or recommend_content == None:
+        context = {
+            'id' : '',
+            'title' : '좋아하는 게임 스타일을 골라주세요!',
+            'image_url' : '',
+        }
+        return HttpResponse(json.dumps(context), content_type='application/json')
+
+    context = {
+        'id' : recommend_content.id,
+        'title' : recommend_content.title,
+        'image_url': str(recommend_content.image)
+    }
+
+    return HttpResponse(json.dumps(context), content_type='application/json')

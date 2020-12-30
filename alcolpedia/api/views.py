@@ -1,11 +1,11 @@
 from django.shortcuts import render,get_object_or_404
 from rest_framework import viewsets, pagination
-from .serializers import ProfileSerializer, UserSerializer, ContentSerializer
+from .serializers import TagSerializer, ContentSerializer
 from member.models import Profile
 from article.models import Content
 from django.contrib.auth.models import User
 from django.core import serializers
-from django.http import HttpResponse,JsonResponse
+from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
@@ -21,7 +21,7 @@ def contents_function(request):
     if request.method == 'GET' :
         name= request.GET.get('name')
         # contents = Content.objects.filter(updated_at__isnull=False).order_by('updated_at')
-        contents = Content.objects.filter(sort = name)
+        contents = Content.objects.filter(sort = name, status = 'p')
         serializer = ContentSerializer(contents, many= True)
         return Response(serializer.data)
         # content_list = json.loads(serializers.serialize('json', contents)) 
@@ -53,11 +53,11 @@ def profile_function(request):
         user.save()
         profile.save()
 
-
+@api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
 def tag_function(request):
-    tags = Tag.objects.all()
-    tags = serializers.serialize('json', tags)
-    return HttpResponse(tags, content_type="text/json-comment-filtered")            
+    queryset = Tag.objects.all()
+    serializer = TagSerializer(queryset, many=True)
+    return Response(data=serializer.data)            
 # login, logout, registration 은 rest-auth를 사용
     
