@@ -669,16 +669,11 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
 
 .cheers_body{
     z-index: -1;
-position: absolute;
-  width: 40rem;
-  height: 7rem;
-  top:5rem;
-  justify-content: center;
   border-radius: 100px;
   color: white;
   font-weight:bold;
   font-size: 1rem;
-  text-align: center;
+  margin-top: 1rem;
   padding-top: 25px;
   cursor: pointer;  
   visibility: hidden;
@@ -690,4 +685,24 @@ position: absolute;
     opacity: 1;
     visibility: visible;
     
+}
+
+@media screen and (max-width: 1000px){
+    .cheers{
+        width:auto;
+    }
+} 
+
+.middle-container{
+    text-align: center;
+    border-radius: 3rem;
+    padding: 1vw;
+    margin-left: 30vw;
+    margin-right: 30vw;
+    margin-top: 4vw;
+    margin-bottom: 4vw;
+    text-size-adjust: inherit;
+    font-size: 25px;
+    border: solid 2px #7dffcb;
+    color: white;
 }

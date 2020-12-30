@@ -5,7 +5,7 @@
 {% endblock %}
 {% block stylesheet %}
 {% load markdown_deux_tags %}
-<link rel="stylesheet" href="{% static 'home.css' %}?v=1.0">
+<link rel="stylesheet" href="{% static 'homes.css' %}?v=1.0">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
     integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <link rel="stylesheet" href="{% static 'slick/slick.css' %}?v=1.0">
@@ -22,14 +22,13 @@
     <section class="bottle01"></section>
     <div class="bottle03"></div>
     <div class="bottle02"></div>
-
     <div class="bottle04"></div>
 </div>
-<div style="background-color: red;">
+<div>
     {% include 'nav.html'%}
 
     <div class="home-main_logo game">
-        <p class="font" style="color: #ffffff;">Alcolpedia</p>
+        <p class="font" style="color: #ffffff;">ALCOLPEDIA</p>
         <form class="formclass">
             <div class="chips">
                 <input class="chipsInput">
@@ -41,8 +40,7 @@
         <div class="tag_box">
             {% for tag in tags %}
             <div class="tagButton">
-                <a style="color:white; font-family: 'NEXON Lv1 Gothic OTF';"
-                    onclick="tagSelected(this);">#{{tag}}</a>
+                <a style="color:white; font-family: 'NEXON Lv1 Gothic OTF';" onclick="tagSelected(this);">#{{tag}}</a>
             </div>
             {% endfor %}
         </div>
@@ -51,9 +49,10 @@
 
 <div class="row wrapper" id="section-game">
 
-    <div class="container5 game" style="position: absolute;s">
+    <div class="container5 game" style="position: absolute;">
+        <i class="fas fa-chevron-down" style="font-size:40px; color:white;margin-top:9rem;"></i>
         <div class="section-title">
-            <div class="textwrap" style="margin-top:5rem;">
+            <div class="middle-container">
                 요즘 뜨는 술게임
             </div>
         </div>
@@ -64,8 +63,7 @@
             {% for content in contents %}
             <div>
                 <div class="card" style="margin-left:auto; margin-right: auto;">
-                    <img src="{{content.image.url}}" class="card-img-top"
-                        style="border-radius: 0.5rem; height: 15rem">
+                    <img src="{{content.image.url}}" class="card-img-top" style="border-radius: 0.5rem; height: 15rem">
                     <div class="card-body">
                         <p class="card-title">{{content.title}}</p>
                         <p class="card-text">{{content.summary}}</p>
@@ -88,49 +86,52 @@
             </div>
         </div>
         <br><br><br>
-        <section class="circle" style = "overflow: hidden;">
-            <div id = "recommend_game_img">
+        <section class="circle" style="overflow: hidden;">
+            <div id="recommend_game_img">
                 <div style="color: #7dffcb; font-size: 50px; padding-top:50px;">?</div>
             </div>
         </section>
         <br>
-        <div class="card-text" id = "recommend_game_title"  style="color: white;">좋아하는 게임 스타일을 골라주세요!</div>
+        <div class="card-text" id="recommend_game_title" style="color: white;">좋아하는 게임 스타일을 골라주세요!</div>
 
 
         <div class="row" style="padding-top: 50px;">
 
             <div class="col">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle tag-select" type="button" id="first-selection" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle tag-select" type="button" id="first-selection"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         선택해주세요.
                     </button>
                     <div class="dropdown-menu" aria-labelledby="first-selection">
                         {% for tag in tags %}
-                            <a class="dropdown-item">{{tag}}</a>
+                        <a class="dropdown-item">{{tag}}</a>
                         {% endfor %}
                     </div>
                 </div>
             </div>
             <div class="col">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle tag-select" type="button" id="second-selection" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle tag-select" type="button" id="second-selection"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         선택해주세요.
                     </button>
                     <div class="dropdown-menu" aria-labelledby="second-selection">
                         {% for tag in tags %}
-                            <a class="dropdown-item">{{tag}}</a>
+                        <a class="dropdown-item">{{tag}}</a>
                         {% endfor %}
                     </div>
                 </div>
             </div>
             <div class="col">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle tag-select" type="button" id="third-selection" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle tag-select" type="button" id="third-selection"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         선택해주세요.
                     </button>
                     <div class="dropdown-menu" aria-labelledby="third-selection">
                         {% for tag in tags %}
-                            <a class="dropdown-item">{{tag}}</a>
+                        <a class="dropdown-item">{{tag}}</a>
                         {% endfor %}
                     </div>
                 </div>
@@ -260,8 +261,8 @@
 
 </script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"
-    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
 <script type="text/javascript" src="{% static 'slick/slick.js' %}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -401,13 +402,13 @@
 <script>
     var cheerBtn = document.querySelector('.cheers');
     var cheerBd = document.querySelector('.cheers_body');
-    cheerBtn.addEventListener('click', function(){
+    cheerBtn.addEventListener('click', function () {
         cheerBd.classList.toggle("cheers-active");
     })
 </script>
 
 <script>
-    $(".dropdown-menu a").click(function(){
+    $(".dropdown-menu a").click(function () {
         $(this).parents(".dropdown").find('.tag-select').html($(this).text());
         $(this).parents(".dropdown").find('.tag-select').val($(this).data('value'));
 
@@ -416,33 +417,33 @@
 
 
     loadTagGame = () => {
-        var selectedTags = $(".dropdown .tag-select").map(function(){
+        var selectedTags = $(".dropdown .tag-select").map(function () {
             return $.trim($(this).text());
         }).get().filter(tag => tag !== "선택해주세요.")
 
         $.ajax({
             type: "POST",
             url: "{% url 'selected_tag_filter' %}",
-            data: {'tags' : selectedTags, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
+            data: { 'tags': selectedTags, 'csrfmiddlewaretoken': '{{ csrf_token }}' },
             dataType: 'json',
-            success: function(response) {
+            success: function (response) {
                 console.log(response);
-                if(response.id === "") {
+                if (response.id === "") {
                     $("#recommend_game_title").html(response.title);
 
                 }
                 else {
-                    $("#recommend_game_title").html("<a style = 'color: white; text-decoration: none;' href= '/article/detail/" + response.id +"'>"+ response.title + "</a>");
+                    $("#recommend_game_title").html("<a style = 'color: white; text-decoration: none;' href= '/article/detail/" + response.id + "'>" + response.title + "</a>");
                 }
-                if(response.image_url === "") {
+                if (response.image_url === "") {
                     $("#recommend_game_img").html("<div style='color: #7dffcb; font-size: 50px; padding-top:50px;'>?</div>");
                 }
                 else {
-                    $("#recommend_game_img").html("<a href= '/article/detail/" + response.id +"'>" + "<img src = '/media/" + response.image_url + "' alt = '게임 이미지' style = 'width: 100%; height: 100%'> </a>")
+                    $("#recommend_game_img").html("<a href= '/article/detail/" + response.id + "'>" + "<img src = '/media/" + response.image_url + "' alt = '게임 이미지' style = 'width: 100%; height: 100%'> </a>")
                 }
 
             },
-            error: function(response, status, error) {
+            error: function (response, status, error) {
                 alert("오류가 발생하였습니다.", error)
                 location.reload();
             }
