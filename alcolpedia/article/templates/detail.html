@@ -8,7 +8,7 @@
 {% include 'nav.html' %}
 <link rel="stylesheet" href="{% static 'detail.css' %}?v=1.0">
 <link rel="stylesheet" href="{% static 'slick/slick.css' %}?v=1.0">
-<link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}?v=1.0">>
+<link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}?v=1.0">
 <div class="first">
     {{content.title}}
 </div>
@@ -24,21 +24,21 @@
 </p>
 <div class="second">
     {% for tag in tags %}
-        <div class="second_baby">{{tag}}</div>
+        <div class="second_baby"># {{tag}}</div>
     {% endfor %}
 </div>
-
+<hr style="width: 40%; background-color: white;">
 <div>
     <br><br><br>
     
     {% if content.audio %}
-    <div class="third">
+    <div class="audio">
         <audio controls = "controls" id = "audio-{{content.title}}" class = "align-middle audio-style">
             <source src = "{{content.audio.url}}"/>
         </audio>
     </div>
     {% endif %}
-    <div class="third" style="border: 1px solid #72e9a0;">
+    <div class="third" style="border: 1px solid #72e9a0; border-radius: 3rem;">
         게임방법
         <!-- {{content.people_number}} -->
     </div>
