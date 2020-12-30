@@ -168,8 +168,9 @@ hr{
 }
 
 .contents{
-    margin-bottom: 10%;
-    margin-top: 2%;
+    /* margin-bottom: 10%;  */
+    margin-top: 10%;
+    background-image: linear-gradient(to bottom, #1F3127, #0e0e0e 33%, #0e0e0e);
 }
 
 
