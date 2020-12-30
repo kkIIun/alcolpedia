@@ -662,5 +662,32 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
   font-size: 1rem;
   text-align: center;
   padding-top: 25px;
-  
+  cursor: pointer;  
+  position: relative;
+}
+
+
+.cheers_body{
+    z-index: -1;
+position: absolute;
+  width: 40rem;
+  height: 7rem;
+  top:5rem;
+  justify-content: center;
+  border-radius: 100px;
+  color: white;
+  font-weight:bold;
+  font-size: 1rem;
+  text-align: center;
+  padding-top: 25px;
+  cursor: pointer;  
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s;
+}
+
+.cheers-active{
+    opacity: 1;
+    visibility: visible;
+    
 }

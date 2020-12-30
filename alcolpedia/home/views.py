@@ -21,12 +21,16 @@ def home(request):
     
     bgm_list_len = len(bgm_list)
     bgm_listt = bgm_list[:min(6,bgm_list_len)]
+    dic = {'title': 'Alcolpedia','tags':tag, 'contents': contents_list, 'bgms': bgm_list}
 
-    try:
-        profile = get_object_or_404(Profile, user__username = request.user.username)
-        return render(request, 'home.html',{'title': 'Alcolpedia','profile':profile,'tags':tag, 'contents': contents_list, 'bgms': bgm_list})
-    except :
-        return render(request,'home.html',{'title': 'Alcolpedia','tags':tag, 'contents': contents_list, 'bgms': bgm_list})
+    hot_cheer = Content.objects.filter(sort = 'cheers').order_by("-like")[0]
+    dic['hot_content'] = hot_cheer
+
+    if request.user.is_authenticated :
+        profile = get_object_or_404(Profile,user__username = request.user.username)
+        dic['profile'] = profile
+
+    return render(request,'home.html',dic)
 
 #검색기능
 def search(request) :
