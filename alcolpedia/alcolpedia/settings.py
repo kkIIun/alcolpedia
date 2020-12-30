@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_auth.registration',
-    'markdown_deux'
+    'markdown_deux',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'alcolpedia.urls'
@@ -237,3 +240,8 @@ MARKDOWN_DEUX_STYLES = {
         "safe_mode": "escape",
     }
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_URLS_REGEX = r'^/api/.*$'
+ALLOW_CORS = True
