@@ -61,3 +61,17 @@ def tag_function(request):
     return Response(data=serializer.data)            
 # login, logout, registration 은 rest-auth를 사용
     
+@api_view(['GET'])
+@permission_classes((IsAuthenticatedOrReadOnly, ))
+def hot_contents_function(request):
+    num= int(request.GET.get('num'))
+    contents = Content.objects.filter(sort = 'game').order_by("-like")[:num]
+    serializer = ContentSerializer(contents, many= True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticatedOrReadOnly, ))
+def hot_cheer_function(request):
+    hot_cheer = Content.objects.filter(sort = 'cheers').order_by("-like")[0]
+    serializer = ContentSerializer(hot_cheer, many= False)
+    return Response(serializer.data)
